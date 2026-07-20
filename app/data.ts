@@ -3,7 +3,7 @@ export const site = {
   "slug": "developeroffshore",
   "brand": "Developer Offshore",
   "primary": "developer offshore staffing",
-  "audience": "software teams that want offshore developers without hiring chaos",
+  "audience": "software teams that need offshore developers without running the whole search alone",
   "angle": "developer pods, sprint support, QA, code review, and timezone overlap",
   "style": "Dark developer console",
   "dark": "#020617",
@@ -18,23 +18,23 @@ export const site = {
 export const services = [
   {
     "slug": "operations-support",
-    "title": "Operations Support",
-    "desc": "Operations Support for teams using developer offshore staffing with clear SOPs, weekly review, and measurable handoffs."
+    "title": "Development Operations Support",
+    "desc": "Keep sprint boards, release notes, technical handoffs, and routine delivery checks up to date."
   },
   {
     "slug": "customer-support",
-    "title": "Customer Support",
-    "desc": "Customer Support for teams using developer offshore staffing with clear SOPs, weekly review, and measurable handoffs."
+    "title": "Product Support Engineering",
+    "desc": "Handle reproducible bug reports, support escalations, log checks, and fixes that need an engineer."
   },
   {
     "slug": "admin-support",
-    "title": "Admin Support",
-    "desc": "Admin Support for teams using developer offshore staffing with clear SOPs, weekly review, and measurable handoffs."
+    "title": "Engineering Admin Support",
+    "desc": "Take care of ticket cleanup, release documentation, access requests, and other recurring engineering chores."
   },
   {
     "slug": "reporting-and-qa",
     "title": "Reporting and QA",
-    "desc": "Reporting and QA for teams using developer offshore staffing with clear SOPs, weekly review, and measurable handoffs."
+    "desc": "Run regression checks, verify bugs, record test evidence, and give the team a clear weekly quality report."
   }
 ] as const;
 
@@ -58,19 +58,19 @@ export type BlogPost = {
 export const blogPosts: BlogPost[] = [
   {
     "slug": "developer-offshore-staffing-planning",
-    "title": "Developer Offshore: What does it plan?",
-    "excerpt": "A plain-English guide to staffing details, scope, and hidden planning.",
+    "title": "How to plan an offshore developer role",
+    "excerpt": "Define the tickets, access, review rules, and management time before you start interviewing.",
     "minutes": 6
   },
   {
     "slug": "developer-offshore-staffing-tasks-to-outsource",
-    "title": "Developer Offshore: What tasks should you outsource first?",
+    "title": "Which development tasks should you outsource first?",
     "excerpt": "Start with recurring work that has examples and clear review rules.",
     "minutes": 7
   },
   {
     "slug": "developer-offshore-staffing-provider-questions",
-    "title": "Developer Offshore: Questions to ask before hiring",
+    "title": "Questions to ask an offshore developer provider",
     "excerpt": "Use these questions before you sign with an offshore developer provider or freelancer.",
     "minutes": 8,
     "keyTakeaways": [
@@ -188,43 +188,43 @@ export const blogPosts: BlogPost[] = [
   },
   {
     "slug": "developer-offshore-staffing-onboarding-checklist",
-    "title": "Developer Offshore: First week onboarding checklist",
-    "excerpt": "A simple checklist for tools, SOPs, calls, QA, and reporting.",
+    "title": "First-week offshore developer onboarding checklist",
+    "excerpt": "Set up the repo, tickets, access limits, review calls, testing, and daily updates.",
     "minutes": 9
   }
 ];
 
 export const stats = [
-  {label:'Typical savings target',value:'30-60%',note:'depends on role, management, and local hiring plan'},
-  {label:'Best pilot length',value:'14 days',note:'enough time to test quality before scaling'},
-  {label:'Start with',value:'5-10 tasks',note:'clear recurring tasks beat vague job descriptions'}
+  {label:'Suggested pilot',value:'14 days',note:'enough time to review real work before adding scope'},
+  {label:'First backlog',value:'5-10 tickets',note:'specific tickets make interviews and review easier'},
+  {label:'Final code approval',value:'Your tech lead',note:'keep architecture, security, and merge decisions in house'}
 ] as const;
 
 export const staffingOffer = {
   partner: 'our staffing team',
-  promise: 'Get a managed offshore staffing plan built around the work you need removed from your plate.',
+  promise: 'Get an offshore developer staffing plan based on your backlog, stack, schedule, and review process.',
   fit: [
-    'business owners who need reliable remote staff but do not want to screen alone',
-    'teams that want trained support, backup coverage, and a clear manager path',
-    'companies that need help with admin, operations, customer support, calls, bookkeeping, development, or marketing work',
+    'software teams that need extra development capacity but do not want to screen alone',
+    'tech leads who can review code but need help finding and managing candidates',
+    'companies with a real backlog, documented tools, and clear ownership of technical decisions',
   ],
   included: [
-    'role planning call to turn your task list into a clear staffing scope',
-    'candidate matching based on skills, schedule, tools, and communication needs',
-    'onboarding guidance for SOPs, scorecards, reporting, and safe tool access',
-    'managed support so quality, attendance, and replacement questions do not sit only on the owner',
+    'a role planning call to turn backlog items into a clear developer brief',
+    'candidate matching based on stack, seniority, schedule, and communication needs',
+    'onboarding help for repo access, pull requests, testing, updates, and review rules',
+    'a manager contact for attendance, fit, and replacement questions',
   ],
   proof: [
     'clear task scope before hiring',
-    'weekly reporting rhythm',
-    'named accountability and escalation path',
-    'simple handoff plan for tools, SOPs, and quality checks',
+    'a weekly written update',
+    'one named contact for problems and escalation',
+    'a handoff plan for repos, tickets, credentials, and code review',
   ],
 } as const;
 
 export const leadQuestions = [
   'What work do you want off your plate first?',
-  'Which tools, inboxes, phones, CRMs, or systems will the staff member use?',
+  'Which languages, frameworks, repos, ticket boards, and environments will the developer use?',
   'What hours, time zone, and response time do you need?',
   'Who checks quality during the first two weeks?',
   'What should the staff member never decide without approval?',
@@ -232,9 +232,9 @@ export const leadQuestions = [
 
 export const staffingProcess = [
   { step: '1', title: 'Map the role', body: 'We turn messy tasks into one clear role with outcomes, tools, limits, and a first-week checklist.' },
-  { step: '2', title: 'Match the staff', body: 'our staffing team can help match remote staff to the work, schedule, communication style, and skill level you need.' },
-  { step: '3', title: 'Launch with control', body: 'Start with SOPs, sample work, limited access, daily review, and a simple scorecard so quality is easy to see.' },
-  { step: '4', title: 'Scale what works', body: 'Once the first tasks are stable, add more work, better reporting, and stronger delegation without guessing.' },
+  { step: '2', title: 'Meet the candidates', body: 'The staffing team matches developers to your stack, schedule, communication style, and required seniority.' },
+  { step: '3', title: 'Run a small pilot', body: 'Start with sample tickets, limited access, daily updates, pull requests, and a scorecard your tech lead can use.' },
+  { step: '4', title: 'Add work carefully', body: 'When the first tickets are solid, add more backlog items and adjust the review process based on what you learned.' },
 ] as const;
 
-export const staffingFitNote = 'Every staffing plan depends on role scope, schedule, skills, tools, and management needs. Send the role details and our staffing team can guide the best fit.';
+export const staffingFitNote = 'The right setup depends on the backlog, stack, seniority, schedule, access, and review time. Send those details so the staffing team can suggest a sensible first role.';
