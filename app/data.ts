@@ -219,7 +219,7 @@ export const blogPosts: BlogPost[] = [
     relatedLinks: [
       { label: 'Review the developer provider questions', href: '/blog/developer-offshore-staffing-provider-questions', note: 'Use these questions after the role and assessment are clear. They help you check who screens, manages, and replaces a candidate.' },
       { label: 'Plan reporting and QA support', href: '/services/reporting-and-qa', note: 'See how a Philippines-based QA role can handle regression evidence and weekly quality notes. Keep release decisions with your own owner.' },
-      { label: 'Use the first-week onboarding checklist', href: '/blog/developer-offshore-staffing-onboarding-checklist', note: 'Turn the selected role into a small first-week plan. Set repo access, review calls, tests, and daily updates before work begins.' },
+      { label: 'Use the first-week onboarding checklist', href: '/blog', note: 'Turn the selected role into a small first-week plan. Set repo access, review calls, tests, and daily updates before work begins.' },
       { label: 'Discuss a role-matched candidate plan', href: '/contact', note: 'Share the stack, role, schedule, and review owner you need. A staffing specialist can use that detail to discuss Philippines-based candidate fit.' },
     ],
     faqs: [
@@ -237,18 +237,6 @@ export const blogPosts: BlogPost[] = [
       { name: 'GitHub Docs: About protected branches', url: 'https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches', note: 'Used for repository review and merge controls.' },
       { name: 'Software Engineering at Google: Code Review', url: 'https://abseil.io/resources/swe-book/html/ch09.html', note: 'Source of the quoted code review definition.' },
     ],
-  },
-  {
-    "slug": "developer-offshore-staffing-planning",
-    "title": "How to plan an offshore developer role",
-    "excerpt": "Define the tickets, access, review rules, and management time before you start interviewing.",
-    "minutes": 6
-  },
-  {
-    "slug": "developer-offshore-staffing-tasks-to-outsource",
-    "title": "Which development tasks should you outsource first?",
-    "excerpt": "Start with recurring work that has examples and clear review rules.",
-    "minutes": 7
   },
   {
     "slug": "developer-offshore-staffing-provider-questions",
@@ -367,14 +355,7 @@ export const blogPosts: BlogPost[] = [
         "note": "Used for secure review framing."
       }
     ]
-  },
-  {
-    "slug": "developer-offshore-staffing-onboarding-checklist",
-    "title": "First-week offshore developer onboarding checklist",
-    "excerpt": "Set up the repo, tickets, access limits, review calls, testing, and daily updates.",
-    "minutes": 9
-  }
-];
+  },];
 
 export const stats = [
   {label:'Suggested pilot',value:'14 days',note:'enough time to review real work before adding scope'},
