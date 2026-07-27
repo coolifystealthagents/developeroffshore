@@ -100,7 +100,7 @@ function ScoreChart({ post }: { post: BlogPost }) {
       <div className="svg-scroll" tabIndex={0} aria-label={`${chart.title}, horizontally scrollable`}>
         <svg className="score-chart" viewBox="0 0 760 390" role="img" aria-labelledby="score-chart-svg-title score-chart-svg-desc">
           <title id="score-chart-svg-title">{chart.title}</title>
-          <desc id="score-chart-svg-desc">Five horizontal stacked bars show percentage point weights for practical work, system reasoning, quality and security, and handoff. Each bar totals 100 percent.</desc>
+          <desc id="score-chart-svg-desc">Stacked horizontal bars show {chart.categories.map((category) => category.label).join(', ')} for each review point. Each bar totals 100 percent.</desc>
           {[0, 25, 50, 75, 100].map((tick) => (
             <g key={tick}>
               <line x1={barX + (tick / 100) * barWidth} x2={barX + (tick / 100) * barWidth} y1="36" y2="342" stroke="#cbd5e1" strokeDasharray="4 6" />
@@ -144,7 +144,7 @@ function WorkSampleGraphic({ post }: { post: BlogPost }) {
       <div className="svg-scroll" tabIndex={0} aria-label={`${graphic.title}, horizontally scrollable`}>
         <svg className="process-graphic" viewBox="0 0 920 220" role="img" aria-labelledby="process-title process-desc">
           <title id="process-title">{graphic.title}</title>
-          <desc id="process-desc">A five-step path moves from a clear brief through safe inputs, a bounded task, submitted evidence, and an independent score.</desc>
+          <desc id="process-desc">A five-step path moves through {graphic.steps.map((step) => step.title).join(', ')}.</desc>
           <defs>
             <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
               <path d="M0,0 L0,6 L9,3 z" fill="#0f8f73" />

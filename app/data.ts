@@ -79,6 +79,158 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'onboard-offshore-developers-philippines-first-30-days',
+    title: 'How to onboard offshore developers in the Philippines: a secure first-30-days plan',
+    excerpt: 'Onboard offshore developers in the Philippines with a small first ticket, named review owners, and access that grows only after good work. This 30-day plan gives your lead clear checks for code, security, updates, and handoff quality.',
+    minutes: 15,
+    datePublished: '2026-07-27',
+    dateModified: '2026-07-27',
+    revision: '2026-07-27-philippines-developer-onboarding-v1',
+    keyTakeaways: [
+      'Give each Philippine developer one named lead, one small first ticket, and one written definition of done.',
+      'Start with a sandbox, staging, and the fewest repo permissions needed for the assigned work.',
+      'Require pull requests, focused tests, and a short handoff before any change can move toward release.',
+      'Write an AI tool rule before day one and ask developers to mark assisted work and explain how they checked it.',
+      'Use day 7, day 14, and day 30 reviews to decide whether the role is ready for more scope or needs a reset.',
+    ],
+    sections: [
+      {
+        heading: 'Prepare the role before the first login',
+        body: [
+          'A good start happens before the new developer opens a repository. Write a one-page role brief that names the product area, stack, first outcome, working hours in Philippine time and your team time, and the person who can answer technical questions.',
+          'Add a short boundary list beside the role brief. State which repos are open, which environments are closed, who approves a merge, who may change database rules, and where the developer should raise a security concern.',
+        ],
+        bullets: [
+          'Name the technical owner and a backup owner for Philippine working hours.',
+          'Pick one small ticket that can be finished without customer records or production secrets.',
+          'Write the acceptance checks, test command, branch rule, and handoff format.',
+          'Book the day 3, day 7, day 14, and day 30 review points before work starts.',
+        ],
+      },
+      {
+        heading: 'Make day one small and specific',
+        body: [
+          'Do not fill the first day with a long company tour and then leave the developer alone with a large backlog. Give a short product map, show one completed ticket, run the project together, and ask the developer to make a harmless documentation or test change.',
+          'Use the first change to prove the basic path from ticket to branch, local check, pull request, review, and handoff. If any step is confusing, fix the written guide while both people can still see the gap.',
+        ],
+      },
+      {
+        heading: 'Open access in measured steps',
+        body: [
+          'NIST control AC-6 says people and processes should receive only the access needed for assigned work. For a Philippines-based developer, begin with named accounts, one project repo, the needed ticket board, a safe test environment, and no customer export or production secret.',
+          'Create an access record that lists the account, owner, reason, approval date, and removal trigger. Review that record on day 7 and day 30, then remove anything the role did not use instead of leaving old permissions in place.',
+        ],
+        bullets: [
+          'Use a company-managed identity rather than a shared login.',
+          'Keep production deploys, secret stores, billing controls, and security exceptions with your internal owner.',
+          'Set an end date for temporary access and record who can extend it.',
+          'Test the same-day removal path before the developer handles important work.',
+        ],
+      },
+      {
+        heading: 'Set the pull request rule before real work',
+        body: [
+          'GitHub protected branches can require an approving review and passing status checks before a merge. Turn those controls on before the first real ticket, because a spoken rule is easy to forget when a release is busy.',
+          'Keep the first pull requests narrow enough for a lead to read in one sitting. Ask for the linked ticket, a plain summary, tests run, screenshots or API examples when useful, known limits, and the exact point where the developer needs a decision.',
+        ],
+      },
+      {
+        heading: 'Treat AI-assisted code as code that still needs proof',
+        body: [
+          'The 2024 Stack Overflow Developer Survey found that 76% of respondents used or planned to use AI tools in development, while 62% were already using them compared with 44% the year before. The same survey found that 45% of professional developers thought AI tools were bad or very bad at complex tasks.',
+          'GitHub reported 137,000 public generative AI projects in 2024, up 98% from the prior year, with contributions to those projects up 59%. These numbers are global rather than Philippines-specific, but they show why a remote developer onboarding plan needs a written AI rule instead of pretending the tools are absent.',
+          'Allow or restrict tools by repository and data type, then apply the same rule to every person in the role. Ask the developer to mark assisted code, check licenses and sources when needed, run tests, review security-sensitive paths, and explain any suggestion that was rejected.',
+        ],
+      },
+      {
+        heading: 'Put an access-control case in the first sprint',
+        body: [
+          'OWASP placed Broken Access Control first in its 2021 Top 10 after its contributed dataset recorded 318,487 occurrences mapped to 19,013 CVEs. A new developer should see how your product checks ownership and permissions before touching a feature that reads or changes user data.',
+          'Use a safe case in staging or a local fixture, such as changing an object identifier and confirming that one test user cannot reach another user\'s record. Ask the developer to show the server rule, the test, the log entry, and the person who may approve an exception.',
+        ],
+      },
+      {
+        heading: 'Check work at day 7 and day 14',
+        body: [
+          'The day 7 review should use evidence from a real but bounded ticket. Look at setup friction, pull request size, test focus, review response, update clarity, and whether the developer asked for help before a blocked task went quiet.',
+          'By day 14, the developer should complete a small change with less pairing while still following the same gates. If the work is weak, narrow the role, repair the guide, or replace the first task rather than adding more repos and hoping the problem disappears.',
+        ],
+      },
+      {
+        heading: 'Use day 30 to set the next boundary',
+        body: [
+          'At day 30, compare the role brief with completed work instead of relying on a general feeling. Review accepted tickets, returned changes, escaped defects, written updates, access use, handoffs, and the amount of lead time needed to get work over the line.',
+          'Choose one of three plain outcomes: keep the same boundary, add one named responsibility, or reset the role and support plan. Record why the decision was made, who owns the next review, and which production or architecture decisions remain with your internal lead.',
+        ],
+      },
+    ],
+    table: {
+      title: 'First-30-days onboarding checks for a Philippine offshore developer',
+      columns: ['Review point', 'Developer evidence', 'Lead check', 'Access boundary'],
+      rows: [
+        ['Day 1', 'Project runs locally and one safe change reaches review.', 'Confirm setup steps, branch rule, and help channel.', 'Named account, one repo, ticket board, and safe environment.'],
+        ['Day 3', 'First bounded ticket has tests and a written handoff.', 'Review assumptions, pull request size, and open questions.', 'Keep customer records and production secrets closed.'],
+        ['Day 7', 'A completed ticket follows the team definition of done.', 'Score quality, updates, review response, and blockers.', 'Remove unused access and extend only what the next ticket needs.'],
+        ['Day 14', 'A second change moves with less pairing and the same gates.', 'Check rework, security thinking, and handoff clarity.', 'Consider one extra repo only when the role now needs it.'],
+        ['Day 30', 'Work record shows accepted changes and known limits.', 'Choose keep, expand one duty, or reset the role.', 'Document the next boundary and test the removal path.'],
+      ],
+    },
+    chart: {
+      title: 'Suggested review mix across the first 30 days',
+      categories: [
+        { label: 'Paired setup', color: '#0f8f73' },
+        { label: 'Developer work', color: '#2563eb' },
+        { label: 'Lead review', color: '#7c3aed' },
+        { label: 'Written handoff', color: '#f27b3d' },
+      ],
+      rows: [
+        { label: 'Day 1', values: [45, 20, 25, 10] },
+        { label: 'Day 3', values: [30, 35, 25, 10] },
+        { label: 'Day 7', values: [20, 45, 25, 10] },
+        { label: 'Day 14', values: [10, 55, 25, 10] },
+        { label: 'Day 30', values: [5, 60, 25, 10] },
+      ],
+      method: 'Units are percentage points of a 100-point review mix at each checkpoint. The values are an editorial planning example, not measured performance, and should be adjusted to the ticket risk and the experience of the developer and lead.',
+    },
+    graphic: {
+      title: 'The safe path from first login to wider ownership',
+      steps: [
+        { title: 'Role brief', note: 'Name the outcome, stack, owner, schedule, and closed decisions.' },
+        { title: 'Safe access', note: 'Use named accounts, one repo, and a test environment.' },
+        { title: 'Small ticket', note: 'Start with bounded work that has written acceptance checks.' },
+        { title: 'Review proof', note: 'Collect tests, pull request notes, feedback, and a handoff.' },
+        { title: 'Next boundary', note: 'Use day 30 evidence to keep, add, or reset one duty.' },
+      ],
+    },
+    quote: {
+      text: 'Code review is a process in which code is reviewed by someone other than the author, often before the introduction of that code into a codebase.',
+      by: 'Tom Manshreck and Caitlin Sadowski',
+      role: 'authors of the Code Review chapter in Software Engineering at Google',
+      sourceUrl: 'https://abseil.io/resources/swe-book/html/ch09.html',
+    },
+    relatedLinks: [
+      { label: 'Use the Philippine developer assessment guide', href: '/blog/hire-software-developers-philippines-assessment-guide', note: 'Match the work sample to the real developer role before onboarding starts. Keep the same score areas for every candidate in the opening.' },
+      { label: 'Plan QA automation engineering', href: '/services/qa-automation-engineering', note: 'See which regression checks and test evidence a Philippines-based QA engineer can own. Keep release decisions and accepted risk with your own lead.' },
+      { label: 'Review provider questions', href: '/blog/developer-offshore-staffing-provider-questions', note: 'Check who manages attendance, fit, code review, access removal, and replacement. Save the answers beside the onboarding plan.' },
+      { label: 'Map a Node.js API role', href: '/services/node-js-api-development', note: 'Use a clear lane for endpoint work, tests, logs, and engineering escalation. Keep data rules and sensitive production decisions with your team.' },
+      { label: 'Discuss a Philippines developer plan', href: '/contact', note: 'Share the stack, first ticket, working hours, and review owner you need. The staffing team can use those details to discuss a Philippines-based candidate plan.' },
+    ],
+    faqs: [
+      { question: 'What should a Philippine offshore developer do on the first day?', answer: 'Run the project, read one finished ticket, and send a safe documentation or test change through review. The goal is to prove the work path and fix setup gaps before a real feature begins.' },
+      { question: 'When should a new offshore developer receive production access?', answer: 'Do not use time alone as the test. Add access only when a named task needs it, earlier work shows safe habits, and your internal owner has approved the exact boundary.' },
+      { question: 'How often should the technical lead review early work?', answer: 'Review the first change together, then hold evidence reviews on day 7, day 14, and day 30. Keep pull requests small enough that feedback arrives before the developer builds more work on a weak choice.' },
+      { question: 'Should a Philippines-based developer use AI coding tools?', answer: 'Use one written rule based on the repository and the data involved. If tools are allowed, require marked assisted work, tests, source checks when needed, and a human explanation of the final code.' },
+    ],
+    sources: [
+      { name: 'NIST SP 800-53 Rev. 5, AC-6 Least Privilege', url: 'https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final', note: 'Published September 2020 and updated in 2025; used for the access baseline.' },
+      { name: 'GitHub Docs: About protected branches', url: 'https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches', note: 'Used for required review and status-check controls.' },
+      { name: 'Stack Overflow 2024 Developer Survey: AI', url: 'https://survey.stackoverflow.co/2024/ai', note: 'Used for 2024 AI use, year comparison, and complex-task responses.' },
+      { name: 'GitHub Octoverse 2024', url: 'https://github.blog/news-insights/octoverse/octoverse-2024/', note: 'Published October 29, 2024; used for public generative AI project activity.' },
+      { name: 'OWASP Top 10 A01:2021 Broken Access Control', url: 'https://owasp.org/Top10/2021/A01_2021-Broken_Access_Control/index.html', note: 'Used for the 2021 contributed dataset occurrence and CVE counts.' },
+      { name: 'Software Engineering at Google: Code Review', url: 'https://abseil.io/resources/swe-book/html/ch09.html', note: 'Source of the exact expert quote about code review.' },
+    ],
+  },
+  {
     slug: 'hire-software-developers-philippines-assessment-guide',
     title: 'How to hire software developers in the Philippines: a role-based assessment guide',
     excerpt: 'Hire software developers in the Philippines with a work sample that matches the real role. Use the same scorecard for every candidate, then keep code approval and sensitive access with your own technical owner.',
