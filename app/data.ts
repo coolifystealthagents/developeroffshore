@@ -52,8 +52,9 @@ export type BlogChart = {
   categories: { label: string; color: string }[];
   rows: { label: string; values: number[] }[];
   method: string;
+  axisLabel?: string;
 };
-export type BlogGraphic = { title: string; steps: { title: string; note: string }[] };
+export type BlogGraphic = { title: string; steps: { title: string; note: string }[]; axisLabel?: string };
 export type BlogQuote = { text: string; by: string; role: string; sourceUrl: string };
 export type BlogLink = { label: string; href: string; note: string };
 export type BlogPost = {
@@ -78,6 +79,164 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: 'philippines-offshore-developer-pull-request-handoff-guide',
+    title: 'Philippines offshore developer pull request handoff guide',
+    excerpt: 'Use a clear pull request handoff when a Philippines offshore developer and your reviewer work different hours. This guide shows what to put in the ticket, code review, test record, and next-day note.',
+    minutes: 15,
+    datePublished: '2026-07-27',
+    dateModified: '2026-07-27',
+    revision: '2026-07-27-philippines-pr-handoff-v1',
+    keyTakeaways: [
+      'Give every pull request one purpose, one named reviewer, and one written definition of done.',
+      'Keep the change small enough for the reviewer to understand and respond to in one work block.',
+      'Attach test evidence and call out access, data, and release risks instead of hiding them in the diff.',
+      'Use a short end-of-day note so a reviewer can act while the Philippine developer is offline.',
+      'Keep merge approval, production exceptions, and sensitive access with your own named technical owner.',
+    ],
+    sections: [
+      {
+        heading: 'Write the handoff rule before the first pull request',
+        body: [
+          'A Philippines offshore developer should not have to guess what your reviewer wants after the code is ready. Write one pull request rule that names the ticket, reviewer, required checks, review window, and person who can answer a blocked question.',
+          'The rule should fit on one page and use an example from your own repository. Show a good title, a short summary, the test command, proof for changed behavior, known limits, and the exact decision that still belongs to your lead.',
+        ],
+        bullets: [
+          'Link one ticket and state the user or system result in the first two lines.',
+          'Name the reviewer and a backup who can respond during Philippine working hours.',
+          'List tests run, tests skipped, and the reason for every skipped check.',
+          'Mark changes to permissions, personal data, secrets, or release settings.',
+        ],
+      },
+      {
+        heading: 'Keep the change inside one review window',
+        body: [
+          'A large pull request turns a time difference into a full-day delay because the reviewer must first discover what changed. Ask the developer to split unrelated cleanup, database work, interface changes, and new behavior into separate changes when the pieces can stand alone.',
+          'Small does not mean careless or unfinished. Each change still needs a clear result, focused tests, and enough context for a reviewer who was not in the developer chat or pairing call.',
+        ],
+        bullets: [
+          'Open a draft early when the design or data rule needs a lead decision.',
+          'Put generated files and broad formatting changes in their own review when possible.',
+          'Stop and split the work when the summary can no longer explain one main result.',
+        ],
+      },
+      {
+        heading: 'Use branch rules as a guard, not a reviewer',
+        body: [
+          'GitHub protected branches can require an approving review and passing status checks before a merge. Turn on the controls that match the repository, then write down who may dismiss a failed check or approve an exception.',
+          'A green check cannot explain a weak authorization rule or a missed business case. Your reviewer still needs to read the changed behavior, inspect risky paths, and confirm that the evidence answers the ticket rather than only proving that the build ran.',
+        ],
+      },
+      {
+        heading: 'Leave a note that survives the time difference',
+        body: [
+          'The end-of-day note should help the next person act without reopening every message. Ask the Philippine developer to state what changed, what passed, what remains uncertain, and the first decision needed from the reviewer.',
+          'Keep the note in the pull request or linked ticket instead of a private chat. That gives the next reviewer the same facts and leaves a useful record when the first reviewer is away.',
+        ],
+        bullets: [
+          'Done: name the behavior and files changed in plain words.',
+          'Proof: link tests, screenshots, logs, or API examples that match the change.',
+          'Risk: name access, data, performance, browser, or rollback concerns.',
+          'Next: ask one direct question and say who can answer it.',
+        ],
+      },
+      {
+        heading: 'Ask for proof when AI tools helped write the code',
+        body: [
+          'The 2024 Stack Overflow Developer Survey found that 76% of respondents used or planned to use AI tools in development, up from 70% in 2023. It also found that 62% were already using the tools in 2024, compared with 44% the year before.',
+          'The same 2024 survey found that 45% of professional developers rated AI tools bad or very bad at complex tasks. Ask every developer, offshore or local, to mark assisted code when your rule requires it and show how the final change was tested, checked, and corrected.',
+          'GitHub reported in 2024 that contributions to public generative AI projects rose 59% and the number of those projects rose 98%. Those are global figures, not a claim about Philippine developers, but they make a written review rule more useful than assuming nobody uses the tools.',
+        ],
+      },
+      {
+        heading: 'Put access checks inside the pull request',
+        body: [
+          'OWASP placed Broken Access Control first in its 2021 Top 10 after the contributed dataset recorded 318,487 occurrences tied to 19,013 CVEs. A pull request that reads or changes user data should show who may perform the action and include a test that proves another user cannot cross that boundary.',
+          'Ask the developer to point to the server-side rule, the denied-case test, and the log that would help an investigation. Keep any exception with your internal security or product owner, and do not let a quiet overnight merge become the place where the rule gets decided.',
+        ],
+      },
+      {
+        heading: 'Set a same-day block and escalation rule',
+        body: [
+          'A blocked developer needs a path that works during Philippine hours. Name a backup reviewer, a stop condition, and the kinds of choices that must wait for your architecture, security, or product owner.',
+          'The developer should send one short block note with the attempted path, evidence, risk, and smallest decision needed. Your backup may answer a documented question, but production access, sensitive data changes, and release exceptions stay with the owner named in the role plan.',
+        ],
+      },
+      {
+        heading: 'Review the handoff after real work',
+        body: [
+          'After the first two weeks, read several completed pull requests instead of asking whether communication feels good. Check review wait time, returned changes, missing tests, unanswered questions, and whether the reviewer could act from the written note.',
+          'Fix one repeated problem at a time by changing the template, review window, ticket size, or owner list. Keep the same basic handoff for everyone in the role so the team can see whether the change helped on the next set of work.',
+        ],
+      },
+    ],
+    table: {
+      title: 'Pull request evidence by Philippine developer role',
+      columns: ['Role lane', 'Evidence in the pull request', 'Reviewer check', 'Decision kept in house'],
+      rows: [
+        ['Frontend', 'Changed states, keyboard checks, browser proof, and focused component tests.', 'Confirm the user path, empty and error states, and shared component choices.', 'Approve design rules, analytics meaning, and release exceptions.'],
+        ['API', 'Contract example, input checks, denied-case tests, logs, and rollback note.', 'Confirm data ownership, authorization, failure behavior, and retry safety.', 'Approve data rules, secrets, migrations, and production access.'],
+        ['QA automation', 'Stable selectors, isolated setup, failure output, and a defect note.', 'Confirm the test can fail for the right reason and gives useful evidence.', 'Set release gates and accept any known test gap.'],
+        ['Platform', 'Infrastructure diff, access scope, health signal, and rollback steps.', 'Confirm least privilege, secret handling, monitoring, and recovery order.', 'Approve production rights, network rules, and rollout timing.'],
+        ['Support engineering', 'Reproduction steps, log excerpt, bounded fix, and regression test.', 'Confirm the fix matches the reported case without opening a wider risk.', 'Approve customer communication and any emergency release.'],
+      ],
+    },
+    chart: {
+      title: 'Suggested review effort for common pull request types',
+      categories: [
+        { label: 'Author context', color: '#0f8f73' },
+        { label: 'Automated checks', color: '#2563eb' },
+        { label: 'Reviewer pass', color: '#7c3aed' },
+        { label: 'Written handoff', color: '#f27b3d' },
+      ],
+      rows: [
+        { label: 'Small fix', values: [20, 30, 35, 15] },
+        { label: 'User interface', values: [25, 25, 35, 15] },
+        { label: 'API change', values: [25, 25, 40, 10] },
+        { label: 'Access change', values: [20, 25, 45, 10] },
+        { label: 'Platform change', values: [25, 20, 45, 10] },
+      ],
+      method: 'Units are percentage points of a 100-point review effort example for each pull request type. These are editorial planning shares, not measured team results, so change them for the risk, repository, and experience of the developer and reviewer.',
+      axisLabel: 'Share of review effort (percentage points)',
+    },
+    graphic: {
+      title: 'A pull request path that works across time zones',
+      steps: [
+        { title: 'Ticket brief', note: 'Name one result, acceptance checks, reviewer, and closed decisions.' },
+        { title: 'Draft early', note: 'Raise design, data, or access questions before the change grows.' },
+        { title: 'Run checks', note: 'Attach focused tests and proof that matches the changed behavior.' },
+        { title: 'Review', note: 'Read risky paths, answer the direct question, and record requested changes.' },
+        { title: 'Handoff', note: 'State what passed, what remains, and who owns the next decision.' },
+      ],
+      axisLabel: 'One pull request path across Philippine and buyer team hours',
+    },
+    quote: {
+      text: 'Code review is a process in which code is reviewed by someone other than the author, often before the introduction of that code into a codebase.',
+      by: 'Tom Manshreck and Caitlin Sadowski',
+      role: 'authors of the Code Review chapter in Software Engineering at Google',
+      sourceUrl: 'https://abseil.io/resources/swe-book/html/ch09.html',
+    },
+    relatedLinks: [
+      { label: 'Use the Philippines developer onboarding plan', href: '/blog/onboard-offshore-developers-philippines-first-30-days', note: 'Set the first ticket, access boundary, and review owner before work starts. Use the same handoff rule at day 7, day 14, and day 30.' },
+      { label: 'Plan QA automation engineering', href: '/services/qa-automation-engineering', note: 'See how a Philippines-based QA engineer can collect regression proof and useful failure notes. Keep release decisions and accepted risk with your own lead.' },
+      { label: 'Assess Philippine developer candidates', href: '/blog/hire-software-developers-philippines-assessment-guide', note: 'Test the same pull request habits before a candidate joins. Use a sandbox, synthetic data, and one approved scorecard for the opening.' },
+      { label: 'Map DevOps release support', href: '/services/devops-release-support', note: 'Define who updates release notes, checks health signals, and writes technical handoffs around the developer work. Keep technical approval with the named engineering owner.' },
+      { label: 'Discuss a Philippines developer plan', href: '/contact', note: 'Share the stack, first ticket, working hours, and review owner you need. The staffing team can use those details to discuss a Philippines-based candidate plan.' },
+    ],
+    faqs: [
+      { question: 'What belongs in an offshore developer pull request handoff?', answer: 'Include the linked ticket, changed result, tests run, proof, known risk, and one direct question for the reviewer. Name the person who can answer and the choice that must stay with your technical owner.' },
+      { question: 'How small should a pull request be across time zones?', answer: 'Keep it narrow enough for one reviewer to understand and answer in a single work block. Split unrelated cleanup, broad formatting, database work, or separate user behavior when those pieces can stand alone.' },
+      { question: 'Who should merge a Philippine offshore developer pull request?', answer: 'Use the same branch and approval rule you use for the rest of the team. Keep final approval for architecture, sensitive data, production access, and release exceptions with your named internal owner.' },
+      { question: 'How do we review AI-assisted code?', answer: 'Set one written rule for offshore and local developers, then ask for marked assisted work when the rule calls for it. Review tests, source checks, access paths, and the developer explanation instead of trusting the tool output by itself.' },
+    ],
+    sources: [
+      { name: 'GitHub Docs: About protected branches', url: 'https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches', note: 'Used for required review and status-check controls.' },
+      { name: 'Stack Overflow 2024 Developer Survey: AI', url: 'https://survey.stackoverflow.co/2024/ai', note: 'Used for 2024 AI use, year comparison, and complex-task responses.' },
+      { name: 'GitHub Octoverse 2024', url: 'https://github.blog/news-insights/octoverse/octoverse-2024/', note: 'Used for 2024 public generative AI project activity.' },
+      { name: 'OWASP Top 10 A01:2021 Broken Access Control', url: 'https://owasp.org/Top10/2021/A01_2021-Broken_Access_Control/index.html', note: 'Used for the 2021 contributed dataset occurrence and CVE counts.' },
+      { name: 'Software Engineering at Google: Code Review', url: 'https://abseil.io/resources/swe-book/html/ch09.html', note: 'Source of the exact expert quote about code review.' },
+    ],
+  },
   {
     slug: 'onboard-offshore-developers-philippines-first-30-days',
     title: 'How to onboard offshore developers in the Philippines: a secure first-30-days plan',

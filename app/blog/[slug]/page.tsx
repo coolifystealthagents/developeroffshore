@@ -127,7 +127,7 @@ function ScoreChart({ post }: { post: BlogPost }) {
               </g>
             );
           })}
-          <text x="448" y="374" textAnchor="middle" className="axis-label">Share of total candidate score (percentage points)</text>
+          <text x="448" y="374" textAnchor="middle" className="axis-label">{chart.axisLabel ?? 'Share of total candidate score (percentage points)'}</text>
         </svg>
       </div>
       <figcaption>{chart.method}</figcaption>
@@ -161,7 +161,7 @@ function WorkSampleGraphic({ post }: { post: BlogPost }) {
               </g>
             );
           })}
-          <text x="460" y="194" textAnchor="middle" className="axis-label">One consistent path for every candidate in the same opening</text>
+          <text x="460" y="194" textAnchor="middle" className="axis-label">{graphic.axisLabel ?? 'One consistent path for every candidate in the same opening'}</text>
         </svg>
       </div>
       <ol className="graphic-notes">
