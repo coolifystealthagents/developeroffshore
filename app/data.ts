@@ -80,6 +80,173 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'philippines-offshore-developer-incident-triage-guide',
+    title: 'Philippines offshore developer incident triage guide',
+    excerpt: 'Give a Philippines offshore developer a clear incident triage lane without handing over final security decisions. This guide covers first checks, evidence, small fixes, two-clock handoffs, and the choices that stay with your own incident lead.',
+    minutes: 15,
+    datePublished: '2026-07-28',
+    dateModified: '2026-07-28',
+    revision: '2026-07-28-philippines-developer-incident-triage-v1',
+    keyTakeaways: [
+      'Name an internal incident lead before a Philippines developer joins the response lane.',
+      'Give the developer one bounded system, one evidence checklist, and one written stop rule.',
+      'Save times, logs, changed files, account actions, and test proof in the incident record.',
+      'Prepare the smallest safe fix or rollback for review instead of changing production alone.',
+      'Keep containment, disclosure, production access, and accepted risk with your own named owners.',
+    ],
+    sections: [
+      {
+        heading: 'Write the incident lane before the first alert',
+        body: [
+          'Set the role before anything breaks. Name the services in scope, internal incident lead, approved evidence tools, Philippine working hours, and the point where the developer must stop and ask.',
+          'The role can cover reproducing an error, reading approved logs, tracing a request, preparing a patch, and writing a handoff. Your lead still decides whether to isolate a system, rotate a secret, notify a customer, open production access, or accept risk.',
+        ],
+        bullets: [
+          'Put the incident channel, ticket, system map, and owner list in one runbook.',
+          'Use named accounts and approved read-only views for the first evidence pass.',
+          'Write which data may be copied into the incident record and which data must stay masked.',
+          'Set one direct escalation path for a suspected secret, account takeover, or active data change.',
+        ],
+      },
+      {
+        heading: 'Separate first response from final decisions',
+        body: [
+          'Triage finds what happened, what is still happening, and the next safe check. It does not give every person in the response lane a containment or release choice.',
+          'Give the Philippine developer approved first actions for each alert type. Allow log capture, staging reproduction, code comparison, or a rollback draft while production changes wait for the incident lead.',
+        ],
+        bullets: [
+          'Confirm the alert source and write its first observed time without changing the original record.',
+          'Check the current release, feature flag, dependency change, and service health for the affected path.',
+          'Save the smallest useful log window with secrets and personal data masked.',
+          'State the next proposed action, its likely effect, and the person who must approve it.',
+        ],
+      },
+      {
+        heading: 'Start with time and the system boundary',
+        body: [
+          'The March 23, 2026 M-Trends report said the global median dwell time in its 2025 investigations rose to 14 days from 11 days. It also said the median was 122 days for cyber espionage and North Korean IT worker incidents, so a clean timeline matters even when the first alert looks small.',
+          'Mark the first event, alert, human review, and approved change in UTC and Philippine Standard Time. Record the account, service, request, host, code version, and evidence link so the next shift can follow the trail.',
+        ],
+      },
+      {
+        heading: 'Collect evidence that survives the handoff',
+        body: [
+          'M-Trends 2026 said organizations first found malicious activity internally in 52% of its 2025 investigations, up from 43% in 2024. That makes internal logs, health signals, and developer observations worth keeping easy to find and compare.',
+          'The same report said exploits were the first infection path in 32% of intrusions for the sixth year in a row. Verizon’s 2026 DBIR said software vulnerabilities started 31% of breaches, so check recent releases, exposed endpoints, and known vulnerable components early.',
+        ],
+        bullets: [
+          'Save the alert ID, query, time window, and masked result instead of pasting an unexplained screenshot.',
+          'Link the deployed commit, build, dependency file, configuration change, and last known healthy signal.',
+          'Record failed and successful requests with the same fields so the team can see what changed.',
+          'Keep raw evidence read-only and place notes or theories in a separate incident timeline entry.',
+        ],
+      },
+      {
+        heading: 'Prepare the smallest safe change',
+        body: [
+          'Turn the strongest evidence into one small change that an internal reviewer can understand. The draft might add an input check, close a route, update a component, restore configuration, or add a test for the reported behavior.',
+          'Keep the patch beside a rollback note and focused test proof. If it touches identity, encryption, audit records, customer data, network rules, or production credentials, ask the named security or platform owner to review it.',
+        ],
+        bullets: [
+          'Link the incident fact that the change is meant to address.',
+          'Show the failing case before the fix and the passing case after it.',
+          'List systems not tested and any assumption that remains open.',
+          'State the rollback command or prior version, but do not run it without approval.',
+        ],
+      },
+      {
+        heading: 'Keep secrets and account actions with named owners',
+        body: [
+          'An incident may expose a token, key, session, or service account during evidence work. Mask the value, record where it appeared, and use the approved private path instead of chat or a general ticket.',
+          'The named owner decides which credentials to revoke, sessions to end, and systems to review. The developer can then find old references, update approved test fixtures, and check the service with the replacement credential.',
+        ],
+      },
+      {
+        heading: 'Use a two-clock handoff',
+        body: [
+          'The handoff should let the buyer team continue without waking the Philippine developer. Write the impact, strongest facts, approved actions, open theory, next safe command, stop rule, and decision owner in the incident record.',
+          'Use UTC for the shared timeline, then add both team times for the next review. A short call can clear a block, but keep facts, approvals, and changes in the written record.',
+        ],
+        bullets: [
+          'Impact: name the user path or system behavior that is known to be affected.',
+          'Evidence: link the alert, logs, code version, tests, and timeline entries.',
+          'Action: state what changed, who approved it, and what signal should confirm recovery.',
+          'Next: name one check, one owner, and the time when the team will review it.',
+        ],
+      },
+      {
+        heading: 'Review the record after recovery',
+        body: [
+          'NIST published Incident Response Recommendations and Considerations for Cybersecurity Risk Management in April 2025. Its current approach places incident work inside normal cyber risk management, so the team should carry useful lessons back into code review, access rules, monitoring, and recovery plans.',
+          'Read the real incident record with the Philippines developer and internal lead after the service is stable. Fix missing fields, unclear stop rules, weak test proof, and owner gaps while the details are still fresh, then practice the changed step on a safe example.',
+        ],
+      },
+    ],
+    table: {
+      title: 'Incident evidence by Philippines developer lane',
+      columns: ['Triage lane', 'Evidence to save', 'Safe developer action', 'Decision kept in house'],
+      rows: [
+        ['Application error', 'Request ID, masked input, stack trace, deployed commit, and focused reproduction.', 'Prepare a bounded fix and a test that fails for the reported case.', 'Incident lead approves production change and recovery state.'],
+        ['Exposed route', 'Endpoint, request method, denied and allowed examples, code owner, and server log.', 'Add a server-side check in a branch and prove the denied case.', 'Security owner decides containment, review scope, and disclosure.'],
+        ['Leaked secret', 'Masked value type, file or log location, first seen time, and systems that use it.', 'Remove the reference from code and search approved repositories for repeats.', 'Credential owner revokes, replaces, and reviews related account activity.'],
+        ['Vulnerable component', 'Package, version, advisory, use path, lockfile, and affected build.', 'Test the supported update in an isolated branch with focused checks.', 'Technical owner accepts, delays, or releases the change.'],
+        ['Bad deployment', 'Release ID, health signals, changed files, failure window, and prior healthy version.', 'Prepare rollback steps or a narrow repair with a health check.', 'Platform owner approves rollback, release timing, and production rights.'],
+      ],
+    },
+    chart: {
+      title: '2026 incident signals used in the first triage pass',
+      categories: [
+        { label: 'Reported share', color: '#0f8f73' },
+        { label: 'Remaining share', color: '#cbd5e1' },
+      ],
+      rows: [
+        { label: 'Internal detection, 2025', values: [52, 48] },
+        { label: 'Internal detection, 2024', values: [43, 57] },
+        { label: 'Exploit entry, M-Trends', values: [32, 68] },
+        { label: 'Vulnerability entry, DBIR', values: [31, 69] },
+      ],
+      method: 'Units are percentage points. The first three rows come from M-Trends 2026 and describe Mandiant investigations; the last row comes from Verizon’s 2026 DBIR and describes breaches. Each row has its own study base, so compare the reported share only with the remainder of that row.',
+      axisLabel: 'Share of cases in each named study (percentage points)',
+    },
+    graphic: {
+      title: 'A Philippines developer incident handoff path',
+      steps: [
+        { title: 'Confirm', note: 'Check the alert source, time, affected path, and named incident lead.' },
+        { title: 'Capture', note: 'Save masked logs, code version, request details, and the last healthy signal.' },
+        { title: 'Bound', note: 'State what is known, what is open, and where the developer must stop.' },
+        { title: 'Prepare', note: 'Draft the smallest fix or rollback and attach focused test proof.' },
+        { title: 'Handoff', note: 'Leave facts, approvals, next check, owner, and review time in one record.' },
+      ],
+      axisLabel: 'One incident record across Philippine and buyer team hours',
+    },
+    quote: {
+      text: 'Today, we release M-Trends 2026. Grounded in over 500,000 hours of frontline incident investigations conducted by Mandiant globally in 2025, this report provides a definitive look at the TTPs actively being used in breaches today.',
+      by: 'Jurgen Kutscher',
+      role: 'VP, Mandiant Consulting, Google Cloud and author of the M-Trends 2026 release article',
+      sourceUrl: 'https://cloud.google.com/blog/topics/threat-intelligence/m-trends-2026',
+    },
+    relatedLinks: [
+      { label: 'Plan Philippines DevOps release support', href: '/services/devops-release-support', note: 'Map the release checks, health signals, rollback notes, and incident handoffs a Philippines developer can prepare. Keep production rights and exceptions with your own platform owner.' },
+      { label: 'Use the Philippines pull request handoff', href: '/blog/philippines-offshore-developer-pull-request-handoff-guide', note: 'Put incident fixes through the same focused review and test record used for normal code. Give the Philippine developer and internal reviewer one place to track the open decision.' },
+      { label: 'Build a Philippines QA lane', href: '/services/qa-automation-engineering', note: 'Connect the incident reproduction to a focused regression check. Let the QA engineer save proof while your lead decides the release rule.' },
+      { label: 'Follow the secure first-30-days plan', href: '/blog/onboard-offshore-developers-philippines-first-30-days', note: 'Teach the incident stop rules before giving a new developer wider access. Practice the handoff on a safe staging example first.' },
+      { label: 'Discuss a Philippines developer plan', href: '/contact', note: 'Share the stack, support window, incident role, and review owner your team needs. A staffing specialist can use those details to discuss a Philippines-based developer role.' },
+    ],
+    faqs: [
+      { question: 'What can a Philippines offshore developer do during an incident?', answer: 'The developer can reproduce the issue, gather approved evidence, trace code, prepare a small fix, run focused tests, and write the handoff. Keep containment, production action, disclosure, and accepted risk with your named internal owners.' },
+      { question: 'Should an offshore developer receive broad production access for incident support?', answer: 'Start with named accounts and the smallest access needed for the written incident lane. Any wider production right should follow your normal approval, logging, time limit, and removal rules.' },
+      { question: 'What belongs in the incident handoff?', answer: 'Write the current impact, strongest facts, timeline, approved actions, open theory, next check, stop rule, and decision owner. Link the original evidence rather than pasting unexplained screenshots or sensitive values.' },
+      { question: 'Who decides when the incident is closed?', answer: 'Your named incident lead should decide when the service is stable and the response can move into follow-up work. The Philippine developer can provide tests and health evidence, but should not close an open business or security risk alone.' },
+    ],
+    sources: [
+      { name: 'Google Cloud: M-Trends 2026', url: 'https://cloud.google.com/blog/topics/threat-intelligence/m-trends-2026', note: 'Published March 23, 2026; used for dwell time, first infection path, internal detection figures, the 500,000-hour context, and the exact expert quote.' },
+      { name: 'Verizon: 2026 Data Breach Investigations Report', url: 'https://www.verizon.com/business/resources/reports/dbir/', note: 'Used for the 31% software vulnerability entry figure.' },
+      { name: 'NIST SP 800-61 Rev. 3: Incident Response Recommendations and Considerations for Cybersecurity Risk Management', url: 'https://csrc.nist.gov/pubs/sp/800/61/r3/final', note: 'Published April 2025; used for the incident response and cyber risk management connection.' },
+      { name: 'CISA: Federal Government Cybersecurity Incident and Vulnerability Response Playbooks', url: 'https://www.cisa.gov/resources-tools/resources/federal-government-cybersecurity-incident-and-vulnerability-response-playbooks', note: 'Published November 16, 2021; used as a response-playbook reference for repeatable actions and owner boundaries.' },
+      { name: 'NIST SP 800-218: Secure Software Development Framework', url: 'https://csrc.nist.gov/pubs/sp/800/218/final', note: 'Published February 2022; used as a reference for carrying incident lessons into secure development work.' },
+    ],
+  },
+  {
     slug: 'philippines-offshore-qa-flaky-test-triage-guide',
     title: 'Philippines offshore QA flaky test triage guide',
     excerpt: 'Give a Philippines offshore QA engineer a clear way to sort flaky tests from real defects. This guide covers reruns, evidence, quarantine, repair, and the decisions that stay with your own engineering lead.',
