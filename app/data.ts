@@ -80,6 +80,170 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'philippines-offshore-qa-flaky-test-triage-guide',
+    title: 'Philippines offshore QA flaky test triage guide',
+    excerpt: 'Give a Philippines offshore QA engineer a clear way to sort flaky tests from real defects. This guide covers reruns, evidence, quarantine, repair, and the decisions that stay with your own engineering lead.',
+    minutes: 15,
+    datePublished: '2026-07-28',
+    dateModified: '2026-07-28',
+    revision: '2026-07-28-philippines-qa-flaky-test-triage-v1',
+    keyTakeaways: [
+      'Define a flaky result before the first failure and use the same rule for Philippine and local team members.',
+      'Save the commit, runner, test data, error, and rerun result before anyone dismisses a red check.',
+      'Quarantine only the failing test, name an owner, and keep a real deadline for repair.',
+      'Separate product defects, test defects, environment faults, and unknown cases in the triage record.',
+      'Keep release exceptions and accepted product risk with your own named engineering owner.',
+    ],
+    sections: [
+      {
+        heading: 'Write one rule for a flaky result',
+        body: [
+          'A Philippines offshore QA engineer needs a written rule before a test starts switching between red and green. Call a result flaky only when the same test on the same code can both pass and fail, then save enough evidence for another person to repeat the check.',
+          'Do not use flaky as a quick label for every hard failure. A changed dependency, expired account, shared test record, slow service, or real product defect may look random until someone compares the run conditions.',
+        ],
+        bullets: [
+          'Record the commit, branch, test name, runner, browser or device, and Philippine time of the first failure.',
+          'Save the full error, screenshot, log, video, trace, and test data key when those items exist.',
+          'Rerun the single test under the same conditions before rerunning a whole suite.',
+          'Mark the case as product, test, environment, or unknown instead of writing only flaky.',
+        ],
+      },
+      {
+        heading: 'Treat reruns as evidence, not a green eraser',
+        body: [
+          'A passing rerun does not prove the first failure was harmless. It proves the result changed, so the Philippine QA engineer should link both runs and state what stayed the same, what changed, and which cause is still open.',
+          'GitHub Actions can rerun every job, failed jobs, or one job with its dependent jobs. Start with the smallest useful rerun because a full suite may hide the original signal under new logs and unrelated failures.',
+        ],
+        bullets: [
+          'Run the failed test alone on the original commit and runner type.',
+          'Repeat with a clean test record or isolated worker when shared state is possible.',
+          'Compare timing, network calls, random seeds, service responses, and test order.',
+          'Stop rerunning when the evidence points to a real user failure or access mistake.',
+        ],
+      },
+      {
+        heading: 'Use a four-lane triage board',
+        body: [
+          'Give the Philippine QA lane four plain outcomes: product defect, test defect, environment fault, or unknown. Each card should name one owner and one next check, so a remote handoff does not become a long chat with no decision.',
+          'Product defects go to the developer who owns the changed behavior. Test defects stay with QA automation, environment faults go to the runner or platform owner, and unknown cases need a short paired review before the next team handoff.',
+      ],
+      },
+      {
+        heading: 'Set a quarantine rule that cannot become a graveyard',
+        body: [
+          'Google reported in May 2016 that about 1.5% of test runs across its test corpus returned a flaky result. The same report said almost 16% of its tests had some level of flakiness, which shows why silent reruns can make a large suite look healthier than it is.',
+          'Quarantine can protect the main signal while a known test is repaired, but it needs a defect link, owner, reason, entry date, and review date. Keep the skipped test visible in the daily report and fail the quarantine check when the owner or repair date is missing.',
+        ],
+        bullets: [
+          'Quarantine the narrow test rather than muting a whole file or feature area.',
+          'Write the user path or system rule the test was meant to protect.',
+          'Add a small reproduction job that can run more often than the main suite.',
+          'Return the test only after repeated clean runs and a review of the real cause.',
+        ],
+      },
+      {
+        heading: 'Check access failures before calling them random',
+        body: [
+          'OWASP placed Broken Access Control first in its 2021 Top 10 after the contributed data recorded 318,487 occurrences tied to 19,013 CVEs. A test that changes an account, object ID, role, or token needs a denied case as well as a happy path.',
+          'Ask the Philippines QA engineer to keep synthetic users for each role and state which user owns each record. If another user can read or change that record, stop the flaky test review and raise a product defect to the named security or service owner.',
+        ],
+      },
+      {
+        heading: 'Review AI-written tests with the same proof rule',
+        body: [
+          'The 2024 Stack Overflow Developer Survey found that 62% of respondents were using AI tools in development, up from 44% the year before. It also found that 45% of professional developers rated the tools bad or very bad at complex tasks.',
+          'Apply one written rule to Philippine and local engineers when AI helps write a test. Ask for a human check of selectors, assertions, setup, cleanup, access cases, and failure messages, then keep the final test explanation beside the pull request.',
+        ],
+      },
+      {
+        heading: 'Hand off the case before Philippine hours end',
+        body: [
+          'The handoff should let the next engineer act without opening every run. Write the latest result, current lane, strongest evidence, ruled-out causes, next command, and the person who must decide whether the release can move.',
+          'Keep the note on the defect or pull request rather than in a private message. Use Philippine Standard Time and the buyer team time on the card when the next check depends on a service window or a reviewer who starts later.',
+        ],
+        bullets: [
+          'Status: name the product, test, environment, or unknown lane.',
+          'Evidence: link the first failure, focused reruns, logs, and changed conditions.',
+          'Next check: write one command or observation and name its owner.',
+          'Decision: state whether the suite is blocked and who may approve an exception.',
+        ],
+      },
+      {
+        heading: 'Review the queue every week',
+        body: [
+          'A weekly review should look at open quarantine items, repeat failures, oldest unknown cases, and tests that consume the most investigation time. Read several real cards with the Philippine QA engineer and fix the template when an important fact keeps going missing.',
+          'Close a case only when the cause and repair are written down, or when the product owner records why the test no longer protects a needed rule. Your engineering lead should keep any choice to ship with a known defect, remove important coverage, or accept an access gap.',
+        ],
+      },
+    ],
+    table: {
+      title: 'Flaky test evidence by Philippines QA lane',
+      columns: ['Triage lane', 'Evidence to save', 'Next owner check', 'Decision kept in house'],
+      rows: [
+        ['Product defect', 'Failed user path, request or screen proof, clean test data, and focused rerun.', 'Developer confirms the changed behavior and adds a regression check.', 'Product and engineering owners decide release risk.'],
+        ['Test defect', 'Selector, assertion, setup, cleanup, seed, order, and repeated result.', 'QA automation owner repairs the narrow test and proves stable failure behavior.', 'QA lead approves removal of important coverage.'],
+        ['Environment fault', 'Runner image, service health, network response, clock, storage, and worker load.', 'Platform owner repairs the shared service or isolates the runner.', 'Platform lead approves changes to release gates.'],
+        ['Access case', 'Synthetic users, role map, object owner, denied request, and server log.', 'Service owner fixes authorization and proves another user stays blocked.', 'Security owner approves any exception or wider access.'],
+        ['Unknown', 'Original run, focused reruns, compared conditions, and ruled-out causes.', 'QA and developer pair on one small reproduction before the next handoff.', 'Engineering owner decides whether the suite remains blocked.'],
+      ],
+    },
+    chart: {
+      title: 'Suggested first-pass effort for flaky test triage',
+      categories: [
+        { label: 'Reproduce', color: '#0f8f73' },
+        { label: 'Compare evidence', color: '#2563eb' },
+        { label: 'Assign owner', color: '#7c3aed' },
+        { label: 'Write handoff', color: '#f27b3d' },
+      ],
+      rows: [
+        { label: 'Browser test', values: [35, 30, 20, 15] },
+        { label: 'API test', values: [30, 35, 20, 15] },
+        { label: 'Access test', values: [25, 40, 20, 15] },
+        { label: 'Mobile test', values: [40, 25, 20, 15] },
+        { label: 'Build check', values: [30, 30, 25, 15] },
+      ],
+      method: 'Units are percentage points of a 100-point first-pass triage example for each test type. These shares are an editorial planning aid rather than measured team results, so change them for the product risk, runner, and evidence available.',
+      axisLabel: 'Share of first-pass triage effort (percentage points)',
+    },
+    graphic: {
+      title: 'A flaky test path across Philippine and buyer team hours',
+      steps: [
+        { title: 'Capture', note: 'Save the first failure, commit, runner, data, and Philippine time.' },
+        { title: 'Reproduce', note: 'Run the narrow test again under the same conditions.' },
+        { title: 'Classify', note: 'Choose product, test, environment, access, or unknown.' },
+        { title: 'Own', note: 'Name one repair owner and one decision owner.' },
+        { title: 'Handoff', note: 'Leave the evidence, next check, and blocked release state.' },
+      ],
+      axisLabel: 'One triage record that survives the time-zone handoff',
+    },
+    quote: {
+      text: 'We define a "flaky" test result as a test that exhibits both a passing and a failing result with the same code.',
+      by: 'John Micco',
+      role: 'author of Flaky Tests at Google and How We Mitigate Them on the Google Testing Blog',
+      sourceUrl: 'https://testing.googleblog.com/2016/05/flaky-tests-at-google-and-how-we.html',
+    },
+    relatedLinks: [
+      { label: 'Plan Philippines QA automation engineering', href: '/services/qa-automation-engineering', note: 'Map the regression checks, defect proof, and handoff notes a Philippines-based QA engineer can own. Keep release rules and accepted risk with your own QA lead.' },
+      { label: 'Use the offshore developer pull request handoff', href: '/blog/philippines-offshore-developer-pull-request-handoff-guide', note: 'Put test proof and the open decision beside the code change. Give the Philippine developer and reviewer one record they can use in different work hours.' },
+      { label: 'Follow the first-30-days onboarding plan', href: '/blog/onboard-offshore-developers-philippines-first-30-days', note: 'Teach the triage lanes on a small test before the role receives wider access. Review the first real defect card with the named lead.' },
+      { label: 'Map DevOps release support', href: '/services/devops-release-support', note: 'Connect runner health, release checks, and rollback notes to the QA handoff. Keep production exceptions with your platform owner.' },
+      { label: 'Discuss a Philippines QA staffing plan', href: '/contact', note: 'Share the product, test stack, runner, working hours, and review owner. The staffing team can use those details to discuss a Philippines-based QA role.' },
+    ],
+    faqs: [
+      { question: 'When should a failed test be called flaky?', answer: 'Use the label only after the same test on the same code can both pass and fail. Save both runs and compare the runner, data, order, timing, services, and account state before choosing the triage lane.' },
+      { question: 'Should a Philippines QA engineer rerun every failed job?', answer: 'Start with the narrow failed test and preserve the first evidence. Rerun a larger job only when setup, dependencies, or test order need to be compared, and never use a green rerun to erase a real failure.' },
+      { question: 'How long should a flaky test stay in quarantine?', answer: 'Set a repair date from the risk and how often the path is used, then keep the item visible until it is fixed. A quarantined test needs an owner, reason, linked defect, and regular review.' },
+      { question: 'Who decides whether a release moves with a known flaky test?', answer: 'Keep that choice with the named engineering, product, security, or QA owner on your team. The Philippine QA engineer should provide the evidence and current lane, not silently accept the risk.' },
+    ],
+    sources: [
+      { name: 'Google Testing Blog: Flaky Tests at Google and How We Mitigate Them', url: 'https://testing.googleblog.com/2016/05/flaky-tests-at-google-and-how-we.html', note: 'Published May 27, 2016; used for the flaky-result definition and the 1.5% and almost 16% figures.' },
+      { name: 'GitHub Docs: Re-running workflows and jobs', url: 'https://docs.github.com/en/actions/how-tos/manage-workflow-runs/re-run-workflows-and-jobs', note: 'Used for the available GitHub Actions rerun scopes.' },
+      { name: 'OWASP Top 10 A01:2021 Broken Access Control', url: 'https://owasp.org/Top10/2021/A01_2021-Broken_Access_Control/index.html', note: 'Used for the 2021 contributed occurrence and CVE figures.' },
+      { name: 'Stack Overflow 2024 Developer Survey: AI', url: 'https://survey.stackoverflow.co/2024/ai', note: 'Used for 2024 AI use, the prior-year comparison, and complex-task responses.' },
+      { name: 'Martin Fowler: Eradicating Non-Determinism in Tests', url: 'https://martinfowler.com/articles/nonDeterminism.html', note: 'Published April 14, 2011; used for quarantine and common-cause review.' },
+    ],
+  },
+  {
     slug: 'philippines-offshore-developer-pull-request-handoff-guide',
     title: 'Philippines offshore developer pull request handoff guide',
     excerpt: 'Use a clear pull request handoff when a Philippines offshore developer and your reviewer work different hours. This guide shows what to put in the ticket, code review, test record, and next-day note.',
