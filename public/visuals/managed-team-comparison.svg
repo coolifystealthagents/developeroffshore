@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Freelancer, direct hire, and managed team comparison</title><desc id="desc">Three engagement models with progressively stronger support, backup coverage, and management controls.</desc><defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071c2c"/><stop offset="1" stop-color="#0b3044"/></linearGradient>
+  <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#23d5e5"/><stop offset="1" stop-color="#56f0cd"/></linearGradient>
+  <linearGradient id="lime" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8ff3e"/><stop offset="1" stop-color="#9fe53a"/></linearGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-opacity=".28"/></filter>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#fff" stroke-opacity=".055"/></pattern>
+</defs>
+<rect width="1200" height="760" rx="36" fill="url(#bg)"/><rect width="1200" height="760" rx="36" fill="url(#grid)"/>
+<g font-family="Arial,sans-serif" font-weight="700"><rect x="72" y="90" width="315" height="580" rx="28" fill="#0c293a" stroke="#fff" stroke-opacity=".13"/><rect x="443" y="90" width="315" height="580" rx="28" fill="#0c293a" stroke="#fff" stroke-opacity=".13"/><rect x="814" y="70" width="315" height="620" rx="28" fill="#12394d" stroke="#d8ff3e" stroke-width="3"/>
+<circle cx="229" cy="190" r="55" fill="#fff" opacity=".13"/><circle cx="600" cy="190" r="55" fill="#23d5e5" opacity=".35"/><circle cx="971" cy="177" r="55" fill="#d8ff3e"/><path d="M188 320h82M188 370h82" stroke="#fff" stroke-width="18" opacity=".22" stroke-linecap="round"/><path d="M538 305h124M538 355h124M538 405h124" stroke="#23d5e5" stroke-width="18" opacity=".55" stroke-linecap="round"/><path d="M886 285h170M886 335h170M886 385h170M886 435h170" stroke="#d8ff3e" stroke-width="18" opacity=".72" stroke-linecap="round"/>
+<circle cx="229" cy="560" r="18" fill="#ff7f67"/><circle cx="600" cy="560" r="18" fill="#ffb45e"/><circle cx="921" cy="560" r="18" fill="#d8ff3e"/><circle cx="971" cy="560" r="18" fill="#d8ff3e"/><circle cx="1021" cy="560" r="18" fill="#d8ff3e"/>
+<path d="M900 620h142" stroke="#d8ff3e" stroke-width="14" stroke-linecap="round"/></g></svg>

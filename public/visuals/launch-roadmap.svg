@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Five-step assistant launch roadmap</title><desc id="desc">A five-step path from role scoping through matching, onboarding, calibration, and steady operations.</desc><defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071c2c"/><stop offset="1" stop-color="#0b3044"/></linearGradient>
+  <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#23d5e5"/><stop offset="1" stop-color="#56f0cd"/></linearGradient>
+  <linearGradient id="lime" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8ff3e"/><stop offset="1" stop-color="#9fe53a"/></linearGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-opacity=".28"/></filter>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#fff" stroke-opacity=".055"/></pattern>
+</defs>
+<rect width="1200" height="760" rx="36" fill="url(#bg)"/><rect width="1200" height="760" rx="36" fill="url(#grid)"/>
+<path d="M115 585C245 545 236 404 371 425S520 572 648 448S790 235 1080 205" fill="none" stroke="#23d5e5" stroke-width="12" stroke-linecap="round"/>
+<g fill="#d8ff3e" stroke="#071c2c" stroke-width="12"><circle cx="132" cy="573" r="34"/><circle cx="375" cy="426" r="34"/><circle cx="625" cy="465" r="34"/><circle cx="835" cy="297" r="34"/><circle cx="1060" cy="208" r="34"/></g>
+<g fill="#0d3044" stroke="#fff" stroke-opacity=".2"><rect x="62" y="115" width="185" height="220" rx="24"/><rect x="275" y="120" width="185" height="220" rx="24"/><rect x="488" y="115" width="185" height="220" rx="24"/><rect x="701" y="100" width="185" height="220" rx="24"/><rect x="914" y="78" width="185" height="220" rx="24"/></g>
+<g stroke="#23d5e5" stroke-width="14" stroke-linecap="round" opacity=".75"><path d="M100 170h110M100 212h80M100 254h95"/><path d="M313 170h110M313 212h80M313 254h95"/><path d="M526 170h110M526 212h80M526 254h95"/><path d="M739 155h110M739 197h80M739 239h95"/><path d="M952 133h110M952 175h80M952 217h95"/></g></svg>

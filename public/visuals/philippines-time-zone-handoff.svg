@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Time-zone handoff and next-shift summary</title><desc id="desc">A clock connected to two structured handoff panels for round-the-clock support.</desc><defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071c2c"/><stop offset="1" stop-color="#0b3044"/></linearGradient>
+  <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#23d5e5"/><stop offset="1" stop-color="#56f0cd"/></linearGradient>
+  <linearGradient id="lime" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8ff3e"/><stop offset="1" stop-color="#9fe53a"/></linearGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-opacity=".28"/></filter>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#fff" stroke-opacity=".055"/></pattern>
+</defs>
+<rect width="1200" height="760" rx="36" fill="url(#bg)"/><rect width="1200" height="760" rx="36" fill="url(#grid)"/>
+<circle cx="340" cy="380" r="215" fill="#0d3044" stroke="#23d5e5" stroke-width="4"/><circle cx="340" cy="380" r="155" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="22"/><path d="M340 380V258M340 380l92 58" stroke="#d8ff3e" stroke-width="14" stroke-linecap="round"/><circle cx="340" cy="380" r="18" fill="#d8ff3e"/>
+<path d="M570 380H940" stroke="#23d5e5" stroke-width="10" stroke-dasharray="18 18"/><path d="M930 340l55 40-55 40" fill="none" stroke="#23d5e5" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="695" y="165" width="405" height="180" rx="28" fill="#0d3044" stroke="#d8ff3e" stroke-opacity=".5"/><rect x="735" y="210" width="220" height="18" rx="9" fill="#fff" opacity=".7"/><rect x="735" y="250" width="310" height="12" rx="6" fill="#fff" opacity=".22"/><rect x="735" y="282" width="260" height="12" rx="6" fill="#fff" opacity=".16"/>
+<rect x="695" y="455" width="405" height="180" rx="28" fill="#0d3044" stroke="#23d5e5" stroke-opacity=".5"/><circle cx="755" cy="515" r="22" fill="#23d5e5"/><rect x="800" y="503" width="245" height="18" rx="9" fill="#fff" opacity=".65"/><rect x="735" y="560" width="310" height="12" rx="6" fill="#fff" opacity=".2"/></svg>

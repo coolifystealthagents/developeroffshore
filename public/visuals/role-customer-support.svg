@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Customer support specialist</title><desc id="desc">A stylized professional Filipina customer support specialist with a visual role panel.</desc><defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071c2c"/><stop offset="1" stop-color="#0b3044"/></linearGradient>
+  <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#23d5e5"/><stop offset="1" stop-color="#56f0cd"/></linearGradient>
+  <linearGradient id="lime" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8ff3e"/><stop offset="1" stop-color="#9fe53a"/></linearGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-opacity=".28"/></filter>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#fff" stroke-opacity=".055"/></pattern>
+</defs>
+<rect width="1200" height="760" rx="36" fill="url(#bg)"/><rect width="1200" height="760" rx="36" fill="url(#grid)"/><circle cx="310" cy="342" r="230" fill="#d8ff3e" opacity=".09"/><g transform="translate(330 310) scale(1.55)">
+<ellipse cx="0" cy="190" rx="105" ry="25" fill="#020b12" opacity=".34"/>
+<path d="M-86 174Q-76 48 0 35Q76 48 86 174Z" fill="#d8ff3e"/>
+<path d="M-35 64L0 112L35 64L18 43H-18Z" fill="#f5d3bb"/>
+<path d="M-33 65L0 112L-5 174H-66Q-62 96-33 65Z" fill="#eaf4f3" opacity=".95"/><path d="M33 65L0 112L5 174H66Q62 96 33 65Z" fill="#eaf4f3" opacity=".9"/>
+<ellipse cx="0" cy="0" rx="47" ry="57" fill="#f1c9ad"/>
+<path d="M-48 8Q-54-63 0-68Q52-64 50 14Q30-27 4-31Q-26-25-48 8Z" fill="#101820"/>
+<path d="M-45-1Q-57 64-28 83L-9 49Q-39 24-45-1ZM45-1Q56 58 31 84L12 47Q38 23 45-1Z" fill="#101820"/>
+<circle cx="-16" cy="4" r="3" fill="#26333b"/><circle cx="16" cy="4" r="3" fill="#26333b"/><path d="M-13 25Q0 34 13 25" fill="none" stroke="#aa6f64" stroke-width="3" stroke-linecap="round"/>
+</g><g filter="url(#shadow)"><rect x="625" y="105" width="470" height="530" rx="36" fill="#0d2c40" stroke="#d8ff3e" stroke-opacity=".42"/><path d="M705 248q75-120 150 0M705 248v84M855 248v84" fill="none" stroke="#d8ff3e" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><rect x="700" y="420" width="310" height="18" rx="9" fill="#fff" opacity=".2"/><rect x="700" y="462" width="260" height="18" rx="9" fill="#fff" opacity=".12"/><rect x="700" y="520" width="150" height="50" rx="25" fill="#d8ff3e"/></g></svg>
