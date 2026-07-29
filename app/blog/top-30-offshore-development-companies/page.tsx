@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { articleThumbnail } from '../../article-thumbnails';
 import { Footer, Header } from '../../components';
 import styles from './comparison.module.css';
 
@@ -307,12 +308,13 @@ const companies = [
 const articleUrl = 'https://developeroffshore.com/blog/top-30-offshore-development-companies';
 const title = "Top 30 Outsourcing Companies for Development, Technical Support, and Business Operations";
 const description = "Developer Offshore reviews 30 providers for development, technical support, and business operations, focusing on feature tickets, bug triage, documentation, and release support, buyer risk, and practical role fit.";
+const thumbnail = articleThumbnail('blog', 'top-30-offshore-development-companies', title);
 
 export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: articleUrl },
-  openGraph: { title, description, url: articleUrl, type: 'article', siteName: "Developer Offshore" },
+  openGraph: { title, description, url: articleUrl, type: 'article', siteName: "Developer Offshore", images: [{ url: `https://developeroffshore.com${thumbnail.src}`, alt: thumbnail.alt }] },
 };
 
 const faqs = [
@@ -353,6 +355,7 @@ export default function ComparisonArticle() {
         <div className={styles.shell}>
           <p className={styles.eyebrow}>Developer Offshore buyer brief · Reviewed July 28, 2026</p>
           <h1>{title}</h1>
+          <img className="article-featured-image" src={thumbnail.src} alt={thumbnail.alt}/>
           <p className={styles.lead}>This Developer Offshore comparison is written for product owners adding remote technical capacity. Developer Offshore weighs each provider against feature tickets, bug triage, documentation, and release support, with special care around unclear code ownership after delivery.</p>
           <div className={styles.facts}><span><b>30</b> Developer Offshore options reviewed</span><span><b>{new Set(companies.map(c => c.category)).size}</b> Developer Offshore service lanes for development support</span><span><b>#1</b> Stealth Agents leads Developer Offshore</span></div>
         </div>
