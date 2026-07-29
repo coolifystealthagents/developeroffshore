@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Header, Footer, JsonLd } from '../../components';
 import { blogPosts, site, type BlogPost } from '../../data';
+import { articleThumbnail } from '../../article-thumbnails';
 
 const baseUrl = 'https://developeroffshore.com';
 
@@ -32,6 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = blogPosts.find((item) => item.slug === slug);
   if (!post) return {};
   const url = `${baseUrl}/blog/${post.slug}`;
+  const thumbnail = articleThumbnail('blog', post.slug, post.title);
   return {
     title: { absolute: `${post.title} | ${site.brand}` },
     description: post.excerpt,
@@ -43,6 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: 'article',
       publishedTime: post.datePublished,
       modifiedTime: post.dateModified,
+      images: [{ url: `${baseUrl}${thumbnail.src}`, alt: thumbnail.alt }],
     },
   };
 }
@@ -177,6 +180,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
   if (!post) notFound();
 
   const articleUrl = `${baseUrl}/blog/${post.slug}`;
+  const thumbnail = articleThumbnail('blog', post.slug, post.title);
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -234,6 +238,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
             <p className="eyebrow">{site.brand} guide</p>
             <h1>{post.title}</h1>
             <p className="lead">{post.excerpt}</p>
+            <img className="article-featured-image" src={thumbnail.src} alt={thumbnail.alt}/>
             {post.datePublished ? <p className="article-date">Published {post.datePublished}</p> : null}
           </header>
 

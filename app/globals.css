@@ -35,3 +35,4 @@
 @media(max-width:900px){.sa-booking-grid{grid-template-columns:1fr}.sa-booking-calendar{order:2}.sa-booking-left{max-width:680px;margin:0 auto}.sa-oncehub-frame{height:850px}}
 @media(max-width:640px){.sa-booking-page{padding:2rem 0}.sa-booking-grid{gap:2.5rem}.sa-booking-left h1{font-size:2.65rem}.sa-booking-image{border-radius:12px}.sa-oncehub-frame{border-radius:10px;height:850px}.sa-testimonial-viewport{height:174px}}
 @media(prefers-reduced-motion:reduce){.sa-testimonial-track{animation:none}.sa-testimonial-viewport{height:auto;max-height:none;mask-image:none;-webkit-mask-image:none}.sa-testimonial-track>.sa-testimonial-card:nth-child(n+4){display:none}}
+.article-card{overflow:hidden}.article-card>img{display:block;width:calc(100% + 48px);max-width:none;aspect-ratio:1200/760;object-fit:cover;margin:-24px -24px 22px}.article-featured-image{display:block;width:100%;aspect-ratio:1200/760;object-fit:cover;border-radius:18px;margin:24px 0}
