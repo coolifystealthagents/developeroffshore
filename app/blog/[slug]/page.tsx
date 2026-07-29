@@ -192,6 +192,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
     dateModified: post.dateModified,
     author: { '@type': 'Organization', name: site.brand, url: baseUrl },
     publisher: { '@type': 'Organization', name: site.brand, url: baseUrl },
+    image: `${baseUrl}${thumbnail.src}`,
     citation: post.sources?.map((source) => source.url),
   };
   const breadcrumbSchema = {
@@ -245,7 +246,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
           {fullArticle ? (
             <>
               <section className="article-panel takeaways">
-                <h2>What to keep in mind</h2>
+                <h2>{post.title}</h2>
                 <ul>{post.keyTakeaways?.map((item) => <li key={item}>{item}</li>)}</ul>
               </section>
               <ArticleBanner index={0} post={post} />

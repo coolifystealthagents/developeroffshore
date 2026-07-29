@@ -126,7 +126,7 @@ function buildRoutinePost(topic: RoutineTopic): BlogPost {
   return {
     slug: topic.slug,
     title: topic.keyword.charAt(0).toUpperCase() + topic.keyword.slice(1),
-    excerpt: `A practical guide for ${topic.reader}. Define the work, evidence, access, review, and handoff needed to reach ${topic.outcome}.`,
+    excerpt: `A practical guide for ${topic.reader}. Define the work, evidence, access, review, and handoff needed to reach ${topic.outcome}. Use a role-specific assessment, least-privilege access, named approval boundaries, and a two-week pilot so your team can judge real delivery evidence before widening the assignment.`,
     minutes: 14,
     datePublished: published,
     dateModified: published,
