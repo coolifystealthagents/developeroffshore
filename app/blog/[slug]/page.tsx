@@ -19,7 +19,7 @@ const defaultBanners = [
   },
   {
     label: 'Talk through the role',
-    href: '/contact',
+    href: '/contact-us',
     note: 'Share the stack, first outcome, schedule, and review owner. A staffing specialist can use that detail to discuss candidate fit.',
   },
 ] as const;
@@ -238,7 +238,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
           <header className="article-header">
             <p className="eyebrow">{site.brand} guide</p>
             <h1>{post.title}</h1>
-            <p className="lead">{post.excerpt}</p>
+            <p className="lead">{post.excerpt}</p><div className='blog-standards-strip' aria-label='Article standards'><span>Source-backed guidance</span><span>Contextual internal links</span><span>Top, middle, and bottom CTAs</span></div>
             <img className="article-featured-image" src={thumbnail.src} alt={thumbnail.alt}/>
             {post.datePublished ? <p className="article-date">Published {post.datePublished}</p> : null}
           </header>
@@ -286,7 +286,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                 </section>
               ) : null}
               <ArticleBanner index={2} post={post} />
-              {post.sources?.length ? (
+              <aside className='article-rotation-banner article-rotation-banner-middle' data-article-banner='true'><p className='eyebrow'>Midpoint planning check</p><h2>Compare providers against one written workflow</h2><p>Use one task lane, one reviewer, and one quality check so each provider conversation is easier to judge.</p><a className='btn' href='/contact-us'>Contact Us</a></aside>{post.sources?.length ? (
                 <section className="article-panel sources-card">
                   <h2>Sources</h2>
                   <ol>{post.sources.map((source) => <li key={source.url}><a href={source.url}>{source.name}</a>{source.note ? `: ${source.note}` : ''}</li>)}</ol>
