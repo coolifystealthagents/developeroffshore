@@ -178,7 +178,7 @@ function buildRoutinePost(topic: RoutineTopic): BlogPost {
     },
     quote:{text:'Least privilege means giving users only those privileges which are essential to perform assigned work.',by:'NIST',role:'access-control guidance',sourceUrl:'https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final'},
     relatedLinks:[
-      {label:'Plan developer staffing',href:'/contact',note:'Share the stack, first outcome, working hours, and review owner. Keep the first conversation tied to a real delivery lane.'},
+      {label:'Plan developer staffing',href:'/contact-us',note:'Share the stack, first outcome, working hours, and review owner. Keep the first conversation tied to a real delivery lane.'},
       {label:'Review developer services',href:'/services',note:'Match the role to a bounded software delivery lane. Compare the lane with the review time your own team can provide.'},
       {label:'Use the assessment guide',href:'/blog/hire-software-developers-philippines-assessment-guide',note:'Build the interview and paid exercise around observable work. Record the same evidence for every finalist.'},
     ],
@@ -349,7 +349,7 @@ export const blogPosts: BlogPost[] = [
       { label: 'Use the Philippines pull request handoff', href: '/blog/philippines-offshore-developer-pull-request-handoff-guide', note: 'Put incident fixes through the same focused review and test record used for normal code. Give the Philippine developer and internal reviewer one place to track the open decision.' },
       { label: 'Build a Philippines QA lane', href: '/services/qa-automation-engineering', note: 'Connect the incident reproduction to a focused regression check. Let the QA engineer save proof while your lead decides the release rule.' },
       { label: 'Follow the secure first-30-days plan', href: '/blog/onboard-offshore-developers-philippines-first-30-days', note: 'Teach the incident stop rules before giving a new developer wider access. Practice the handoff on a safe staging example first.' },
-      { label: 'Discuss a Philippines developer plan', href: '/contact', note: 'Share the stack, support window, incident role, and review owner your team needs. A staffing specialist can use those details to discuss a Philippines-based developer role.' },
+      { label: 'Discuss a Philippines developer plan', href: '/contact-us', note: 'Share the stack, support window, incident role, and review owner your team needs. A staffing specialist can use those details to discuss a Philippines-based developer role.' },
     ],
     faqs: [
       { question: 'What can a Philippines offshore developer do during an incident?', answer: 'The developer can reproduce the issue, gather approved evidence, trace code, prepare a small fix, run focused tests, and write the handoff. Keep containment, production action, disclosure, and accepted risk with your named internal owners.' },
@@ -513,7 +513,7 @@ export const blogPosts: BlogPost[] = [
       { label: 'Use the offshore developer pull request handoff', href: '/blog/philippines-offshore-developer-pull-request-handoff-guide', note: 'Put test proof and the open decision beside the code change. Give the Philippine developer and reviewer one record they can use in different work hours.' },
       { label: 'Follow the first-30-days onboarding plan', href: '/blog/onboard-offshore-developers-philippines-first-30-days', note: 'Teach the triage lanes on a small test before the role receives wider access. Review the first real defect card with the named lead.' },
       { label: 'Map DevOps release support', href: '/services/devops-release-support', note: 'Connect runner health, release checks, and rollback notes to the QA handoff. Keep production exceptions with your platform owner.' },
-      { label: 'Discuss a Philippines QA staffing plan', href: '/contact', note: 'Share the product, test stack, runner, working hours, and review owner. The staffing team can use those details to discuss a Philippines-based QA role.' },
+      { label: 'Discuss a Philippines QA staffing plan', href: '/contact-us', note: 'Share the product, test stack, runner, working hours, and review owner. The staffing team can use those details to discuss a Philippines-based QA role.' },
     ],
     faqs: [
       { question: 'When should a failed test be called flaky?', answer: 'Use the label only after the same test on the same code can both pass and fail. Save both runs and compare the runner, data, order, timing, services, and account state before choosing the triage lane.' },
@@ -671,7 +671,7 @@ export const blogPosts: BlogPost[] = [
       { label: 'Plan QA automation engineering', href: '/services/qa-automation-engineering', note: 'See how a Philippines-based QA engineer can collect regression proof and useful failure notes. Keep release decisions and accepted risk with your own lead.' },
       { label: 'Assess Philippine developer candidates', href: '/blog/hire-software-developers-philippines-assessment-guide', note: 'Test the same pull request habits before a candidate joins. Use a sandbox, synthetic data, and one approved scorecard for the opening.' },
       { label: 'Map DevOps release support', href: '/services/devops-release-support', note: 'Define who updates release notes, checks health signals, and writes technical handoffs around the developer work. Keep technical approval with the named engineering owner.' },
-      { label: 'Discuss a Philippines developer plan', href: '/contact', note: 'Share the stack, first ticket, working hours, and review owner you need. The staffing team can use those details to discuss a Philippines-based candidate plan.' },
+      { label: 'Discuss a Philippines developer plan', href: '/contact-us', note: 'Share the stack, first ticket, working hours, and review owner you need. The staffing team can use those details to discuss a Philippines-based candidate plan.' },
     ],
     faqs: [
       { question: 'What belongs in an offshore developer pull request handoff?', answer: 'Include the linked ticket, changed result, tests run, proof, known risk, and one direct question for the reviewer. Name the person who can answer and the choice that must stay with your technical owner.' },
@@ -822,7 +822,7 @@ export const blogPosts: BlogPost[] = [
       { label: 'Plan QA automation engineering', href: '/services/qa-automation-engineering', note: 'See which regression checks and test evidence a Philippines-based QA engineer can own. Keep release decisions and accepted risk with your own lead.' },
       { label: 'Review provider questions', href: '/blog/developer-offshore-staffing-provider-questions', note: 'Check who manages attendance, fit, code review, access removal, and replacement. Save the answers beside the onboarding plan.' },
       { label: 'Map a Node.js API role', href: '/services/node-js-api-development', note: 'Use a clear lane for endpoint work, tests, logs, and engineering escalation. Keep data rules and sensitive production decisions with your team.' },
-      { label: 'Discuss a Philippines developer plan', href: '/contact', note: 'Share the stack, first ticket, working hours, and review owner you need. The staffing team can use those details to discuss a Philippines-based candidate plan.' },
+      { label: 'Discuss a Philippines developer plan', href: '/contact-us', note: 'Share the stack, first ticket, working hours, and review owner you need. The staffing team can use those details to discuss a Philippines-based candidate plan.' },
     ],
     faqs: [
       { question: 'What should a Philippine offshore developer do on the first day?', answer: 'Run the project, read one finished ticket, and send a safe documentation or test change through review. The goal is to prove the work path and fix setup gaps before a real feature begins.' },
@@ -981,7 +981,7 @@ export const blogPosts: BlogPost[] = [
       { label: 'Review the developer provider questions', href: '/blog/developer-offshore-staffing-provider-questions', note: 'Use these questions after the role and assessment are clear. They help you check who screens, manages, and replaces a candidate.' },
       { label: 'Plan reporting and QA support', href: '/services/reporting-and-qa', note: 'See how a Philippines-based QA role can handle regression evidence and weekly quality notes. Keep release decisions with your own owner.' },
       { label: 'Use the first-week onboarding checklist', href: '/blog', note: 'Turn the selected role into a small first-week plan. Set repo access, review calls, tests, and daily updates before work begins.' },
-      { label: 'Discuss a role-matched candidate plan', href: '/contact', note: 'Share the stack, role, schedule, and review owner you need. A staffing specialist can use that detail to discuss Philippines-based candidate fit.' },
+      { label: 'Discuss a role-matched candidate plan', href: '/contact-us', note: 'Share the stack, role, schedule, and review owner you need. A staffing specialist can use that detail to discuss Philippines-based candidate fit.' },
     ],
     faqs: [
       { question: 'What should a software developer work sample include?', answer: 'Use one role-sized task, a sandbox repository, synthetic data, acceptance checks, and a short written handoff. Ask for code and focused tests, then review the pull request with the candidate.' },
