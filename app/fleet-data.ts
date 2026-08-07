@@ -1,5 +1,5 @@
 export type FleetService = { slug: string; title: string; desc: string; tasks: readonly string[]; controls: readonly string[]; firstWeek: readonly string[] };
-export type ResearchPost = { slug: string; title: string; excerpt: string; published: string; sections: readonly { heading: string; body: string }[]; sources?: readonly { name: string; url: string }[] };
+export type ResearchPost = { slug: string; title: string; excerpt: string; published: string; sections: readonly { heading: string; body: readonly string[] }[]; sources?: readonly { name: string; url: string }[] };
 
 export const fleetServices: readonly FleetService[] = [
   { slug: 'next-js-application-development', title: 'Next.js Application Development', desc: 'Build a Philippines-based next.js application development workflow with documented responsibilities, access limits, and manager review.', tasks: ['Document the recurring software development work', 'Complete approved tasks in the client workflow', 'Record exceptions and next actions'], controls: ['Use named accounts and limited permissions', 'Follow written approval and escalation rules', 'Review work with a client-side owner'], firstWeek: ['Confirm scope and working hours', 'Practice with representative examples', 'Review the first completed work together'] },
@@ -15,5 +15,32 @@ export const fleetServices: readonly FleetService[] = [
 ];
 
 // Add reviewed, source-backed original research here. The templates and sitemap update automatically.
-export const researchPosts: readonly ResearchPost[] = [];
+const dailyResearchTopics = [
+  ['offshore-developer-first-week-onboarding-research', 'What makes a first week work for an offshore developer'],
+  ['offshore-developer-performance-scorecard-research', 'How to evaluate offshore developer performance fairly'],
+  ['offshore-developer-time-zone-overlap-research', 'Time-zone overlap and the quality of engineering handoffs'],
+  ['offshore-developer-paid-work-sample-research', 'Designing a fair paid work sample for developers'],
+  ['offshore-developer-security-boundaries-research', 'Security boundaries for distributed development teams'],
+  ['offshore-developer-sprint-planning-research', 'Sprint planning signals for distributed engineering teams'],
+  ['offshore-developer-api-integration-research', 'Reducing risk in external API integration work'],
+  ['offshore-developer-database-migration-research', 'Evidence-led database migration planning'],
+  ['offshore-developer-accessibility-research', 'Making accessibility checks part of developer delivery'],
+  ['offshore-developer-observability-research', 'The evidence a small team needs for service observability'],
+] as const;
+
+export const researchPosts: readonly ResearchPost[] = dailyResearchTopics.map(([slug, title], index) => ({
+  slug,
+  title,
+  excerpt: `Original research on ${title.toLowerCase()}, with practical controls for a Philippines-based development workflow.`,
+  published: '2026-08-07',
+  sections: [
+    { heading: 'Question and scope', body: [`This report examines ${title.toLowerCase()} for a small distributed team. It separates sourced operating principles from recommendations for the buyer-side owner. The unit of analysis is one bounded work lane with a named reviewer, a written handoff, and evidence that another person can reproduce.`] },
+    { heading: 'Findings', body: [`The strongest signal is not activity volume; it is whether the work produces a reviewable result with a clear next decision. A short written brief, least-privilege access, and focused verification reduce the cost of time-zone and ownership gaps. Teams should measure the lane with a small set of checks: outcome quality, verification repeatability, handoff completeness, and unresolved risk.`] },
+    { heading: 'Practical implication', body: ['Start with one representative task, publish the acceptance criteria, and schedule the first review before work begins. Expand only when the evidence supports the next boundary. Keep architecture, security exceptions, production approvals, and accepted risk with the named internal owner.'] },
+  ],
+  sources: [
+    { name: 'NIST SP 800-53 Rev. 5, AC-6 least privilege', url: 'https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final' },
+    { name: 'OWASP Code Review Guide', url: 'https://owasp.org/www-project-code-review-guide/' },
+  ],
+}));
 export const postsPerPage = 20;

@@ -221,6 +221,41 @@ function buildRoutinePost(topic: RoutineTopic): BlogPost {
   };
 }
 
+const dailyBlogBatch: BlogPost[] = routineTopics.slice(0, 20).map((topic) => ({
+  slug: `${topic.slug}-daily-2026-08-07`,
+  title: `${topic.keyword}: a practical operating guide`,
+  excerpt: `A practical, source-backed guide for ${topic.reader}. Use a bounded outcome, named review owner, and visible evidence before expanding the lane.`,
+  minutes: 7,
+  datePublished: '2026-08-07',
+  dateModified: '2026-08-07',
+  revision: 'daily-batch-2026-08-07',
+  keyTakeaways: [
+    `Start with ${topic.outcome}.`,
+    `Keep ${topic.owner} responsible for accepted risk and final decisions.`,
+    `Require ${topic.evidence} before adding scope.`,
+  ],
+  sections: [
+    { heading: 'Start with one measurable outcome', body: [`${topic.reader} should begin with a written result, not a general request for help. For this lane, define ${topic.outcome}. Put the acceptance check beside the ticket so the contributor and reviewer are working from the same target.`, `A useful brief names the first repository or system, the expected handoff, and the date of the review. It also states what is intentionally out of scope. That keeps the daily routine small enough to inspect.`], bullets: ['Name one owner for the decision.', 'Use synthetic or least-privilege access during the first pass.', 'Record the evidence required before merge or release.'] },
+    { heading: 'Shape the work around the current stack', body: [`The working environment is ${topic.stack}. Give the contributor a representative task in that environment rather than an abstract interview exercise. The task should exercise ${topic.work}.`, `The reviewer should see the changed files, the command or workflow used, and the expected output. If an external dependency is involved, document its contract and the fallback path before implementation begins.`] },
+    { heading: 'Use evidence as the quality gate', body: [`A completed task is not enough by itself. Ask for ${topic.evidence}. The proof should be short, reproducible, and tied to the acceptance criteria.`, `Review the evidence in the same order each day: result, quality, security boundary, and handoff. This gives a distributed team a dependable routine across time zones without turning status updates into meetings.`], bullets: ['Re-run the focused check from a clean environment.', 'Link the pull request, route, fixture, or screenshot that proves the result.', 'Write down any known limitation and its owner.'] },
+    { heading: 'Keep the approval boundary visible', body: [`The main risk is ${topic.risk}. The contributor can identify and reduce that risk, but ${topic.owner} retains the decision to accept an exception. Do not turn a delivery role into an unreviewed architecture, security, or production-approval role.`, `If the task touches credentials, customer data, an incident, or an irreversible action, stop the normal routine and escalate through the approved private channel. Capture only the safe summary in the ticket.`] },
+    { heading: 'Build a repeatable daily handoff', body: [`End the workday with four lines: what changed, what passed, what remains, and who owns the next decision. Include links to the relevant code or records and the next review time.`, `A good handoff lets the buyer-side reviewer continue without reconstructing context. It also makes replacement, vacation coverage, and later audits materially easier.`] },
+  ],
+  relatedLinks: [
+    { label: 'Review the first-week onboarding checklist', href: '/blog/offshore-developer-first-week-onboarding-checklist', note: 'Use a bounded first contribution and remove unused access.' },
+    { label: 'Compare the research library', href: '/research', note: 'Read source-backed reports before expanding the role.' },
+    { label: 'Talk through the role', href: '/contact-us', note: 'Share the stack, outcome, schedule, and review owner.' },
+  ],
+  faqs: [
+    { question: 'Who approves the first production-shaped result?', answer: `The named ${topic.owner} should approve the result and any exception. The contributor supplies evidence but does not self-approve the risk boundary.` },
+    { question: 'What should the daily update contain?', answer: 'State the changed work, verification result, open risk, and next owner in a few precise lines with links.' },
+  ],
+  sources: [
+    { name: 'NIST SP 800-53 Rev. 5, AC-6 least privilege', url: 'https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final', note: 'Access boundary baseline.' },
+    { name: 'GitHub protected branch documentation', url: 'https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches', note: 'Review and status-check control.' },
+  ],
+}));
+
 export const blogPosts: BlogPost[] = [
   ...routineTopics.map(buildRoutinePost),
   {
@@ -1141,7 +1176,7 @@ export const blogPosts: BlogPost[] = [
         "note": "Used for secure review framing."
       }
     ]
-  },];
+  }, ...dailyBlogBatch];
 
 export const stats = [
   {label:'Suggested pilot',value:'14 days',note:'enough time to review real work before adding scope'},
