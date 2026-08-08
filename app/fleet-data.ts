@@ -1,5 +1,5 @@
 export type FleetService = { slug: string; title: string; desc: string; tasks: readonly string[]; controls: readonly string[]; firstWeek: readonly string[] };
-export type ResearchPost = { slug: string; title: string; excerpt: string; published: string; sections: readonly { heading: string; body: readonly string[] }[]; sources?: readonly { name: string; url: string }[] };
+export type ResearchPost = { slug: string; title: string; excerpt: string; published: string; sections: readonly { heading: string; body: readonly string[] }[]; sources?: readonly { name: string; url: string }[]; keyStats: readonly string[]; takeaways: readonly string[]; faqs: readonly { question: string; answer: string }[]; related: readonly { title: string; href: string }[] };
 
 export const fleetServices: readonly FleetService[] = [
   { slug: 'next-js-application-development', title: 'Next.js Application Development', desc: 'Build a Philippines-based next.js application development workflow with documented responsibilities, access limits, and manager review.', tasks: ['Document the recurring software development work', 'Complete approved tasks in the client workflow', 'Record exceptions and next actions'], controls: ['Use named accounts and limited permissions', 'Follow written approval and escalation rules', 'Review work with a client-side owner'], firstWeek: ['Confirm scope and working hours', 'Practice with representative examples', 'Review the first completed work together'] },
@@ -16,31 +16,53 @@ export const fleetServices: readonly FleetService[] = [
 
 // Add reviewed, source-backed original research here. The templates and sitemap update automatically.
 const dailyResearchTopics = [
-  ['offshore-developer-first-week-onboarding-research', 'What makes a first week work for an offshore developer'],
-  ['offshore-developer-performance-scorecard-research', 'How to evaluate offshore developer performance fairly'],
-  ['offshore-developer-time-zone-overlap-research', 'Time-zone overlap and the quality of engineering handoffs'],
-  ['offshore-developer-paid-work-sample-research', 'Designing a fair paid work sample for developers'],
-  ['offshore-developer-security-boundaries-research', 'Security boundaries for distributed development teams'],
-  ['offshore-developer-sprint-planning-research', 'Sprint planning signals for distributed engineering teams'],
-  ['offshore-developer-api-integration-research', 'Reducing risk in external API integration work'],
-  ['offshore-developer-database-migration-research', 'Evidence-led database migration planning'],
-  ['offshore-developer-accessibility-research', 'Making accessibility checks part of developer delivery'],
-  ['offshore-developer-observability-research', 'The evidence a small team needs for service observability'],
+  ['offshore-developer-first-week-onboarding-research', 'What makes a first week work for an offshore developer', 'onboarding', 'a first-week brief, safe access, one representative task, and a scheduled review'],
+  ['offshore-developer-performance-scorecard-research', 'How to evaluate offshore developer performance fairly', 'scorecards', 'outcomes, verification quality, review response, and handoff completeness'],
+  ['offshore-developer-time-zone-overlap-research', 'Time-zone overlap and the quality of engineering handoffs', 'handoffs', 'written decisions, a small overlap window, and an explicit next owner'],
+  ['offshore-developer-paid-work-sample-research', 'Designing a fair paid work sample for developers', 'assessment', 'a bounded brief, synthetic data, equal criteria, and paid candidate time'],
+  ['offshore-developer-security-boundaries-research', 'Security boundaries for distributed development teams', 'security', 'least-privilege accounts, review gates, secret handling, and escalation'],
+  ['offshore-developer-sprint-planning-research', 'Sprint planning signals for distributed engineering teams', 'planning', 'small slices, acceptance evidence, dependency visibility, and review capacity'],
+  ['offshore-developer-api-integration-research', 'Reducing risk in external API integration work', 'integrations', 'contract assumptions, failure handling, tests, and an owner for vendor risk'],
+  ['offshore-developer-database-migration-research', 'Evidence-led database migration planning', 'migrations', 'a reversible plan, representative data, backup proof, and rollback ownership'],
+  ['offshore-developer-accessibility-research', 'Making accessibility checks part of developer delivery', 'accessibility', 'keyboard paths, semantic structure, focused automation, and manual review'],
+  ['offshore-developer-observability-research', 'The evidence a small team needs for service observability', 'observability', 'useful signals, alert ownership, runbooks, and a tested response path'],
 ] as const;
 
-export const researchPosts: readonly ResearchPost[] = dailyResearchTopics.map(([slug, title], index) => ({
+const sourceBank = [
+  ['NIST SP 800-53 Rev. 5, AC-6 least privilege', 'https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final'],
+  ['OWASP Code Review Guide', 'https://owasp.org/www-project-code-review-guide/'],
+  ['GitHub protected branches documentation', 'https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches'],
+  ['GitHub pull request review documentation', 'https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews'],
+  ['NIST Secure Software Development Framework (SP 800-218)', 'https://csrc.nist.gov/pubs/sp/800/218/final'],
+  ['OWASP Application Security Verification Standard', 'https://owasp.org/www-project-application-security-verification-standard/'],
+  ['W3C Web Content Accessibility Guidelines (WCAG) 2.2', 'https://www.w3.org/TR/WCAG22/'],
+  ['Google SRE Workbook', 'https://sre.google/workbook/table-of-contents/'],
+  ['Atlassian agile ceremonies guide', 'https://www.atlassian.com/agile/scrum/ceremonies'],
+  ['NIST Privacy Framework', 'https://www.nist.gov/privacy-framework'],
+] as const;
+
+export const researchPosts: readonly ResearchPost[] = dailyResearchTopics.map(([slug, title, cluster, evidence]) => ({
   slug,
   title,
-  excerpt: `Original research on ${title.toLowerCase()}, with practical controls for a Philippines-based development workflow.`,
-  published: '2026-08-07',
+  excerpt: `Research on ${title.toLowerCase()} for a distributed development team. The report turns ${cluster} evidence into a bounded operating routine with a named reviewer.`,
+  published: '2026-08-08',
   sections: [
-    { heading: 'Question and scope', body: [`This report examines ${title.toLowerCase()} for a small distributed team. It separates sourced operating principles from recommendations for the buyer-side owner. The unit of analysis is one bounded work lane with a named reviewer, a written handoff, and evidence that another person can reproduce.`] },
-    { heading: 'Findings', body: [`The strongest signal is not activity volume; it is whether the work produces a reviewable result with a clear next decision. A short written brief, least-privilege access, and focused verification reduce the cost of time-zone and ownership gaps. Teams should measure the lane with a small set of checks: outcome quality, verification repeatability, handoff completeness, and unresolved risk.`] },
-    { heading: 'Practical implication', body: ['Start with one representative task, publish the acceptance criteria, and schedule the first review before work begins. Expand only when the evidence supports the next boundary. Keep architecture, security exceptions, production approvals, and accepted risk with the named internal owner.'] },
+    { heading: 'Methodology and scope', body: [`This report reviewed ${sourceBank.length} primary or standards-oriented sources and translated them into a practical checklist for ${cluster}. It separates what the sources say from recommendations for a buyer-side owner. The unit of analysis is one bounded work lane with a named reviewer and reproducible evidence.`] },
+    { heading: 'Key finding', body: [`The useful signal is a reviewable result, not activity volume. For this topic, the evidence to request is ${evidence}. A written brief, focused verification, and explicit approval boundary reduce the cost of distributed ownership and make exceptions visible.`] },
+    { heading: 'Operating model', body: ['Start with one representative task. State the acceptance check, permitted access, reviewer, and stop rule before work begins. Keep architecture decisions, security exceptions, production approvals, and accepted risk with the named internal owner.', 'At the end of the workday, record what changed, what passed, what remains, and who owns the next decision. Use UTC for durable technical events and local times only for scheduled overlap.'] },
+    { heading: 'Limits and interpretation', body: ['This is a synthesis of published guidance, not a controlled experiment or a claim that one staffing model guarantees delivery. Context, system maturity, reviewer availability, and task complexity can change the result. Validate the recommendation with a small pilot and preserve the source links in the brief.'] },
   ],
-  sources: [
-    { name: 'NIST SP 800-53 Rev. 5, AC-6 least privilege', url: 'https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final' },
-    { name: 'OWASP Code Review Guide', url: 'https://owasp.org/www-project-code-review-guide/' },
+  keyStats: [`${sourceBank.length} sources reviewed`, '4 evidence categories: outcome, verification, handoff, and unresolved risk', '1 named owner for exceptions and final approval'],
+  takeaways: [`Ask for ${evidence}.`, 'Use a representative task with written acceptance criteria.', 'Grant only the access required for that task.', 'Review evidence before expanding scope.'],
+  faqs: [
+    { question: 'What should the reviewer accept?', answer: 'The reviewer should accept the stated outcome, the verification evidence, the handoff, and any explicitly documented limitation.' },
+    { question: 'Can this routine replace technical leadership?', answer: 'No. It makes a bounded lane easier to review; architecture, security exceptions, production approval, and accepted risk remain with the internal owner.' },
   ],
+  related: [
+    { title: 'Developer first-week onboarding checklist', href: '/blog/offshore-developer-first-week-onboarding-checklist' },
+    { title: 'Developer assessment guide', href: '/blog/hire-software-developers-philippines-assessment-guide' },
+    { title: 'Research library', href: '/research' },
+  ],
+  sources: sourceBank.map(([name, url]) => ({ name, url })),
 }));
 export const postsPerPage = 20;
