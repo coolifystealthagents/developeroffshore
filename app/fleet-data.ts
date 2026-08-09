@@ -26,6 +26,16 @@ const dailyResearchTopics = [
   ['offshore-developer-database-migration-research', 'Evidence-led database migration planning', 'migrations', 'a reversible plan, representative data, backup proof, and rollback ownership'],
   ['offshore-developer-accessibility-research', 'Making accessibility checks part of developer delivery', 'accessibility', 'keyboard paths, semantic structure, focused automation, and manual review'],
   ['offshore-developer-observability-research', 'The evidence a small team needs for service observability', 'observability', 'useful signals, alert ownership, runbooks, and a tested response path'],
+  ['offshore-developer-code-review-research', 'Code review signals for distributed development teams', 'review', 'a focused diff, risk-based checks, reviewer decisions, and a recorded follow-up'],
+  ['offshore-developer-release-readiness-research', 'Release readiness evidence for offshore development work', 'releases', 'acceptance checks, CI evidence, rollback ownership, and an explicit release decision'],
+  ['offshore-developer-incident-handoff-research', 'Incident handoffs across distributed engineering teams', 'incidents', 'a concise timeline, current impact, safe next action, and one accountable owner'],
+  ['offshore-developer-test-data-research', 'Managing test data for distributed development teams', 'test-data', 'synthetic fixtures, documented data boundaries, repeatable setup, and cleanup ownership'],
+  ['offshore-developer-documentation-handoff-research', 'Documentation handoffs that survive distributed ownership', 'documentation', 'an audience, a tested procedure, known limits, and a clear maintenance owner'],
+  ['offshore-developer-dependency-upgrade-research', 'Evidence-led dependency upgrades for small teams', 'dependencies', 'version rationale, compatibility checks, security review, and a reversible change'],
+  ['offshore-developer-feature-flag-research', 'Feature-flag controls for distributed product delivery', 'feature-flags', 'a named flag owner, exposure boundaries, removal criteria, and observed behavior'],
+  ['offshore-developer-technical-debt-research', 'Making technical-debt work reviewable', 'technical-debt', 'a bounded risk statement, measurable acceptance evidence, priority context, and an owner'],
+  ['offshore-developer-architecture-decision-research', 'Architecture decision records for offshore development teams', 'architecture', 'the decision context, alternatives considered, consequences, and a review date'],
+  ['offshore-developer-rollback-research', 'Rollback planning signals for distributed software teams', 'rollback', 'a known trigger, a tested recovery path, an approval boundary, and post-change evidence'],
 ] as const;
 
 const sourceBank = [
@@ -45,7 +55,7 @@ export const researchPosts: readonly ResearchPost[] = dailyResearchTopics.map(([
   slug,
   title,
   excerpt: `Research on ${title.toLowerCase()} for a distributed development team. The report turns ${cluster} evidence into a bounded operating routine with a named reviewer.`,
-  published: '2026-08-08',
+  published: '2026-08-09',
   sections: [
     { heading: 'Methodology and scope', body: [`This report reviewed ${sourceBank.length} primary or standards-oriented sources and translated them into a practical checklist for ${cluster}. It separates what the sources say from recommendations for a buyer-side owner. The unit of analysis is one bounded work lane with a named reviewer and reproducible evidence.`] },
     { heading: 'Key finding', body: [`The useful signal is a reviewable result, not activity volume. For this topic, the evidence to request is ${evidence}. A written brief, focused verification, and explicit approval boundary reduce the cost of distributed ownership and make exceptions visible.`] },
