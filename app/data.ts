@@ -256,6 +256,19 @@ const dailyBlogBatch: BlogPost[] = routineTopics.slice(0, 20).map((topic) => ({
   ],
 }));
 
+const dailyBlogBatch20260810: BlogPost[] = routineTopics.slice(20, 40).map((topic) => {
+  const post = buildRoutinePost(topic);
+  return {
+    ...post,
+    slug: `${topic.slug}-daily-2026-08-10`,
+    title: `${topic.keyword}: a daily operating guide`,
+    excerpt: `A fresh, source-backed operating guide for ${topic.reader}. Use a bounded outcome, named review owner, and visible evidence before expanding this lane.`,
+    datePublished: '2026-08-10',
+    dateModified: '2026-08-10',
+    revision: `daily-batch-2026-08-10-${topic.slug}-v1`,
+  };
+});
+
 export const blogPosts: BlogPost[] = [
   ...routineTopics.map(buildRoutinePost),
   {
@@ -1176,7 +1189,7 @@ export const blogPosts: BlogPost[] = [
         "note": "Used for secure review framing."
       }
     ]
-  }, ...dailyBlogBatch];
+  }, ...dailyBlogBatch, ...dailyBlogBatch20260810];
 
 export const stats = [
   {label:'Suggested pilot',value:'14 days',note:'enough time to review real work before adding scope'},

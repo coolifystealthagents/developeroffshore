@@ -60,7 +60,7 @@ function ArticleBanner({ index, post }: { index: number; post: BlogPost }) {
       <span>Philippines developer staffing</span>
       <div>
         <strong>{banner.label}</strong>
-        <p>{banner.note}</p>
+        <p className="article-banner-note">{banner.note}</p>
       </div>
       <a href={banner.href}>Open guide</a>
     </aside>
@@ -286,7 +286,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                 </section>
               ) : null}
               <ArticleBanner index={2} post={post} />
-              <aside className='article-rotation-banner article-rotation-banner-middle' data-article-banner='true'><p className='eyebrow'>Midpoint planning check</p><h2>Compare providers against one written workflow</h2><p>Use one task lane, one reviewer, and one quality check so each provider conversation is easier to judge.</p><a className='btn' href='/contact-us'>Contact Us</a></aside>{post.sources?.length ? (
+              <aside className='article-rotation-banner article-rotation-banner-middle' data-article-banner='true'><p className='eyebrow'>Midpoint planning check</p><h2>Compare providers against one written workflow</h2><p className='article-banner-note'>Use one task lane, one reviewer, and one quality check so each provider conversation is easier to judge.</p><a className='btn' href='/contact-us'>Contact Us</a></aside>{post.sources?.length ? (
                 <section className="article-panel sources-card">
                   <h2>Sources</h2>
                   <ol>{post.sources.map((source) => <li key={source.url}><a href={source.url}>{source.name}</a>{source.note ? `: ${source.note}` : ''}</li>)}</ol>

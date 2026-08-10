@@ -47,8 +47,8 @@ class ArticleParser(HTMLParser):
             return
         self.tags[tag] = self.tags.get(tag, 0) + 1
         classes = data.get("class", "") or ""
-        if "article-banner" in classes:
-            self.banner_positions.append(data.get("data-banner-position", "") or "")
+        if "article-banner" in classes and data.get("data-banner-position"):
+            self.banner_positions.append(data.get("data-banner-position", ""))
         if tag == "h1":
             self.current_h1 = True
         if tag == "p":
@@ -107,7 +107,7 @@ def main() -> int:
     h1 = " ".join(page.h1)
     narrative = [
         text for classes, text in page.paragraphs
-        if not any(skip in classes.split() for skip in ("eyebrow", "article-date", "table-cue"))
+        if not any(skip in classes.split() for skip in ("eyebrow", "article-date", "table-cue", "article-banner-note", "article-source-note"))
     ]
     bad_paragraphs = [
         {"sentences": len(SENTENCE_RE.findall(text)), "text": text}
