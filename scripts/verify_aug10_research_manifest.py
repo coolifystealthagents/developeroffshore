@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Regression gate for the August 10, 2026 Research date-repair manifest."""
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -32,6 +33,8 @@ def main() -> None:
         assert entry['sourceDate'] == TARGET and entry['renderedDate'] == TARGET
         assert set(entry['renderedDateFields']) == {'datePublished', 'time[datetime]'}
         assert "['" + slug + "'" in source
+        explicit_record = re.search(r"\['" + re.escape(slug) + r"'.*?'2026-08-10'\]", source)
+        assert explicit_record, f'{slug} lacks an explicit source publication date record'
         built = ROOT / '.next/server/app/research' / slug / 'page.html'
         if not built.exists():
             built = ROOT / '.next/server/app/research' / (slug + '.html')
