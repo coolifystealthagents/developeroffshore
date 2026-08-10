@@ -87,7 +87,7 @@ export const researchPosts: readonly ResearchPost[] = dailyResearchTopics.map(([
   slug,
   title,
   excerpt: `Research on ${title.toLowerCase()} for a distributed development team. The report turns ${cluster} evidence into a bounded operating routine with a named reviewer.`,
-  published: slug.includes('-2026-08-10') ? '2026-08-10' : '2026-08-09',
+  published: slug.includes('-2026-08-10') || slug.endsWith('-run2') ? '2026-08-10' : '2026-08-09',
   sections: [
     { heading: 'Methodology and scope', body: [`This report reviewed ${sourceBank.length} primary or standards-oriented sources and translated them into a practical checklist for ${cluster}. It separates what the sources say from recommendations for a buyer-side owner. The unit of analysis is one bounded work lane with a named reviewer and reproducible evidence.`] },
     { heading: 'Key finding', body: [`The useful signal is a reviewable result, not activity volume. For this topic, the evidence to request is ${evidence}. A written brief, focused verification, and explicit approval boundary reduce the cost of distributed ownership and make exceptions visible.`] },
