@@ -36,6 +36,21 @@ const dailyResearchTopics = [
   ['offshore-developer-technical-debt-research', 'Making technical-debt work reviewable', 'technical-debt', 'a bounded risk statement, measurable acceptance evidence, priority context, and an owner'],
   ['offshore-developer-architecture-decision-research', 'Architecture decision records for offshore development teams', 'architecture', 'the decision context, alternatives considered, consequences, and a review date'],
   ['offshore-developer-rollback-research', 'Rollback planning signals for distributed software teams', 'rollback', 'a known trigger, a tested recovery path, an approval boundary, and post-change evidence'],
+  ['offshore-developer-frontend-performance-research-2026-08-10', 'Frontend performance evidence for distributed developer teams', 'performance', 'a real-user signal, a reproducible test, a budget, and a named reviewer'],
+  ['offshore-developer-ci-pipeline-research-2026-08-10', 'CI pipeline controls for distributed development teams', 'continuous-integration', 'repeatable checks, visible failures, protected merges, and an owner for exceptions'],
+  ['offshore-developer-secret-rotation-research-2026-08-10', 'Secret rotation routines for distributed engineering teams', 'secret-management', 'named ownership, short-lived access, rotation evidence, and a tested recovery path'],
+  ['offshore-developer-logging-privacy-research-2026-08-10', 'Privacy-aware application logging for offshore development work', 'logging', 'purpose-limited fields, retention rules, redaction tests, and an incident owner'],
+  ['offshore-developer-package-publishing-research-2026-08-10', 'Safe package publishing controls for small engineering teams', 'package-publishing', 'provenance evidence, release review, scoped credentials, and a rollback plan'],
+  ['offshore-developer-cross-browser-testing-research-2026-08-10', 'Cross-browser testing evidence for web delivery teams', 'browser-testing', 'a representative matrix, reproducible defects, severity rules, and a release owner'],
+  ['offshore-developer-monorepo-ownership-research-2026-08-10', 'Monorepo ownership signals for distributed development teams', 'monorepos', 'clear code ownership, focused changes, dependency visibility, and review coverage'],
+  ['offshore-developer-api-versioning-research-2026-08-10', 'API versioning decisions for distributed product teams', 'api-versioning', 'a compatibility promise, migration evidence, deprecation ownership, and consumer tests'],
+  ['offshore-developer-backup-restore-research-2026-08-10', 'Backup and restore evidence for software delivery teams', 'backup-recovery', 'a recovery objective, tested restores, access boundaries, and an accountable owner'],
+  ['offshore-developer-runbook-quality-research-2026-08-10', 'Runbook quality signals for distributed engineering teams', 'runbooks', 'a known audience, executable steps, failure paths, and a scheduled review'],
+  ['offshore-developer-sprint-demo-research-2026-08-10', 'Sprint demo evidence for distributed engineering teams', 'demos', 'acceptance evidence, stakeholder questions, unresolved decisions, and a next owner'],
+  ['offshore-developer-product-analytics-research-2026-08-10', 'Product analytics instrumentation controls for developers', 'analytics', 'an event definition, privacy boundary, test evidence, and an owner for interpretation'],
+  ['offshore-developer-localization-research-2026-08-10', 'Localization readiness checks for distributed web teams', 'localization', 'supported locales, message ownership, layout tests, and a release decision'],
+  ['offshore-developer-load-testing-research-2026-08-10', 'Load-testing evidence for distributed application teams', 'load-testing', 'a representative workload, a safe environment, an agreed threshold, and an incident plan'],
+  ['offshore-developer-license-review-research-2026-08-10', 'Dependency license review routines for small engineering teams', 'license-review', 'an inventory, policy checks, documented exceptions, and an approval owner'],
 ] as const;
 
 const sourceBank = [
@@ -55,7 +70,7 @@ export const researchPosts: readonly ResearchPost[] = dailyResearchTopics.map(([
   slug,
   title,
   excerpt: `Research on ${title.toLowerCase()} for a distributed development team. The report turns ${cluster} evidence into a bounded operating routine with a named reviewer.`,
-  published: '2026-08-09',
+  published: slug.includes('-2026-08-10') ? '2026-08-10' : '2026-08-09',
   sections: [
     { heading: 'Methodology and scope', body: [`This report reviewed ${sourceBank.length} primary or standards-oriented sources and translated them into a practical checklist for ${cluster}. It separates what the sources say from recommendations for a buyer-side owner. The unit of analysis is one bounded work lane with a named reviewer and reproducible evidence.`] },
     { heading: 'Key finding', body: [`The useful signal is a reviewable result, not activity volume. For this topic, the evidence to request is ${evidence}. A written brief, focused verification, and explicit approval boundary reduce the cost of distributed ownership and make exceptions visible.`] },
