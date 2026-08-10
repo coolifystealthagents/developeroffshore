@@ -37,12 +37,12 @@ def main() -> None:
         rendered = built.read_text()
         assert TARGET in rendered and '"datePublished":"2026-08-10"' in rendered
         assert 'rel="canonical"' in rendered and ("/blog/" + entry["slug"]) in sitemap
-        assert entry["slug"].split("-daily-")[0] in source
-        base_slug = entry["slug"].split("-daily-")[0]
         parent_source = git("show", entry["introducedByCommit"] + "^:" + entry["sourcePath"])
         diff = git("diff", entry["introducedByCommit"] + "^", entry["introducedByCommit"], "--", entry["sourcePath"])
-        assert base_slug in source and (entry["provenance"] == "repair-replacement" or base_slug in parent_source)
-        assert "2026-08-10" in diff and ("daily-2026-08-10" in diff or "2026-08-10-r2" in diff), entry["slug"]
+        assert entry["slug"] in source
+        assert entry["provenance"] == "repair-replacement"
+        assert entry["slug"] in diff, entry["slug"]
+        assert entry["slug"] not in parent_source, entry["slug"]
     assert all(entries[i]["sourceDate"] >= entries[i + 1]["sourceDate"] for i in range(len(entries) - 1))
     print(f"PASS: {len(entries)} manifest entries, provenance, rendered date contract, and index gate")
 

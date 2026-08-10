@@ -256,11 +256,37 @@ const dailyBlogBatch: BlogPost[] = routineTopics.slice(0, 20).map((topic) => ({
   ],
 }));
 
-const dailyBlogBatch20260810: BlogPost[] = routineTopics.slice(20, 40).map((topic) => {
+// Explicit accepted route source for the v6 date repair. Keep final route tokens
+// in source data so provenance is independently auditable without reconstructing
+// them from a base topic slug.
+const dailyBlogBatch20260810Slugs = [
+  'offshore-developer-sprint-planning-guide-daily-2026-08-10',
+  'offshore-developer-documentation-handoff-guide-daily-2026-08-10',
+  'offshore-developer-security-review-boundaries-daily-2026-08-10',
+  'offshore-developer-api-integration-guide-daily-2026-08-10',
+  'offshore-developer-database-migration-checklist-daily-2026-08-10',
+  'offshore-developer-typescript-refactoring-guide-daily-2026-08-10',
+  'offshore-developer-react-accessibility-checklist-daily-2026-08-10',
+  'offshore-developer-unit-test-strategy-daily-2026-08-10',
+  'offshore-developer-observability-runbook-daily-2026-08-10',
+  'offshore-developer-feature-flag-rollout-guide-daily-2026-08-10',
+  'offshore-developer-graphql-review-checklist-daily-2026-08-10',
+  'offshore-developer-mobile-api-handoff-guide-daily-2026-08-10',
+  'offshore-developer-ci-pipeline-maintenance-guide-daily-2026-08-10',
+  'offshore-developer-dependency-upgrade-checklist-daily-2026-08-10',
+  'offshore-developer-code-ownership-guide-daily-2026-08-10',
+  'offshore-developer-technical-debt-backlog-guide-daily-2026-08-10',
+  'offshore-developer-code-review-feedback-guide-daily-2026-08-10',
+  'offshore-developer-release-notes-template-daily-2026-08-10',
+  'offshore-developer-logging-standards-guide-daily-2026-08-10',
+  'offshore-developer-queue-worker-guide-daily-2026-08-10',
+] as const;
+
+const dailyBlogBatch20260810: BlogPost[] = routineTopics.slice(20, 40).map((topic, index) => {
   const post = buildRoutinePost(topic);
   return {
     ...post,
-    slug: `${topic.slug}-daily-2026-08-10`,
+    slug: dailyBlogBatch20260810Slugs[index],
     title: `${topic.keyword}: a daily operating guide`,
     excerpt: `A fresh, source-backed operating guide for ${topic.reader}. Use a bounded outcome, named review owner, and visible evidence before expanding this lane.`,
     datePublished: '2026-08-10',
@@ -295,9 +321,35 @@ const additionalDailyTopics20260810: RoutineTopic[] = [
   {slug:'offshore-developer-technical-handoff-video-guide',keyword:'offshore developer technical handoff video guide',reader:'teams documenting complex workflows for distributed colleagues',outcome:'a short handoff recording paired with durable written technical evidence',stack:'screen recording, repository, ticket board, runbook, and decision log',work:'scope framing, walkthrough, commands, caveats, transcript, and next owner',evidence:'recording link, written steps, expected output, code links, and open questions',risk:'hiding essential knowledge in a recording that cannot be searched or maintained',owner:'technical lead'},
 ];
 
-const dailyBlogBatch20260810Additional: BlogPost[] = additionalDailyTopics20260810.map((topic) => ({
+const dailyBlogBatch20260810AdditionalSlugs = [
+  'offshore-developer-kubernetes-support-guide-daily-2026-08-10-r2',
+  'offshore-developer-terraform-review-checklist-daily-2026-08-10-r2',
+  'offshore-developer-cicd-pipeline-maintenance-guide-daily-2026-08-10-r2',
+  'offshore-developer-postgresql-query-review-guide-daily-2026-08-10-r2',
+  'offshore-developer-redis-caching-checklist-daily-2026-08-10-r2',
+  'offshore-developer-logging-redaction-guide-daily-2026-08-10-r2',
+  'offshore-developer-oauth-integration-checklist-daily-2026-08-10-r2',
+  'offshore-developer-graphql-performance-guide-daily-2026-08-10-r2',
+  'offshore-developer-web-vitals-review-checklist-daily-2026-08-10-r2',
+  'offshore-developer-email-deliverability-guide-daily-2026-08-10-r2',
+  'offshore-developer-queue-worker-review-guide-daily-2026-08-10-r2',
+  'offshore-developer-data-import-validation-guide-daily-2026-08-10-r2',
+  'offshore-developer-analytics-event-taxonomy-guide-daily-2026-08-10-r2',
+  'offshore-developer-feature-estimation-guide-daily-2026-08-10-r2',
+  'offshore-developer-technical-debt-prioritization-guide-daily-2026-08-10-r2',
+  'offshore-developer-release-notes-template-daily-2026-08-10-r2',
+  'offshore-developer-incident-postmortem-template-daily-2026-08-10-r2',
+  'offshore-developer-dependency-upgrade-checklist-daily-2026-08-10-r2',
+  'offshore-developer-api-versioning-guide-daily-2026-08-10-r2',
+  'offshore-developer-secret-rotation-runbook-daily-2026-08-10-r2',
+  'offshore-developer-browser-compatibility-checklist-daily-2026-08-10-r2',
+  'offshore-developer-access-review-routine-daily-2026-08-10-r2',
+  'offshore-developer-technical-handoff-video-guide-daily-2026-08-10-r2',
+] as const;
+
+const dailyBlogBatch20260810Additional: BlogPost[] = additionalDailyTopics20260810.map((topic, index) => ({
   ...buildRoutinePost(topic),
-  slug: `${topic.slug}-daily-2026-08-10-r2`,
+  slug: dailyBlogBatch20260810AdditionalSlugs[index],
   title: `${topic.keyword}: a daily operating guide`,
   excerpt: `A fresh, source-backed operating guide for ${topic.reader}. Use a bounded outcome, named review owner, and visible evidence before expanding this lane.`,
   datePublished: '2026-08-10',
