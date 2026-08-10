@@ -51,6 +51,19 @@ const dailyResearchTopics = [
   ['offshore-developer-localization-research-2026-08-10', 'Localization readiness checks for distributed web teams', 'localization', 'supported locales, message ownership, layout tests, and a release decision'],
   ['offshore-developer-load-testing-research-2026-08-10', 'Load-testing evidence for distributed application teams', 'load-testing', 'a representative workload, a safe environment, an agreed threshold, and an incident plan'],
   ['offshore-developer-license-review-research-2026-08-10', 'Dependency license review routines for small engineering teams', 'license-review', 'an inventory, policy checks, documented exceptions, and an approval owner'],
+  ['offshore-developer-change-approval-research-2026-08-10-run2', 'Change approval evidence for distributed development teams', 'change-control', 'a bounded change, acceptance evidence, reviewer approval, and a rollback owner'],
+  ['offshore-developer-open-source-governance-research-2026-08-10-run2', 'Open-source governance signals for offshore development teams', 'open-source', 'dependency ownership, license evidence, update cadence, and an exception owner'],
+  ['offshore-developer-threat-modeling-research-2026-08-10-run2', 'Threat-modeling routines for distributed software teams', 'threat-modeling', 'system boundaries, abuse cases, mitigations, residual risk, and a named approver'],
+  ['offshore-developer-automated-test-evidence-research-2026-08-10-run2', 'Automated test evidence for distributed development teams', 'test-evidence', 'risk-based coverage, repeatable commands, failure triage, and a reviewer decision'],
+  ['offshore-developer-configuration-drift-research-2026-08-10-run2', 'Configuration-drift controls for distributed engineering teams', 'configuration', 'a declared baseline, detected variance, remediation evidence, and an owner'],
+  ['offshore-developer-queue-reliability-research-2026-08-10-run2', 'Queue reliability evidence for distributed application teams', 'queues', 'retry behavior, idempotency checks, dead-letter handling, and a recovery owner'],
+  ['offshore-developer-schema-change-research-2026-08-10-run2', 'Schema-change review signals for distributed development teams', 'schema-changes', 'compatibility evidence, migration output, rollback planning, and an approval boundary'],
+  ['offshore-developer-frontend-component-research-2026-08-10-run2', 'Frontend component quality signals for distributed teams', 'frontend-components', 'semantic behavior, visual states, keyboard checks, and an accountable reviewer'],
+  ['offshore-developer-error-budget-research-2026-08-10-run2', 'Error-budget decisions for distributed software teams', 'reliability', 'a defined service objective, observed impact, change pause criteria, and an owner'],
+  ['offshore-developer-vendor-risk-research-2026-08-10-run2', 'Vendor-risk evidence for external developer integrations', 'vendor-risk', 'data boundaries, contract assumptions, failure handling, and a review date'],
+  ['offshore-developer-release-rollback-research-2026-08-10-run2', 'Release rollback evidence for distributed development teams', 'rollback-evidence', 'a known trigger, tested recovery, approval boundary, and post-change record'],
+  ['offshore-developer-technical-onboarding-research-2026-08-10-run2', 'Technical onboarding evidence for offshore developer teams', 'technical-onboarding', 'safe access, a runnable environment, one representative task, and a scheduled review'],
+  ['offshore-developer-review-capacity-research-2026-08-10-run2', 'Review-capacity planning for distributed developer teams', 'review-capacity', 'a known change queue, protected review time, escalation rules, and an accountable owner'],
 ] as const;
 
 const sourceBank = [
@@ -64,6 +77,10 @@ const sourceBank = [
   ['Google SRE Workbook', 'https://sre.google/workbook/table-of-contents/'],
   ['Atlassian agile ceremonies guide', 'https://www.atlassian.com/agile/scrum/ceremonies'],
   ['NIST Privacy Framework', 'https://www.nist.gov/privacy-framework'],
+  ['CISA Secure by Design', 'https://www.cisa.gov/resources-tools/resources/secure-by-design'],
+  ['Google Engineering Practices: Code Review', 'https://google.github.io/eng-practices/review/'],
+  ['GitHub dependency review documentation', 'https://docs.github.com/en/code-security/concepts/supply-chain-security/dependency-review'],
+  ['W3C planning and managing web accessibility', 'https://www.w3.org/WAI/planning/'],
 ] as const;
 
 export const researchPosts: readonly ResearchPost[] = dailyResearchTopics.map(([slug, title, cluster, evidence]) => ({
