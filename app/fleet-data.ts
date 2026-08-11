@@ -1,5 +1,4 @@
 export type FleetService = { slug: string; title: string; desc: string; tasks: readonly string[]; controls: readonly string[]; firstWeek: readonly string[] };
-import { aug10ResearchTopics } from './research/aug10-repair-data';
 export type ResearchPost = { slug: string; title: string; excerpt: string; published: string; sections: readonly { heading: string; body: readonly string[] }[]; sources?: readonly { name: string; url: string }[]; keyStats: readonly string[]; takeaways: readonly string[]; faqs: readonly { question: string; answer: string }[]; related: readonly { title: string; href: string }[] };
 
 export const fleetServices: readonly FleetService[] = [
@@ -54,8 +53,25 @@ const dailyResearchTopics = [
   ['offshore-developer-license-review-research-2026-08-10', 'Dependency license review routines for small engineering teams', 'license-review', 'an inventory, policy checks, documented exceptions, and an approval owner'],
 ] as const;
 
-const repairTopicTuples = aug10ResearchTopics.map(({ slug, title, cluster, evidence, published, sourceDate }) => [slug, title, cluster, evidence, published, sourceDate] as const);
-const allResearchTopics = [...dailyResearchTopics, ...repairTopicTuples];
+// Explicit source-date records keep every original August 10 slug independently traceable.
+const aug10SourceDateRecords = [
+  { slug: 'offshore-developer-frontend-performance-research-2026-08-10', sourceDate: '2026-08-10' },
+  { slug: 'offshore-developer-ci-pipeline-research-2026-08-10', sourceDate: '2026-08-10' },
+  { slug: 'offshore-developer-secret-rotation-research-2026-08-10', sourceDate: '2026-08-10' },
+  { slug: 'offshore-developer-logging-privacy-research-2026-08-10', sourceDate: '2026-08-10' },
+  { slug: 'offshore-developer-package-publishing-research-2026-08-10', sourceDate: '2026-08-10' },
+  { slug: 'offshore-developer-cross-browser-testing-research-2026-08-10', sourceDate: '2026-08-10' },
+  { slug: 'offshore-developer-monorepo-ownership-research-2026-08-10', sourceDate: '2026-08-10' },
+  { slug: 'offshore-developer-api-versioning-research-2026-08-10', sourceDate: '2026-08-10' },
+  { slug: 'offshore-developer-backup-restore-research-2026-08-10', sourceDate: '2026-08-10' },
+  { slug: 'offshore-developer-runbook-quality-research-2026-08-10', sourceDate: '2026-08-10' },
+  { slug: 'offshore-developer-sprint-demo-research-2026-08-10', sourceDate: '2026-08-10' },
+  { slug: 'offshore-developer-product-analytics-research-2026-08-10', sourceDate: '2026-08-10' },
+  { slug: 'offshore-developer-localization-research-2026-08-10', sourceDate: '2026-08-10' },
+  { slug: 'offshore-developer-load-testing-research-2026-08-10', sourceDate: '2026-08-10' },
+  { slug: 'offshore-developer-license-review-research-2026-08-10', sourceDate: '2026-08-10' },
+] as const;
+const aug10SourceDates = new Map(aug10SourceDateRecords.map(record => [record.slug, record.sourceDate]));
 
 const sourceBank = [
   ['NIST SP 800-53 Rev. 5, AC-6 least privilege', 'https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final'],
@@ -74,11 +90,11 @@ const sourceBank = [
   ['W3C planning and managing web accessibility', 'https://www.w3.org/WAI/planning/'],
 ] as const;
 
-export const researchPosts: readonly ResearchPost[] = allResearchTopics.map(([slug, title, cluster, evidence, explicitPublished, sourceDate]) => ({
+export const researchPosts: readonly ResearchPost[] = dailyResearchTopics.map(([slug, title, cluster, evidence]) => ({
   slug,
   title,
   excerpt: `Research on ${title.toLowerCase()} for a distributed development team. The report turns ${cluster} evidence into a bounded operating routine with a named reviewer.`,
-  published: sourceDate ?? explicitPublished ?? '2026-08-09',
+  published: aug10SourceDates.get(slug) ?? '2026-08-09',
   sections: [
     { heading: 'Methodology and scope', body: [`This report reviewed ${sourceBank.length} primary or standards-oriented sources and translated them into a practical checklist for ${cluster}. It separates what the sources say from recommendations for a buyer-side owner. The unit of analysis is one bounded work lane with a named reviewer and reproducible evidence.`] },
     { heading: 'Key finding', body: [`The useful signal is a reviewable result, not activity volume. For this topic, the evidence to request is ${evidence}. A written brief, focused verification, and explicit approval boundary reduce the cost of distributed ownership and make exceptions visible.`] },
