@@ -21,6 +21,8 @@
   "cleanBuildPassed": true,
   "existingCompliancePassed": true,
   "indexNewestFirstPassed": true,
+  "coolifyInvoked": false,
+  "formsSubmitted": 0,
   "entries": [
     {
       "slug": "offshore-developer-kubernetes-support-guide-daily-2026-08-10-r2",

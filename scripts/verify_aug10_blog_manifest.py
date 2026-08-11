@@ -17,6 +17,7 @@ def main() -> None:
     entries = data["entries"]
     assert data["schemaVersion"] == 1 and data["contract"] == "sites3-aug10-public-date-v6"
     assert data["family"] == "blog" and data["domain"] == "developeroffshore.com"
+    assert data["coolifyInvoked"] is False and data["formsSubmitted"] == 0
     assert len(entries) == 23 and len(entries) >= data["minimum"] >= 22
     slugs = [entry["slug"] for entry in entries]
     assert len(slugs) == len(set(slugs))
