@@ -20,6 +20,7 @@ def main() -> None:
     assert len(entries) == 23 and len(entries) >= data["minimum"] >= 22
     slugs = [entry["slug"] for entry in entries]
     assert len(slugs) == len(set(slugs))
+    assert all("-r2" not in slug for slug in slugs)
     source = (ROOT / "app/data.ts").read_text()
     route_source = (ROOT / "app/blog/[slug]/page.tsx").read_text()
     index_source = (ROOT / "app/blog/page.tsx").read_text()
