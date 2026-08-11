@@ -30,7 +30,7 @@ def main() -> None:
     assert "sort((a, b) => (b.datePublished ?? '').localeCompare(a.datePublished ?? ''))" in index_source
     for entry in entries:
         assert entry["route"] == "/blog/" + entry["slug"] and entry["route"].startswith("/blog/")
-        assert entry["sourcePath"] == "app/aug10-blog-v6-final-date-records.ts" and entry["sourceDateField"] == "datePublished"
+        assert entry["sourcePath"] == "app/aug10-blog-v6-final-date-records.ts" and entry["sourceDateField"] == "sourceDate"
         assert entry["sourceDate"] == TARGET and entry["renderedDate"] == TARGET
         assert "datePublished" in entry["renderedDateFields"]
         built = ROOT / ".next/server/app/blog" / (entry["slug"] + ".html")
@@ -45,7 +45,7 @@ def main() -> None:
         diff = git("diff", entry["introducedByCommit"] + "^", entry["introducedByCommit"], "--", entry["sourcePath"])
         assert entry["slug"] in source
         assert entry["provenance"] == "repair-replacement"
-        pair = re.compile(r"\{\s*slug:\s*['\"]" + re.escape(entry["slug"]) + r"['\"],\s*datePublished:\s*['\"]" + TARGET + r"['\"]\s*\}")
+        pair = re.compile(r"\{\s*slug:\s*['\"]" + re.escape(entry["slug"]) + r"['\"],\s*sourceDate:\s*['\"]" + TARGET + r"['\"]")
         assert pair.search(diff), entry["slug"]
         assert not pair.search(parent_source), entry["slug"]
     assert all(entries[i]["sourceDate"] >= entries[i + 1]["sourceDate"] for i in range(len(entries) - 1))
