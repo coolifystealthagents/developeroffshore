@@ -1,4 +1,4 @@
-import { august10BlogRepairRouteRecords as explicitAugust10BlogRepairRouteRecords } from './aug10-blog-repair-data';
+import { august10BlogV6DateRecords as explicitAugust10BlogRepairRouteRecords } from './aug10-blog-v6-date-records';
 
 export const site = {
   "domain": "DeveloperOffshore.com",
