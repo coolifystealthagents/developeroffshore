@@ -1,3 +1,5 @@
+import { august10BlogRepairRouteRecords as explicitAugust10BlogRepairRouteRecords } from './aug10-blog-repair-data';
+
 export const site = {
   "domain": "DeveloperOffshore.com",
   "slug": "developeroffshore",
@@ -386,7 +388,7 @@ const august10BlogRouteRecords = [
 // Repair provenance records for the exact 23 articles introduced by adb0fc5.
 // Keep final route slugs and their source dates explicit in the same added
 // source block so each repair entry is independently provable from Git.
-const august10BlogRepairRouteRecords = [
+const legacyAugust10BlogRepairRouteRecords = [
   { slug: 'offshore-developer-kubernetes-support-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
   { slug: 'offshore-developer-terraform-review-checklist-daily-2026-08-10-r2', datePublished: '2026-08-10' },
   { slug: 'offshore-developer-cicd-pipeline-maintenance-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
@@ -427,10 +429,10 @@ const dailyBlogBatch20260810: BlogPost[] = routineTopics.slice(20, 40).map((topi
 
 const dailyBlogBatch20260810Additional: BlogPost[] = additionalDailyTopics20260810.map((topic, index) => ({
   ...buildRoutinePost(topic),
-  slug: august10BlogRepairRouteRecords[index].slug,
+  slug: explicitAugust10BlogRepairRouteRecords[index].slug,
   title: `${topic.keyword}: a daily operating guide`,
   excerpt: `A fresh, source-backed operating guide for ${topic.reader}. Use a bounded outcome, named review owner, and visible evidence before expanding this lane.`,
-  datePublished: august10BlogRepairRouteRecords[index].datePublished,
+  datePublished: explicitAugust10BlogRepairRouteRecords[index].datePublished,
   dateModified: '2026-08-10',
   revision: `daily-batch-2026-08-10-r2-${topic.slug}-v1`,
 }));
