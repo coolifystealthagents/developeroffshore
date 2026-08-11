@@ -383,6 +383,35 @@ const august10BlogRouteRecords = [
   { slug: 'offshore-developer-technical-handoff-video-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
 ] as const;
 
+// Repair provenance records for the exact 23 articles introduced by adb0fc5.
+// Keep final route slugs and their source dates explicit in the same added
+// source block so each repair entry is independently provable from Git.
+const august10BlogRepairRouteRecords = [
+  { slug: 'offshore-developer-kubernetes-support-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-terraform-review-checklist-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-cicd-pipeline-maintenance-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-postgresql-query-review-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-redis-caching-checklist-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-logging-redaction-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-oauth-integration-checklist-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-graphql-performance-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-web-vitals-review-checklist-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-email-deliverability-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-queue-worker-review-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-data-import-validation-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-analytics-event-taxonomy-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-feature-estimation-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-technical-debt-prioritization-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-release-notes-template-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-incident-postmortem-template-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-dependency-upgrade-checklist-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-api-versioning-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-secret-rotation-runbook-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-browser-compatibility-checklist-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-access-review-routine-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-technical-handoff-video-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+] as const;
+
 const dailyBlogBatch20260810: BlogPost[] = routineTopics.slice(20, 40).map((topic, index) => {
   const post = buildRoutinePost(topic);
   return {
@@ -398,10 +427,10 @@ const dailyBlogBatch20260810: BlogPost[] = routineTopics.slice(20, 40).map((topi
 
 const dailyBlogBatch20260810Additional: BlogPost[] = additionalDailyTopics20260810.map((topic, index) => ({
   ...buildRoutinePost(topic),
-  slug: august10BlogRouteRecords[index + 20].slug,
+  slug: august10BlogRepairRouteRecords[index].slug,
   title: `${topic.keyword}: a daily operating guide`,
   excerpt: `A fresh, source-backed operating guide for ${topic.reader}. Use a bounded outcome, named review owner, and visible evidence before expanding this lane.`,
-  datePublished: august10BlogRouteRecords[index + 20].datePublished,
+  datePublished: august10BlogRepairRouteRecords[index].datePublished,
   dateModified: '2026-08-10',
   revision: `daily-batch-2026-08-10-r2-${topic.slug}-v1`,
 }));
