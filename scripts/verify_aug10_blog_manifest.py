@@ -30,7 +30,7 @@ def main() -> None:
     assert "sort((a, b) => (b.datePublished ?? '').localeCompare(a.datePublished ?? ''))" in index_source
     for entry in entries:
         assert entry["route"] == "/blog/" + entry["slug"] and entry["route"].startswith("/blog/")
-        assert entry["sourcePath"] == "app/aug10-blog-v6-date-records.ts" and entry["sourceDateField"] == "datePublished"
+        assert entry["sourcePath"] == "app/aug10-blog-v6-final-date-records.ts" and entry["sourceDateField"] == "datePublished"
         assert entry["sourceDate"] == TARGET and entry["renderedDate"] == TARGET
         assert "datePublished" in entry["renderedDateFields"]
         built = ROOT / ".next/server/app/blog" / (entry["slug"] + ".html")
