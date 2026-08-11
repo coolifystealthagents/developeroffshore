@@ -21,7 +21,6 @@ def main() -> None:
     slugs = [entry["slug"] for entry in entries]
     assert len(slugs) == len(set(slugs))
     assert all(slug.endswith("-2026-08-10-r2") for slug in slugs)
-    source = (ROOT / "app/data.ts").read_text()
     route_source = (ROOT / "app/blog/[slug]/page.tsx").read_text()
     index_source = (ROOT / "app/blog/page.tsx").read_text()
     sitemap = (ROOT / ".next/server/app/sitemap.xml.body").read_text() if (ROOT / ".next/server/app/sitemap.xml.body").exists() else ""
@@ -33,6 +32,14 @@ def main() -> None:
         assert entry["sourcePath"] == "app/aug10-blog-v6-final-date-records.ts" and entry["sourceDateField"] == "sourceDate"
         assert entry["sourceDate"] == TARGET and entry["renderedDate"] == TARGET
         assert "datePublished" in entry["renderedDateFields"]
+        source_path = ROOT / entry["sourcePath"]
+        source = source_path.read_text()
+        pair = re.compile(
+            r"\{\s*slug:\s*['\"]" + re.escape(entry["slug"])
+            + r"['\"],\s*sourceDate:\s*['\"]" + TARGET
+            + r"['\"],\s*datePublished:\s*['\"]" + TARGET + r"['\"]"
+        )
+        assert pair.search(source), entry["slug"]
         built = ROOT / ".next/server/app/blog" / (entry["slug"] + ".html")
         assert built.exists(), entry["slug"]
         rendered = built.read_text()
@@ -45,7 +52,6 @@ def main() -> None:
         diff = git("diff", entry["introducedByCommit"] + "^", entry["introducedByCommit"], "--", entry["sourcePath"])
         assert entry["slug"] in source
         assert entry["provenance"] == "repair-replacement"
-        pair = re.compile(r"\{\s*slug:\s*['\"]" + re.escape(entry["slug"]) + r"['\"],\s*sourceDate:\s*['\"]" + TARGET + r"['\"]")
         assert pair.search(diff), entry["slug"]
         assert not pair.search(parent_source), entry["slug"]
     assert all(entries[i]["sourceDate"] >= entries[i + 1]["sourceDate"] for i in range(len(entries) - 1))
