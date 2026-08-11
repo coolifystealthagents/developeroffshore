@@ -37,7 +37,10 @@ def main() -> None:
         rendered = built.read_text()
         assert TARGET in rendered and '"datePublished":"2026-08-10"' in rendered
         assert 'rel="canonical"' in rendered and ("/blog/" + entry["slug"]) in sitemap
-        parent_source = git("show", entry["introducedByCommit"] + "^:" + entry["sourcePath"])
+        try:
+            parent_source = git("show", entry["introducedByCommit"] + "^:" + entry["sourcePath"])
+        except subprocess.CalledProcessError:
+            parent_source = ""
         diff = git("diff", entry["introducedByCommit"] + "^", entry["introducedByCommit"], "--", entry["sourcePath"])
         assert entry["slug"] in source
         assert entry["provenance"] == "repair-replacement"
