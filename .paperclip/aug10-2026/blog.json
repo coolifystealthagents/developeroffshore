@@ -13,6 +13,7 @@
     "git fetch origin main",
     "npm run build",
     "python3 scripts/verify_aug10_blog_manifest.py",
+    "python3 scripts/verify_aug10_batch_first_indexes.py",
     "python3 scripts/verify_article.py .next/server/app/blog/offshore-developer-api-versioning-guide-daily-2026-08-10-r2.html --keyword 'offshore developer API versioning guide'",
     "git rev-parse origin/main",
     "git status --short --branch"

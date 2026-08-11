@@ -107,4 +107,10 @@ export const researchPosts: readonly ResearchPost[] = dailyResearchTopics.map(([
   ],
   sources: sourceBank.map(([name, url]) => ({ name, url })),
 }));
-export const postsPerPage = 20;
+export const postsPerPage = 23;
+const isFrozenAugust10Batch = (slug: string, date: string) => date === '2026-08-10' && /-(?:r2|run2)$/.test(slug);
+export const compareNewestBatchFirst = (a: {slug: string}, b: {slug: string}, dateA: string, dateB: string) => {
+  const byDate = dateB.localeCompare(dateA);
+  if (byDate) return byDate;
+  return Number(isFrozenAugust10Batch(b.slug, dateB)) - Number(isFrozenAugust10Batch(a.slug, dateA));
+};

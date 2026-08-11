@@ -23,10 +23,13 @@ def main() -> None:
     assert all(slug.endswith("-2026-08-10-r2") for slug in slugs)
     route_source = (ROOT / "app/blog/[slug]/page.tsx").read_text()
     index_source = (ROOT / "app/blog/page.tsx").read_text()
+    paginated_index_source = (ROOT / "app/blog/page/[page]/page.tsx").read_text()
     sitemap = (ROOT / ".next/server/app/sitemap.xml.body").read_text() if (ROOT / ".next/server/app/sitemap.xml.body").exists() else ""
     assert "datePublished: post.datePublished" in route_source
     assert "Published {post.datePublished}" in route_source
-    assert "sort((a, b) => (b.datePublished ?? '').localeCompare(a.datePublished ?? ''))" in index_source
+    assert "import { compareNewestBatchFirst, postsPerPage } from '../fleet-data'" in index_source
+    assert "compareNewestBatchFirst(a, b, a.datePublished ?? '', b.datePublished ?? '')" in index_source
+    assert "compareNewestBatchFirst(a,b,a.datePublished??'',b.datePublished??'')" in paginated_index_source
     for entry in entries:
         assert entry["route"] == "/blog/" + entry["slug"] and entry["route"].startswith("/blog/")
         assert entry["sourcePath"] == "app/aug10-blog-v6-repair-records.ts" and entry["sourceDateField"] == "sourceDate"

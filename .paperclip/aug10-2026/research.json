@@ -12,6 +12,7 @@
   "validationCommands": [
     "npm run build",
     "python3 scripts/verify_aug10_research_manifest.py",
+    "python3 scripts/verify_aug10_batch_first_indexes.py",
     "git fetch origin main",
     "git rev-parse origin/main",
     "git status --short --branch"

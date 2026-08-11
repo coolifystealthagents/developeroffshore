@@ -79,7 +79,8 @@ def main() -> None:
         sitemap = urllib.request.urlopen(base + '/sitemap.xml').read().decode('utf-8')
     assert 'datePublished:post.published' in route_source
     assert '<time dateTime={post.published}>{post.published}</time>' in route_source
-    assert 'sort((a,b)=>b.published.localeCompare(a.published))' in index_source
+    assert "import {Header,Footer} from '../components'; import {compareNewestBatchFirst,researchPosts} from '../fleet-data'" in index_source
+    assert 'sort((a,b)=>compareNewestBatchFirst(a,b,a.published,b.published))' in index_source
     for entry in entries:
         slug = entry['slug']
         assert entry['route'] == '/research/' + slug and entry['route'].startswith('/research/')
@@ -121,6 +122,15 @@ def main() -> None:
             '', current_source, count=1, flags=re.MULTILINE,
         )
         assert removed == 1
+    sorting_block = """export const postsPerPage = 23;
+const isFrozenAugust10Batch = (slug: string, date: string) => date === '2026-08-10' && /-(?:r2|run2)$/.test(slug);
+export const compareNewestBatchFirst = (a: {slug: string}, b: {slug: string}, dateA: string, dateB: string) => {
+  const byDate = dateB.localeCompare(dateA);
+  if (byDate) return byDate;
+  return Number(isFrozenAugust10Batch(b.slug, dateB)) - Number(isFrozenAugust10Batch(a.slug, dateA));
+};"""
+    assert sorting_block in current_source
+    current_source = current_source.replace(sorting_block, 'export const postsPerPage = 20;')
     assert current_source == git_file(REPAIR_BASE_SHA, 'app/fleet-data.ts')
     dates = [entry['sourceDate'] for entry in entries]
     assert all(dates[i] >= dates[i + 1] for i in range(len(dates) - 1))
