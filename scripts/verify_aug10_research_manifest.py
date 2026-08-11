@@ -33,12 +33,12 @@ def main() -> None:
         slug = entry['slug']
         assert entry['route'] == '/research/' + slug and entry['route'].startswith('/research/')
         source_path = ROOT / entry['sourcePath']
-        assert source_path.exists() and entry['sourceDateField'] == 'published'
+        assert source_path.exists() and entry['sourceDateField'] == 'sourceDate'
         source = source_path.read_text(encoding='utf-8')
         assert entry['sourceDate'] == TARGET and entry['renderedDate'] == TARGET
         assert set(entry['renderedDateFields']) == {'datePublished', 'time[datetime]'}
         assert "slug: '" + slug + "'" in source
-        explicit_record = re.search(r"\{\s*slug:\s*'" + re.escape(slug) + r"',\s*published:\s*'2026-08-10'\s*\}", source)
+        explicit_record = re.search(r"slug:\s*'" + re.escape(slug) + r"'.*?sourceDate:\s*'2026-08-10'", source)
         assert explicit_record, f'{slug} lacks an explicit source publication date record'
         built = ROOT / '.next/server/app/research' / slug / 'page.html'
         if not built.exists():
@@ -50,8 +50,8 @@ def main() -> None:
         assert entry['route'] in sitemap
         parent_source = git_file(entry['introducedByCommit'] + '^', entry['sourcePath'])
         diff = git('diff', entry['introducedByCommit'] + '^', entry['introducedByCommit'], '--', entry['sourcePath'])
-        assert slug in parent_source and "published: '2026-08-10'" not in parent_source
-        assert slug in diff and "published: '2026-08-10'" in diff
+        assert slug in parent_source and "sourceDate: '2026-08-10'" not in parent_source
+        assert slug in diff and "sourceDate: '2026-08-10'" in diff
     dates = [entry['sourceDate'] for entry in entries]
     assert all(dates[i] >= dates[i + 1] for i in range(len(dates) - 1))
     print(f'PASS: {len(entries)} manifest entries, provenance, rendered date contract, sitemap, and index gate')

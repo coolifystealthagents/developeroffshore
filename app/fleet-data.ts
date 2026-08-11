@@ -54,26 +54,8 @@ const dailyResearchTopics = [
   ['offshore-developer-license-review-research-2026-08-10', 'Dependency license review routines for small engineering teams', 'license-review', 'an inventory, policy checks, documented exceptions, and an approval owner'],
 ] as const;
 
-const repairTopicTuples = aug10ResearchTopics.map(({ slug, title, cluster, evidence, published }) => [slug, title, cluster, evidence, published] as const);
+const repairTopicTuples = aug10ResearchTopics.map(({ slug, title, cluster, evidence, published, sourceDate }) => [slug, title, cluster, evidence, published, sourceDate] as const);
 const allResearchTopics = [...dailyResearchTopics, ...repairTopicTuples];
-
-// Keep the accepted repair routes independently traceable to an authoritative
-// source record. Do not infer these dates from slug names or a shared default.
-const aug10ResearchSourceRecords = [
-  { slug: 'offshore-developer-change-approval-research-2026-08-10-run2', published: '2026-08-10' },
-  { slug: 'offshore-developer-open-source-governance-research-2026-08-10-run2', published: '2026-08-10' },
-  { slug: 'offshore-developer-threat-modeling-research-2026-08-10-run2', published: '2026-08-10' },
-  { slug: 'offshore-developer-automated-test-evidence-research-2026-08-10-run2', published: '2026-08-10' },
-  { slug: 'offshore-developer-configuration-drift-research-2026-08-10-run2', published: '2026-08-10' },
-  { slug: 'offshore-developer-queue-reliability-research-2026-08-10-run2', published: '2026-08-10' },
-  { slug: 'offshore-developer-schema-change-research-2026-08-10-run2', published: '2026-08-10' },
-  { slug: 'offshore-developer-frontend-component-research-2026-08-10-run2', published: '2026-08-10' },
-  { slug: 'offshore-developer-error-budget-research-2026-08-10-run2', published: '2026-08-10' },
-  { slug: 'offshore-developer-vendor-risk-research-2026-08-10-run2', published: '2026-08-10' },
-  { slug: 'offshore-developer-release-rollback-research-2026-08-10-run2', published: '2026-08-10' },
-  { slug: 'offshore-developer-technical-onboarding-research-2026-08-10-run2', published: '2026-08-10' },
-  { slug: 'offshore-developer-review-capacity-research-2026-08-10-run2', published: '2026-08-10' },
-] as const;
 
 const sourceBank = [
   ['NIST SP 800-53 Rev. 5, AC-6 least privilege', 'https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final'],
@@ -92,11 +74,11 @@ const sourceBank = [
   ['W3C planning and managing web accessibility', 'https://www.w3.org/WAI/planning/'],
 ] as const;
 
-export const researchPosts: readonly ResearchPost[] = allResearchTopics.map(([slug, title, cluster, evidence, explicitPublished]) => ({
+export const researchPosts: readonly ResearchPost[] = allResearchTopics.map(([slug, title, cluster, evidence, explicitPublished, sourceDate]) => ({
   slug,
   title,
   excerpt: `Research on ${title.toLowerCase()} for a distributed development team. The report turns ${cluster} evidence into a bounded operating routine with a named reviewer.`,
-  published: aug10ResearchSourceRecords.find((record) => record.slug === slug)?.published ?? explicitPublished ?? '2026-08-09',
+  published: sourceDate ?? explicitPublished ?? '2026-08-09',
   sections: [
     { heading: 'Methodology and scope', body: [`This report reviewed ${sourceBank.length} primary or standards-oriented sources and translated them into a practical checklist for ${cluster}. It separates what the sources say from recommendations for a buyer-side owner. The unit of analysis is one bounded work lane with a named reviewer and reproducible evidence.`] },
     { heading: 'Key finding', body: [`The useful signal is a reviewable result, not activity volume. For this topic, the evidence to request is ${evidence}. A written brief, focused verification, and explicit approval boundary reduce the cost of distributed ownership and make exceptions visible.`] },
