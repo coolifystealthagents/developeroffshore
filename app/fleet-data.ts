@@ -1,4 +1,5 @@
 export type FleetService = { slug: string; title: string; desc: string; tasks: readonly string[]; controls: readonly string[]; firstWeek: readonly string[] };
+import { aug10ResearchTopics } from './research/aug10-repair-data';
 export type ResearchPost = { slug: string; title: string; excerpt: string; published: string; sections: readonly { heading: string; body: readonly string[] }[]; sources?: readonly { name: string; url: string }[]; keyStats: readonly string[]; takeaways: readonly string[]; faqs: readonly { question: string; answer: string }[]; related: readonly { title: string; href: string }[] };
 
 export const fleetServices: readonly FleetService[] = [
@@ -51,20 +52,10 @@ const dailyResearchTopics = [
   ['offshore-developer-localization-research-2026-08-10', 'Localization readiness checks for distributed web teams', 'localization', 'supported locales, message ownership, layout tests, and a release decision'],
   ['offshore-developer-load-testing-research-2026-08-10', 'Load-testing evidence for distributed application teams', 'load-testing', 'a representative workload, a safe environment, an agreed threshold, and an incident plan'],
   ['offshore-developer-license-review-research-2026-08-10', 'Dependency license review routines for small engineering teams', 'license-review', 'an inventory, policy checks, documented exceptions, and an approval owner'],
-  ['offshore-developer-change-approval-research-2026-08-10-run2', 'Change approval evidence for distributed development teams', 'change-control', 'a bounded change, acceptance evidence, reviewer approval, and a rollback owner', '2026-08-10'],
-  ['offshore-developer-open-source-governance-research-2026-08-10-run2', 'Open-source governance signals for offshore development teams', 'open-source', 'dependency ownership, license evidence, update cadence, and an exception owner', '2026-08-10'],
-  ['offshore-developer-threat-modeling-research-2026-08-10-run2', 'Threat-modeling routines for distributed software teams', 'threat-modeling', 'system boundaries, abuse cases, mitigations, residual risk, and a named approver', '2026-08-10'],
-  ['offshore-developer-automated-test-evidence-research-2026-08-10-run2', 'Automated test evidence for distributed development teams', 'test-evidence', 'risk-based coverage, repeatable commands, failure triage, and a reviewer decision', '2026-08-10'],
-  ['offshore-developer-configuration-drift-research-2026-08-10-run2', 'Configuration-drift controls for distributed engineering teams', 'configuration', 'a declared baseline, detected variance, remediation evidence, and an owner', '2026-08-10'],
-  ['offshore-developer-queue-reliability-research-2026-08-10-run2', 'Queue reliability evidence for distributed application teams', 'queues', 'retry behavior, idempotency checks, dead-letter handling, and a recovery owner', '2026-08-10'],
-  ['offshore-developer-schema-change-research-2026-08-10-run2', 'Schema-change review signals for distributed development teams', 'schema-changes', 'compatibility evidence, migration output, rollback planning, and an approval boundary', '2026-08-10'],
-  ['offshore-developer-frontend-component-research-2026-08-10-run2', 'Frontend component quality signals for distributed teams', 'frontend-components', 'semantic behavior, visual states, keyboard checks, and an accountable reviewer', '2026-08-10'],
-  ['offshore-developer-error-budget-research-2026-08-10-run2', 'Error-budget decisions for distributed software teams', 'reliability', 'a defined service objective, observed impact, change pause criteria, and an owner', '2026-08-10'],
-  ['offshore-developer-vendor-risk-research-2026-08-10-run2', 'Vendor-risk evidence for external developer integrations', 'vendor-risk', 'data boundaries, contract assumptions, failure handling, and a review date', '2026-08-10'],
-  ['offshore-developer-release-rollback-research-2026-08-10-run2', 'Release rollback evidence for distributed development teams', 'rollback-evidence', 'a known trigger, tested recovery, approval boundary, and post-change record', '2026-08-10'],
-  ['offshore-developer-technical-onboarding-research-2026-08-10-run2', 'Technical onboarding evidence for offshore developer teams', 'technical-onboarding', 'safe access, a runnable environment, one representative task, and a scheduled review', '2026-08-10'],
-  ['offshore-developer-review-capacity-research-2026-08-10-run2', 'Review-capacity planning for distributed developer teams', 'review-capacity', 'a known change queue, protected review time, escalation rules, and an accountable owner', '2026-08-10'],
 ] as const;
+
+const repairTopicTuples = aug10ResearchTopics.map(({ slug, title, cluster, evidence, published }) => [slug, title, cluster, evidence, published] as const);
+const allResearchTopics = [...dailyResearchTopics, ...repairTopicTuples];
 
 const sourceBank = [
   ['NIST SP 800-53 Rev. 5, AC-6 least privilege', 'https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final'],
@@ -83,7 +74,7 @@ const sourceBank = [
   ['W3C planning and managing web accessibility', 'https://www.w3.org/WAI/planning/'],
 ] as const;
 
-export const researchPosts: readonly ResearchPost[] = dailyResearchTopics.map(([slug, title, cluster, evidence, explicitPublished]) => ({
+export const researchPosts: readonly ResearchPost[] = allResearchTopics.map(([slug, title, cluster, evidence, explicitPublished]) => ({
   slug,
   title,
   excerpt: `Research on ${title.toLowerCase()} for a distributed development team. The report turns ${cluster} evidence into a bounded operating routine with a named reviewer.`,
