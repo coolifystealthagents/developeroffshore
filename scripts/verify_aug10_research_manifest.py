@@ -3,6 +3,8 @@
 import json
 import re
 import subprocess
+import time
+import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,6 +18,19 @@ def git_file(commit: str, path: str) -> str:
     result = subprocess.run(['git', 'show', f'{commit}:{path}'], cwd=ROOT, text=True, capture_output=True)
     return result.stdout if result.returncode == 0 else ''
 
+def start_production_server() -> tuple[subprocess.Popen[str], str]:
+    port = '31999'
+    process = subprocess.Popen(['npm', 'run', 'start', '--', '-p', port], cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, text=True)
+    base = f'http://127.0.0.1:{port}'
+    for _ in range(40):
+        try:
+            urllib.request.urlopen(base + '/research', timeout=1).read()
+            return process, base
+        except Exception:
+            time.sleep(0.25)
+    process.kill()
+    raise RuntimeError('production server did not start')
+
 def main() -> None:
     data = json.loads(MANIFEST.read_text(encoding='utf-8'))
     entries = data['entries']
@@ -26,6 +41,11 @@ def main() -> None:
     route_source = (ROOT / 'app/research/[slug]/page.tsx').read_text(encoding='utf-8')
     index_source = (ROOT / 'app/research/page.tsx').read_text(encoding='utf-8')
     sitemap = (ROOT / '.next/server/app/sitemap.xml.body').read_text(encoding='utf-8') if (ROOT / '.next/server/app/sitemap.xml.body').exists() else ''
+    server = None
+    base = ''
+    if not sitemap or not any((ROOT / '.next/server/app/research' / entry['slug'] / 'page.html').exists() for entry in entries):
+        server, base = start_production_server()
+        sitemap = urllib.request.urlopen(base + '/sitemap.xml').read().decode('utf-8')
     assert 'datePublished:post.published' in route_source
     assert '<time dateTime={post.published}>{post.published}</time>' in route_source
     assert 'sort((a,b)=>b.published.localeCompare(a.published))' in index_source
@@ -44,10 +64,11 @@ def main() -> None:
         )
         assert explicit_record, f'{slug} lacks an explicit source publication date record'
         built = ROOT / '.next/server/app/research' / slug / 'page.html'
-        if not built.exists():
-            built = ROOT / '.next/server/app/research' / (slug + '.html')
-        assert built.exists(), slug
-        rendered = built.read_text(encoding='utf-8')
+        if built.exists():
+            rendered = built.read_text(encoding='utf-8')
+        else:
+            assert base, slug
+            rendered = urllib.request.urlopen(base + entry['route']).read().decode('utf-8')
         assert TARGET in rendered and '"datePublished":"2026-08-10"' in rendered
         assert 'dateTime="2026-08-10"' in rendered and 'rel="canonical"' in rendered
         assert entry['route'] in sitemap
@@ -59,6 +80,9 @@ def main() -> None:
         assert slug in diff and added_record
     dates = [entry['sourceDate'] for entry in entries]
     assert all(dates[i] >= dates[i + 1] for i in range(len(dates) - 1))
+    if server:
+        server.terminate()
+        server.wait(timeout=10)
     print(f'PASS: {len(entries)} manifest entries, provenance, rendered date contract, sitemap, and index gate')
 
 if __name__ == '__main__':
