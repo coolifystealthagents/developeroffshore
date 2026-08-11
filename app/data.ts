@@ -282,19 +282,6 @@ const dailyBlogBatch20260810Slugs = [
   'offshore-developer-queue-worker-guide-daily-2026-08-10',
 ] as const;
 
-const dailyBlogBatch20260810: BlogPost[] = routineTopics.slice(20, 40).map((topic, index) => {
-  const post = buildRoutinePost(topic);
-  return {
-    ...post,
-    slug: dailyBlogBatch20260810Slugs[index],
-    title: `${topic.keyword}: a daily operating guide`,
-    excerpt: `A fresh, source-backed operating guide for ${topic.reader}. Use a bounded outcome, named review owner, and visible evidence before expanding this lane.`,
-    datePublished: '2026-08-10',
-    dateModified: '2026-08-10',
-    revision: `daily-batch-2026-08-10-${topic.slug}-v1`,
-  };
-});
-
 const additionalDailyTopics20260810: RoutineTopic[] = [
   {slug:'offshore-developer-kubernetes-support-guide',keyword:'offshore developer Kubernetes support guide',reader:'platform teams maintaining containerized services',outcome:'a safe Kubernetes change with health evidence and a rollback note',stack:'Kubernetes, Helm, CI, observability, and the approved cloud account',work:'manifests, probes, resource settings, rollout checks, and runbooks',evidence:'rendered manifests, dry-run output, health signals, and rollback steps',risk:'changing cluster behavior without a bounded namespace and recovery path',owner:'platform lead'},
   {slug:'offshore-developer-terraform-review-checklist',keyword:'offshore developer Terraform review checklist',reader:'infrastructure teams reviewing shared environments',outcome:'a reviewable infrastructure diff with state and blast-radius notes',stack:'Terraform, the state backend, CI policy checks, and cloud audit logs',work:'module changes, plan review, policy checks, drift notes, and handoff',evidence:'plan output, affected resources, policy results, and rollback conditions',risk:'applying a broad infrastructure change without ownership or recovery evidence',owner:'infrastructure owner'},
@@ -347,12 +334,74 @@ const dailyBlogBatch20260810AdditionalSlugs = [
   'offshore-developer-technical-handoff-video-guide-daily-2026-08-10-r2',
 ] as const;
 
+// Keep each accepted final route paired with its authoritative publication date
+// in one source record. This is the auditable slug/date representation used by
+// the manifest provenance check; route construction does not derive the date.
+const august10BlogRouteRecords = [
+  { slug: 'offshore-developer-sprint-planning-guide-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-documentation-handoff-guide-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-security-review-boundaries-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-api-integration-guide-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-database-migration-checklist-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-typescript-refactoring-guide-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-react-accessibility-checklist-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-unit-test-strategy-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-observability-runbook-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-feature-flag-rollout-guide-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-graphql-review-checklist-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-mobile-api-handoff-guide-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-ci-pipeline-maintenance-guide-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-dependency-upgrade-checklist-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-code-ownership-guide-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-technical-debt-backlog-guide-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-code-review-feedback-guide-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-release-notes-template-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-logging-standards-guide-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-queue-worker-guide-daily-2026-08-10', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-kubernetes-support-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-terraform-review-checklist-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-cicd-pipeline-maintenance-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-postgresql-query-review-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-redis-caching-checklist-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-logging-redaction-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-oauth-integration-checklist-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-graphql-performance-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-web-vitals-review-checklist-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-email-deliverability-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-queue-worker-review-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-data-import-validation-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-analytics-event-taxonomy-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-feature-estimation-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-technical-debt-prioritization-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-release-notes-template-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-incident-postmortem-template-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-dependency-upgrade-checklist-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-api-versioning-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-secret-rotation-runbook-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-browser-compatibility-checklist-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-access-review-routine-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+  { slug: 'offshore-developer-technical-handoff-video-guide-daily-2026-08-10-r2', datePublished: '2026-08-10' },
+] as const;
+
+const dailyBlogBatch20260810: BlogPost[] = routineTopics.slice(20, 40).map((topic, index) => {
+  const post = buildRoutinePost(topic);
+  return {
+    ...post,
+    slug: august10BlogRouteRecords[index].slug,
+    title: `${topic.keyword}: a daily operating guide`,
+    excerpt: `A fresh, source-backed operating guide for ${topic.reader}. Use a bounded outcome, named review owner, and visible evidence before expanding this lane.`,
+    datePublished: august10BlogRouteRecords[index].datePublished,
+    dateModified: '2026-08-10',
+    revision: `daily-batch-2026-08-10-${topic.slug}-v1`,
+  };
+});
+
 const dailyBlogBatch20260810Additional: BlogPost[] = additionalDailyTopics20260810.map((topic, index) => ({
   ...buildRoutinePost(topic),
-  slug: dailyBlogBatch20260810AdditionalSlugs[index],
+  slug: august10BlogRouteRecords[index + 20].slug,
   title: `${topic.keyword}: a daily operating guide`,
   excerpt: `A fresh, source-backed operating guide for ${topic.reader}. Use a bounded outcome, named review owner, and visible evidence before expanding this lane.`,
-  datePublished: '2026-08-10',
+  datePublished: august10BlogRouteRecords[index + 20].datePublished,
   dateModified: '2026-08-10',
   revision: `daily-batch-2026-08-10-r2-${topic.slug}-v1`,
 }));

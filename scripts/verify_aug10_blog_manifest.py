@@ -41,7 +41,7 @@ def main() -> None:
         diff = git("diff", entry["introducedByCommit"] + "^", entry["introducedByCommit"], "--", entry["sourcePath"])
         assert entry["slug"] in source
         assert entry["provenance"] == "repair-replacement"
-        assert entry["slug"] in diff, entry["slug"]
+        assert re.search(r"slug:\s*['\"]" + re.escape(entry["slug"]) + r"['\"].*datePublished:\s*['\"]" + TARGET + r"['\"]", diff), entry["slug"]
         assert entry["slug"] not in parent_source, entry["slug"]
     assert all(entries[i]["sourceDate"] >= entries[i + 1]["sourceDate"] for i in range(len(entries) - 1))
     print(f"PASS: {len(entries)} manifest entries, provenance, rendered date contract, and index gate")
