@@ -9,7 +9,7 @@
   "minimum": 10,
   "priorRunId": "cc8161c8-80ad-47bc-a36f-2a1629cb3f3f",
   "priorIssueId": "f66007da-d9af-48c6-bbac-045a0d469159",
-  "validationCommands": ["npm run build", "python3 scripts/verify_aug10_research_manifest.py", "git fetch origin main", "git rev-parse origin/main"],
+  "validationCommands": ["npm run build", "python3 scripts/verify_aug10_research_manifest.py", "git fetch origin main", "git rev-parse origin/main", "git status --short --branch"],
   "cleanBuildPassed": true,
   "existingCompliancePassed": true,
   "indexNewestFirstPassed": true,

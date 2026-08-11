@@ -21,7 +21,7 @@ def main() -> None:
     entries = data['entries']
     assert data['schemaVersion'] == 1 and data['contract'] == 'sites3-aug10-public-date-v6'
     assert data['family'] == 'research' and data['domain'] == 'developeroffshore.com'
-    assert len(entries) >= data['minimum'] >= 10
+    assert len(entries) == 13 and len(entries) >= data['minimum'] >= 10
     assert len({entry['slug'] for entry in entries}) == len(entries)
     route_source = (ROOT / 'app/research/[slug]/page.tsx').read_text(encoding='utf-8')
     index_source = (ROOT / 'app/research/page.tsx').read_text(encoding='utf-8')
