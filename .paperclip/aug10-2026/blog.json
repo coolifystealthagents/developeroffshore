@@ -9,33 +9,338 @@
   "minimum": 22,
   "priorRunId": "780eb8f1-3a9f-40d6-b450-b8ceab2f2693",
   "priorIssueId": "6ba6e16b-8d80-4ba3-8574-886d62e653da",
-  "validationCommands": ["git fetch origin main", "npm run build", "python3 scripts/verify_aug10_blog_manifest.py", "python3 scripts/verify_article.py .next/server/app/blog/offshore-developer-api-versioning-guide-daily-2026-08-10-r2.html --keyword 'offshore developer API versioning guide'", "git rev-parse origin/main"],
+  "validationCommands": [
+    "git fetch origin main",
+    "npm run build",
+    "python3 scripts/verify_aug10_blog_manifest.py",
+    "python3 scripts/verify_article.py .next/server/app/blog/offshore-developer-api-versioning-guide-daily-2026-08-10-r2.html --keyword 'offshore developer API versioning guide'",
+    "git rev-parse origin/main"
+  ],
   "cleanBuildPassed": true,
   "existingCompliancePassed": true,
   "indexNewestFirstPassed": true,
   "entries": [
-    {"slug":"offshore-developer-kubernetes-support-guide-daily-2026-08-10-r2","route":"/blog/offshore-developer-kubernetes-support-guide-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-terraform-review-checklist-daily-2026-08-10-r2","route":"/blog/offshore-developer-terraform-review-checklist-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-cicd-pipeline-maintenance-guide-daily-2026-08-10-r2","route":"/blog/offshore-developer-cicd-pipeline-maintenance-guide-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-postgresql-query-review-guide-daily-2026-08-10-r2","route":"/blog/offshore-developer-postgresql-query-review-guide-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-redis-caching-checklist-daily-2026-08-10-r2","route":"/blog/offshore-developer-redis-caching-checklist-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-logging-redaction-guide-daily-2026-08-10-r2","route":"/blog/offshore-developer-logging-redaction-guide-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-oauth-integration-checklist-daily-2026-08-10-r2","route":"/blog/offshore-developer-oauth-integration-checklist-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-graphql-performance-guide-daily-2026-08-10-r2","route":"/blog/offshore-developer-graphql-performance-guide-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-web-vitals-review-checklist-daily-2026-08-10-r2","route":"/blog/offshore-developer-web-vitals-review-checklist-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-email-deliverability-guide-daily-2026-08-10-r2","route":"/blog/offshore-developer-email-deliverability-guide-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-queue-worker-review-guide-daily-2026-08-10-r2","route":"/blog/offshore-developer-queue-worker-review-guide-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-data-import-validation-guide-daily-2026-08-10-r2","route":"/blog/offshore-developer-data-import-validation-guide-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-analytics-event-taxonomy-guide-daily-2026-08-10-r2","route":"/blog/offshore-developer-analytics-event-taxonomy-guide-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-feature-estimation-guide-daily-2026-08-10-r2","route":"/blog/offshore-developer-feature-estimation-guide-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-technical-debt-prioritization-guide-daily-2026-08-10-r2","route":"/blog/offshore-developer-technical-debt-prioritization-guide-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-release-notes-template-daily-2026-08-10-r2","route":"/blog/offshore-developer-release-notes-template-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-incident-postmortem-template-daily-2026-08-10-r2","route":"/blog/offshore-developer-incident-postmortem-template-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-dependency-upgrade-checklist-daily-2026-08-10-r2","route":"/blog/offshore-developer-dependency-upgrade-checklist-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-api-versioning-guide-daily-2026-08-10-r2","route":"/blog/offshore-developer-api-versioning-guide-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-secret-rotation-runbook-daily-2026-08-10-r2","route":"/blog/offshore-developer-secret-rotation-runbook-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-browser-compatibility-checklist-daily-2026-08-10-r2","route":"/blog/offshore-developer-browser-compatibility-checklist-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-access-review-routine-daily-2026-08-10-r2","route":"/blog/offshore-developer-access-review-routine-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"},
-    {"slug":"offshore-developer-technical-handoff-video-guide-daily-2026-08-10-r2","route":"/blog/offshore-developer-technical-handoff-video-guide-daily-2026-08-10-r2","sourcePath":"app/aug10-blog-v6-date-records.ts","provenance":"repair-replacement","introducedByCommit":"e72f3e303372d59a94b02e09e49668c8138722de","sourceDateField":"datePublished","sourceDate":"2026-08-10","renderedDateFields":["datePublished"],"renderedDate":"2026-08-10"}
+    {
+      "slug": "offshore-developer-kubernetes-support-guide-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-kubernetes-support-guide-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-terraform-review-checklist-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-terraform-review-checklist-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-cicd-pipeline-maintenance-guide-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-cicd-pipeline-maintenance-guide-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-postgresql-query-review-guide-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-postgresql-query-review-guide-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-redis-caching-checklist-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-redis-caching-checklist-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-logging-redaction-guide-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-logging-redaction-guide-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-oauth-integration-checklist-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-oauth-integration-checklist-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-graphql-performance-guide-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-graphql-performance-guide-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-web-vitals-review-checklist-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-web-vitals-review-checklist-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-email-deliverability-guide-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-email-deliverability-guide-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-queue-worker-review-guide-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-queue-worker-review-guide-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-data-import-validation-guide-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-data-import-validation-guide-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-analytics-event-taxonomy-guide-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-analytics-event-taxonomy-guide-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-feature-estimation-guide-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-feature-estimation-guide-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-technical-debt-prioritization-guide-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-technical-debt-prioritization-guide-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-release-notes-template-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-release-notes-template-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-incident-postmortem-template-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-incident-postmortem-template-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-dependency-upgrade-checklist-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-dependency-upgrade-checklist-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-api-versioning-guide-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-api-versioning-guide-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-secret-rotation-runbook-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-secret-rotation-runbook-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-browser-compatibility-checklist-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-browser-compatibility-checklist-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-access-review-routine-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-access-review-routine-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    },
+    {
+      "slug": "offshore-developer-technical-handoff-video-guide-daily-2026-08-10-r2",
+      "route": "/blog/offshore-developer-technical-handoff-video-guide-daily-2026-08-10-r2",
+      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "provenance": "repair-replacement",
+      "introducedByCommit": "835311fc1999330ef9593b7cbf90047772df1601",
+      "sourceDateField": "datePublished",
+      "sourceDate": "2026-08-10",
+      "renderedDateFields": [
+        "datePublished",
+        "article:published_time"
+      ],
+      "renderedDate": "2026-08-10"
+    }
   ]
 }

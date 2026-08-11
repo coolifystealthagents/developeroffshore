@@ -10,7 +10,7 @@ MANIFEST = ROOT / ".paperclip/aug10-2026/blog.json"
 TARGET = "2026-08-10"
 
 def git(*args: str) -> str:
-    return subprocess.check_output(["git", *args], cwd=ROOT, text=True)
+    return subprocess.check_output(["git", *args], cwd=ROOT, text=True, stderr=subprocess.DEVNULL)
 
 def main() -> None:
     data = json.loads(MANIFEST.read_text())
