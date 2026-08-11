@@ -29,7 +29,7 @@ def main() -> None:
     assert "sort((a, b) => (b.datePublished ?? '').localeCompare(a.datePublished ?? ''))" in index_source
     for entry in entries:
         assert entry["route"] == "/blog/" + entry["slug"] and entry["route"].startswith("/blog/")
-        assert entry["sourcePath"] == "app/aug10-blog-v6-final-date-records.ts" and entry["sourceDateField"] == "sourceDate"
+        assert entry["sourcePath"] == "app/aug10-blog-v6-repair-records.ts" and entry["sourceDateField"] == "sourceDate"
         assert entry["sourceDate"] == TARGET and entry["renderedDate"] == TARGET
         assert "datePublished" in entry["renderedDateFields"]
         source_path = ROOT / entry["sourcePath"]

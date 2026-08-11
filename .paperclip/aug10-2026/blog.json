@@ -24,9 +24,9 @@
     {
       "slug": "offshore-developer-kubernetes-support-guide-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-kubernetes-support-guide-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -38,9 +38,9 @@
     {
       "slug": "offshore-developer-terraform-review-checklist-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-terraform-review-checklist-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -52,9 +52,9 @@
     {
       "slug": "offshore-developer-cicd-pipeline-maintenance-guide-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-cicd-pipeline-maintenance-guide-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -66,9 +66,9 @@
     {
       "slug": "offshore-developer-postgresql-query-review-guide-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-postgresql-query-review-guide-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -80,9 +80,9 @@
     {
       "slug": "offshore-developer-redis-caching-checklist-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-redis-caching-checklist-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -94,9 +94,9 @@
     {
       "slug": "offshore-developer-logging-redaction-guide-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-logging-redaction-guide-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -108,9 +108,9 @@
     {
       "slug": "offshore-developer-oauth-integration-checklist-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-oauth-integration-checklist-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -122,9 +122,9 @@
     {
       "slug": "offshore-developer-graphql-performance-guide-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-graphql-performance-guide-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -136,9 +136,9 @@
     {
       "slug": "offshore-developer-web-vitals-review-checklist-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-web-vitals-review-checklist-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -150,9 +150,9 @@
     {
       "slug": "offshore-developer-email-deliverability-guide-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-email-deliverability-guide-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -164,9 +164,9 @@
     {
       "slug": "offshore-developer-queue-worker-review-guide-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-queue-worker-review-guide-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -178,9 +178,9 @@
     {
       "slug": "offshore-developer-data-import-validation-guide-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-data-import-validation-guide-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -192,9 +192,9 @@
     {
       "slug": "offshore-developer-analytics-event-taxonomy-guide-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-analytics-event-taxonomy-guide-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -206,9 +206,9 @@
     {
       "slug": "offshore-developer-feature-estimation-guide-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-feature-estimation-guide-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -220,9 +220,9 @@
     {
       "slug": "offshore-developer-technical-debt-prioritization-guide-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-technical-debt-prioritization-guide-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -234,9 +234,9 @@
     {
       "slug": "offshore-developer-release-notes-template-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-release-notes-template-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -248,9 +248,9 @@
     {
       "slug": "offshore-developer-incident-postmortem-template-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-incident-postmortem-template-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -262,9 +262,9 @@
     {
       "slug": "offshore-developer-dependency-upgrade-checklist-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-dependency-upgrade-checklist-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -276,9 +276,9 @@
     {
       "slug": "offshore-developer-api-versioning-guide-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-api-versioning-guide-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -290,9 +290,9 @@
     {
       "slug": "offshore-developer-secret-rotation-runbook-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-secret-rotation-runbook-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -304,9 +304,9 @@
     {
       "slug": "offshore-developer-browser-compatibility-checklist-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-browser-compatibility-checklist-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -318,9 +318,9 @@
     {
       "slug": "offshore-developer-access-review-routine-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-access-review-routine-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
@@ -332,9 +332,9 @@
     {
       "slug": "offshore-developer-technical-handoff-video-guide-daily-2026-08-10-r2",
       "route": "/blog/offshore-developer-technical-handoff-video-guide-daily-2026-08-10-r2",
-      "sourcePath": "app/aug10-blog-v6-final-date-records.ts",
+      "sourcePath": "app/aug10-blog-v6-repair-records.ts",
       "provenance": "repair-replacement",
-      "introducedByCommit": "0c06f0782281caab316eabe9ab0c92c5f770f6c6",
+      "introducedByCommit": "32063de7ad50cad9e18f25e9318503f9dda0ae18",
       "sourceDateField": "sourceDate",
       "sourceDate": "2026-08-10",
       "renderedDateFields": [
