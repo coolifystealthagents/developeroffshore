@@ -71,7 +71,7 @@ const aug10SourceDateRecords = [
   { slug: 'offshore-developer-load-testing-research-2026-08-10', sourceDate: '2026-08-10' },
   { slug: 'offshore-developer-license-review-research-2026-08-10', sourceDate: '2026-08-10' },
 ] as const;
-const aug10SourceDates = new Map(aug10SourceDateRecords.map(record => [record.slug, record.sourceDate]));
+const aug10SourceDates = new Map<string, string>(aug10SourceDateRecords.map(record => [record.slug, record.sourceDate]));
 
 const sourceBank = [
   ['NIST SP 800-53 Rev. 5, AC-6 least privilege', 'https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final'],
