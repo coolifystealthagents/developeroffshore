@@ -6,6 +6,17 @@ import { articleThumbnail } from '../../article-thumbnails';
 
 const baseUrl = 'https://developeroffshore.com';
 
+const publicationDateFormatter = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+
+function formatPublicationDate(value: string) {
+  return publicationDateFormatter.format(new Date(`${value}T00:00:00Z`));
+}
+
 const defaultBanners = [
   {
     label: 'Check the provider before you choose a candidate',
@@ -240,7 +251,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
             <h1>{post.title}</h1>
             <p className="lead">{post.excerpt}</p><div className='blog-standards-strip' aria-label='Article standards'><span>Source-backed guidance</span><span>Contextual internal links</span><span>Top, middle, and bottom CTAs</span></div>
             <img className="article-featured-image" src={thumbnail.src} alt={thumbnail.alt}/>
-            {post.datePublished ? <p className="article-date">Published {post.datePublished}</p> : null}
+            {post.datePublished ? <p className="article-date">Published {formatPublicationDate(post.datePublished)}</p> : null}
           </header>
 
           {fullArticle ? (
