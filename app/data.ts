@@ -1,6 +1,7 @@
 import { august10BlogV6RepairRecords as explicitAugust10BlogRepairRouteRecords } from './aug10-blog-v6-repair-records';
 import { august11BlogBatch } from './aug11-blog-batch';
 import { august13BlogBatch } from './aug13-blog-batch';
+import { august14BlogBatch } from './aug14-blog-batch';
 
 export const site = {
   "domain": "DeveloperOffshore.com",
@@ -1359,7 +1360,7 @@ export const blogPosts: BlogPost[] = [
         "note": "Used for secure review framing."
       }
     ]
-  }, ...august13BlogBatch, ...august11BlogBatch, ...dailyBlogBatch, ...dailyBlogBatch20260810, ...dailyBlogBatch20260810Additional];
+    }, ...august14BlogBatch, ...august13BlogBatch, ...august11BlogBatch, ...dailyBlogBatch, ...dailyBlogBatch20260810, ...dailyBlogBatch20260810Additional];
 
 export const stats = [
   {label:'Suggested pilot',value:'14 days',note:'enough time to review real work before adding scope'},
