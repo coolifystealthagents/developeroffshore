@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "targetDate": "2026-08-18",
+  "family": "blog",
+  "repository": "coolifystealthagents/developeroffshore",
+  "branch": "main",
+  "entries": [
+    { "route": "/blog/offshore-developer-backlog-risk-review-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-async-design-decision-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-feature-flag-ownership-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-observability-handoff-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-frontend-state-review-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-api-contract-change-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-database-rollback-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-security-finding-handoff-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-mobile-release-check-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-search-relevance-review-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-file-upload-boundary-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-webhook-retry-review-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-localization-qa-handoff-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-load-test-scope-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-monorepo-review-routing-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-incident-timeline-handoff-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-dependency-license-review-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-queue-idempotency-check-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-browser-storage-migration-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-rate-limit-review-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-contract-test-handoff-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" },
+    { "route": "/blog/offshore-developer-runbook-review-2026-08-18", "sourcePath": "app/aug18-blog-batch.ts" }
+  ]
+}
