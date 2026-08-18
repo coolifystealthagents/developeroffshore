@@ -1,5 +1,6 @@
 export type FleetService = { slug: string; title: string; desc: string; tasks: readonly string[]; controls: readonly string[]; firstWeek: readonly string[] };
 export type ResearchPost = { slug: string; title: string; excerpt: string; published: string; sections: readonly { heading: string; body: readonly string[] }[]; sources?: readonly { name: string; url: string }[]; keyStats: readonly string[]; takeaways: readonly string[]; faqs: readonly { question: string; answer: string }[]; related: readonly { title: string; href: string }[] };
+import { august18ResearchBatch } from './aug18-research-batch';
 
 export const fleetServices: readonly FleetService[] = [
   { slug: 'next-js-application-development', title: 'Next.js Application Development', desc: 'Build a Philippines-based next.js application development workflow with documented responsibilities, access limits, and manager review.', tasks: ['Document the recurring software development work', 'Complete approved tasks in the client workflow', 'Record exceptions and next actions'], controls: ['Use named accounts and limited permissions', 'Follow written approval and escalation rules', 'Review work with a client-side owner'], firstWeek: ['Confirm scope and working hours', 'Practice with representative examples', 'Review the first completed work together'] },
@@ -187,7 +188,7 @@ const aug17IndependentBodies: Record<string, readonly { heading: string; body: r
   'offshore-developer-code-ownership-research-2026-08-17': [{ heading: 'Research question and scope', body: ['Ownership files matter only when they lead to a reachable reviewer and understandable escalation. This report examines one repository area and recent review decisions. GitHub protected-branch documentation describes enforceable settings, while Google practice emphasizes judgment. The question is whether boundaries protect sensitive paths without creating a single-person bottleneck for asynchronous Philippines-based development.'] }, { heading: 'Method and measurement', body: ['Measure review coverage, owner-response time, rejected-scope changes, sensitive-path access, unavailable-owner cases, and unresolved escalations. Inspect the rule, actual response, and path changed. A name is not enough if the person cannot respond or lacks authority. Preserve urgent-work exceptions.'] }, { heading: 'Analysis and decision boundary', body: ['Good ownership separates consultation from approval. A developer may change a component while an internal security or product owner approves a sensitive decision. Broad ownership creates noise; narrow ownership creates workarounds. Test a representative change and unavailable-owner case.'] }, { heading: 'Limitations and conclusion', body: ['Settings do not capture every conversation, and a small sample cannot prove long-term delivery improvement. Map each sensitive area to a reachable reviewer, escalation path, and approval boundary. The developer preserves evidence; the accountable owner retains authority over access and risk.'] }],
 };
 
-export const researchPosts: readonly ResearchPost[] = dailyResearchTopics.map(([slug, title, cluster, evidence, sourceDate]) => ({
+const legacyResearchPosts: readonly ResearchPost[] = dailyResearchTopics.map(([slug, title, cluster, evidence, sourceDate]) => ({
   slug,
   title,
   excerpt: `Research on ${title.toLowerCase()} for a distributed development team. The report turns ${cluster} evidence into a bounded operating routine with a named reviewer.`,
@@ -211,6 +212,7 @@ export const researchPosts: readonly ResearchPost[] = dailyResearchTopics.map(([
   ],
   sources: sourceDate === '2026-08-17' ? aug17ResearchDetails[slug].sources.map((sourceIndex) => ({ name: sourceBank[sourceIndex][0], url: sourceBank[sourceIndex][1] })) : sourceBank.map(([name, url]) => ({ name, url })),
 }));
+export const researchPosts: readonly ResearchPost[] = [...august18ResearchBatch, ...legacyResearchPosts];
 export const postsPerPage = 23;
 const isFrozenAugust10Batch = (slug: string, date: string) => date === '2026-08-10' && /-(?:r2|run2)$/.test(slug);
 export const compareNewestBatchFirst = (a: {slug: string}, b: {slug: string}, dateA: string, dateB: string) => {

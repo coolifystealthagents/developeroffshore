@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "contract": "fleet-authoring-2026-08-18-research-v1",
+  "family": "research",
+  "domain": "developeroffshore.com",
+  "campaignDate": "2026-08-18",
+  "entries": [
+    {"slug":"offshore-developer-estimation-calibration-research-2026-08-18","route":"/research/offshore-developer-estimation-calibration-research-2026-08-18","sourcePath":"app/aug18-research-batch.ts"},
+    {"slug":"offshore-developer-review-comment-research-2026-08-18","route":"/research/offshore-developer-review-comment-research-2026-08-18","sourcePath":"app/aug18-research-batch.ts"},
+    {"slug":"offshore-developer-release-note-accuracy-research-2026-08-18","route":"/research/offshore-developer-release-note-accuracy-research-2026-08-18","sourcePath":"app/aug18-research-batch.ts"},
+    {"slug":"offshore-developer-dependency-upgrade-research-2026-08-18","route":"/research/offshore-developer-dependency-upgrade-research-2026-08-18","sourcePath":"app/aug18-research-batch.ts"},
+    {"slug":"offshore-developer-dead-letter-queue-research-2026-08-18","route":"/research/offshore-developer-dead-letter-queue-research-2026-08-18","sourcePath":"app/aug18-research-batch.ts"},
+    {"slug":"offshore-developer-log-redaction-research-2026-08-18","route":"/research/offshore-developer-log-redaction-research-2026-08-18","sourcePath":"app/aug18-research-batch.ts"},
+    {"slug":"offshore-developer-ci-cache-research-2026-08-18","route":"/research/offshore-developer-ci-cache-research-2026-08-18","sourcePath":"app/aug18-research-batch.ts"},
+    {"slug":"offshore-developer-responsive-regression-research-2026-08-18","route":"/research/offshore-developer-responsive-regression-research-2026-08-18","sourcePath":"app/aug18-research-batch.ts"},
+    {"slug":"offshore-developer-import-reconciliation-research-2026-08-18","route":"/research/offshore-developer-import-reconciliation-research-2026-08-18","sourcePath":"app/aug18-research-batch.ts"},
+    {"slug":"offshore-developer-service-handoff-research-2026-08-18","route":"/research/offshore-developer-service-handoff-research-2026-08-18","sourcePath":"app/aug18-research-batch.ts"}
+  ]
+}
