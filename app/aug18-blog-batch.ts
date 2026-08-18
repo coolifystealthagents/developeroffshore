@@ -464,4 +464,3 @@ export const august18BlogBatch: BlogPost[] = [
     sources: [{ name: 'NIST Secure Software Development Framework', url: 'https://csrc.nist.gov/pubs/sp/800/218/final', note: 'Used for lifecycle evidence and accountable review.' }, { name: 'OWASP Code Review Guide', url: 'https://owasp.org/www-project-code-review-guide/', note: 'Used for risk-based review framing.' }]
   },
 ];
-
