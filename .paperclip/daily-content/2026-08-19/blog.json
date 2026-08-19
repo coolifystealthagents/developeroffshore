@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "targetDate": "2026-08-19",
+  "family": "blog",
+  "repository": "coolifystealthagents/developeroffshore",
+  "branch": "main",
+  "entries": [
+    {"route":"/blog/codebase-archaeology-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/acceptance-criteria-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/incident-follow-up-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/feature-flag-retirement-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/api-pagination-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/database-seed-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/accessibility-regression-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/analytics-events-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/dependency-upgrade-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/dead-letter-queue-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/support-triage-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/release-notes-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/environment-drift-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/pull-request-size-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/discovery-spike-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/onboarding-environment-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/review-capacity-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/offboarding-access-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/timezone-handoff-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/code-ownership-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/staging-data-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"},
+    {"route":"/blog/release-readiness-2026-08-19","sourcePath":"app/aug19-blog-batch.ts"}
+  ]
+}
