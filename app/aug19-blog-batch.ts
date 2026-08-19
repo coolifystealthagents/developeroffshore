@@ -1,6 +1,6 @@
 import type { BlogPost } from './data';
 
-export const august19BlogBatch: BlogPost[] = [
+const august19BlogBatchAll: BlogPost[] = [
   {
     slug: 'codebase-archaeology-2026-08-19',
     title: "How an offshore developer can map an unfamiliar codebase before changing it",
@@ -487,3 +487,7 @@ export const august19BlogBatch: BlogPost[] = [
   }
 ];
 
+// The August 19 contract requires twelve new Blog records. The earlier draft
+// contained additional queued topics; keep those identities out of the public
+// loader until a later, separately authorized batch.
+export const august19BlogBatch: BlogPost[] = august19BlogBatchAll.slice(0, 12);
