@@ -1,0 +1,19 @@
+{
+  "campaignDate": "2026-08-20",
+  "family": "blog",
+  "generator": "Gemini-generated hero image receipt",
+  "entries": [
+    {"route":"/blog/offshore-developer-backlog-refinement-2026-08-20","imagePath":"public/blog-heroes/2026-08-20/backlog-refinement.png","prompt":"Wide editorial illustration of a distributed engineering team refining a backlog; no text, logo, or watermark."},
+    {"route":"/blog/offshore-developer-pull-request-review-2026-08-20","imagePath":"public/blog-heroes/2026-08-20/pull-request-review.png","prompt":"Wide editorial illustration of pull request review with two reviewers and abstract code panes; no text, logo, or watermark."},
+    {"route":"/blog/offshore-developer-technical-discovery-spike-2026-08-20","imagePath":"public/blog-heroes/2026-08-20/discovery-spike.png","prompt":"Wide editorial illustration of a technical discovery spike with a magnifying glass over connected software modules; no text, logo, or watermark."},
+    {"route":"/blog/offshore-developer-test-fixture-design-2026-08-20","imagePath":"public/blog-heroes/2026-08-20/test-fixtures.png","prompt":"Wide editorial illustration of software test fixtures with safe data cards and branching paths; no text, logo, or watermark."},
+    {"route":"/blog/offshore-developer-legacy-module-handoff-2026-08-20","imagePath":"public/blog-heroes/2026-08-20/legacy-handoff.png","prompt":"Wide editorial illustration of a legacy codebase handoff with layered modules and a clear map; no text, logo, or watermark."},
+    {"route":"/blog/offshore-developer-timezone-planning-2026-08-20","imagePath":"public/blog-heroes/2026-08-20/timezone-planning.png","prompt":"Wide editorial illustration of timezone handoff with sun and moon over linked workstations; no text, logo, or watermark."},
+    {"route":"/blog/offshore-developer-api-contract-review-2026-08-20","imagePath":"public/blog-heroes/2026-08-20/api-contract.png","prompt":"Wide editorial illustration of API contract review with connected service nodes; no text, logo, or watermark."},
+    {"route":"/blog/offshore-developer-qa-triage-handoff-2026-08-20","imagePath":"public/blog-heroes/2026-08-20/qa-triage.png","prompt":"Wide editorial illustration of QA defect triage with a magnified bug path and evidence cards; no text, logo, or watermark."},
+    {"route":"/blog/offshore-developer-documentation-maintenance-2026-08-20","imagePath":"public/blog-heroes/2026-08-20/documentation.png","prompt":"Wide editorial illustration of documentation maintenance beside code and a verification check; no text, logo, or watermark."},
+    {"route":"/blog/offshore-developer-incident-communications-2026-08-20","imagePath":"public/blog-heroes/2026-08-20/incident-communications.png","prompt":"Wide editorial illustration of incident communication with a signal dashboard and message handoff; no text, logo, or watermark."},
+    {"route":"/blog/offshore-developer-feature-flag-governance-2026-08-20","imagePath":"public/blog-heroes/2026-08-20/feature-flags.png","prompt":"Wide editorial illustration of feature flag governance with branching rollout paths and a control switch; no text, logo, or watermark."},
+    {"route":"/blog/offshore-developer-access-review-2026-08-20","imagePath":"public/blog-heroes/2026-08-20/access-review.png","prompt":"Wide editorial illustration of access review with a secure key and permission layers; no text, logo, or watermark."}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "campaignDate": "2026-08-20",
+  "family": "blog",
+  "entries": [
+    {"route":"/blog/offshore-developer-backlog-refinement-2026-08-20","sourcePaths":["app/aug20-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-pull-request-review-2026-08-20","sourcePaths":["app/aug20-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-technical-discovery-spike-2026-08-20","sourcePaths":["app/aug20-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-test-fixture-design-2026-08-20","sourcePaths":["app/aug20-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-legacy-module-handoff-2026-08-20","sourcePaths":["app/aug20-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-timezone-planning-2026-08-20","sourcePaths":["app/aug20-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-api-contract-review-2026-08-20","sourcePaths":["app/aug20-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-qa-triage-handoff-2026-08-20","sourcePaths":["app/aug20-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-documentation-maintenance-2026-08-20","sourcePaths":["app/aug20-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-incident-communications-2026-08-20","sourcePaths":["app/aug20-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-feature-flag-governance-2026-08-20","sourcePaths":["app/aug20-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-access-review-2026-08-20","sourcePaths":["app/aug20-blog-batch.ts"]}
+  ]
+}
