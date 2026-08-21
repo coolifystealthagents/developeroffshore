@@ -1,0 +1,18 @@
+{
+  "campaignDate": "2026-08-21",
+  "family": "blog",
+  "entries": [
+    {"route":"/blog/offshore-developer-database-migration-safety-2026-08-21","sourcePaths":["app/aug21-blog-batch.ts"],"imagePath":"public/blog-heroes/2026-08-21/database-migration-safety.png"},
+    {"route":"/blog/offshore-developer-observability-runbook-2026-08-21","sourcePaths":["app/aug21-blog-batch.ts"],"imagePath":"public/blog-heroes/2026-08-21/observability-runbook.png"},
+    {"route":"/blog/offshore-developer-design-system-handoff-2026-08-21","sourcePaths":["app/aug21-blog-batch.ts"],"imagePath":"public/blog-heroes/2026-08-21/design-system-handoff.png"},
+    {"route":"/blog/offshore-developer-background-job-idempotency-2026-08-21","sourcePaths":["app/aug21-blog-batch.ts"],"imagePath":"public/blog-heroes/2026-08-21/background-job-idempotency.png"},
+    {"route":"/blog/offshore-developer-frontend-performance-regression-2026-08-21","sourcePaths":["app/aug21-blog-batch.ts"],"imagePath":"public/blog-heroes/2026-08-21/frontend-performance-regression.png"},
+    {"route":"/blog/offshore-developer-privacy-review-workflow-2026-08-21","sourcePaths":["app/aug21-blog-batch.ts"],"imagePath":"public/blog-heroes/2026-08-21/privacy-review-workflow.png"},
+    {"route":"/blog/offshore-developer-release-candidate-checklist-2026-08-21","sourcePaths":["app/aug21-blog-batch.ts"],"imagePath":"public/blog-heroes/2026-08-21/release-candidate-checklist.png"},
+    {"route":"/blog/offshore-developer-technical-debt-evidence-2026-08-21","sourcePaths":["app/aug21-blog-batch.ts"],"imagePath":"public/blog-heroes/2026-08-21/technical-debt-evidence.png"},
+    {"route":"/blog/offshore-developer-api-pagination-review-2026-08-21","sourcePaths":["app/aug21-blog-batch.ts"],"imagePath":"public/blog-heroes/2026-08-21/api-pagination-review.png"},
+    {"route":"/blog/offshore-developer-qa-test-data-lifecycle-2026-08-21","sourcePaths":["app/aug21-blog-batch.ts"],"imagePath":"public/blog-heroes/2026-08-21/qa-test-data-lifecycle.png"},
+    {"route":"/blog/offshore-developer-documentation-searchability-2026-08-21","sourcePaths":["app/aug21-blog-batch.ts"],"imagePath":"public/blog-heroes/2026-08-21/documentation-searchability.png"},
+    {"route":"/blog/offshore-developer-feature-flag-cleanup-2026-08-21","sourcePaths":["app/aug21-blog-batch.ts"],"imagePath":"public/blog-heroes/2026-08-21/feature-flag-cleanup.png"}
+  ]
+}

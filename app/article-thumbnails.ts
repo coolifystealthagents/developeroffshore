@@ -9,6 +9,18 @@ const RESEARCH_HEROES: Record<string, string> = {
 };
 
 const BLOG_HEROES: Record<string, string> = {
+  'offshore-developer-database-migration-safety-2026-08-21': '/blog-heroes/2026-08-21/database-migration-safety.png',
+  'offshore-developer-observability-runbook-2026-08-21': '/blog-heroes/2026-08-21/observability-runbook.png',
+  'offshore-developer-design-system-handoff-2026-08-21': '/blog-heroes/2026-08-21/design-system-handoff.png',
+  'offshore-developer-background-job-idempotency-2026-08-21': '/blog-heroes/2026-08-21/background-job-idempotency.png',
+  'offshore-developer-frontend-performance-regression-2026-08-21': '/blog-heroes/2026-08-21/frontend-performance-regression.png',
+  'offshore-developer-privacy-review-workflow-2026-08-21': '/blog-heroes/2026-08-21/privacy-review-workflow.png',
+  'offshore-developer-release-candidate-checklist-2026-08-21': '/blog-heroes/2026-08-21/release-candidate-checklist.png',
+  'offshore-developer-technical-debt-evidence-2026-08-21': '/blog-heroes/2026-08-21/technical-debt-evidence.png',
+  'offshore-developer-api-pagination-review-2026-08-21': '/blog-heroes/2026-08-21/api-pagination-review.png',
+  'offshore-developer-qa-test-data-lifecycle-2026-08-21': '/blog-heroes/2026-08-21/qa-test-data-lifecycle.png',
+  'offshore-developer-documentation-searchability-2026-08-21': '/blog-heroes/2026-08-21/documentation-searchability.png',
+  'offshore-developer-feature-flag-cleanup-2026-08-21': '/blog-heroes/2026-08-21/feature-flag-cleanup.png',
   'offshore-developer-backlog-refinement-2026-08-20': '/blog-heroes/2026-08-20/backlog-refinement.png',
   'offshore-developer-pull-request-review-2026-08-20': '/blog-heroes/2026-08-20/pull-request-review.png',
   'offshore-developer-technical-discovery-spike-2026-08-20': '/blog-heroes/2026-08-20/discovery-spike.png',
