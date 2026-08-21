@@ -124,7 +124,7 @@ const topics: Topic[] = [
 
 function makePost(topic: Topic, index: number): BlogPost {
   const fields = [topic.first, topic.second, topic.third, topic.fourth, topic.fifth, topic.sixth, topic.seventh, topic.eighth, `${depthSupplements[topic.slug] ?? topic.supplement ?? ''} ${sourceDepth}`];
-  const headings = ['Start with the decision', 'Set the working boundary', 'Collect representative evidence', 'Test the uncomfortable path', 'Keep authority explicit', 'Design the handoff', 'Review the operating risk', 'Turn the lesson into routine'];
+  const headings = ['Start with the decision', 'Set the working boundary', 'Collect representative evidence', 'Test the uncomfortable path', 'Keep authority explicit', 'Design the handoff', 'Review the operating risk', 'Turn the lesson into routine', 'Document the decision evidence'];
   const sections: BlogSection[] = headings.map((heading, sectionIndex) => ({ heading, body: [fields[sectionIndex], `${fields[sectionIndex]} The practical test is simple: can a buyer-side reviewer see what the Philippines-based developer did, what remains uncertain, and which next action is authorized? Keep the record tied to ${topic.decision}, use named ownership, and state the limit instead of filling it with an assumption.`] }));
   const depthRepair = topic.slug !== 'offshore-developer-access-review-2026-08-20';
   if (depthRepair) {
