@@ -1,0 +1,206 @@
+import type { ResearchPost } from './fleet-data';
+
+const related = [{ title: 'Research library', href: '/research' }, { title: 'Daily developer guides', href: '/blog' }];
+const faq = [{ question: 'Does this report prove a rule for every offshore developer?', answer: 'No. It studies one bounded software-development decision and states which evidence remains outside scope.' }];
+
+const commonClosing = (topic: string) => `This evidence is useful for a ${topic} decision, not as a universal score for a developer, supplier, or software team. The accountable owner should record the observation, the missing evidence, the permitted next step, and the condition that would stop it. A distributed developer can make the work legible and repeatable; the owner retains authority over product, security, data, and release risk.`;
+
+const august21ResearchBatchAll: readonly ResearchPost[] = [
+  {
+    slug: 'offshore-developer-queue-backpressure-evidence-research-2026-08-21',
+    title: 'What evidence shows that an offshore developer has fixed queue backpressure rather than hidden it?',
+    excerpt: 'A bounded study of queue growth, retry behavior, and handoff evidence for distributed software-development work.', published: '2026-08-21',
+    sections: [
+      { heading: 'Research question and evidence scope', body: [
+        'When a queue grows during a distributed software-delivery task, what evidence distinguishes a real backpressure repair from a change that merely moves waiting time into retries, a database, or an operator queue? The question concerns one named queue, its producers and consumers, a defined observation window, and one proposed change. It does not attempt to benchmark all messaging systems or judge a developer by throughput alone. The unit of analysis is a traceable message lifecycle: accepted, processed, retried, delayed, dead-lettered, or intentionally rejected.',
+        'For a Philippines-based developer working asynchronously, the distinction matters because the next reviewer may see a green test after the queue has stopped growing but not know whether work was lost, deferred, duplicated, or shifted to another component. The contributor can instrument a representative fixture, record the queue policy, and explain the observed transition. The service owner decides acceptable latency, loss, duplication, and operational exposure. Those roles should remain explicit in the report.'
+      ] },
+      { heading: 'Methodology and public evidence', body: [
+        'Freeze the consumer revision, producer revision, queue configuration, retry limit, visibility timeout, concurrency, and fixture volume. Inject messages that succeed, fail transiently, fail permanently, exceed a processing deadline, and arrive out of order. Record enqueue time, delivery attempts, completion time, acknowledgement, destination after failure, and any downstream side effect. Compare queue depth and oldest-message age before and after the change, but do not treat either metric as a complete outcome. The experiment should preserve identifiers that are safe to share rather than customer payloads.',
+        'Use the RabbitMQ consumer-acknowledgement guidance, the AWS Well-Architected reliability principles, and the CloudEvents specification as evidence lenses. They clarify acknowledgement, retry, and event-envelope questions; they cannot prove behavior in a private deployment. The local record should name the broker and version, delivery mode, test volume, clock assumptions, and excluded failure modes. A claim about recovery must point to an observed lifecycle, not merely to a configuration file.'
+      ] },
+      { heading: 'What a repair can and cannot show', body: [
+        'A smaller queue can result from faster consumers, lower production, dropped messages, a shorter retention period, or a new dead-letter route. Therefore inspect the conservation of test messages across outcomes. If a change raises concurrency, measure downstream saturation and duplicate side effects. If it adds backoff, measure oldest-message age and whether retries crowd out new work. If it rejects malformed input, confirm that rejection is visible and owned rather than silently discarded. The useful comparison connects a queue metric to a message-level result.',
+        'Distributed work benefits from a compact before-and-after ledger. It can show that 100 synthetic messages produced 94 successful effects, four explicit permanent failures, and two transient retries resolved within the declared window. That is evidence for that fixture and policy, not a claim about production capacity. A reviewer should be able to challenge the fixture, repeat the run, and identify the assumption that would invalidate the conclusion.'
+      ] },
+      { heading: 'Counterevidence and role boundary', body: [
+        'A rehearsal may omit broker failover, network partitions, consumer restarts, poison messages, uneven tenants, or a downstream system that applies effects twice. Queue depth can look healthy while an outbox, database lock, or scheduled retry queue accumulates. A dead-letter count can indicate correct containment or a broken parser. Record these alternatives and state which were not tested. Unknown is a valid result when the evidence cannot separate them.',
+        'The developer may add idempotency protection, improve retry classification, expose age and attempt metrics, or propose a bounded load test. The internal service owner decides loss tolerance, retention, incident severity, production rollout, and whether a failed message may be replayed. The contributor should not purge a queue, replay live messages, or change retention simply to make a dashboard look recovered.'
+      ] },
+      { heading: 'Limitations and decision boundary', body: [
+        'A synthetic queue test does not establish a capacity guarantee. Production traffic may have larger payloads, burstier arrivals, different partitions, slower dependencies, or stricter ordering needs. Public messaging documentation describes mechanisms, not the private business consequence of a lost or duplicated event. State the observation window, fixture distribution, broker settings, downstream doubles, and missing production conditions.',
+        'The evidence supports a bounded decision: retain a retry policy, add an idempotency key, increase consumer capacity, route permanent failures for review, or hold the change. It does not support deleting retries because they inflate a metric or calling a queue healthy because its depth returned to zero. The decision should name the signal, the acceptable boundary, and the owner who can stop processing.'
+      ] },
+      { heading: 'Evidence-led conclusion', body: [
+        `Queue backpressure is credibly repaired only when message lifecycles, not just queue depth, show that work is completed, intentionally rejected, or visibly awaiting an owned recovery path. ${commonClosing('queue-reliability')}`,
+        'For an offshore developer, the most valuable handoff is a replayable ledger with configuration, inputs, outcomes, retries, side effects, and unknowns. It lets an owner distinguish faster processing from hidden loss and makes the next experiment small. If the evidence cannot account for every test message, the conclusion should say that the queue is not yet proven safe rather than converting uncertainty into a green status.'
+      ] }
+    ],
+    keyStats: ['Message lifecycle traced across success, retry, and permanent failure', 'Queue depth separated from oldest-message age and side effects', 'Broker, reliability, and event-envelope guidance compared'], takeaways: ['Account for every test message.', 'Measure side effects, not only queue depth.', 'Keep replay and retention authority with the owner.'], faqs: faq, related, sources: [{ name: 'RabbitMQ consumer acknowledgements', url: 'https://www.rabbitmq.com/docs/confirms' }, { name: 'AWS Well-Architected Reliability Pillar', url: 'https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html' }, { name: 'CloudEvents specification', url: 'https://github.com/cloudevents/spec' }]
+  },
+  {
+    slug: 'offshore-developer-access-review-evidence-research-2026-08-21',
+    title: 'Which access-review evidence is enough for an offshore developer to work safely?',
+    excerpt: 'Research on least privilege, reviewable permissions, and the boundary between delivery access and security authority.', published: '2026-08-21',
+    sections: [
+      { heading: 'Research question and evidence scope', body: [
+        'What evidence shows that a distributed developer has the access needed for an approved software task without quietly acquiring broader production, customer-data, or administrative power? The study examines one role, one task class, its named systems, and a time-bounded access review. It does not certify an organisation’s full identity programme or treat a clean access list as proof that every action was appropriate. The evidence unit is a requested capability paired with an account, permission, use case, expiry or review rule, and owner decision.',
+        'The practical problem in Philippines-based software development is often not distance but ambiguity. A contributor may be able to finish a task only after someone grants a broad role, while the reviewer later cannot tell which privilege was necessary. A useful record separates read, write, deploy, export, administrative, and secret-use capabilities. The developer can explain the minimum action and test with safe fixtures; the security or system owner approves the boundary.'
+      ] },
+      { heading: 'Methodology and public evidence', body: [
+        'Select a representative task such as investigating a reproducible defect, updating a test, or reviewing a release artifact. Inventory the systems touched, the exact operation performed, the account type, the data class exposed, and the result needed. Compare the requested permission with the minimum permission that completes the task. Test a positive case and a negative case using synthetic data. Record whether access is named, logged, time limited, separately approved, and removable without blocking unrelated work.',
+        'Use NIST access-control guidance, the CIS Controls v8 account-management safeguards, and OWASP’s authorization guidance as public evidence lenses. They provide principles for least privilege, accountability, and denial testing; they do not establish that a private control is effective. State provider, identity model, logging coverage, review interval, break-glass exclusions, and any permissions that could not be observed. Never place credentials or customer records in the report.'
+      ] },
+      { heading: 'Interpreting least privilege', body: [
+        'Least privilege is a relationship between an action and a purpose, not a small number of roles on a diagram. A read-only role may still expose sensitive exports; a write role may be harmless in a sandbox and consequential in production. A deploy permission may not be needed to prepare a release, while a log-reading permission may reveal personal data. Map each capability to the decision it enables and the harm if misused. This makes a review meaningful for an offshore developer who is expected to work independently inside a defined lane.',
+        'Negative tests are especially informative. If a contributor can inspect a fixture but cannot export it, alter an approval, retrieve an unrelated secret, or edit production configuration, the boundary is observable. A denied action should produce a reviewable record without encouraging repeated probing against live systems. If a tool collapses many capabilities into one broad role, record that as a control limitation and ask the owner whether a compensating review is sufficient.'
+      ] },
+      { heading: 'Counterevidence and ownership', body: [
+        'An access inventory can be stale, a log can omit data-plane actions, and an identity provider can report a role without revealing inherited permissions. A test account may not match a real account’s group membership. Temporary access can outlive the ticket that justified it. These are not reasons to abandon review; they are reasons to name evidence completeness and residual risk.',
+        'The developer owns the task explanation, safe test, and report of unexpected access. The internal security or system owner decides whether to grant, narrow, expire, revoke, or compensate for a permission. A manager should not resolve a security ambiguity by asking the contributor to “use the admin account just this once.” Emergency authority, if it exists, should be separately named and reviewed.'
+      ] },
+      { heading: 'Limitations and decision boundary', body: [
+        'One task review cannot prove that a role is safe across every repository, environment, region, or data class. Public control frameworks are not evidence that a private audit log captures every event. State which identities, resources, actions, and time periods were inspected, plus what inherited or provider-managed behavior remained unknown.',
+        'Evidence can support a small decision: narrow a role, add a separate read path, expire an exception, improve logging, or require owner approval for a sensitive action. It cannot support a claim that a contributor is trusted with everything because one task completed without incident. A role boundary should be understandable to the next reviewer after the original requester is offline.'
+      ] },
+      { heading: 'Evidence-led conclusion', body: [
+        `Enough access-review evidence is a traceable match between one approved task and the smallest observed capabilities that complete it, including a meaningful denied-action test. ${commonClosing('access-control')}`,
+        'The report should leave an owner with a concrete choice: keep the grant, reduce it, add an expiry, or require a stronger gate. It should also preserve the negative result, because a contributor who cannot access an unrelated secret has evidence of a functioning boundary. Where inheritance or audit coverage is unknown, the conclusion must remain bounded and avoid treating role labels as proof.'
+      ] }
+    ],
+    keyStats: ['One task mapped to named capabilities and data classes', 'Positive and denied-action tests included', 'NIST, CIS, and OWASP authorization guidance reviewed'], takeaways: ['Review actions, not role names.', 'Use safe negative tests.', 'Keep grant authority with the system owner.'], faqs: faq, related, sources: [{ name: 'NIST SP 800-53 Access Control', url: 'https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final' }, { name: 'CIS Controls v8', url: 'https://www.cisecurity.org/controls/v8' }, { name: 'OWASP Authorization Cheat Sheet', url: 'https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html' }]
+  },
+  {
+    slug: 'offshore-developer-browser-compatibility-evidence-research-2026-08-21',
+    title: 'How should an offshore developer prove a browser defect is a release risk?',
+    excerpt: 'A research method for separating browser-specific behavior from fixture, viewport, assistive-technology, and environment noise.', published: '2026-08-21',
+    sections: [
+      { heading: 'Research question and evidence scope', body: [
+        'When a web defect appears in one browser during distributed development, what evidence is enough to call it a release risk rather than a local setup anomaly? The study follows one user-facing path, one browser behavior, and the supported browser policy for the product. It does not rank browsers generally or treat a screenshot as proof of a universal defect. The unit of evidence is a reproducible interaction with a declared viewport, runtime, input method, fixture, expected behavior, and observed behavior.',
+        'A Philippines-based developer may discover the issue outside the reviewer’s working hours. The handoff must therefore preserve more than a visual symptom: it should show the route, browser and version, viewport, locale, network condition, steps, console or accessibility output where relevant, and the smallest reliable reproduction. The contributor can isolate the behavior and propose a fix. The product owner decides supported coverage and release impact.'
+      ] },
+      { heading: 'Methodology and public evidence', body: [
+        'Choose a representative flow such as keyboard navigation, form submission, responsive layout, file selection, or client-side rendering. Run it in the affected browser and one comparison browser using the same fixture, viewport, account state, and network profile. Repeat after a clean build and a fresh session. Classify the result as browser-specific, viewport-specific, timing-dependent, assistive-technology-dependent, data-dependent, or not reproduced. Preserve a short recording or screenshot only when it contains no sensitive data.',
+        'Use the Web Platform Tests project, MDN browser-compatibility data, and WCAG 2.2 as evidence lenses. Standards and compatibility tables help distinguish an unsupported feature from an implementation defect; they cannot prove the private application’s user impact. Record browser engine, version, operating system, device emulation, assistive technology, and excluded combinations. A citation should explain the behavior under test, not decorate an otherwise unsupported claim.'
+      ] },
+      { heading: 'Analysis of release significance', body: [
+        'A defect becomes more significant when it blocks a supported task, affects a meaningful user group, corrupts data, creates an inaccessible state, or cannot be worked around safely. A one-pixel difference in an unsupported viewport may not carry the same release consequence as a submit control that cannot be reached by keyboard in a supported browser. Severity should connect observed behavior to product support and user consequence, not to the contributor’s effort to reproduce it.',
+        'Compare a real failing path with a control path. If a date field fails only under a locale that the product claims to support, the locale is part of the release boundary. If a CSS feature fails only in an obsolete browser outside support, the evidence may justify documentation rather than a code change. If automation passes while a screen reader path fails, the test suite is incomplete evidence, not evidence that the user path is safe.'
+      ] },
+      { heading: 'Counterevidence and role boundary', body: [
+        'Browser automation may use a different font, device scale, network, or accessibility tree than a real user. A screenshot can hide focus order, announcement behavior, or data corruption. A defect that disappears after a clean build may be cache-dependent, while a defect that appears only under throttling may still matter for slow users. State which observations were repeated and which remain hypotheses.',
+        'The developer may add a focused test, improve semantics, create a fallback, or document an unsupported case. The product and accessibility owners decide support policy, severity, release gating, and public communication. Do not silently drop a browser from the matrix or claim accessibility conformance from a single automated result.'
+      ] },
+      { heading: 'Limitations and decision boundary', body: [
+        'A small browser matrix cannot cover every device, extension, zoom setting, operating system, or assistive technology. Public compatibility data changes and may describe a feature rather than a private interaction. State the matrix, repetitions, fixture, build, and untested user paths. Keep not-reproduced separate from fixed and from unsupported.',
+        'The evidence supports a bounded action: fix the interaction, add a regression case, expand the supported matrix, publish a limitation, or hold the release. It does not support calling a release safe because one browser passed or calling the whole product broken because one environment failed. The owner should be able to see why the chosen action matches the supported user promise.'
+      ] },
+      { heading: 'Evidence-led conclusion', body: [
+        `A browser defect is a release risk when a repeatable failure intersects a supported user path and a stated product consequence, with environment variables controlled well enough to challenge the result. ${commonClosing('browser-compatibility')}`,
+        'The strongest distributed handoff names the exact user action, not merely the browser. It preserves a comparison run, expected and observed states, the support policy, and unresolved combinations. This gives the release owner a defensible choice without turning a local screenshot into a universal claim.'
+      ] }
+    ],
+    keyStats: ['One supported user flow compared across affected and control browsers', 'Viewport, locale, input method, and fixture recorded', 'Web Platform Tests, MDN, and WCAG used as evidence lenses'], takeaways: ['Tie severity to the supported user path.', 'Control the environment before concluding.', 'Treat automation as partial evidence.'], faqs: faq, related, sources: [{ name: 'Web Platform Tests', url: 'https://web-platform-tests.org/' }, { name: 'MDN browser compatibility data', url: 'https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Howto/Write_an_effective_compatibility_table' }, { name: 'WCAG 2.2', url: 'https://www.w3.org/TR/WCAG22/' }]
+  },
+  {
+    slug: 'offshore-developer-feature-flag-expiry-evidence-research-2026-08-21',
+    title: 'When does a feature flag become operational debt for an offshore developer?',
+    excerpt: 'Research on flag ownership, exposure evidence, and the decision boundary for removing temporary release controls.', published: '2026-08-21',
+    sections: [
+      { heading: 'Research question and evidence scope', body: [
+        'When does a feature flag stop reducing release risk and start creating operational debt in a distributed software team? This study examines one flag, its intended experiment or rollout, the code paths it controls, and the evidence available for removal. It does not claim that every flag should have the same lifetime or that a flag count alone measures engineering quality. The unit of analysis is a flag-to-behavior relationship with a named owner, exposure rule, success condition, fallback, and removal decision.',
+        'For offshore development, a flag can outlive the engineer who introduced it and become difficult to interpret during a handoff. A contributor may be able to trace branches, add tests, and document observed exposure. The product owner decides whether the behavior is accepted, whether rollout is complete, and whether removing the flag changes the customer promise. That authority should not be inferred from a green CI run.'
+      ] },
+      { heading: 'Methodology and public evidence', body: [
+        'Inventory the flag definition, default, targeting rules, environments, owners, code references, metrics, experiment hypothesis, and planned expiry. Exercise each reachable branch with synthetic identities and record the resulting behavior. Search authorized code and configuration sources for stale references, then compare the observed exposure with the declared audience. Measure whether the fallback still works and whether removing the flag leaves one intended path or changes a hidden dependency.',
+        'Use Martin Fowler’s feature-toggle guidance, the LaunchDarkly feature-flag best-practices material, and NIST SSDF verification guidance as evidence lenses. They explain categories, lifecycle concerns, and verification discipline; they do not determine the private flag’s business owner or customer impact. State provider, evaluation context, cached values, rollout period, test coverage, and references that were not searchable.'
+      ] },
+      { heading: 'Interpreting expiry and risk', body: [
+        'A flag is not debt merely because it is old. Age is a prompt to inspect whether the original decision still exists. A temporary release flag may be removable after a stable rollout; an operational kill switch may be intentionally permanent but require regular rehearsal; an experiment flag may need analysis before any cleanup. The risk grows when no one can state the intended behavior, when branches receive unequal testing, or when a stale default silently governs an unobserved environment.',
+        'A removal experiment should compare behavior before and after in a controlled environment. Record analytics, error signals, permissions, cache behavior, and rollback path. If the flag gates a schema or API change, test old and new consumers rather than treating code deletion as cleanup. In asynchronous work, the evidence must make the decision recoverable by someone who did not attend the original launch discussion.'
+      ] },
+      { heading: 'Counterevidence and role boundary', body: [
+        'A code search may miss remote configuration, generated code, templates, or a client that evaluates the flag outside the main repository. Analytics may be noisy or absent. A default value can be overridden by an environment or cached SDK response. Record these unknowns, because a clean local branch is not proof that exposure is understood.',
+        'The developer may remove dead branches, add a regression test, improve ownership metadata, or propose a staged cleanup. The product or service owner decides the intended behavior, customer risk, experiment interpretation, and whether a kill switch must remain. Do not delete an emergency control because it has not fired.'
+      ] },
+      { heading: 'Limitations and decision boundary', body: [
+        'One flag review cannot establish the health of a feature-management programme. Public lifecycle advice does not reveal the private configuration plane. State the environments, targets, code references, observations, and owner interviews or records used. If exposure cannot be reconciled, classify the flag as unknown rather than safe to remove.',
+        'Evidence supports a bounded action: remove a completed rollout, assign an owner, add expiry and review, convert a temporary flag into a documented kill switch, or hold cleanup. It does not support a blanket age threshold or a claim that fewer flags always means better delivery.'
+      ] },
+      { heading: 'Evidence-led conclusion', body: [
+        `A feature flag becomes operational debt when its controlled behavior, owner, exposure, or removal condition can no longer be stated and tested with confidence. ${commonClosing('feature-flag')}`,
+        'The useful outcome is a small, explicit decision: what behavior remains, which branch is removed, who approves it, and what signal would reverse it. That makes cleanup reviewable across time zones and keeps a developer from silently deciding a product or incident-control question.'
+      ] }
+    ],
+    keyStats: ['One flag traced from targeting rules to controlled code paths', 'Exposure, fallback, owner, and removal conditions recorded', 'Feature-toggle, provider, and secure-development guidance compared'], takeaways: ['Age prompts review; it does not prove debt.', 'Trace remote evaluation as well as code.', 'Keep kill-switch authority with the owner.'], faqs: faq, related, sources: [{ name: 'Martin Fowler: Feature Toggles', url: 'https://martinfowler.com/articles/feature-toggles.html' }, { name: 'LaunchDarkly flag best practices', url: 'https://launchdarkly.com/docs/guides/flags/best-practices' }, { name: 'NIST Secure Software Development Framework', url: 'https://csrc.nist.gov/pubs/sp/800/218/final' }]
+  },
+  {
+    slug: 'offshore-developer-requirement-ambiguity-evidence-research-2026-08-21',
+    title: 'How can an offshore developer show that a requirement is ambiguous before coding?',
+    excerpt: 'A research method for separating missing acceptance evidence from implementation uncertainty in distributed delivery.', published: '2026-08-21',
+    sections: [
+      { heading: 'Research question and evidence scope', body: [
+        'What evidence shows that a software requirement is ambiguous before an offshore developer begins implementation, rather than merely difficult to build? The study examines one proposed change, its intended user or system outcome, examples, exceptions, dependencies, and acceptance decision. It does not score writing style or assume that every unanswered question blocks work. The unit of analysis is an observable requirement claim paired with an expected result, boundary condition, and accountable decision owner.',
+        'In a distributed team, ambiguity is expensive when a contributor spends a workday implementing an interpretation that a reviewer cannot accept. The developer can identify conflicting examples, missing states, and assumptions; the product or technical owner decides which interpretation is correct. A good research record distinguishes a question that can be answered by inspection from a question that changes product policy or risk.'
+      ] },
+      { heading: 'Methodology and public evidence', body: [
+        'Select a real but bounded change and ask a second reader, unfamiliar with the original conversation, to predict the expected behavior from the written brief alone. Give both readers the same examples, fixtures, interface contracts, and constraints. Record divergent predictions, unresolved terms, missing error behavior, role permissions, timing assumptions, and dependencies. Then classify each gap as missing context, conflicting requirement, unavailable evidence, or owner decision. The experiment measures interpretability of the brief, not the developer’s intelligence.',
+        'Use the ISO/IEC/IEEE 29148 requirements-engineering overview, the IREB glossary and requirements guidance, and Google’s engineering code-review practices as evidence lenses. These sources help separate validation, ambiguity, and reviewability; they cannot decide the private product’s intended behavior. State the participant roles, artifact version, examples supplied, time limit, and what domain knowledge was intentionally withheld.'
+      ] },
+      { heading: 'Analysis of ambiguity', body: [
+        'A requirement can be syntactically clear and still operationally ambiguous. “Show recent orders” leaves recency, timezone, cancelled orders, pagination, and empty state unresolved. “Allow managers to edit” leaves identity source, field permissions, audit expectations, and concurrency behavior open. A developer may reasonably ask questions, but the evidence should show whether the answer changes implementation, acceptance, security, or only wording. That classification keeps a team from treating every question as an emergency blocker.',
+        'Examples are strong evidence only when they cover representative and boundary cases. A single happy-path example can conceal whether duplicate submissions are idempotent, whether a missing dependency should fail closed, or whether a user without permission sees an error or an empty result. Compare predicted behavior with the owner’s decision and preserve the mismatch. The goal is not to eliminate all uncertainty before coding; it is to expose decision-changing uncertainty early.'
+      ] },
+      { heading: 'Counterevidence and role boundary', body: [
+        'A replay by one reader may be affected by vocabulary, prior product knowledge, or a deliberately incomplete brief. Some requirements are intentionally discovered through prototypes or research. A question asked late does not prove that the original brief was negligent, and a question asked early does not prove that delivery cannot start. Record the boundary and the reason for proceeding when uncertainty is accepted.',
+        'The developer owns the assumptions, focused questions, prototype evidence, and implementation notes. The product owner owns user behavior and priority; the technical owner owns architecture and system constraints; the security owner owns sensitive boundaries. A contributor should not silently turn a guessed interpretation into a public promise or an access decision.'
+      ] },
+      { heading: 'Limitations and decision boundary', body: [
+        'One requirement replay cannot measure all future handoffs or prove that a brief will remain current as the system changes. Public standards provide vocabulary, not local context. State the artifact version, readers, examples, and decisions not covered. Keep “understood enough to start” separate from “fully specified.”',
+        'Evidence supports a bounded action: add an acceptance example, resolve a conflict, name an owner, create a safe spike, split the change, or proceed with a recorded assumption. It does not support adding exhaustive prose to every ticket or blaming a time zone for an unresolved product decision.'
+      ] },
+      { heading: 'Evidence-led conclusion', body: [
+        `A requirement is demonstrably ambiguous before coding when independent readers predict materially different outcomes or cannot identify who decides a boundary that changes implementation or risk. ${commonClosing('requirements-clarity')}`,
+        'The evidence-led handoff should make the smallest next move obvious: answer one question, add one fixture, test one boundary, or escalate one decision. That gives the offshore developer autonomy inside a clear lane without pretending that a well-written sentence transfers product authority.'
+      ] }
+    ],
+    keyStats: ['Independent reader replay used to expose divergent predictions', 'Gaps classified as context, conflict, evidence, or owner decision', 'Requirements and review guidance compared'], takeaways: ['Test interpretation before implementation.', 'Separate blockers from discoverable questions.', 'Name the owner of every decision-changing ambiguity.'], faqs: faq, related, sources: [{ name: 'ISO/IEC/IEEE 29148 requirements engineering', url: 'https://www.iso.org/standard/72089.html' }, { name: 'IREB glossary', url: 'https://www.ireb.org/en/downloads/#glossary' }, { name: 'Google Engineering Practices: code review', url: 'https://google.github.io/eng-practices/review/' }]
+  },
+  {
+    slug: 'offshore-developer-webhook-replay-evidence-research-2026-08-21',
+    title: 'What evidence shows that webhook replay is safe for distributed software delivery?',
+    excerpt: 'A bounded investigation of signature checks, duplicate delivery, ordering, and recovery ownership at an integration boundary.', published: '2026-08-21',
+    sections: [
+      { heading: 'Research question and evidence scope', body: [
+        'When an external webhook is delivered again after a timeout or failed acknowledgement, what evidence shows that replay is safe rather than a source of duplicate state changes? The study follows one event type, one receiver, its authentication rule, idempotency behavior, retry schedule, and downstream effect. It does not certify every vendor integration or assume that a valid signature means the business action is safe. The unit of analysis is a signed event moving through receipt, verification, deduplication, processing, acknowledgement, and recovery.',
+        'For a Philippines-based developer, webhook work often crosses a boundary that cannot be observed continuously from the contributor’s shift. A durable handoff records the event schema, delivery identifier, timestamp tolerance, receiver response, side effect, and safe replay result. The developer can implement and test the receiver; the integration or product owner decides which external events are trusted, which actions are reversible, and who owns a failed delivery.'
+      ] },
+      { heading: 'Methodology and public evidence', body: [
+        'Create synthetic events for valid, altered, expired, duplicated, reordered, malformed, and unsupported payloads. Exercise the receiver with a stable delivery identifier and repeat the same event after success, timeout, partial processing, and consumer restart. Record whether signature verification, timestamp checks, deduplication, transaction boundaries, and acknowledgement occur in the intended order. Compare the resulting state, not just the HTTP status. Keep secrets out of fixtures and use a test endpoint or provider sandbox where possible.',
+        'Use the Stripe webhook documentation, RFC 9421 HTTP Message Signatures, and OWASP’s webhook security guidance as evidence lenses. They inform signature, replay, and boundary questions; they cannot prove the private integration’s authorization or business reversibility. State the signing scheme, clock tolerance, retry behavior, event retention, test environment, and provider behavior that was simulated rather than observed.'
+      ] },
+      { heading: 'Analysis of replay safety', body: [
+        'Replay safety depends on the side effect. Writing the same notification twice may be tolerable; charging an account, provisioning access, or advancing an order may not be. A receiver that records an event after performing the effect can still duplicate work if it crashes between those operations. A transactional outbox, idempotency key, unique constraint, or compensating action may provide a stronger boundary, but the evidence must show the actual ordering and failure behavior.',
+        'A valid signature authenticates the message source under the declared scheme; it does not guarantee freshness, intended audience, correct event ordering, or safe business interpretation. Test an authentic old payload, a valid event for a different object, and a duplicate with a changed body if the provider’s identifiers make that possible in the sandbox. These cases show whether the receiver separates identity, integrity, freshness, and authorization rather than treating them as one check.'
+      ] },
+      { heading: 'Counterevidence and role boundary', body: [
+        'A sandbox may not reproduce provider retries, clock skew, network termination, proxy buffering, or concurrent delivery. A unique database constraint may prevent duplicates while leaving an event permanently unprocessed. A replay tool may bypass the provider’s real signing and delivery headers. State which failures were injected locally and which remain unknown.',
+        'The developer may add a verification test, idempotency record, structured event log, or replay-safe recovery command. The integration owner decides trust, data use, compensation, manual replay, customer communication, and production enablement. The contributor should not replay live events or bypass verification to recover an integration without explicit authority.'
+      ] },
+      { heading: 'Limitations and decision boundary', body: [
+        'One event type cannot establish safety for all payloads or downstream actions. Public provider documentation may omit private retry details, and a passing sandbox does not prove production ordering. State the event versions, fixtures, injected failures, storage behavior, observation window, and external assumptions.',
+        'The evidence supports a bounded choice: add idempotency, retain an event for review, implement a compensating action, document manual recovery, or hold the integration. It does not support treating a 2xx response, a signature check, or a single successful replay as proof of business safety.'
+      ] },
+      { heading: 'Evidence-led conclusion', body: [
+        `Webhook replay is supported by evidence when authenticated duplicate deliveries produce a known, bounded state transition under tested failure points and an owner can recover the unresolved cases. ${commonClosing('webhook-reliability')}`,
+        'The handoff should preserve event identity, verification result, processing state, side effect, and next action. That record lets a distributed reviewer distinguish a safe duplicate from a repeated charge or permission change. Where the provider or downstream system remains unobserved, the conclusion should mark the boundary instead of implying integration-wide safety.'
+      ] }
+    ],
+    keyStats: ['Duplicate, altered, expired, and reordered events tested', 'Authentication separated from freshness, identity, and side-effect safety', 'Provider, HTTP-signature, and webhook-security guidance reviewed'], takeaways: ['Test state transitions, not only status codes.', 'Make duplicate delivery explicit.', 'Keep replay authority with the integration owner.'], faqs: faq, related, sources: [{ name: 'Stripe webhook signatures', url: 'https://docs.stripe.com/webhooks/signature' }, { name: 'RFC 9421 HTTP Message Signatures', url: 'https://www.rfc-editor.org/rfc/rfc9421' }, { name: 'OWASP Webhook Security Guidelines', url: 'https://cheatsheetseries.owasp.org/cheatsheets/Webhook_Security_Guidelines_Cheat_Sheet.html' }]
+  }
+];
+
+// The webhook study remains an authored reserve in this source file; this campaign exposes exactly five records.
+export const august21ResearchBatch: readonly ResearchPost[] = august21ResearchBatchAll.slice(0, 5);
+
+export const august21ResearchManifest = august21ResearchBatch.map((post) => ({ slug: post.slug, route: `/research/${post.slug}`, sourcePaths: ['app/aug21-research-batch.ts'], sourceDate: '2026-08-21', sourceDateField: 'published' }));

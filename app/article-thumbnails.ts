@@ -1,6 +1,11 @@
 export type ArticleKind = 'blog' | 'research' | 'alternatives';
 
 const RESEARCH_HEROES: Record<string, string> = {
+  'offshore-developer-queue-backpressure-evidence-research-2026-08-21': '/research-heroes/2026-08-21/queue-backpressure.png',
+  'offshore-developer-access-review-evidence-research-2026-08-21': '/research-heroes/2026-08-21/access-review.png',
+  'offshore-developer-browser-compatibility-evidence-research-2026-08-21': '/research-heroes/2026-08-21/browser-compatibility.png',
+  'offshore-developer-feature-flag-expiry-evidence-research-2026-08-21': '/research-heroes/2026-08-21/feature-flag-expiry.png',
+  'offshore-developer-requirement-ambiguity-evidence-research-2026-08-21': '/research-heroes/2026-08-21/requirement-ambiguity.png',
   'offshore-developer-api-contract-drift-research-2026-08-20': '/research-heroes/2026-08-20/api-contract-drift.png',
   'offshore-developer-database-migration-reversal-research-2026-08-20': '/research-heroes/2026-08-20/database-migration.png',
   'offshore-developer-async-handoff-assumption-research-2026-08-20': '/research-heroes/2026-08-20/async-handoff.png',
