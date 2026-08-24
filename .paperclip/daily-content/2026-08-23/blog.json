@@ -1,0 +1,18 @@
+{
+  "campaignDate": "2026-08-23",
+  "family": "blog",
+  "entries": [
+    {"route":"/blog/offshore-developer-acceptance-criteria-workshop-2026-08-23","sourcePaths":["app/aug23-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-frontend-accessibility-audit-2026-08-23","sourcePaths":["app/aug23-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-cache-invalidation-review-2026-08-23","sourcePaths":["app/aug23-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-background-job-retry-policy-2026-08-23","sourcePaths":["app/aug23-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-logging-privacy-redaction-2026-08-23","sourcePaths":["app/aug23-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-release-rollback-drill-2026-08-23","sourcePaths":["app/aug23-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-graphql-nullability-change-2026-08-23","sourcePaths":["app/aug23-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-tenant-data-export-review-2026-08-23","sourcePaths":["app/aug23-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-mobile-release-device-matrix-2026-08-23","sourcePaths":["app/aug23-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-incident-timeline-reconstruction-2026-08-23","sourcePaths":["app/aug23-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-feature-estimation-range-2026-08-23","sourcePaths":["app/aug23-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-secret-rotation-handoff-2026-08-23","sourcePaths":["app/aug23-blog-batch.ts"]}
+  ]
+}

@@ -14,6 +14,18 @@ const RESEARCH_HEROES: Record<string, string> = {
 };
 
 const BLOG_HEROES: Record<string, string> = {
+  'offshore-developer-acceptance-criteria-workshop-2026-08-23': '/blog-heroes/2026-08-23/acceptance-criteria-workshop.png',
+  'offshore-developer-frontend-accessibility-audit-2026-08-23': '/blog-heroes/2026-08-23/frontend-accessibility-audit.png',
+  'offshore-developer-cache-invalidation-review-2026-08-23': '/blog-heroes/2026-08-23/cache-invalidation-review.png',
+  'offshore-developer-background-job-retry-policy-2026-08-23': '/blog-heroes/2026-08-23/background-job-retry-policy.png',
+  'offshore-developer-logging-privacy-redaction-2026-08-23': '/blog-heroes/2026-08-23/logging-privacy-redaction.png',
+  'offshore-developer-release-rollback-drill-2026-08-23': '/blog-heroes/2026-08-23/release-rollback-drill.png',
+  'offshore-developer-graphql-nullability-change-2026-08-23': '/blog-heroes/2026-08-23/graphql-nullability-change.png',
+  'offshore-developer-tenant-data-export-review-2026-08-23': '/blog-heroes/2026-08-23/tenant-data-export-review.png',
+  'offshore-developer-mobile-release-device-matrix-2026-08-23': '/blog-heroes/2026-08-23/mobile-release-device-matrix.png',
+  'offshore-developer-incident-timeline-reconstruction-2026-08-23': '/blog-heroes/2026-08-23/incident-timeline-reconstruction.png',
+  'offshore-developer-feature-estimation-range-2026-08-23': '/blog-heroes/2026-08-23/feature-estimation-range.png',
+  'offshore-developer-secret-rotation-handoff-2026-08-23': '/blog-heroes/2026-08-23/secret-rotation-handoff.png',
   'offshore-developer-database-migration-safety-2026-08-21': '/blog-heroes/2026-08-21/database-migration-safety.png',
   'offshore-developer-observability-runbook-2026-08-21': '/blog-heroes/2026-08-21/observability-runbook.png',
   'offshore-developer-design-system-handoff-2026-08-21': '/blog-heroes/2026-08-21/design-system-handoff.png',

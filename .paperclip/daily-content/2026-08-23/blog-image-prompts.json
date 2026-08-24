@@ -1,0 +1,18 @@
+{
+  "campaignDate":"2026-08-23",
+  "generator":"imagegen",
+  "prompts":[
+    "Editorial wide hero image for an article about offshore developer acceptance criteria: a software team reviewing a clear ticket and acceptance examples on a large screen, dark developer-console palette, no readable text, no logos, no watermark.",
+    "Editorial wide hero image for an article about offshore frontend accessibility audit: keyboard, focus ring, semantic interface review at a laptop, dark developer-console palette, no readable text, no logos, no watermark.",
+    "Editorial wide hero image for an article about cache invalidation: layered application cache and data refresh concept represented with glowing cards and arrows, dark developer-console palette, no readable text, no logos, no watermark.",
+    "Editorial wide hero image for an article about background job retry policy: queue workers, retry lanes, and a dead-letter path represented as a clean technical scene, dark developer-console palette, no readable text, no logos, no watermark.",
+    "Editorial wide hero image for an article about privacy-aware log redaction: structured log fields with sensitive values visually masked before transport, dark developer-console palette, no readable text, no logos, no watermark.",
+    "Editorial wide hero image for an article about a release rollback drill: release pipeline and safe recovery path on a monitoring wall, dark developer-console palette, no readable text, no logos, no watermark.",
+    "Editorial wide hero image for an article about GraphQL nullability: connected API schema nodes with optional and required data paths, dark developer-console palette, no readable text, no logos, no watermark.",
+    "Editorial wide hero image for an article about tenant data export review: two separated data vaults and a protected export package, dark developer-console palette, no readable text, no logos, no watermark.",
+    "Editorial wide hero image for an article about a mobile release device matrix: several phones showing the same app state under different test conditions, dark developer-console palette, no readable text, no logos, no watermark.",
+    "Editorial wide hero image for an article about incident timeline reconstruction: timeline markers, logs, alerts, and a change record arranged on a dark operations board, no readable text, no logos, no watermark.",
+    "Editorial wide hero image for an article about feature estimation ranges: backlog cards, dependency lines, and a bounded planning range, dark developer-console palette, no readable text, no logos, no watermark.",
+    "Editorial wide hero image for an article about secure secret rotation handoff: abstract key rotation and application connection nodes, dark developer-console palette, no readable text, no logos, no watermark."
+  ]
+}
