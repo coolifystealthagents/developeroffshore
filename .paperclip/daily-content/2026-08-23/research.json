@@ -1,0 +1,12 @@
+{
+  "campaignDate": "2026-08-23",
+  "family": "research",
+  "entries": [
+    {"slug":"offshore-developer-review-queue-aging-evidence-research-2026-08-23","route":"/research/offshore-developer-review-queue-aging-evidence-research-2026-08-23","sourcePaths":["app/aug23-research-batch.ts"]},
+    {"slug":"offshore-developer-utc-midnight-date-boundary-research-2026-08-23","route":"/research/offshore-developer-utc-midnight-date-boundary-research-2026-08-23","sourcePaths":["app/aug23-research-batch.ts"]},
+    {"slug":"offshore-developer-read-model-freshness-evidence-research-2026-08-23","route":"/research/offshore-developer-read-model-freshness-evidence-research-2026-08-23","sourcePaths":["app/aug23-research-batch.ts"]},
+    {"slug":"offshore-developer-third-party-sdk-upgrade-evidence-research-2026-08-23","route":"/research/offshore-developer-third-party-sdk-upgrade-evidence-research-2026-08-23","sourcePaths":["app/aug23-research-batch.ts"]},
+    {"slug":"offshore-developer-privacy-safe-test-fixture-research-2026-08-23","route":"/research/offshore-developer-privacy-safe-test-fixture-research-2026-08-23","sourcePaths":["app/aug23-research-batch.ts"]}
+  ],
+  "imageGeneration": {"status":"blocked","provider":"Gemini","reason":"Gemini image generation is unavailable in the execution workspace; text-complete fallback used and no stock or replacement image was added."}
+}
