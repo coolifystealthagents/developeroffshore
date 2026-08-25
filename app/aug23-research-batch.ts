@@ -8,10 +8,10 @@ const faq = (topic: string) => [
 
 export const august23ResearchBatch: readonly ResearchPost[] = [
   {
-    slug: 'offshore-developer-review-queue-aging-evidence-research-2026-08-23',
+    slug: 'offshore-developer-review-queue-aging-evidence-research-2026-08-24',
     title: 'When does an offshore developer review queue become a delivery risk?',
     excerpt: 'A research method for separating ordinary review waiting time from evidence that a distributed engineering queue is hiding change risk.',
-    published: '2026-08-23',
+    published: '2026-08-24',
     sections: [
       { heading: 'Research question and evidence scope', body: [
         'When does an open pull request become a delivery risk for a Philippines-based developer rather than simply an item waiting in a reviewer’s queue? This study follows a bounded sample of changes from ready-for-review to first useful review, revision, approval, and merge. It examines age, size, dependency on a particular owner, unanswered questions, and the consequence of delay. It does not assume that faster approval is better: a careful security review can legitimately take longer than a low-risk copy change.',
@@ -43,10 +43,10 @@ export const august23ResearchBatch: readonly ResearchPost[] = [
     takeaways: ['Age alone is not risk.', 'Make waiting reasons and owners explicit.', 'Keep approval and prioritization with internal owners.'], faqs: faq('review queue'), related,
   },
   {
-    slug: 'offshore-developer-utc-midnight-date-boundary-research-2026-08-23',
+    slug: 'offshore-developer-utc-midnight-date-boundary-research-2026-08-24',
     title: 'How should an offshore developer test date boundaries in a global application?',
     excerpt: 'An evidence-led investigation of timezone, calendar, and persistence assumptions before a distributed team changes date-sensitive software.',
-    published: '2026-08-23',
+    published: '2026-08-24',
     sections: [
       { heading: 'Research question and evidence scope', body: [
         'What evidence shows that a date-sensitive feature behaves consistently when a Philippines-based developer and a buyer-side team work across different clocks? The study follows one user-visible date from input through storage, API transport, rendering, notification, and reporting. It concentrates on midnight boundaries, daylight-saving changes where relevant, locale formatting, and users who move between regions. It does not claim that one timezone policy fits every product.',
@@ -78,10 +78,10 @@ export const august23ResearchBatch: readonly ResearchPost[] = [
     keyStats: ['Instant and calendar-date semantics tested separately', 'Midnight, locale, and offset-transition fixtures defined', 'Storage and rendering boundaries traced end to end'], takeaways: ['Classify the date before choosing representation.', 'Test user and server zones together.', 'Do not silently rewrite historical meaning.'], faqs: faq('date boundary'), related,
   },
   {
-    slug: 'offshore-developer-read-model-freshness-evidence-research-2026-08-23',
+    slug: 'offshore-developer-read-model-freshness-evidence-research-2026-08-24',
     title: 'What evidence is enough to call a distributed read model fresh?',
     excerpt: 'A bounded research method for measuring source-to-view lag, stale reads, and recovery ownership in developer-led application work.',
-    published: '2026-08-23',
+    published: '2026-08-24',
     sections: [
       { heading: 'Research question and evidence scope', body: [
         'What evidence is enough to call a read model fresh for a user action, rather than merely recently updated? This study follows one write through its source of truth, event or change feed, projection worker, index, cache, and user-facing query. It asks how freshness is defined, observed, and recovered when a Philippines-based developer works on one side of a handoff and the internal owner reviews the result later.',
@@ -114,10 +114,10 @@ export const august23ResearchBatch: readonly ResearchPost[] = [
     keyStats: ['Write-to-read path traced with correlation evidence', 'Lag distributions separated from correctness checks', 'Replay and repair ownership made explicit'], takeaways: ['Freshness is relative to a user decision.', 'Measure tails and failure modes.', 'Keep replay authority with the owner.'], faqs: faq('read-model freshness'), related,
   },
   {
-    slug: 'offshore-developer-third-party-sdk-upgrade-evidence-research-2026-08-23',
+    slug: 'offshore-developer-third-party-sdk-upgrade-evidence-research-2026-08-24',
     title: 'How can an offshore developer show that a third-party SDK upgrade is safe?',
     excerpt: 'A research design for separating dependency compatibility evidence from unsupported confidence when an integration library changes.',
-    published: '2026-08-23',
+    published: '2026-08-24',
     sections: [
       { heading: 'Research question and evidence scope', body: [
         'What evidence shows that a third-party SDK upgrade preserves the application behavior that an offshore developer is assigned to maintain? The study follows one dependency from declared version and transitive graph through build, initialization, representative calls, error handling, telemetry, and rollback. It does not treat a successful install as compatibility proof or a release note as a substitute for application evidence.',
@@ -150,10 +150,10 @@ export const august23ResearchBatch: readonly ResearchPost[] = [
     keyStats: ['Current and candidate dependency graphs recorded', 'Positive, negative, timeout, and recovery fixtures compared', 'Vendor, security, and rollback boundaries separated'], takeaways: ['Test application behavior, not only installation.', 'Treat release semantics as a clue, not proof.', 'Separate compatibility from approval.'], faqs: faq('SDK upgrade'), related,
   },
   {
-    slug: 'offshore-developer-privacy-safe-test-fixture-research-2026-08-23',
+    slug: 'offshore-developer-privacy-safe-test-fixture-research-2026-08-24',
     title: 'What makes a test fixture safe enough for an offshore developer to use?',
     excerpt: 'A practical research question about synthetic data, re-identification risk, and repeatable fixtures for distributed software delivery.',
-    published: '2026-08-23',
+    published: '2026-08-24',
     sections: [
       { heading: 'Research question and evidence scope', body: [
         'What evidence shows that a test fixture is safe enough for a Philippines-based developer to use without exposing real customer information? The study follows a fixture from creation and storage through developer access, test execution, logs, screenshots, cleanup, and reuse. It asks whether the data is synthetic, whether combinations could identify a person, and whether the fixture contains more detail than the test needs. It does not claim that a label such as "dummy" proves safety.',
@@ -186,4 +186,4 @@ export const august23ResearchBatch: readonly ResearchPost[] = [
   },
 ];
 
-export const august23ResearchManifest = august23ResearchBatch.map((post) => ({ slug: post.slug, route: `/research/${post.slug}`, sourcePaths: ['app/aug23-research-batch.ts'], sourceDate: '2026-08-23', sourceDateField: 'published' }));
+export const august23ResearchManifest = august23ResearchBatch.map((post) => ({ slug: post.slug, route: `/research/${post.slug}`, sourcePaths: ['app/aug23-research-batch.ts'], sourceDate: '2026-08-24', sourceDateField: 'published' }));
