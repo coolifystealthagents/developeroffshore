@@ -8,6 +8,7 @@ import { august19BlogBatch } from './aug19-blog-batch';
 import { august20BlogBatch } from './aug20-blog-batch';
 import { august21BlogBatch } from './aug21-blog-batch';
 import { august23BlogBatch } from './aug23-blog-batch';
+import { august31BlogBatch } from './aug31-blog-batch';
 
 export const site = {
   "domain": "DeveloperOffshore.com",
@@ -447,6 +448,7 @@ const dailyBlogBatch20260810Additional: BlogPost[] = additionalDailyTopics202608
 }));
 
 export const blogPosts: BlogPost[] = [
+  ...august31BlogBatch,
   ...august23BlogBatch,
   ...august21BlogBatch,
   ...august20BlogBatch,

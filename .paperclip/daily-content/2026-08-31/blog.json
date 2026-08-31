@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "targetDate": "2026-08-31",
+  "family": "blog",
+  "entries": [
+    {
+      "slug": "offshore-developer-contract-test-ownership-2026-08-31",
+      "route": "/blog/offshore-developer-contract-test-ownership-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-blog-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "datePublished"
+    },
+    {
+      "slug": "offshore-developer-monorepo-change-boundary-2026-08-31",
+      "route": "/blog/offshore-developer-monorepo-change-boundary-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-blog-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "datePublished"
+    },
+    {
+      "slug": "offshore-developer-webhook-replay-investigation-2026-08-31",
+      "route": "/blog/offshore-developer-webhook-replay-investigation-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-blog-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "datePublished"
+    },
+    {
+      "slug": "offshore-developer-search-index-rebuild-2026-08-31",
+      "route": "/blog/offshore-developer-search-index-rebuild-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-blog-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "datePublished"
+    },
+    {
+      "slug": "offshore-developer-css-regression-triage-2026-08-31",
+      "route": "/blog/offshore-developer-css-regression-triage-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-blog-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "datePublished"
+    },
+    {
+      "slug": "offshore-developer-oauth-callback-debugging-2026-08-31",
+      "route": "/blog/offshore-developer-oauth-callback-debugging-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-blog-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "datePublished"
+    },
+    {
+      "slug": "offshore-developer-message-schema-evolution-2026-08-31",
+      "route": "/blog/offshore-developer-message-schema-evolution-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-blog-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "datePublished"
+    },
+    {
+      "slug": "offshore-developer-data-import-quarantine-2026-08-31",
+      "route": "/blog/offshore-developer-data-import-quarantine-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-blog-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "datePublished"
+    },
+    {
+      "slug": "offshore-developer-dependency-license-review-2026-08-31",
+      "route": "/blog/offshore-developer-dependency-license-review-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-blog-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "datePublished"
+    },
+    {
+      "slug": "offshore-developer-mobile-deep-link-test-2026-08-31",
+      "route": "/blog/offshore-developer-mobile-deep-link-test-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-blog-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "datePublished"
+    },
+    {
+      "slug": "offshore-developer-database-connection-pool-2026-08-31",
+      "route": "/blog/offshore-developer-database-connection-pool-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-blog-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "datePublished"
+    },
+    {
+      "slug": "offshore-developer-localization-key-migration-2026-08-31",
+      "route": "/blog/offshore-developer-localization-key-migration-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-blog-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "datePublished"
+    }
+  ]
+}

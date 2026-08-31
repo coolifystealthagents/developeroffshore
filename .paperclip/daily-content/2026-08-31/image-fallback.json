@@ -1,0 +1,25 @@
+{
+  "provider": "Gemini",
+  "status": "unavailable",
+  "reason": "No Gemini image-generation tool or credential is configured in this execution environment.",
+  "fallback": "Existing deterministic route imagery retained as authorized by the baseline contract.",
+  "routes": [
+    "/blog/offshore-developer-contract-test-ownership-2026-08-31",
+    "/blog/offshore-developer-monorepo-change-boundary-2026-08-31",
+    "/blog/offshore-developer-webhook-replay-investigation-2026-08-31",
+    "/blog/offshore-developer-search-index-rebuild-2026-08-31",
+    "/blog/offshore-developer-css-regression-triage-2026-08-31",
+    "/blog/offshore-developer-oauth-callback-debugging-2026-08-31",
+    "/blog/offshore-developer-message-schema-evolution-2026-08-31",
+    "/blog/offshore-developer-data-import-quarantine-2026-08-31",
+    "/blog/offshore-developer-dependency-license-review-2026-08-31",
+    "/blog/offshore-developer-mobile-deep-link-test-2026-08-31",
+    "/blog/offshore-developer-database-connection-pool-2026-08-31",
+    "/blog/offshore-developer-localization-key-migration-2026-08-31",
+    "/research/offshore-developer-flaky-test-quarantine-research-2026-08-31",
+    "/research/offshore-developer-build-cache-trust-research-2026-08-31",
+    "/research/offshore-developer-api-rate-limit-simulation-research-2026-08-31",
+    "/research/offshore-developer-configuration-drift-research-2026-08-31",
+    "/research/offshore-developer-error-budget-handoff-research-2026-08-31"
+  ]
+}

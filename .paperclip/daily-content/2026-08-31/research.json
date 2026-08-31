@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "targetDate": "2026-08-31",
+  "family": "research",
+  "entries": [
+    {
+      "slug": "offshore-developer-flaky-test-quarantine-research-2026-08-31",
+      "route": "/research/offshore-developer-flaky-test-quarantine-research-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-research-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "published"
+    },
+    {
+      "slug": "offshore-developer-build-cache-trust-research-2026-08-31",
+      "route": "/research/offshore-developer-build-cache-trust-research-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-research-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "published"
+    },
+    {
+      "slug": "offshore-developer-api-rate-limit-simulation-research-2026-08-31",
+      "route": "/research/offshore-developer-api-rate-limit-simulation-research-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-research-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "published"
+    },
+    {
+      "slug": "offshore-developer-configuration-drift-research-2026-08-31",
+      "route": "/research/offshore-developer-configuration-drift-research-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-research-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "published"
+    },
+    {
+      "slug": "offshore-developer-error-budget-handoff-research-2026-08-31",
+      "route": "/research/offshore-developer-error-budget-handoff-research-2026-08-31",
+      "sourcePaths": [
+        "app/aug31-research-batch.ts"
+      ],
+      "sourceDate": "2026-08-31",
+      "sourceDateField": "published"
+    }
+  ]
+}
