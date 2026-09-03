@@ -1,0 +1,19 @@
+{
+  "campaignDate": "2026-09-03",
+  "generator": "built-in imagegen",
+  "style": "wide dark technical 3D editorial illustration; navy with cyan accents; no readable text, logos, or watermark",
+  "receipts": [
+    {"route":"/blog/offshore-developer-api-timeout-budget-2026-09-03","image":"public/blog-heroes/2026-09-03/api-timeout-budget.png","prompt":"API timeout budget across gateway, service, database, and external API, shown as connected timing lanes."},
+    {"route":"/blog/offshore-developer-database-lock-contention-2026-09-03","image":"public/blog-heroes/2026-09-03/database-lock-contention.png","prompt":"Database lock contention with two transaction paths converging on locked records."},
+    {"route":"/blog/offshore-developer-react-hydration-mismatch-2026-09-03","image":"public/blog-heroes/2026-09-03/react-hydration-mismatch.png","prompt":"Server and browser React interfaces with one subtle hydration state divergence."},
+    {"route":"/blog/offshore-developer-email-bounce-webhook-2026-09-03","image":"public/blog-heroes/2026-09-03/email-bounce-webhook.png","prompt":"Email bounce webhook events moving through validation into suppression state."},
+    {"route":"/blog/offshore-developer-cron-timezone-boundary-2026-09-03","image":"public/blog-heroes/2026-09-03/cron-timezone-boundary.png","prompt":"Timezone-safe cron schedule across UTC and local civil time with a repeated clock hour."},
+    {"route":"/blog/offshore-developer-object-storage-lifecycle-2026-09-03","image":"public/blog-heroes/2026-09-03/object-storage-lifecycle.png","prompt":"Object storage lifecycle through active, archived, restored, and deletion-eligible states."},
+    {"route":"/blog/offshore-developer-dependency-canary-update-2026-09-03","image":"public/blog-heroes/2026-09-03/dependency-canary-update.png","prompt":"A representative application lane testing a dependency update before expansion."},
+    {"route":"/blog/offshore-developer-websocket-reconnect-state-2026-09-03","image":"public/blog-heroes/2026-09-03/websocket-reconnect-state.png","prompt":"A live dashboard recovering missed WebSocket events through an event cursor."},
+    {"route":"/blog/offshore-developer-csv-formula-injection-2026-09-03","image":"public/blog-heroes/2026-09-03/csv-formula-injection.png","prompt":"CSV cells passing through protective encoding before spreadsheet download."},
+    {"route":"/blog/offshore-developer-session-fixation-defense-2026-09-03","image":"public/blog-heroes/2026-09-03/session-fixation-defense.png","prompt":"A browser session identifier rotating at login while the earlier token becomes invalid."},
+    {"route":"/blog/offshore-developer-browser-storage-migration-2026-09-03","image":"public/blog-heroes/2026-09-03/browser-storage-migration.png","prompt":"Two browser tabs on old and new storage schemas with safe migration recovery."},
+    {"route":"/blog/offshore-developer-graphql-query-cost-2026-09-03","image":"public/blog-heroes/2026-09-03/graphql-query-cost.png","prompt":"A shallow GraphQL query branching into expensive resolver paths before a cost boundary."}
+  ]
+}

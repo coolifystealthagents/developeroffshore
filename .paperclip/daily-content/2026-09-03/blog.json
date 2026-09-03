@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "targetDate": "2026-09-03",
+  "family": "blog",
+  "entries": [
+    {"route":"/blog/offshore-developer-api-timeout-budget-2026-09-03","sourcePaths":["app/sep03-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-database-lock-contention-2026-09-03","sourcePaths":["app/sep03-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-react-hydration-mismatch-2026-09-03","sourcePaths":["app/sep03-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-email-bounce-webhook-2026-09-03","sourcePaths":["app/sep03-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-cron-timezone-boundary-2026-09-03","sourcePaths":["app/sep03-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-object-storage-lifecycle-2026-09-03","sourcePaths":["app/sep03-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-dependency-canary-update-2026-09-03","sourcePaths":["app/sep03-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-websocket-reconnect-state-2026-09-03","sourcePaths":["app/sep03-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-csv-formula-injection-2026-09-03","sourcePaths":["app/sep03-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-session-fixation-defense-2026-09-03","sourcePaths":["app/sep03-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-browser-storage-migration-2026-09-03","sourcePaths":["app/sep03-blog-batch.ts"]},
+    {"route":"/blog/offshore-developer-graphql-query-cost-2026-09-03","sourcePaths":["app/sep03-blog-batch.ts"]}
+  ]
+}
