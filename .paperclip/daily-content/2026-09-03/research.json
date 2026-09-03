@@ -1,0 +1,7 @@
+[
+  {"route":"/research/offshore-developer-container-image-identity-study-2026-09-03","sourcePaths":["app/sep03-research-correction-batch.ts"],"imagePath":"public/research-heroes/2026-09-03/container-image-identity.png","promptReceipt":".paperclip/daily-content/2026-09-03/research-image-prompts.json"},
+  {"route":"/research/offshore-developer-database-connection-pressure-study-2026-09-03","sourcePaths":["app/sep03-research-correction-batch.ts"],"imagePath":"public/research-heroes/2026-09-03/database-connection-pressure.png","promptReceipt":".paperclip/daily-content/2026-09-03/research-image-prompts.json"},
+  {"route":"/research/offshore-developer-webhook-causal-order-study-2026-09-03","sourcePaths":["app/sep03-research-correction-batch.ts"],"imagePath":"public/research-heroes/2026-09-03/webhook-causal-order.png","promptReceipt":".paperclip/daily-content/2026-09-03/research-image-prompts.json"},
+  {"route":"/research/offshore-developer-react-hydration-divergence-study-2026-09-03","sourcePaths":["app/sep03-research-correction-batch.ts"],"imagePath":"public/research-heroes/2026-09-03/react-hydration-divergence.png","promptReceipt":".paperclip/daily-content/2026-09-03/research-image-prompts.json"},
+  {"route":"/research/offshore-developer-trace-sampling-blind-spot-study-2026-09-03","sourcePaths":["app/sep03-research-correction-batch.ts"],"imagePath":"public/research-heroes/2026-09-03/trace-sampling-blind-spot.png","promptReceipt":".paperclip/daily-content/2026-09-03/research-image-prompts.json"}
+]

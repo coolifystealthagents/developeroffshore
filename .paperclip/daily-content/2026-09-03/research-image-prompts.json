@@ -1,0 +1,11 @@
+{
+  "generator":"built-in image generation tool",
+  "generatedAt":"2026-09-03",
+  "receipts":[
+    {"route":"/research/offshore-developer-container-image-identity-study-2026-09-03","imagePath":"public/research-heroes/2026-09-03/container-image-identity.png","prompt":"Editorial isometric technical illustration of source revision, build artifact, immutable registry digest, admission verification, and running container workload; dark navy, cyan and restrained amber; no text, logo, watermark, people, or stock imagery."},
+    {"route":"/research/offshore-developer-database-connection-pressure-study-2026-09-03","imagePath":"public/research-heroes/2026-09-03/database-connection-pressure.png","prompt":"Dimensional data illustration of incoming requests, a bounded connection pool, waiting work, and a database under contention; indigo, teal and coral; no text, logo, watermark, people, or dashboard screenshot."},
+    {"route":"/research/offshore-developer-webhook-causal-order-study-2026-09-03","imagePath":"public/research-heroes/2026-09-03/webhook-causal-order.png","prompt":"Isometric systems illustration of webhook event cards arriving out of order through looping paths into a guarded receiver and reconciled ledger; violet, aqua and orange; no text, logo, watermark, people, or payment brands."},
+    {"route":"/research/offshore-developer-react-hydration-divergence-study-2026-09-03","imagePath":"public/research-heroes/2026-09-03/react-hydration-divergence.png","prompt":"Dimensional editorial comparison of server and client document layers with one structural node misaligned beneath a comparison lens; navy, cyan and magenta; no text, logo, watermark, people, or code."},
+    {"route":"/research/offshore-developer-trace-sampling-blind-spot-study-2026-09-03","imagePath":"public/research-heroes/2026-09-03/trace-sampling-blind-spot.png","prompt":"Abstract observability illustration of many request paths entering a sampler, retained luminous traces, and a failed red path falling into a gap; charcoal navy, cyan, green and restrained red; no text, logo, watermark, people, or dashboard."}
+  ]
+}

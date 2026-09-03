@@ -8,7 +8,7 @@ import { august23ResearchBatch } from './aug23-research-batch';
 import { august31ResearchBatch } from './aug31-research-batch';
 import { september1ResearchBatch } from './sep01-research-batch';
 import { september2ResearchBatch } from './sep02-research-batch';
-import { august23ResearchEvidenceBatch } from './aug23-research-evidence-batch';
+import { september3ResearchCorrectionBatch } from './sep03-research-correction-batch';
 
 export const fleetServices: readonly FleetService[] = [
   { slug: 'next-js-application-development', title: 'Next.js Application Development', desc: 'Build a Philippines-based next.js application development workflow with documented responsibilities, access limits, and manager review.', tasks: ['Document the recurring software development work', 'Complete approved tasks in the client workflow', 'Record exceptions and next actions'], controls: ['Use named accounts and limited permissions', 'Follow written approval and escalation rules', 'Review work with a client-side owner'], firstWeek: ['Confirm scope and working hours', 'Practice with representative examples', 'Review the first completed work together'] },
@@ -220,7 +220,7 @@ const legacyResearchPosts: readonly ResearchPost[] = dailyResearchTopics.map(([s
   ],
   sources: sourceDate === '2026-08-17' ? aug17ResearchDetails[slug].sources.map((sourceIndex) => ({ name: sourceBank[sourceIndex][0], url: sourceBank[sourceIndex][1] })) : sourceBank.map(([name, url]) => ({ name, url })),
 }));
-export const researchPosts: readonly ResearchPost[] = [...september2ResearchBatch, ...september1ResearchBatch, ...august31ResearchBatch, ...august23ResearchEvidenceBatch, ...august23ResearchBatch, ...august21ResearchBatch, ...august20ResearchBatch, ...august19ResearchBatch, ...august18ResearchBatch, ...legacyResearchPosts];
+export const researchPosts: readonly ResearchPost[] = [...september2ResearchBatch, ...september1ResearchBatch, ...august31ResearchBatch, ...september3ResearchCorrectionBatch, ...august23ResearchBatch, ...august21ResearchBatch, ...august20ResearchBatch, ...august19ResearchBatch, ...august18ResearchBatch, ...legacyResearchPosts];
 export const postsPerPage = 23;
 const isFrozenAugust10Batch = (slug: string, date: string) => date === '2026-08-10' && /-(?:r2|run2)$/.test(slug);
 export const compareNewestBatchFirst = (a: {slug: string}, b: {slug: string}, dateA: string, dateB: string) => {

@@ -6,12 +6,12 @@ const related = [
   { title: 'Daily developer guides', href: '/blog' },
 ] as const;
 
-export const august23ResearchEvidenceBatch: readonly ResearchPost[] = [
+export const september3ResearchCorrectionBatch: readonly ResearchPost[] = [
   {
-    slug: 'offshore-developer-container-image-identity-study-2026-08-23',
+    slug: 'offshore-developer-container-image-identity-study-2026-09-03',
     title: 'Can a deployment prove which container image it runs?',
     excerpt: 'A source-backed study of image tags, immutable digests, provenance checks, and the evidence an offshore developer can prepare without owning production admission policy.',
-    published: '2026-08-23',
+    published: '2026-09-03',
     keyStats: ['1 deployment revision is the unit of analysis', '3 independent evidence layers: build, registry, and runtime', '4 failure cases tested before an image identity claim is accepted'],
     takeaways: ['A mutable tag is a label, not proof of image identity.', 'Join the source revision, built digest, admitted digest, and running workload.', 'Keep production admission exceptions with the internal platform or security owner.'],
     sections: [
@@ -34,7 +34,7 @@ export const august23ResearchEvidenceBatch: readonly ResearchPost[] = [
     faqs: [{ question: 'Does an image digest prove the source code was reviewed?', answer: 'No. It fixes artifact identity, but the team still needs trusted build provenance linking that artifact to a reviewed source revision.' }, { question: 'What may an offshore developer own?', answer: 'The developer may prepare and test evidence collection. A client-side platform or security owner should retain production trust policy, admission exceptions, and release approval.' }], related,
   },
   {
-    slug: 'offshore-developer-database-connection-pressure-study-2026-08-23', title: 'When is a database connection pool hiding saturation?', published: '2026-08-23',
+    slug: 'offshore-developer-database-connection-pressure-study-2026-09-03', title: 'When is a database connection pool hiding saturation?', published: '2026-09-03',
     excerpt: 'Research on distinguishing healthy pooling from queued demand, leaked connections, and database saturation in an asynchronously managed application.',
     keyStats: ['1 request path observed from caller to database', '5 linked signals: demand, wait, use, rejection, and recovery', '2 load shapes compared: steady traffic and a bounded burst'],
     takeaways: ['Pool utilization without wait time can hide user delay.', 'Increasing a pool can move contention into the database.', 'The database owner retains authority over capacity and production limits.'],
@@ -53,7 +53,7 @@ export const august23ResearchEvidenceBatch: readonly ResearchPost[] = [
     faqs: [{ question: 'Is a full connection pool always unhealthy?', answer: 'No. It becomes concerning when linked evidence shows harmful wait, refusal, deadline loss, database contention, or poor recovery.' }, { question: 'Who should change production connection limits?', answer: 'The authorized database owner, after reviewing the application evidence and effects on every workload sharing the server.' }], related,
   },
   {
-    slug: 'offshore-developer-webhook-causal-order-study-2026-08-23', title: 'Can webhook consumers rely on delivery order?', published: '2026-08-23',
+    slug: 'offshore-developer-webhook-causal-order-study-2026-09-03', title: 'Can webhook consumers rely on delivery order?', published: '2026-09-03',
     excerpt: 'An evidence-led examination of retries, duplicates, causal order, and state reconciliation for webhook work shared across time zones.',
     keyStats: ['1 business entity supplies the causal boundary', '6 delivery permutations exercise order, duplication, and delay', '3 clocks kept separate: provider, receiver, and business version'],
     takeaways: ['Arrival time is not the same as business order.', 'Idempotency prevents some duplicate effects but does not order distinct events.', 'Product owners decide conflict policy; developers implement and test it.'],
@@ -72,7 +72,7 @@ export const august23ResearchEvidenceBatch: readonly ResearchPost[] = [
     faqs: [{ question: 'Does an idempotency key guarantee correct ordering?', answer: 'No. It can suppress a repeated identity, but distinct events still need a documented causal or reconciliation rule.' }, { question: 'May a developer replay failed production events?', answer: 'Only under the organization’s explicit access and approval rules because replay can repeat external side effects.' }], related,
   },
   {
-    slug: 'offshore-developer-react-hydration-divergence-study-2026-08-23', title: 'What evidence explains a React hydration mismatch?', published: '2026-08-23',
+    slug: 'offshore-developer-react-hydration-divergence-study-2026-09-03', title: 'What evidence explains a React hydration mismatch?', published: '2026-09-03',
     excerpt: 'Research on reproducing server-client HTML divergence without reducing every hydration warning to one familiar cause.',
     keyStats: ['2 render outputs compared before interaction', '5 variable classes isolated one at a time', '1 user journey supplies the acceptance boundary'],
     takeaways: ['Capture server HTML and first client render under the same inputs.', 'A suppressed warning removes a signal, not the divergence.', 'Frontend owners decide acceptable rendering and fallback behavior.'],
@@ -91,7 +91,7 @@ export const august23ResearchEvidenceBatch: readonly ResearchPost[] = [
     faqs: [{ question: 'Does suppressHydrationWarning fix a mismatch?', answer: 'No. It suppresses a warning for a limited case; the team must still understand and accept the divergent output.' }, { question: 'What should a reviewer request?', answer: 'A fixed-input reproduction, the server and first-client outputs, the exact divergent node, user-impact checks, and a regression test.' }], related,
   },
   {
-    slug: 'offshore-developer-trace-sampling-blind-spot-study-2026-08-23', title: 'When does trace sampling hide the failure under review?', published: '2026-08-23',
+    slug: 'offshore-developer-trace-sampling-blind-spot-study-2026-09-03', title: 'When does trace sampling hide the failure under review?', published: '2026-09-03',
     excerpt: 'A methodology for testing whether distributed-tracing samples represent slow, failed, and cross-service requests well enough for an engineering decision.',
     keyStats: ['1 declared request cohort anchors the study', '4 outcome groups compared against retained traces', '2 sampling stages inspected: head and downstream or tail decisions'],
     takeaways: ['A representative trace count needs an eligible-request denominator.', 'Head sampling can miss outcomes unknown at request start.', 'Observability owners retain decisions about production telemetry and privacy.'],
