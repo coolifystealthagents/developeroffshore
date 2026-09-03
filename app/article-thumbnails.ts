@@ -1,6 +1,11 @@
 export type ArticleKind = 'blog' | 'research' | 'alternatives';
 
 const RESEARCH_HEROES: Record<string, string> = {
+  'offshore-developer-container-image-identity-study-2026-08-23': '/research-heroes/2026-08-23/container-image-identity.png',
+  'offshore-developer-database-connection-pressure-study-2026-08-23': '/research-heroes/2026-08-23/database-connection-pressure.png',
+  'offshore-developer-webhook-causal-order-study-2026-08-23': '/research-heroes/2026-08-23/webhook-causal-order.png',
+  'offshore-developer-react-hydration-divergence-study-2026-08-23': '/research-heroes/2026-08-23/react-hydration-divergence.png',
+  'offshore-developer-trace-sampling-blind-spot-study-2026-08-23': '/research-heroes/2026-08-23/trace-sampling-blind-spot.png',
   'offshore-developer-queue-backpressure-evidence-research-2026-08-21': '/research-heroes/2026-08-21/queue-backpressure.png',
   'offshore-developer-access-review-evidence-research-2026-08-21': '/research-heroes/2026-08-21/access-review.png',
   'offshore-developer-browser-compatibility-evidence-research-2026-08-21': '/research-heroes/2026-08-21/browser-compatibility.png',
