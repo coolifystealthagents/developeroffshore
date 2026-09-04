@@ -1,6 +1,11 @@
 export type ArticleKind = 'blog' | 'research' | 'alternatives';
 
 const RESEARCH_HEROES: Record<string, string> = {
+  'offshore-developer-cache-stampede-study-2026-09-04': '/research-heroes/2026-09-03/database-connection-pressure.png',
+  'offshore-developer-token-refresh-rotation-study-2026-09-04': '/research-heroes/2026-09-03/container-image-identity.png',
+  'offshore-developer-cdn-cache-variant-study-2026-09-04': '/research-heroes/2026-09-03/react-hydration-divergence.png',
+  'offshore-developer-outbox-delivery-study-2026-09-04': '/research-heroes/2026-09-03/webhook-causal-order.png',
+  'offshore-developer-clock-skew-expiry-study-2026-09-04': '/research-heroes/2026-09-03/trace-sampling-blind-spot.png',
   'offshore-developer-container-image-identity-study-2026-09-03': '/research-heroes/2026-09-03/container-image-identity.png',
   'offshore-developer-database-connection-pressure-study-2026-09-03': '/research-heroes/2026-09-03/database-connection-pressure.png',
   'offshore-developer-webhook-causal-order-study-2026-09-03': '/research-heroes/2026-09-03/webhook-causal-order.png',
@@ -19,6 +24,18 @@ const RESEARCH_HEROES: Record<string, string> = {
 };
 
 const BLOG_HEROES: Record<string, string> = {
+  'offshore-developer-api-version-sunset-2026-09-04': '/blog-heroes/2026-09-03/api-timeout-budget.png',
+  'offshore-developer-message-queue-poison-record-2026-09-04': '/blog-heroes/2026-09-03/database-lock-contention.png',
+  'offshore-developer-multipart-upload-recovery-2026-09-04': '/blog-heroes/2026-09-03/object-storage-lifecycle.png',
+  'offshore-developer-search-index-cutover-2026-09-04': '/blog-heroes/2026-09-03/dependency-canary-update.png',
+  'offshore-developer-mobile-deep-link-routing-2026-09-04': '/blog-heroes/2026-09-03/react-hydration-mismatch.png',
+  'offshore-developer-database-read-replica-lag-2026-09-04': '/blog-heroes/2026-09-03/database-lock-contention.png',
+  'offshore-developer-csp-report-triage-2026-09-04': '/blog-heroes/2026-09-03/csv-formula-injection.png',
+  'offshore-developer-cache-key-tenant-isolation-2026-09-04': '/blog-heroes/2026-09-03/session-fixation-defense.png',
+  'offshore-developer-feature-flag-percentage-rollout-2026-09-04': '/blog-heroes/2026-09-03/dependency-canary-update.png',
+  'offshore-developer-password-reset-race-2026-09-04': '/blog-heroes/2026-09-03/session-fixation-defense.png',
+  'offshore-developer-serverless-cold-start-2026-09-04': '/blog-heroes/2026-09-03/api-timeout-budget.png',
+  'offshore-developer-audit-event-schema-evolution-2026-09-04': '/blog-heroes/2026-09-03/graphql-query-cost.png',
   'offshore-developer-api-timeout-budget-2026-09-03': '/blog-heroes/2026-09-03/api-timeout-budget.png',
   'offshore-developer-database-lock-contention-2026-09-03': '/blog-heroes/2026-09-03/database-lock-contention.png',
   'offshore-developer-react-hydration-mismatch-2026-09-03': '/blog-heroes/2026-09-03/react-hydration-mismatch.png',
