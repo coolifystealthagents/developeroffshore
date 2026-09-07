@@ -1,0 +1,41 @@
+import type { BlogPost } from './data';
+
+const topics = [
+  ['offshore-developer-http-range-request-validation-2026-09-07','Test HTTP range requests before shipping large-file downloads','teams serving videos, archives, or generated exports','whether partial responses honor valid byte ranges and reject malformed ones','request headers, response status, Content-Range, payload hashes, and cache behavior','a suffix range arrives after an intermediary has cached the full response'],
+  ['offshore-developer-dns-failover-rehearsal-2026-09-07','Rehearse DNS failover without guessing at recovery time','platform teams preparing a service failover','when resolvers and clients actually stop using the old endpoint','TTL values, resolver answers, connection logs, health signals, and rollback timestamps','a long-lived client keeps its existing connection after DNS changes'],
+  ['offshore-developer-optimistic-lock-conflict-2026-09-07','Make optimistic-lock conflicts useful to the user','product teams protecting records from lost updates','what a user sees when two editors save different versions','record versions, competing payloads, conflict responses, and retry outcomes','an automatic retry silently replaces a field changed by the other editor'],
+  ['offshore-developer-file-upload-mime-validation-2026-09-07','Check file uploads beyond the MIME label','applications accepting documents or images','how the upload path identifies type, size, and unsafe content without trusting one signal','declared type, file signature, parser result, storage key, and rejection log','a renamed executable carries an allowed filename extension'],
+  ['offshore-developer-pagination-cursor-expiry-2026-09-07','Define what happens when a pagination cursor expires','API teams paging through changing datasets','whether an old cursor fails clearly or resumes without gaps and duplicates','cursor age, query fingerprint, item IDs, sort keys, and error response','new records land ahead of the cursor between page requests'],
+  ['offshore-developer-webhook-signature-key-rotation-2026-09-07','Rotate webhook signing keys without dropping valid events','integration teams changing shared signing secrets','how the receiver handles the overlap between old and new keys','key identifiers, signature results, delivery timestamps, replay checks, and retirement time','a delayed delivery signed with the old key arrives near the cutoff'],
+  ['offshore-developer-feature-permission-cache-2026-09-07','Keep permission caches from outliving revoked access','SaaS teams caching authorization decisions','how quickly a revoked role stops authorizing protected actions','policy version, cache key, revocation time, denied requests, and invalidation events','an active session moves between workers with different cache state'],
+  ['offshore-developer-background-job-cancellation-2026-09-07','Give long-running background jobs a real cancel path','teams running imports, exports, or batch updates','where cancellation becomes final and which partial effects remain','job state, checkpoints, side effects, cancel requests, and cleanup results','cancellation arrives while an external side effect is in flight'],
+  ['offshore-developer-localization-placeholder-review-2026-09-07','Catch broken placeholders before a translation release','frontend teams shipping localized messages','whether every locale preserves the variables and markup expected by the caller','message keys, placeholder sets, rendered fixtures, locale fallback, and screenshots','a translator changes the order of variables in a pluralized sentence'],
+  ['offshore-developer-soft-delete-restore-flow-2026-09-07','Audit a soft-delete restore flow end to end','application teams retaining recoverable records','which relationships, indexes, and permissions return with a restored record','deletion markers, child records, search results, audit events, and access checks','a unique value is claimed by a new record before the old one is restored'],
+  ['offshore-developer-rate-limit-partitioning-2026-09-07','Test whether rate limits separate the right callers','API owners protecting shared capacity','which identity, tenant, route, and network signals define a quota bucket','bucket keys, counters, reset times, response headers, and denied requests','many legitimate users share one outbound IP address'],
+  ['offshore-developer-graceful-shutdown-drain-2026-09-07','Prove a service drains work before shutdown','platform teams deploying request and worker processes','whether accepted requests finish while new work moves elsewhere','termination signals, readiness state, active work, connection results, and timeout logs','a streaming response is still open when the grace period ends'],
+] as const;
+
+export const september7BlogBatch: readonly BlogPost[] = topics.map(([slug,title,audience,decision,evidence,edge], index) => ({
+  slug,
+  title,
+  excerpt: `A practical review for ${audience}, built around one awkward case and evidence the next shift can check.`,
+  minutes: 9 + (index % 3),
+  datePublished: '2026-09-07',
+  dateModified: '2026-09-07',
+  revision: `daily-blog-2026-09-07-${slug}`,
+  keyTakeaways: [`Write down ${decision}.`, `Capture ${evidence}.`, `Exercise the boundary case: ${edge}.`],
+  sections: [
+    {heading:'Name the decision before opening the code',body:[`This assignment suits ${audience}. The brief should say ${decision}. Pin the repository revision, test environment, data constraints, reviewer, and stop condition. That keeps the investigation useful without handing production authority to the developer.`]},
+    {heading:'Reproduce the ordinary path once',body:[`Start with a synthetic case that should pass. Record ${evidence}. A clean baseline matters because a surprising boundary result is hard to interpret when the normal path is already unstable.`]},
+    {heading:'Make the uncomfortable case explicit',body:[`Now test this case: ${edge}. Change one input at a time. Preserve the exact request, state transition, observed result, and timestamp so a reviewer can distinguish product behavior from a fixture mistake.`]},
+    {heading:'Fix the smallest responsible surface',body:[`Trace the result to the narrowest code or configuration boundary that explains it. Add a regression check close to that boundary, then repeat the user-facing path. Document any nearby path you deliberately left alone.`]},
+    {heading:'Keep access and release decisions internal',body:[`An offshore developer can prepare fixtures, investigate, implement a bounded correction, and package the evidence. Internal owners approve sensitive access, architecture exceptions, irreversible data changes, incident communications, and production release.`]},
+    {heading:'Leave a handoff another shift can replay',body:[`Close with the starting and ending revisions, fixtures, commands, passed and skipped checks, logs or screenshots, limitations, rollback notes, and named reviewer. State precisely what the work showed about ${decision}.`]},
+  ],
+  table:{title:'Acceptance record',columns:['Check','Evidence to retain','Decision owner'],rows:[['Baseline',evidence,'Developer and reviewer'],['Boundary',edge,'System owner'],['Release','Regression result and rollback note','Internal release owner']]},
+  relatedLinks:[{label:'Developer services',href:'/services',note:'Choose a bounded delivery lane.'},{label:'Research library',href:'/research',note:'Use source-backed test methods.'},{label:'Contact',href:'/contact-us',note:'Discuss the first outcome and review owner.'}],
+  faqs:[{question:'Can the offshore developer run this review?',answer:'Yes, with synthetic data, scoped access, a fixed revision, and a named reviewer.'},{question:'Who decides whether to release?',answer:'The accountable internal owner accepts the evidence, residual risk, and production change.'}],
+  sources:index % 2 === 0
+    ? [{name:'MDN HTTP documentation',url:'https://developer.mozilla.org/en-US/docs/Web/HTTP'},{name:'OWASP Web Security Testing Guide',url:'https://owasp.org/www-project-web-security-testing-guide/'}]
+    : [{name:'Google Site Reliability Engineering',url:'https://sre.google/sre-book/table-of-contents/'},{name:'NIST Secure Software Development Framework',url:'https://csrc.nist.gov/pubs/sp/800/218/final'}],
+}));
