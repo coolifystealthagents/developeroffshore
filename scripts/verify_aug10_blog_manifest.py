@@ -27,7 +27,7 @@ def main() -> None:
     paginated_index_source = (ROOT / "app/blog/page/[page]/page.tsx").read_text()
     sitemap = (ROOT / ".next/server/app/sitemap.xml.body").read_text() if (ROOT / ".next/server/app/sitemap.xml.body").exists() else ""
     assert "datePublished: post.datePublished" in route_source
-    assert "Published {post.datePublished}" in route_source
+    assert "Published {formatPublicationDate(post.datePublished)}" in route_source
     assert "import { compareNewestBatchFirst, postsPerPage } from '../fleet-data'" in index_source
     assert "compareNewestBatchFirst(a, b, a.datePublished ?? '', b.datePublished ?? '')" in index_source
     assert "compareNewestBatchFirst(a,b,a.datePublished??'',b.datePublished??'')" in paginated_index_source
