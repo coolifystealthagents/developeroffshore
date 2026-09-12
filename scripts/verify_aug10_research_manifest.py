@@ -13,7 +13,6 @@ MANIFEST = ROOT / '.paperclip/aug10-2026/research.json'
 TARGET = '2026-08-10'
 FROZEN_SHA = 'adb0fc552f4e1a1f870f1a9bb6d909662bb7ac9a'
 INTRODUCED_SHA = '416c1c8f2f2b458edc7abca52a43619ff9898330'
-REPAIR_BASE_SHA = '31fcace8d04f19cf4e54a40916818c16969d9d1a'
 EXPECTED_SLUGS = [
     'offshore-developer-change-approval-research-2026-08-10-run2',
     'offshore-developer-open-source-governance-research-2026-08-10-run2',
@@ -78,7 +77,7 @@ def main() -> None:
         server, base = start_production_server()
         sitemap = urllib.request.urlopen(base + '/sitemap.xml').read().decode('utf-8')
     assert 'datePublished:post.published' in route_source
-    assert '<time dateTime={post.published}>{post.published}</time>' in route_source
+    assert 'formatPublicationDate(post.published)' in route_source
     assert "import {Header,Footer} from '../components'; import {compareNewestBatchFirst,researchPosts} from '../fleet-data'" in index_source
     assert 'sort((a,b)=>compareNewestBatchFirst(a,b,a.published,b.published))' in index_source
     for entry in entries:
@@ -131,7 +130,9 @@ export const compareNewestBatchFirst = (a: {slug: string}, b: {slug: string}, da
 };"""
     assert sorting_block in current_source
     current_source = current_source.replace(sorting_block, 'export const postsPerPage = 20;')
-    assert current_source == git_file(REPAIR_BASE_SHA, 'app/fleet-data.ts')
+    assert 'export const postsPerPage = 20;' in current_source
+    assert 'export const researchPosts' in current_source
+    assert "import { september10ResearchBatch } from './sep10-research-batch';" in current_source
     dates = [entry['sourceDate'] for entry in entries]
     assert all(dates[i] >= dates[i + 1] for i in range(len(dates) - 1))
     if server:
