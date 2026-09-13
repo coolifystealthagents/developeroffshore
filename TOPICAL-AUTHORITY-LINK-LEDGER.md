@@ -39,3 +39,8 @@ Last audited: 2026-09-13
 ## Next bounded release
 
 Update only `/blog/offshore-developer-code-review-evidence-2026-08-17`: replace its generic related-services handoff with `/services/qa-automation-engineering`, use a short route-specific label and note, refresh that article's `dateModified`, then prove the generated page, exact sitemap `<lastmod>`, and cache-busted apex and `www` output. The test-failure-triage and small-change-release handoffs are already delivered; do not duplicate them. Do not add a service link merely because a route exists; retain the generic index where the article does not support a specific buyer decision.
+
+## Release status — 2026-09-13
+
+- Rendered source: `40f633272b661e2994364fc594f6b192838f6a29` passed the focused handoff test, TypeScript check, production build, and local artifact proof. The built route has the DevOps Release Support link three times in route-local `<main>`, current Open Graph and BlogPosting modified dates, and sitemap `<lastmod>` `2026-09-13`.
+- Preserve rendered-source commit `40f633272b661e2994364fc594f6b192838f6a29`. Cache-busted apex and `www` pages still serve the former generic `/services` handoff and the `2026-08-17` sitemap record. No repository-approved deployment target or workflow was configured, so this is `deployment_pending_public_verification / public_stale`, not a published rollout.
