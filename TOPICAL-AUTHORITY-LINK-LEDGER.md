@@ -1,6 +1,6 @@
 # Developer Offshore topical-authority link ledger
 
-Last audited: 2026-08-26
+Last audited: 2026-09-13
 
 ## Scope and source of truth
 
@@ -30,7 +30,7 @@ Last audited: 2026-08-26
 | Priority | Supporting route | Confirmed destination | Why this is the reader's next question | Current link state |
 | --- | --- | --- | --- | --- |
 | 1 | `/blog/offshore-developer-test-failure-triage-2026-08-17` | `/services/qa-automation-engineering` | A reader sorting a code, runner, or flaky-test failure needs to know whether a QA lane can own repeatable evidence and handoff. | Delivered: the route-local related guide uses the specific service. Do not add another CTA. |
-| 2 | `/blog/offshore-developer-small-change-release-2026-08-17` | `/services/devops-release-support` | The article asks for a release owner, recovery evidence, and a rollback step, which matches release-support scope. | The article currently links only to the generic `/services` index. |
+| 2 | `/blog/offshore-developer-small-change-release-2026-08-17` | `/services/devops-release-support` | The article asks for a release owner, recovery evidence, and a rollback step, which matches release-support scope. | Delivered locally on 2026-09-13: the route-owned guide now names DevOps Release Support. Do not add another CTA. |
 | 3 | `/blog/offshore-developer-code-review-evidence-2026-08-17` | `/services/qa-automation-engineering` | The guide centers on repeatable checks and inspected proof rather than general staffing discovery. | The article currently links only to the generic `/services` index. |
 | 4 | `/research/offshore-developer-review-latency-research-2026-08-17` | `/services/devops-release-support` | The research asks teams to protect review capacity and establish escalation, which can lead to a scoped release-support conversation. | Research pages currently link to library and blog routes but no confirmed service route. |
 | 5 | `/research/offshore-developer-accessibility-defect-research-2026-08-17` | `/services/react-frontend-development` | The report deals with keyboard and assistive-technology defects in frontend journeys. | Research pages currently link to library and blog routes but no confirmed service route. |
@@ -38,4 +38,4 @@ Last audited: 2026-08-26
 
 ## Next bounded release
 
-Update only `/blog/offshore-developer-small-change-release-2026-08-17`: replace its generic related-services handoff with `/services/devops-release-support`, use a short route-specific label and note, refresh that article's `dateModified`, then prove the generated page, exact sitemap `<lastmod>`, and cache-busted apex and `www` output. The test-failure-triage handoff is already delivered; do not duplicate it. Do not add a service link merely because a route exists; retain the generic index where the article does not support a specific buyer decision.
+Update only `/blog/offshore-developer-code-review-evidence-2026-08-17`: replace its generic related-services handoff with `/services/qa-automation-engineering`, use a short route-specific label and note, refresh that article's `dateModified`, then prove the generated page, exact sitemap `<lastmod>`, and cache-busted apex and `www` output. The test-failure-triage and small-change-release handoffs are already delivered; do not duplicate them. Do not add a service link merely because a route exists; retain the generic index where the article does not support a specific buyer decision.
