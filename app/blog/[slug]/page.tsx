@@ -30,7 +30,7 @@ const defaultBanners = [
   },
   {
     label: 'Talk through the role',
-    href: '/contact-us',
+    href: '/contact',
     note: 'Share the stack, first outcome, schedule, and review owner. A staffing specialist can use that detail to discuss candidate fit.',
   },
 ] as const;
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const url = `${baseUrl}/blog/${post.slug}`;
   const thumbnail = articleThumbnail('blog', post.slug, post.title);
   return {
-    title: { absolute: `${post.title} | ${site.brand}` },
+    title: { absolute: post.title },
     description: post.excerpt,
     alternates: { canonical: url },
     openGraph: {
@@ -250,7 +250,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
             <p className="eyebrow">{site.brand} guide</p>
             <h1>{post.title}</h1>
             <p className="lead">{post.excerpt}</p><div className='blog-standards-strip' aria-label='Article standards'><span>Source-backed guidance</span><span>Contextual internal links</span><span>Top, middle, and bottom CTAs</span></div>
-            <img className="article-featured-image" src={thumbnail.src} alt={thumbnail.alt}/>
+            <img className="article-featured-image" src={thumbnail.src} alt={thumbnail.alt} width={thumbnail.width} height={thumbnail.height}/>
             {post.datePublished ? <p className="article-date">Published {formatPublicationDate(post.datePublished)}</p> : null}
           </header>
 
@@ -297,7 +297,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                 </section>
               ) : null}
               <ArticleBanner index={2} post={post} />
-              <aside className='article-rotation-banner article-rotation-banner-middle' data-article-banner='true'><p className='eyebrow'>Midpoint planning check</p><h2>Compare providers against one written workflow</h2><p className='article-banner-note'>Use one task lane, one reviewer, and one quality check so each provider conversation is easier to judge.</p><a className='btn' href='/contact-us'>Contact Us</a></aside>{post.sources?.length ? (
+              <aside className='article-rotation-banner article-rotation-banner-middle' data-article-banner='true'><p className='eyebrow'>Midpoint planning check</p><h2>Compare providers against one written workflow</h2><p className='article-banner-note'>Use one task lane, one reviewer, and one quality check so each provider conversation is easier to judge.</p><a className='btn' href='/contact'>Contact Us</a></aside>{post.sources?.length ? (
                 <section className="article-panel sources-card">
                   <h2>Sources</h2>
                   <ol>{post.sources.map((source) => <li key={source.url}><a href={source.url}>{source.name}</a>{source.note ? `: ${source.note}` : ''}</li>)}</ol>

@@ -33,7 +33,7 @@ export const september7BlogBatch: readonly BlogPost[] = topics.map(([slug,title,
     {heading:'Leave a handoff another shift can replay',body:[`Close with the starting and ending revisions, fixtures, commands, passed and skipped checks, logs or screenshots, limitations, rollback notes, and named reviewer. State precisely what the work showed about ${decision}.`]},
   ],
   table:{title:'Acceptance record',columns:['Check','Evidence to retain','Decision owner'],rows:[['Baseline',evidence,'Developer and reviewer'],['Boundary',edge,'System owner'],['Release','Regression result and rollback note','Internal release owner']]},
-  relatedLinks:[{label:'Developer services',href:'/services',note:'Choose a bounded delivery lane.'},{label:'Research library',href:'/research',note:'Use source-backed test methods.'},{label:'Contact',href:'/contact-us',note:'Discuss the first outcome and review owner.'}],
+  relatedLinks:[{label:'Developer services',href:'/services',note:'Choose a bounded delivery lane.'},{label:'Research library',href:'/research',note:'Use source-backed test methods.'},{label:'Contact',href:'/contact',note:'Discuss the first outcome and review owner.'}],
   faqs:[{question:'Can the offshore developer run this review?',answer:'Yes, with synthetic data, scoped access, a fixed revision, and a named reviewer.'},{question:'Who decides whether to release?',answer:'The accountable internal owner accepts the evidence, residual risk, and production change.'}],
   sources:index % 2 === 0
     ? [{name:'MDN HTTP documentation',url:'https://developer.mozilla.org/en-US/docs/Web/HTTP'},{name:'OWASP Web Security Testing Guide',url:'https://owasp.org/www-project-web-security-testing-guide/'}]

@@ -57,7 +57,7 @@ function makePost(record: August13Record): BlogPost {
     relatedLinks: [
       { label: 'Review the first-week onboarding guide', href: '/blog/offshore-developer-first-week-onboarding-checklist', note: 'Start with one safe contribution and only the access it needs.' },
       { label: 'Compare developer services', href: '/services', note: 'Match the technical lane with an internal reviewer.' },
-      { label: 'Plan the role', href: '/contact-us', note: 'Bring the stack, first outcome, schedule, and review owner.' },
+      { label: 'Plan the role', href: '/contact', note: 'Bring the stack, first outcome, schedule, and review owner.' },
     ],
     faqs: [
       { question: 'Who accepts the result?', answer: 'The named internal reviewer accepts the outcome, evidence, and any documented limitation. The developer supplies the work and surfaces risks.' },
