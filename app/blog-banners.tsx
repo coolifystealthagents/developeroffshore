@@ -45,18 +45,6 @@ function pickVariant(items: Variant[], seed: string) {
   return items[0];
 }
 
-function taggedHref(href: string, position: Position, variant: string, week: number) {
-  const separator = href.includes('?') ? '&' : '?';
-  const query = new URLSearchParams({
-    utm_source: 'blog',
-    utm_medium: 'banner',
-    utm_campaign: 'weekly_cta',
-    utm_content: `${position}_${variant}`,
-    utm_term: `week_${week}`,
-  });
-  return `${href}${separator}${query.toString()}`;
-}
-
 function record(position: Position, variant: string, field: 'impressions' | 'clicks') {
   const key = `blog-banner-stats:${profile.siteKey}`;
   try {
@@ -101,7 +89,7 @@ export function BlogBanner({ position }: { position: Position }) {
     pushEvent('blog_banner_impression', position, selected.id, week);
   }, [position, variants, week]);
 
-  const href = taggedHref(variant.href, position, variant.id, week);
+  const href = variant.href;
   return <aside
     className="article-rotation-banner article-banner blog-conversion-banner"
     data-blog-banner-slot={position}
