@@ -2,11 +2,12 @@ import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import {alternativePages} from '../../alternatives-data';
 import {articleThumbnail} from '../../article-thumbnails';
+import {compactSeoDescription,compactSeoTitle} from '../../seo-metadata';
 import {CTA,Footer,Header,JsonLd} from '../../components';
 
 const base='https://developeroffshore.com',published='2026-07-29';
 export function generateStaticParams(){return alternativePages.map(page=>({slug:page.slug}))}
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params;const page=alternativePages.find(x=>x.slug===slug);if(!page)return{};const url=`${base}/alternatives/${slug}`,image=articleThumbnail('alternatives',slug,page.title);return{title:page.title,description:page.description,alternates:{canonical:url},openGraph:{title:page.title,description:page.description,url,type:'article',publishedTime:published,images:[{url:`${base}${image.src}`,alt:image.alt}]}}}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params;const page=alternativePages.find(x=>x.slug===slug);if(!page)return{};const url=`${base}/alternatives/${slug}`,image=articleThumbnail('alternatives',slug,page.title);return{title:{absolute:compactSeoTitle(page.title)},description:compactSeoDescription(page.description),alternates:{canonical:url},openGraph:{title:page.title,description:page.description,url,type:'article',publishedTime:published,images:[{url:`${base}${image.src}`,alt:image.alt}]}}}
 
 export default async function Article({params}:{params:Promise<{slug:string}>}){
   const {slug}=await params,page=alternativePages.find(x=>x.slug===slug);if(!page)notFound();

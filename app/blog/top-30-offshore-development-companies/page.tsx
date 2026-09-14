@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { articleThumbnail } from '../../article-thumbnails';
+import { compactSeoDescription, compactSeoTitle } from '../../seo-metadata';
 import { Footer, Header } from '../../components';
 import styles from './comparison.module.css';
 
@@ -281,8 +282,8 @@ const description = "A Developer Offshore guide to development, technical suppor
 const thumbnail = articleThumbnail('blog', 'top-30-offshore-development-companies', title);
 
 export const metadata: Metadata = {
-  title,
-  description,
+  title: { absolute: compactSeoTitle(title) },
+  description: compactSeoDescription(description),
   alternates: { canonical: articleUrl },
   openGraph: { title, description, url: articleUrl, type: 'article', siteName: "Developer Offshore", images: [{ url: `https://developeroffshore.com${thumbnail.src}`, alt: thumbnail.alt }] },
 };

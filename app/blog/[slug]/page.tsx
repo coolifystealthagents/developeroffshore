@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { Header, Footer, JsonLd } from '../../components';
 import { blogPosts, site, type BlogPost } from '../../data';
 import { articleThumbnail } from '../../article-thumbnails';
+import { compactSeoDescription, compactSeoTitle } from '../../seo-metadata';
 
 const baseUrl = 'https://developeroffshore.com';
 
@@ -25,7 +26,7 @@ const defaultBanners = [
   },
   {
     label: 'Plan a reporting and QA role',
-    href: '/services/reporting-and-qa',
+    href: '/services/qa-automation-engineering',
     note: 'See the work a Philippines-based QA specialist can own. Your team keeps release decisions and accepted risk.',
   },
   {
@@ -46,8 +47,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const url = `${baseUrl}/blog/${post.slug}`;
   const thumbnail = articleThumbnail('blog', post.slug, post.title);
   return {
-    title: { absolute: post.title },
-    description: post.excerpt,
+    title: { absolute: compactSeoTitle(post.title) },
+    description: compactSeoDescription(post.excerpt),
     alternates: { canonical: url },
     openGraph: {
       title: post.title,

@@ -98,7 +98,7 @@ export function BlogBanner({ position }: { position: Position }) {
   >
     <div>
       <p className="eyebrow article-kicker">{variant.eyebrow}</p>
-      <h2>{variant.title}</h2>
+      {position === 'top' ? <strong className="blog-banner-title">{variant.title}</strong> : <h2>{variant.title}</h2>}
       <p>{variant.body}</p>
     </div>
     <a

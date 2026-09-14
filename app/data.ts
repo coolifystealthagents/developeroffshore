@@ -448,7 +448,7 @@ const dailyBlogBatch20260810: BlogPost[] = routineTopics.slice(20, 40).map((topi
 const dailyBlogBatch20260810Additional: BlogPost[] = additionalDailyTopics20260810.map((topic, index) => ({
   ...buildRoutinePost(topic),
   slug: explicitAugust10BlogRepairRouteRecords[index].slug,
-  title: `${topic.keyword}: a daily operating guide`,
+  title: `${topic.keyword}: a revised daily operating guide`,
   excerpt: `A fresh, source-backed operating guide for ${topic.reader}. Use a bounded outcome, named review owner, and visible evidence before expanding this lane.`,
   datePublished: explicitAugust10BlogRepairRouteRecords[index].datePublished,
   dateModified: '2026-08-10',
@@ -1250,7 +1250,7 @@ export const blogPosts: BlogPost[] = [
     },
     relatedLinks: [
       { label: 'Review the developer provider questions', href: '/blog/developer-offshore-staffing-provider-questions', note: 'Use these questions after the role and assessment are clear. They help you check who screens, manages, and replaces a candidate.' },
-      { label: 'Plan reporting and QA support', href: '/services/reporting-and-qa', note: 'See how a Philippines-based QA role can handle regression evidence and weekly quality notes. Keep release decisions with your own owner.' },
+      { label: 'Plan reporting and QA support', href: '/services/qa-automation-engineering', note: 'See how a Philippines-based QA role can handle regression evidence and weekly quality notes. Keep release decisions with your own owner.' },
       { label: 'Use the first-week onboarding checklist', href: '/blog', note: 'Turn the selected role into a small first-week plan. Set repo access, review calls, tests, and daily updates before work begins.' },
       { label: 'Discuss a role-matched candidate plan', href: '/contact', note: 'Share the stack, role, schedule, and review owner you need. A staffing specialist can use that detail to discuss Philippines-based candidate fit.' },
     ],
