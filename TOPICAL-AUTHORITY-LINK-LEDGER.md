@@ -44,3 +44,8 @@ Update only `/blog/offshore-developer-code-review-evidence-2026-08-17`: replace 
 
 - Rendered source: `40f633272b661e2994364fc594f6b192838f6a29` passed the focused handoff test, TypeScript check, production build, and local artifact proof. The built route has the DevOps Release Support link three times in route-local `<main>`, current Open Graph and BlogPosting modified dates, and sitemap `<lastmod>` `2026-09-13`.
 - Preserve rendered-source commit `40f633272b661e2994364fc594f6b192838f6a29`. Cache-busted apex and `www` pages still serve the former generic `/services` handoff and the `2026-08-17` sitemap record. No repository-approved deployment target or workflow was configured, so this is `deployment_pending_public_verification / public_stale`, not a published rollout.
+
+## Release status — 2026-09-15
+
+- Rendered source: `6b3f7e9749f9c945b3338921eed48fcc59957e53` passed TypeScript, production build, and local artifact proof. The generated route has the QA Automation link in its route-owned guide placements, `datePublished` `2026-08-17`, `dateModified` `2026-09-15`, and sitemap `<lastmod>` `2026-09-15`.
+- Preserve rendered-source commit `6b3f7e9749f9c945b3338921eed48fcc59957e53`. Cache-busted apex and `www` pages returned the expected H1 and canonical but omitted the new `Plan QA automation work` marker and retained `article:modified_time` `2026-08-17`; the public sitemap still lists `2026-08-17`. No repository-approved deployment target or workflow is configured, so this is `deployment_pending_public_verification / public_stale`, not a published rollout.
