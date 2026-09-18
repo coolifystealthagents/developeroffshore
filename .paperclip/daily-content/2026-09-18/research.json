@@ -1,0 +1,16 @@
+{
+  "family": "research",
+  "required": 5,
+  "publicationDate": "2026-09-18",
+  "timezone": "UTC",
+  "sourceCheckedAt": "2026-09-18T07:15:00Z",
+  "repository": "coolifystealthagents/developeroffshore",
+  "branch": "main",
+  "articles": [
+    {"topic":"least-privilege pilot access","slug":"offshore-developer-pilot-access-matrix-study-2026-09-18","contentHash":"b13c7c55f00edc4e52f6877d1b6aa720188cc093d1d8a10da747183ab229aae2","publicationDate":"2026-09-18","sources":["NIST SP 800-53 Rev. 5.1","NIST SP 800-53A Rev. 5","NIST SP 800-218"]},
+    {"topic":"pull-request review capacity","slug":"offshore-developer-pull-request-review-capacity-study-2026-09-18","contentHash":"d7103cd820b8fdd4c1ec1dd89d197b3a7780cf13c061d156c72313e34b41abe6","publicationDate":"2026-09-18","sources":["GitHub About pull requests","GitHub Protected branches","NIST SP 800-218"]},
+    {"topic":"paid developer work sample","slug":"offshore-developer-paid-work-sample-scorecard-study-2026-09-18","contentHash":"99fcaad591f32617f30dd62fb614512fc9b66e94b11168febea9ed9ea865eb42","publicationDate":"2026-09-18","sources":["U.S. OPM Work Samples","EEOC Selection Procedures","NIST SP 800-218"]},
+    {"topic":"Philippines-to-US handoff","slug":"offshore-developer-time-zone-handoff-evidence-study-2026-09-18","contentHash":"4ad8b3f6d99dff3be528a9ae060c3dc9012162b53d6a374657ea3e6196dcb8e0","publicationDate":"2026-09-18","sources":["IETF RFC 3339","Google SRE Workbook","NIST SP 800-218"]},
+    {"topic":"QA automation pilot","slug":"offshore-developer-qa-automation-pilot-study-2026-09-18","contentHash":"98bb8a1e3c2313d544d04f22baf8b5a9277003a1811c8f9d681003f11a92f265","publicationDate":"2026-09-18","sources":["Playwright Best Practices","NIST SP 800-218"]}
+  ]
+}
