@@ -2,6 +2,13 @@
 
 Last audited: 2026-09-13
 
+## Daily Blog Publishing — 2026-09-18
+
+- Twelve new decision-focused guides were added in content commit `df0ba16b9ba115c8f3babd2ac78ea5a1c3564a25`; none reuses an existing slug.
+- Pillars strengthened: QA automation (3), DevOps/release support (4), legacy maintenance (2), Node.js API development (1), React review workflow (1), and Next.js technical governance (1).
+- Each record links to the closest service lane, `/services`, and `/contact`, and cites one topic-specific authority plus GitHub review guidance and NIST SSDF.
+- The durable article-level family, topic, slug, sources, content hash, publication date, and live URL ledger is `.paperclip/daily-content/2026-09-18/blog.json`.
+
 ## Scope and source of truth
 
 - Service routes come only from `app/fleet-data.ts` `fleetServices`. The current generator produces ten `/services/[slug]` routes.
