@@ -1,5 +1,11 @@
 # Developer Offshore topical-authority link ledger
 
+## 2026-09-19 daily Blog publishing
+
+- Added 12 new decision guides covering offshore developer onboarding, codebase orientation, ticket readiness, overlap hours, definition of done, branch protection, environment access, reviewer capacity, escalation, knowledge transfer, delivery reporting, and offboarding.
+- All guides link to a relevant service lane, `/services`, and `/contact`; their durable article-level provenance is recorded in `.paperclip/daily-content/2026-09-19/blog.json`.
+- Source content commit: `95a1a120ae3f444f5035c4c07c2a0a9bb6aff2f1`; TypeScript and the clean production build passed with 12 generated routes.
+
 Last audited: 2026-09-13
 
 ## Daily Blog Publishing — 2026-09-18

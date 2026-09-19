@@ -1,0 +1,24 @@
+{
+  "routine": "Daily Blog Publishing",
+  "issue": "DEV-77",
+  "required": 12,
+  "contentCommit": "95a1a120ae3f444f5035c4c07c2a0a9bb6aff2f1",
+  "productionBranch": "main",
+  "publicationDate": "2026-09-19",
+  "timezone": "UTC",
+  "validation": { "typescript": "passed", "productionBuild": "passed", "staticRoutes": 12 },
+  "articles": [
+    {"family":"onboarding","topic":"first 30 days","slug":"offshore-developer-first-30-days-plan","sources":["GitLab onboarding","GitHub pull requests","NIST SSDF"],"contentHash":"2995d77b589f2cbc27502ffbb3b583beb45eb32dc5827a408f2bbc2b66d15fdf","publicationDate":"2026-09-19","url":"https://developeroffshore.com/blog/offshore-developer-first-30-days-plan"},
+    {"family":"onboarding","topic":"codebase tour","slug":"offshore-developer-codebase-tour-checklist","sources":["GitHub READMEs","GitHub pull requests","NIST SSDF"],"contentHash":"c8991a68ac2b63d0445aea90b4b7152e80a072539c2d8726175a6ce4b8e354bf","publicationDate":"2026-09-19","url":"https://developeroffshore.com/blog/offshore-developer-codebase-tour-checklist"},
+    {"family":"delivery management","topic":"ticket readiness","slug":"offshore-developer-ticket-readiness-checklist","sources":["Atlassian user stories","GitHub pull requests","NIST SSDF"],"contentHash":"7000cebb6d219ef977b4fe43b6209c67366b9d4c1374788f6559547bedd9d2f3","publicationDate":"2026-09-19","url":"https://developeroffshore.com/blog/offshore-developer-ticket-readiness-checklist"},
+    {"family":"distributed work","topic":"overlap hours","slug":"offshore-developer-overlap-hours-plan","sources":["GitLab asynchronous communication","GitHub pull requests","NIST SSDF"],"contentHash":"6c033a6a71bda77106cec076bcd04d54c119b43f6c25802ae377f76270f75841","publicationDate":"2026-09-19","url":"https://developeroffshore.com/blog/offshore-developer-overlap-hours-plan"},
+    {"family":"quality management","topic":"definition of done","slug":"offshore-developer-definition-of-done","sources":["Scrum Guide","GitHub pull requests","NIST SSDF"],"contentHash":"94fd5e2b625601b197513cbd675c7d837dd60fbcc5ea620429025d678426bec5","publicationDate":"2026-09-19","url":"https://developeroffshore.com/blog/offshore-developer-definition-of-done"},
+    {"family":"repository security","topic":"branch protection","slug":"offshore-developer-branch-protection-setup","sources":["GitHub protected branches","GitHub pull requests","NIST SSDF"],"contentHash":"a47faa0630f42e8b495bad7aca4ade6aaf4a46daa03286838c455a6b589cf6fb","publicationDate":"2026-09-19","url":"https://developeroffshore.com/blog/offshore-developer-branch-protection-setup"},
+    {"family":"access governance","topic":"environment access matrix","slug":"offshore-developer-environment-access-matrix","sources":["NIST least privilege","GitHub pull requests","NIST SSDF"],"contentHash":"57e1accf274d0c5f5477ca2d96f459297e290789c72ad85a59b05032adb4e363","publicationDate":"2026-09-19","url":"https://developeroffshore.com/blog/offshore-developer-environment-access-matrix"},
+    {"family":"code review","topic":"reviewer capacity","slug":"offshore-developer-reviewer-capacity-plan","sources":["Google code review speed","GitHub pull requests","NIST SSDF"],"contentHash":"e1ee99f63e9ae042d6ed71a8bf6e5e073b9817dd4f3a821a5709a158e60a451d","publicationDate":"2026-09-19","url":"https://developeroffshore.com/blog/offshore-developer-reviewer-capacity-plan"},
+    {"family":"operations","topic":"escalation matrix","slug":"offshore-developer-escalation-matrix","sources":["Google SRE incident response","GitHub pull requests","NIST SSDF"],"contentHash":"f2e3494e3af467483de3c92ba58d4a16a8a761b89ecb3c293477a40f1762c450","publicationDate":"2026-09-19","url":"https://developeroffshore.com/blog/offshore-developer-escalation-matrix"},
+    {"family":"knowledge management","topic":"knowledge transfer","slug":"offshore-developer-knowledge-transfer-plan","sources":["Atlassian knowledge sharing","GitHub pull requests","NIST SSDF"],"contentHash":"5c23dd372d65d3e8d248678bc97aef7a6c951eecaab64097217106707d7f36ac","publicationDate":"2026-09-19","url":"https://developeroffshore.com/blog/offshore-developer-knowledge-transfer-plan"},
+    {"family":"delivery management","topic":"weekly delivery report","slug":"offshore-developer-weekly-delivery-report","sources":["DORA software delivery performance","GitHub pull requests","NIST SSDF"],"contentHash":"78701b425aeb6ea76fc0fc097879751b1a60146ebeeb3cd8cb5f59df946dfda1","publicationDate":"2026-09-19","url":"https://developeroffshore.com/blog/offshore-developer-weekly-delivery-report"},
+    {"family":"access governance","topic":"developer offboarding","slug":"offshore-developer-offboarding-checklist","sources":["CISA identity and access management","GitHub pull requests","NIST SSDF"],"contentHash":"90af4c238bdd895f92d133febfe22a1d52c0a6f9a44fbdcef536d8a66dc996a3","publicationDate":"2026-09-19","url":"https://developeroffshore.com/blog/offshore-developer-offboarding-checklist"}
+  ]
+}
