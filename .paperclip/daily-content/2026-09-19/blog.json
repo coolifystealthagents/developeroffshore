@@ -6,6 +6,11 @@
   "productionBranch": "main",
   "publicationDate": "2026-09-19",
   "timezone": "UTC",
+  "verified": 12,
+  "deployedCommit": "984cea2fac8206669971d5af6f5f7907db04bf33",
+  "deployment": { "provider": "Coolify3", "resourceUuid": "spv5prvi4giijp2o4bq2t04o", "deploymentUuid": "rr4wgehwx5w9ywrqhlrk62ak" },
+  "verifiedAt": "2026-09-19T01:09:41Z",
+  "liveChecks": ["HTTP 200", "unique title and content", "canonical URL", "datePublished", "BlogPosting schema", "image asset", "sitemap entry"],
   "validation": { "typescript": "passed", "productionBuild": "passed", "staticRoutes": 12 },
   "articles": [
     {"family":"onboarding","topic":"first 30 days","slug":"offshore-developer-first-30-days-plan","sources":["GitLab onboarding","GitHub pull requests","NIST SSDF"],"contentHash":"2995d77b589f2cbc27502ffbb3b583beb45eb32dc5827a408f2bbc2b66d15fdf","publicationDate":"2026-09-19","url":"https://developeroffshore.com/blog/offshore-developer-first-30-days-plan"},

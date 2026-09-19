@@ -5,6 +5,7 @@
 - Added 12 new decision guides covering offshore developer onboarding, codebase orientation, ticket readiness, overlap hours, definition of done, branch protection, environment access, reviewer capacity, escalation, knowledge transfer, delivery reporting, and offboarding.
 - All guides link to a relevant service lane, `/services`, and `/contact`; their durable article-level provenance is recorded in `.paperclip/daily-content/2026-09-19/blog.json`.
 - Source content commit: `95a1a120ae3f444f5035c4c07c2a0a9bb6aff2f1`; TypeScript and the clean production build passed with 12 generated routes.
+- Deployed commit `984cea2fac8206669971d5af6f5f7907db04bf33` through Coolify3 deployment `rr4wgehwx5w9ywrqhlrk62ak`. All 12 public URLs passed HTTP, unique content, canonical, publication date, structured-data, asset, and sitemap checks at `2026-09-19T01:09:41Z`.
 
 Last audited: 2026-09-13
 
