@@ -42,7 +42,7 @@ export function GET() {
     '2026-07-28',
   );
   const researchLastModified = latestDate(
-    researchPosts.map((post) => post.published),
+    researchPosts.map((post) => post.updated ?? post.published),
     '2026-07-28',
   );
   const blogPages = Array.from(
@@ -72,7 +72,7 @@ export function GET() {
     })),
     ...researchPosts.map((post) => ({
       path: `/research/${post.slug}`,
-      lastModified: post.published ?? researchLastModified,
+      lastModified: post.updated ?? post.published ?? researchLastModified,
     })),
     ...alternativePages.map((alternative) => ({
       path: `/alternatives/${alternative.slug}`,
