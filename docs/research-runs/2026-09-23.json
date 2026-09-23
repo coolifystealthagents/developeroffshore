@@ -7,7 +7,7 @@
   "repository": "coolifystealthagents/developeroffshore",
   "branch": "main",
   "contentCommit": "27ce27d3c01e7e2e8037edc5f263583a5eac91c8",
-  "deployment": {"provider":"Coolify3","application":"spv5prvi4giijp2o4bq2t04o","id":"w1uqryjy2mh4fhm6pp6tawmk","status":"blocked","checkedAt":"2026-09-23T17:32:47Z","evidence":"Configured API credential redirected to login; bounded public transition checks returned HTTP 404 for all five routes."},
+  "deployment": {"provider":"Coolify3","application":"spv5prvi4giijp2o4bq2t04o","id":"w1uqryjy2mh4fhm6pp6tawmk","status":"blocked","configuredBranch":"master","branchRepair":"Created missing master ref at e34fdd97e52df1dfae29c05a6ac93703b3ff735f to match the dedicated Coolify configuration; main and master now resolve to the same preserved production SHA.","checkedAt":"2026-09-23T19:32:06Z","evidence":"Five articles pushed; zero live. Three bounded post-repair public transition checks returned HTTP 404. Configured API credential previously redirected to login."},
   "build": {"status":"passed","routes":686,"sitemapEntries":5,"warnings":["existing CSS flex-end compatibility warning"]},
   "articles": [
     {"family":"Research","topic":"Node.js runtime permission boundaries","slug":"offshore-developer-node-runtime-permission-boundary-pilot-study-2026-09-23","sources":["https://nodejs.org/api/permissions.html","https://github.com/OWASP/ASVS","https://csrc.nist.gov/pubs/sp/800/218/final"],"contentHash":"35deb9d9498e0ff7c0edb2bf466a56d4821fd6557d9695c3709c30a83c12e95d","publicationDate":"2026-09-23","commit":"27ce27d3c01e7e2e8037edc5f263583a5eac91c8","liveUrl":"https://developeroffshore.com/research/offshore-developer-node-runtime-permission-boundary-pilot-study-2026-09-23","verifiedAt":null},
