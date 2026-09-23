@@ -1,5 +1,12 @@
 # Developer Offshore topical-authority link ledger
 
+## 2026-09-23 daily Blog publishing
+
+- Published and live-verified exactly 12 new service-delivery guides from content commit `ec1c14c59db03467e18adfa15e1875f8c4e9338a`.
+- Coolify3 application `spv5prvi4giijp2o4bq2t04o`, deployment `w1uqryjy2mh4fhm6pp6tawmk`, served deployed SHA `027bee2d9e8c18a1979ecb989d7b20b012d73429` after the configured `master` ref was restored to the production history.
+- Every route passed HTTP 200, unique title and revision marker, canonical, visible and structured publication date, BlogPosting schema, asset HTTP 200, and sitemap entry checks at `2026-09-23T19:58:46Z` UTC.
+- Article-level family, topic, slug, sources, content hash, publication date, commit, deployment evidence, live URL, and verification time are recorded in `.paperclip/daily-content/2026-09-23/blog.json`.
+
 ## 2026-09-19 daily Blog publishing
 
 - Added 12 new decision guides covering offshore developer onboarding, codebase orientation, ticket readiness, overlap hours, definition of done, branch protection, environment access, reviewer capacity, escalation, knowledge transfer, delivery reporting, and offboarding.
