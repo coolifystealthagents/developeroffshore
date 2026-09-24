@@ -1,8 +1,8 @@
 import type { BlogPost } from './data';
 
-type Topic = { slug:string; title:string; family:string; reader:string; decision:string; deliverable:string; scenario:string; measures:string; service:string; serviceLabel:string; source:{name:string;url:string} };
+export type DailyBlogTopic = { slug:string; title:string; family:string; reader:string; decision:string; deliverable:string; scenario:string; measures:string; service:string; serviceLabel:string; source:{name:string;url:string} };
 
-const topics: readonly Topic[] = [
+const topics: readonly DailyBlogTopic[] = [
   {slug:'nextjs-server-client-boundary-review',title:'Next.js Server and Client Component Boundary Review',family:'Next.js delivery',reader:'application leads assigning App Router work to a Philippines-based developer',decision:'place data access, interactivity, secrets, and browser-only behavior on the correct side of the rendering boundary',deliverable:'a route-level boundary map with bundle, cache, loading, error, and authorization evidence',scenario:'a small interactive change moves a large subtree to the client, exposes server assumptions, and increases shipped JavaScript',measures:'client bundle change, server render time, cache behavior, error-state coverage, and reviewer findings',service:'/services/next-js-application-development',serviceLabel:'Next.js application development',source:{name:'Next.js Docs: Server and Client Components',url:'https://nextjs.org/docs/app/getting-started/server-and-client-components'}},
   {slug:'react-component-accessibility-handoff',title:'React Component Accessibility Handoff for an Offshore Developer',family:'React delivery',reader:'frontend leads delegating reusable component work across time zones',decision:'define accessibility behavior as part of the component contract rather than a final visual check',deliverable:'a component handoff covering semantics, keyboard flow, focus, names, errors, states, and assistive-technology evidence',scenario:'a component matches the design at one viewport but its keyboard order, focus state, or accessible name fails in real use',measures:'keyboard-path completion, automated findings, manual review findings, state coverage, and remediation time',service:'/services/react-frontend-development',serviceLabel:'React frontend development',source:{name:'W3C: Web Content Accessibility Guidelines 2.2',url:'https://www.w3.org/TR/WCAG22/'}},
   {slug:'node-api-error-contract',title:'Node.js API Error Contract for Distributed Development',family:'API delivery',reader:'backend leads handing endpoint work to an offshore Node.js developer',decision:'standardize how validation, authorization, dependency, conflict, and unexpected failures appear to clients and operators',deliverable:'an error catalog with status, stable code, safe message, retry rule, log fields, and contract tests',scenario:'two endpoints represent the same failure differently, causing unsafe retries and leaking internal detail to clients',measures:'contract-test coverage, unknown error codes, retryable-failure rate, support ambiguity, and time to diagnosis',service:'/services/node-js-api-development',serviceLabel:'Node.js API development',source:{name:'IETF RFC 9457: Problem Details for HTTP APIs',url:'https://www.rfc-editor.org/rfc/rfc9457.html'}},
@@ -22,9 +22,9 @@ const sharedSources = [
   {name:'GitHub Docs: About pull request reviews',url:'https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews'},
 ] as const;
 
-function makePost(t:Topic, index:number):BlogPost {
+export function makeDailyBlogPost(t:DailyBlogTopic, index:number, publicationDate = '2026-09-23'):BlogPost {
   const buyerOwner = index % 2 === 0 ? 'engineering manager' : 'delivery owner';
-  return {slug:t.slug,title:t.title,excerpt:`A practical buyer guide for ${t.reader}. Build ${t.deliverable} before committing budget, access, or delivery expectations.`,minutes:13+(index%3),datePublished:'2026-09-23',revision:`daily-blog-2026-09-23-${t.slug}`,
+  return {slug:t.slug,title:t.title,excerpt:`A practical buyer guide for ${t.reader}. Build ${t.deliverable} before committing budget, access, or delivery expectations.`,minutes:13+(index%3),datePublished:publicationDate,revision:`daily-blog-${publicationDate}-${t.slug}`,
     keyTakeaways:[`Frame the decision explicitly: ${t.decision}.`,`Require a concrete output: ${t.deliverable}.`,'Keep priority, sensitive access, accepted risk, commercial approval, and production authority with named buyer-side owners.'],
     sections:[
       {heading:'Start with the buying decision',body:[`This guide is for ${t.reader}. The immediate decision is whether and how to ${t.decision}. Write that decision at the top of the working document, name the deadline, and identify who can approve it. A provider can supply facts and options, but the buyer should retain the final judgment about budget, architecture, security exceptions, and production risk.`,`Describe the business outcome and the delivery constraint separately. A need for more accepted product changes is not automatically a need for more programmers. The limiting factor may be unclear priorities, slow review, fragile releases, missing test coverage, or unavailable product decisions. Record the current baseline before comparing options so a confident proposal does not replace evidence.`]},
@@ -41,7 +41,6 @@ function makePost(t:Topic, index:number):BlogPost {
     faqs:[{question:'Should the provider make this decision for the buyer?',answer:'The provider can supply evidence, options, and implementation detail. The buyer should retain final authority for business priority, budget, sensitive access, accepted risk, and production changes.'},{question:'What should be documented before work starts?',answer:`Record the decision, owner, assumptions, boundaries, review date, and ${t.deliverable}.`},{question:'How should an unresolved risk be handled?',answer:'Name the risk, evidence, potential impact, owner, due date, and safe default. Do not treat silence or a sales assurance as acceptance.'}],sources:[t.source,...sharedSources]};
 }
 
-export const september23BlogBatch: readonly BlogPost[] = topics.map(makePost);
-
+export const september23BlogBatch: readonly BlogPost[] = topics.map((topic, index) => makeDailyBlogPost(topic, index));
 
 
