@@ -1,0 +1,21 @@
+{
+  "routine": "daily-research",
+  "publicationDate": "2026-09-24",
+  "timezone": "UTC",
+  "required": 5,
+  "verified": 0,
+  "repository": "coolifystealthagents/developeroffshore",
+  "productionBranch": "master",
+  "contentCommit": "537b6cfe944a58f67b488dc1085104028411ff30",
+  "remoteMainSha": "537b6cfe944a58f67b488dc1085104028411ff30",
+  "remoteProductionSha": "6d1189531f607e9df4bf6fc52787f8504090c2b3",
+  "build": {"status":"passed","routes":716,"lint":"passed","warning":"Existing CSS flex-end compatibility warning"},
+  "deployment": {"provider":"Coolify3","application":"spv5prvi4giijp2o4bq2t04o","status":"blocked","evidence":"The content commit was pushed to main. Two non-force fast-forward pushes to the configured master production branch were rejected by GitHub with HTTP 500. Coolify API authentication returned 401. Public transition checks returned 404 for all five routes.","recovery":"Repository or GitHub owner retries the fast-forward of master to 537b6cfe944a58f67b488dc1085104028411ff30, then the routine verifies deployment and updates this manifest."},
+  "articles": [
+    {"family":"Research","topic":"PostgreSQL row-level security policy testing","slug":"offshore-developer-postgresql-row-security-policy-pilot-study-2026-09-24","sources":["https://www.postgresql.org/docs/current/ddl-rowsecurity.html","https://www.postgresql.org/docs/current/sql-createpolicy.html","https://csrc.nist.gov/pubs/sp/800/218/final"],"contentHash":"edd40d61337a010e8930d075220bd34c9d4578748ed2ecdc54624dd7e3802b95","publicationDate":null,"commit":"537b6cfe944a58f67b488dc1085104028411ff30","liveUrl":"https://developeroffshore.com/research/offshore-developer-postgresql-row-security-policy-pilot-study-2026-09-24","verifiedAt":null},
+    {"family":"Research","topic":"GitHub Actions OIDC trust testing","slug":"offshore-developer-github-actions-oidc-trust-pilot-study-2026-09-24","sources":["https://docs.github.com/en/actions/concepts/security/openid-connect","https://docs.github.com/en/actions/reference/security/oidc","https://csrc.nist.gov/pubs/sp/800/218/final"],"contentHash":"4c207e901b56be0064491e1743a43da94a1e75a91ea84c532a930ecbaeadc263","publicationDate":null,"commit":"537b6cfe944a58f67b488dc1085104028411ff30","liveUrl":"https://developeroffshore.com/research/offshore-developer-github-actions-oidc-trust-pilot-study-2026-09-24","verifiedAt":null},
+    {"family":"Research","topic":"CycloneDX VEX review","slug":"offshore-developer-cyclonedx-vex-triage-pilot-study-2026-09-24","sources":["https://cyclonedx.org/capabilities/vex/","https://cyclonedx.org/specification/overview/","https://csrc.nist.gov/pubs/sp/800/218/final"],"contentHash":"94210c613f9c60bea62e58dc537e586514710fc48dd065750b13cac7084dfb8e","publicationDate":null,"commit":"537b6cfe944a58f67b488dc1085104028411ff30","liveUrl":"https://developeroffshore.com/research/offshore-developer-cyclonedx-vex-triage-pilot-study-2026-09-24","verifiedAt":null},
+    {"family":"Research","topic":"React Server Function authorization","slug":"offshore-developer-react-server-function-authorization-pilot-study-2026-09-24","sources":["https://react.dev/reference/rsc/server-functions","https://nextjs.org/docs/app/guides/data-security","https://csrc.nist.gov/pubs/sp/800/218/final"],"contentHash":"72e95e2dde274af9e18b80b9739be081139e3858aa8e9e9c2895dab98ec52263","publicationDate":null,"commit":"537b6cfe944a58f67b488dc1085104028411ff30","liveUrl":"https://developeroffshore.com/research/offshore-developer-react-server-function-authorization-pilot-study-2026-09-24","verifiedAt":null},
+    {"family":"Research","topic":"OpenTelemetry context propagation","slug":"offshore-developer-opentelemetry-context-propagation-pilot-study-2026-09-24","sources":["https://opentelemetry.io/docs/concepts/context-propagation/","https://opentelemetry.io/docs/specs/otel/context/api-propagators/","https://csrc.nist.gov/pubs/sp/800/218/final"],"contentHash":"e8522ddbe2be543dd89a709c8f56d0f94eec67c53ae1dff3cb518f199e37e6b2","publicationDate":null,"commit":"537b6cfe944a58f67b488dc1085104028411ff30","liveUrl":"https://developeroffshore.com/research/offshore-developer-opentelemetry-context-propagation-pilot-study-2026-09-24","verifiedAt":null}
+  ]
+}
