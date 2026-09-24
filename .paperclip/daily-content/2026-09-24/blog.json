@@ -1,0 +1,45 @@
+{
+  "routine": "Daily Blog Publishing",
+  "issue": "DEV-84",
+  "status": "blocked",
+  "required": 12,
+  "verified": 0,
+  "repository": "coolifystealthagents/developeroffshore",
+  "productionBranch": "main",
+  "deploymentBranch": "master",
+  "contentCommit": "bf5d9a4d8e45d73340e839d86a921b10c7433226",
+  "pushedRemoteSha": "912c15042fa00d8cb112e18149bef54de349c721",
+  "sourceDate": "2026-09-24",
+  "actualPublicationDate": null,
+  "timezone": "UTC",
+  "deployment": {
+    "provider": "Coolify3",
+    "application": "spv5prvi4giijp2o4bq2t04o",
+    "status": "blocked",
+    "evidence": "main and master both point to pushed SHA 912c15042fa00d8cb112e18149bef54de349c721; repeated public probes returned HTTP 404; configured Coolify API read and deploy requests returned HTTP 401; direct application host timed out",
+    "unblockOwner": "DeveloperOffshore infrastructure owner",
+    "recoveryAction": "Restore the dedicated Coolify API credential or Git webhook, deploy pushed SHA 912c15042fa00d8cb112e18149bef54de349c721, then live-verify all 12 URLs. If verification crosses local midnight, update every publication-date surface before counting the articles."
+  },
+  "validation": {
+    "gitDiffCheck": "passed",
+    "typescript": "passed",
+    "productionBuild": "passed with one pre-existing CSS autoprefixer warning",
+    "batchValidator": "passed",
+    "staticRoutes": 12,
+    "checks": ["new slug inventory", "prerender", "canonical URL", "datePublished", "BlogPosting schema", "revision marker", "sitemap wiring", "service-link inventory"]
+  },
+  "articles": [
+    {"family":"delivery planning","topic":"Capacity Forecast for an Offshore Development Team","slug":"offshore-developer-capacity-forecast","sources":["Scrum Guide: Sprint Planning","NIST Secure Software Development Framework","GitHub Docs: About pull request reviews"],"contentHash":"1f348bfa95b957508d9b357cc3502b1b10b9e47740087d647647e35e219d716c","publicationDate":null,"commitSha":"bf5d9a4d8e45d73340e839d86a921b10c7433226","deploymentEvidence":"blocked: public HTTP 404","liveUrl":"https://developeroffshore.com/blog/offshore-developer-capacity-forecast","verifiedAt":null},
+    {"family":"repository governance","topic":"Monorepo Change Boundaries for Offshore Developers","slug":"offshore-monorepo-change-boundaries","sources":["GitHub Docs: About code owners","NIST Secure Software Development Framework","GitHub Docs: About pull request reviews"],"contentHash":"1a5d1f6a8a9317aea659e376749d4d70c2dc897ec9bb4915d7228e77f428b9fb","publicationDate":null,"commitSha":"bf5d9a4d8e45d73340e839d86a921b10c7433226","deploymentEvidence":"blocked: public HTTP 404","liveUrl":"https://developeroffshore.com/blog/offshore-monorepo-change-boundaries","verifiedAt":null},
+    {"family":"cloud operations","topic":"Cloud Cost Guardrails for Offshore DevOps Work","slug":"cloud-cost-guardrails-offshore-devops","sources":["AWS Well-Architected Framework: Cost Optimization","NIST Secure Software Development Framework","GitHub Docs: About pull request reviews"],"contentHash":"06ade8f61a9451af3456321efd662197935d3afde8b9faf294c3ddce67d1f81a","publicationDate":null,"commitSha":"bf5d9a4d8e45d73340e839d86a921b10c7433226","deploymentEvidence":"blocked: public HTTP 404","liveUrl":"https://developeroffshore.com/blog/cloud-cost-guardrails-offshore-devops","verifiedAt":null},
+    {"family":"dependency maintenance","topic":"Third-Party SDK Upgrade Handoff for an Offshore Developer","slug":"third-party-sdk-upgrade-handoff","sources":["Semantic Versioning 2.0.0","NIST Secure Software Development Framework","GitHub Docs: About pull request reviews"],"contentHash":"c46891c5cea3a2556ed735e1e3ee58bd34f22a5be90f60528f888ba5ca80e9c9","publicationDate":null,"commitSha":"bf5d9a4d8e45d73340e839d86a921b10c7433226","deploymentEvidence":"blocked: public HTTP 404","liveUrl":"https://developeroffshore.com/blog/third-party-sdk-upgrade-handoff","verifiedAt":null},
+    {"family":"incident readiness","topic":"Incident Shadowing Plan for Offshore Engineering Support","slug":"offshore-incident-shadowing-plan","sources":["Google SRE Book: Managing Incidents","NIST Secure Software Development Framework","GitHub Docs: About pull request reviews"],"contentHash":"09397169d060086d6e6d7944f265c05ec1c7eedd81bc63f15b3edfb7ba74602c","publicationDate":null,"commitSha":"bf5d9a4d8e45d73340e839d86a921b10c7433226","deploymentEvidence":"blocked: public HTTP 404","liveUrl":"https://developeroffshore.com/blog/offshore-incident-shadowing-plan","verifiedAt":null},
+    {"family":"delivery forecasting","topic":"Software Estimate Calibration for an Offshore Team","slug":"software-estimate-calibration-offshore-team","sources":["Government Accountability Office: Schedule Assessment Guide","NIST Secure Software Development Framework","GitHub Docs: About pull request reviews"],"contentHash":"89b004a2898d2bb8458ae7bc7b02b7c136c915595f465a4d4556091b39854f5a","publicationDate":null,"commitSha":"bf5d9a4d8e45d73340e839d86a921b10c7433226","deploymentEvidence":"blocked: public HTTP 404","liveUrl":"https://developeroffshore.com/blog/software-estimate-calibration-offshore-team","verifiedAt":null},
+    {"family":"QA operations","topic":"Test Environment Ownership for Offshore QA","slug":"test-environment-ownership-offshore-qa","sources":["Playwright Docs: Test isolation","NIST Secure Software Development Framework","GitHub Docs: About pull request reviews"],"contentHash":"8713d5235a67a2995303f07c0974be86c27952a4fed1f3c7ddbb6747172a5a47","publicationDate":null,"commitSha":"bf5d9a4d8e45d73340e839d86a921b10c7433226","deploymentEvidence":"blocked: public HTTP 404","liveUrl":"https://developeroffshore.com/blog/test-environment-ownership-offshore-qa","verifiedAt":null},
+    {"family":"dependency governance","topic":"Open-Source License Review Handoff for Offshore Development","slug":"open-source-license-review-handoff","sources":["SPDX Specification","NIST Secure Software Development Framework","GitHub Docs: About pull request reviews"],"contentHash":"79a69a092d320d237cd7f35bf053b64d2b698ee0b49cb95f21c3f949d7a6ca85","publicationDate":null,"commitSha":"bf5d9a4d8e45d73340e839d86a921b10c7433226","deploymentEvidence":"blocked: public HTTP 404","liveUrl":"https://developeroffshore.com/blog/open-source-license-review-handoff","verifiedAt":null},
+    {"family":"product instrumentation","topic":"Product Analytics Implementation Handoff for an Offshore Developer","slug":"product-analytics-implementation-handoff","sources":["W3C Data Privacy Vocabulary","NIST Secure Software Development Framework","GitHub Docs: About pull request reviews"],"contentHash":"a65c0b8464b997df319f6e1539ad8eac7a90a7b4d77f4fcff177cd90eae7f31e","publicationDate":null,"commitSha":"bf5d9a4d8e45d73340e839d86a921b10c7433226","deploymentEvidence":"blocked: public HTTP 404","liveUrl":"https://developeroffshore.com/blog/product-analytics-implementation-handoff","verifiedAt":null},
+    {"family":"application security","topic":"Multi-Tenant Authorization Review Plan for Offshore Development","slug":"multi-tenant-authorization-review-plan","sources":["OWASP Authorization Cheat Sheet","NIST Secure Software Development Framework","GitHub Docs: About pull request reviews"],"contentHash":"a3af587273dc1681f6e040dccc414addcdc2ad876602484ec0e96ac945eb11e0","publicationDate":null,"commitSha":"bf5d9a4d8e45d73340e839d86a921b10c7433226","deploymentEvidence":"blocked: public HTTP 404","liveUrl":"https://developeroffshore.com/blog/multi-tenant-authorization-review-plan","verifiedAt":null},
+    {"family":"commerce engineering","topic":"Payment Integration Release Checklist for Offshore Development","slug":"payment-integration-release-checklist","sources":["Stripe Docs: Idempotent requests","NIST Secure Software Development Framework","GitHub Docs: About pull request reviews"],"contentHash":"c5caf8ec76687e98fe51e2d12336eaa4c5284655b38f33d08834dec44654c66c","publicationDate":null,"commitSha":"bf5d9a4d8e45d73340e839d86a921b10c7433226","deploymentEvidence":"blocked: public HTTP 404","liveUrl":"https://developeroffshore.com/blog/payment-integration-release-checklist","verifiedAt":null},
+    {"family":"team transition","topic":"Feature Ownership Transition to an Offshore Team","slug":"feature-ownership-transition-offshore-team","sources":["Google SRE Book: Accelerating SREs to On-Call and Beyond","NIST Secure Software Development Framework","GitHub Docs: About pull request reviews"],"contentHash":"ad29023aac7f15f6b9d9ebdd16100808f2f32da846ac7c9439f196b151202c00","publicationDate":null,"commitSha":"bf5d9a4d8e45d73340e839d86a921b10c7433226","deploymentEvidence":"blocked: public HTTP 404","liveUrl":"https://developeroffshore.com/blog/feature-ownership-transition-offshore-team","verifiedAt":null}
+  ]
+}
