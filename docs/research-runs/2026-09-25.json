@@ -1,0 +1,21 @@
+{
+  "routine": "daily-research",
+  "cycleLabel": "2026-09-25 recovery",
+  "dateBasis": "first public reachability in UTC; Blog integrator/user must confirm at combined release",
+  "required": 5,
+  "staged": 5,
+  "verified": 0,
+  "repository": "coolifystealthagents/developeroffshore",
+  "productionBranch": "main",
+  "baseSha": "6368131602d3f63d68e0ca3a96bc1c64f0490335",
+  "releaseOwner": "same-cycle Blog integrator",
+  "deployment": {"status":"not-attempted","reason":"Research handoff contract forbids production push and deployment"},
+  "build": {"status":"passed","staticPages":721,"typecheck":"passed","warning":"existing CSS flex-end compatibility warning"},
+  "articles": [
+    {"family":"Research","topic":"Node.js permission model","slug":"offshore-developer-node-permission-model-pilot-study-2026-09-25","sources":["https://nodejs.org/api/permissions.html","https://nodejs.org/api/cli.html","https://csrc.nist.gov/pubs/sp/800/218/final"]},
+    {"family":"Research","topic":"Next.js instrumentation hook","slug":"offshore-developer-nextjs-instrumentation-hook-pilot-study-2026-09-25","sources":["https://nextjs.org/docs/app/guides/instrumentation","https://opentelemetry.io/docs/languages/js/instrumentation/","https://csrc.nist.gov/pubs/sp/800/218/final"]},
+    {"family":"Research","topic":"Playwright authentication-state isolation","slug":"offshore-developer-playwright-auth-state-isolation-pilot-study-2026-09-25","sources":["https://playwright.dev/docs/auth","https://playwright.dev/docs/test-parallel","https://csrc.nist.gov/pubs/sp/800/218/final"]},
+    {"family":"Research","topic":"Redis eviction policy","slug":"offshore-developer-redis-eviction-policy-pilot-study-2026-09-25","sources":["https://redis.io/docs/latest/develop/reference/eviction/","https://redis.io/docs/latest/commands/info/","https://csrc.nist.gov/pubs/sp/800/218/final"]},
+    {"family":"Research","topic":"GitHub merge queue","slug":"offshore-developer-github-merge-queue-pilot-study-2026-09-25","sources":["https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue","https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#merge_group","https://csrc.nist.gov/pubs/sp/800/218/final"]}
+  ]
+}
