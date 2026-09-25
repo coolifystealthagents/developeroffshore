@@ -1,5 +1,12 @@
 # Developer Offshore topical-authority link ledger
 
+## 2026-09-25 combined recovery release
+
+- Staged exactly 12 new Blog guides and 5 new Research studies from content commit `d2f07495414f2e4b82a6863106929843597dbfa7`; the deployed September 24 release is excluded.
+- The clean production build generated all 17 routes. Rendered Blog bodies contain 1,445–1,473 words; rendered Research bodies contain 1,706–1,721 words.
+- Article-level slugs, topics, authoritative sources, rendered-content hashes, UTC source dates, content commit, live URLs, and pending verification fields are recorded in `.paperclip/daily-content/2026-09-25/blog.json` and `.paperclip/daily-content/2026-09-25/research.json`.
+- Blog owns the one non-force production push. The browser operator owns the single Coolify3 deployment and public-route verification for application `spv5prvi4giijp2o4bq2t04o`.
+
 ## 2026-09-23 daily Blog publishing
 
 - Published and live-verified exactly 12 new service-delivery guides from content commit `ec1c14c59db03467e18adfa15e1875f8c4e9338a`.

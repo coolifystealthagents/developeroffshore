@@ -1,0 +1,91 @@
+{
+  "routine": "Daily Research Publishing",
+  "issue": "DEV-86",
+  "status": "staged_for_combined_release",
+  "required": 5,
+  "verified": 0,
+  "repository": "coolifystealthagents/developeroffshore",
+  "productionBranch": "main",
+  "contentCommit": "d2f0749db0d9532e861ca3326bdff4a208672330",
+  "sourcePublicationDate": "2026-09-25",
+  "timezone": "UTC",
+  "deployment": {
+    "provider": "Coolify3",
+    "application": "spv5prvi4giijp2o4bq2t04o",
+    "owner": "browser operator",
+    "status": "not submitted by routine"
+  },
+  "validation": {
+    "gitDiffCheck": "passed",
+    "typescript": "passed",
+    "productionBuild": "passed with pre-existing CSS autoprefixer warning",
+    "staticRoutes": 5
+  },
+  "articles": [
+    {
+      "family": "research",
+      "topic": "Testing the Node.js Permission Model Before Offshore API Maintenance",
+      "slug": "offshore-developer-node-permission-model-pilot-study-2026-09-25",
+      "sources": "embedded authoritative sources",
+      "contentHash": "e757c5219380d5f5e02e710757d4bddb99286c030c4387d46a61224be90096cc",
+      "sourcePublicationDate": "2026-09-25",
+      "commitSha": "d2f0749db0d9532e861ca3326bdff4a208672330",
+      "deploymentEvidence": "pending single browser-operator deployment",
+      "liveUrl": "https://developeroffshore.com/research/offshore-developer-node-permission-model-pilot-study-2026-09-25",
+      "verifiedAt": null,
+      "renderedWordCount": 1721
+    },
+    {
+      "family": "research",
+      "topic": "A React Hydration-Diagnostic Pilot for Offshore Frontend Work",
+      "slug": "offshore-developer-react-hydration-diagnostic-pilot-study-2026-09-25",
+      "sources": "embedded authoritative sources",
+      "contentHash": "df08b7500326ccf1b2e4624461c90f65ca68b759d7bf22f6f07eb961ef1b3c1a",
+      "sourcePublicationDate": "2026-09-25",
+      "commitSha": "d2f0749db0d9532e861ca3326bdff4a208672330",
+      "deploymentEvidence": "pending single browser-operator deployment",
+      "liveUrl": "https://developeroffshore.com/research/offshore-developer-react-hydration-diagnostic-pilot-study-2026-09-25",
+      "verifiedAt": null,
+      "renderedWordCount": 1713
+    },
+    {
+      "family": "research",
+      "topic": "Testing PostgreSQL Replication-Slot Operations With an Offshore Developer",
+      "slug": "offshore-developer-postgres-logical-replication-slot-pilot-study-2026-09-25",
+      "sources": "embedded authoritative sources",
+      "contentHash": "42d864a90bae448db1af17542df5b23ddfb86e7aa26abcdc59f16f56c0f43c50",
+      "sourcePublicationDate": "2026-09-25",
+      "commitSha": "d2f0749db0d9532e861ca3326bdff4a208672330",
+      "deploymentEvidence": "pending single browser-operator deployment",
+      "liveUrl": "https://developeroffshore.com/research/offshore-developer-postgres-logical-replication-slot-pilot-study-2026-09-25",
+      "verifiedAt": null,
+      "renderedWordCount": 1711
+    },
+    {
+      "family": "research",
+      "topic": "Can an Offshore QA Engineer Produce Reviewable Visual-Comparison Evidence?",
+      "slug": "offshore-developer-playwright-visual-comparison-pilot-study-2026-09-25",
+      "sources": "embedded authoritative sources",
+      "contentHash": "5f1864c28088d7a6d0e8ff488d79cc6823e9032d4d8e86cb69d77eb264ad4efb",
+      "sourcePublicationDate": "2026-09-25",
+      "commitSha": "d2f0749db0d9532e861ca3326bdff4a208672330",
+      "deploymentEvidence": "pending single browser-operator deployment",
+      "liveUrl": "https://developeroffshore.com/research/offshore-developer-playwright-visual-comparison-pilot-study-2026-09-25",
+      "verifiedAt": null,
+      "renderedWordCount": 1706
+    },
+    {
+      "family": "research",
+      "topic": "A Kubernetes Probe-Behavior Pilot for Offshore Release Support",
+      "slug": "offshore-developer-kubernetes-probe-behavior-pilot-study-2026-09-25",
+      "sources": "embedded authoritative sources",
+      "contentHash": "b5f6e51a0397df8eae25e023239ace133078079a91aeb1482de971a53bec9141",
+      "sourcePublicationDate": "2026-09-25",
+      "commitSha": "d2f0749db0d9532e861ca3326bdff4a208672330",
+      "deploymentEvidence": "pending single browser-operator deployment",
+      "liveUrl": "https://developeroffshore.com/research/offshore-developer-kubernetes-probe-behavior-pilot-study-2026-09-25",
+      "verifiedAt": null,
+      "renderedWordCount": 1712
+    }
+  ]
+}
