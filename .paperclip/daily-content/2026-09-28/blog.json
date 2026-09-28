@@ -1,0 +1,20 @@
+{
+  "routine":"Daily Blog Publishing","issue":"DEV-89","status":"combined_release_ready","required":12,"verified":0,
+  "repository":"coolifystealthagents/developeroffshore","productionBranch":"main","branch":"routine/dev89-blog-20260928","baseline":"b872758babbdcb2cd1bb28f760f93ffa4efd9683","contentCommit":"3bd9e310e42291854d082e1103ad6dca8c057f11","sourcePublicationDate":"2026-09-28","timezone":"UTC",
+  "deployment":{"provider":"Coolify3","application":"spv5prvi4giijp2o4bq2t04o","owner":"browser operator","status":"not submitted by content routines"},
+  "validation":{"typescript":"passed","productionBuild":"passed with pre-existing CSS autoprefixer warning","combinedStaticPages":751,"staticRoutes":12,"bodyWordCounts":[1320,1270,1342,1271,1305,1277,1340,1283,1331,1302,1331,1305],"maximumPairwiseFiveWordShingleJaccard":0.489945155393053,"similarityThreshold":0.5},
+  "articles":[
+    {"family":"blog","slug":"terraform-drift-review-offshore-team","contentHash":"1754fa8e0d3839d00af07a308681812dd159e558db3c19d00307b4130a2b51de","liveUrl":"https://developeroffshore.com/blog/terraform-drift-review-offshore-team","verifiedAt":null},
+    {"family":"blog","slug":"redis-eviction-policy-review-offshore-developer","contentHash":"87d810bacb58f67497a11cd753d2a6667b6b3b3d6fdc07eda6379baa768e584e","liveUrl":"https://developeroffshore.com/blog/redis-eviction-policy-review-offshore-developer","verifiedAt":null},
+    {"family":"blog","slug":"docker-multi-stage-build-handoff","contentHash":"54b03eb5f743fe347da7502e5a4d967f9244b2c603709153c6f12a3ba8c547d9","liveUrl":"https://developeroffshore.com/blog/docker-multi-stage-build-handoff","verifiedAt":null},
+    {"family":"blog","slug":"async-request-cancellation-react-handoff","contentHash":"185f6855544253a91441d5ded273279eea5fc3dc2572490169089a26eec2a779","liveUrl":"https://developeroffshore.com/blog/async-request-cancellation-react-handoff","verifiedAt":null},
+    {"family":"blog","slug":"oauth-token-exchange-boundary-review","contentHash":"635fb72189d5e206df27f6707c9745c5af80d355461b185de508d4d51c48ab94","liveUrl":"https://developeroffshore.com/blog/oauth-token-exchange-boundary-review","verifiedAt":null},
+    {"family":"blog","slug":"dependency-bot-merge-policy-offshore-team","contentHash":"c1e752403475dc394ee1612ef8906d9affbbb1a59aef932dec26e21b54eb0159","liveUrl":"https://developeroffshore.com/blog/dependency-bot-merge-policy-offshore-team","verifiedAt":null},
+    {"family":"blog","slug":"nextjs-server-action-authorization-review","contentHash":"fadc693ab65e838abc16ca10c487cb75767eaf2be5dad9a8efa751861cfef203","liveUrl":"https://developeroffshore.com/blog/nextjs-server-action-authorization-review","verifiedAt":null},
+    {"family":"blog","slug":"kubernetes-resource-request-review-offshore-support","contentHash":"3863ebefccb8c18b7b56151808918c71a90e06d53c5c03295ee9fc1cf0c314eb","liveUrl":"https://developeroffshore.com/blog/kubernetes-resource-request-review-offshore-support","verifiedAt":null},
+    {"family":"blog","slug":"cdn-cache-key-review-offshore-developer","contentHash":"f849f04be488c5061c706021a8917a14426a56c3e499a1ab0f143218550e401f","liveUrl":"https://developeroffshore.com/blog/cdn-cache-key-review-offshore-developer","verifiedAt":null},
+    {"family":"blog","slug":"secret-scanning-finding-triage-offshore-team","contentHash":"41378b245a11593328accb1aa323e0b5cd50dac342086ec241ec180e1df39439","liveUrl":"https://developeroffshore.com/blog/secret-scanning-finding-triage-offshore-team","verifiedAt":null},
+    {"family":"blog","slug":"scheduled-job-overlap-control-offshore-developer","contentHash":"fe754b2c6004a4edc51d8b0b76946ba768e547ecdc950555e0786c97e0a9f886","liveUrl":"https://developeroffshore.com/blog/scheduled-job-overlap-control-offshore-developer","verifiedAt":null},
+    {"family":"blog","slug":"webhook-signing-key-rotation-handoff","contentHash":"c2af5157283dc1578b2405920a4bf9c9b4ca6751c6c66f9ffa9dc3d0bf1a9bc3","liveUrl":"https://developeroffshore.com/blog/webhook-signing-key-rotation-handoff","verifiedAt":null}
+  ]
+}

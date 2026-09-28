@@ -68,6 +68,13 @@ Last audited: 2026-09-13
 
 All currently listed contextual candidates are delivered locally. Select a later candidate only after a new clean-baseline artifact audit confirms both an existing supporting route and a matching service pillar with no route-local handoff.
 
+## September 28, 2026 combined content handoff
+
+- DEV-89 owns 12 new Blog decision guides covering Terraform drift, Redis eviction, multi-stage containers, React cancellation, OAuth exchange, dependency updates, Server Action authorization, Kubernetes resources, CDN keys, secret findings, scheduled-job overlap, and webhook key rotation.
+- DEV-88 owns 5 new Research studies covering Node.js async context, PostgreSQL `NOT VALID`, Playwright network mocks, Kubernetes disruption budgets, and Docker build secrets.
+- Every route links to an existing relevant service pillar and the Blog and Research indexes. Combined rendered depth and similarity evidence is stored in `.paperclip/daily-content/2026-09-28/`.
+- Content routines do not deploy. After the sole production push, the browser operator owns exact-SHA Coolify history review and any necessary submission for application `spv5prvi4giijp2o4bq2t04o`.
+
 ## Release status — 2026-09-13
 
 - Rendered source: `40f633272b661e2994364fc594f6b192838f6a29` passed the focused handoff test, TypeScript check, production build, and local artifact proof. The built route has the DevOps Release Support link three times in route-local `<main>`, current Open Graph and BlogPosting modified dates, and sitemap `<lastmod>` `2026-09-13`.
