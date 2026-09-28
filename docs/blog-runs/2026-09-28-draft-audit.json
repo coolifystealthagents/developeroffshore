@@ -1,0 +1,42 @@
+{
+  "routine": "Daily Blog Publishing",
+  "issue": "DEV-89",
+  "cycleLabel": "September 28, 2026",
+  "status": "draft_rejected_before_release",
+  "repository": "coolifystealthagents/developeroffshore",
+  "productionBranch": "main",
+  "baselineSha": "b872758babbdcb2cd1bb28f760f93ffa4efd9683",
+  "draftBranch": "routine/dev89-blog-20260928",
+  "draftCommit": "71fa25a8180bf1bab60f172e45d36ce18b67bcd0",
+  "worktree": "/tmp/paperclip-run-dev-89-e5d02620-2a6-9aVFgr/dev89-blog-20260928",
+  "timezone": "UTC",
+  "sourcePublicationDate": "2026-09-28",
+  "required": 12,
+  "drafted": 12,
+  "released": 0,
+  "validation": {
+    "typescript": "passed",
+    "cleanProductionBuild": "passed with pre-existing CSS autoprefixer warning",
+    "staticRoutes": 12,
+    "bodyOnlyMinimumWords": 1135,
+    "bodyOnlyMaximumWords": 1154,
+    "maximumPairwiseFiveWordShingleJaccard": 0.8316993464052288,
+    "similarityThreshold": 0.5,
+    "similarity": "failed"
+  },
+  "recovery": "Substantively rewrite the same 12 article bodies with topic-specific workflows, examples, failure analysis, and decision criteria; rerun body-only word-count and shingle audits. Do not push until every pair is below 0.50 and the DEV-88 five-Research local handoff is integrated and the combined build passes.",
+  "articles": [
+    {"slug":"terraform-drift-review-offshore-team","bodyOnlyWords":1138},
+    {"slug":"redis-eviction-policy-review-offshore-developer","bodyOnlyWords":1141},
+    {"slug":"docker-multi-stage-build-handoff","bodyOnlyWords":1143},
+    {"slug":"async-request-cancellation-react-handoff","bodyOnlyWords":1142},
+    {"slug":"oauth-token-exchange-boundary-review","bodyOnlyWords":1135},
+    {"slug":"dependency-bot-merge-policy-offshore-team","bodyOnlyWords":1136},
+    {"slug":"nextjs-server-action-authorization-review","bodyOnlyWords":1144},
+    {"slug":"kubernetes-resource-request-review-offshore-support","bodyOnlyWords":1145},
+    {"slug":"cdn-cache-key-review-offshore-developer","bodyOnlyWords":1145},
+    {"slug":"secret-scanning-finding-triage-offshore-team","bodyOnlyWords":1153},
+    {"slug":"scheduled-job-overlap-control-offshore-developer","bodyOnlyWords":1144},
+    {"slug":"webhook-signing-key-rotation-handoff","bodyOnlyWords":1154}
+  ]
+}
