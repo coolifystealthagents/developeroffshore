@@ -19,7 +19,10 @@ import { september19ResearchBatch } from './sep19-research-batch';
 import { september22ResearchBatch } from './sep22-research-batch';
 import { september23ResearchBatch } from './sep23-research-batch';
 import { september24ResearchBatch } from './sep24-research-batch';
-import { september25ResearchBatch } from './sep25-research-batch';
+import { september25ResearchBatch as september25ResearchBatchBase } from './sep25-research-batch';
+import { september28ResearchBatch } from './sep28-research-batch';
+
+const september25ResearchBatch: readonly ResearchPost[] = [...september28ResearchBatch, ...september25ResearchBatchBase];
 
 export const fleetServices: readonly FleetService[] = [
   { slug: 'next-js-application-development', title: 'Next.js Application Development', desc: 'Build a Philippines-based next.js application development workflow with documented responsibilities, access limits, and manager review.', tasks: ['Document the recurring software development work', 'Complete approved tasks in the client workflow', 'Record exceptions and next actions'], controls: ['Use named accounts and limited permissions', 'Follow written approval and escalation rules', 'Review work with a client-side owner'], firstWeek: ['Confirm scope and working hours', 'Practice with representative examples', 'Review the first completed work together'] },
