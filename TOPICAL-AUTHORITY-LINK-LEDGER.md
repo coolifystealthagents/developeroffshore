@@ -77,7 +77,7 @@ All currently listed contextual candidates are delivered locally. Select a later
 
 ## October 2, 2026 Blog draft
 
-- DEV-91 owns twelve new Blog decision guides covering PostgreSQL row security, passkey recovery, Node.js shutdown, Kubernetes readiness gates, concurrent index builds, GitHub Actions OIDC, incomplete multipart uploads, GraphQL query cost, React error recovery, Next.js cache tags, DNS cutovers, and API rate limiting.
+- DEV-91 owns twelve new Blog decision guides covering PostgreSQL row security, passkey recovery, Node.js shutdown, Kubernetes readiness gates, concurrent index builds, GitHub Actions OIDC, incomplete multipart uploads, GraphQL query cost, React error recovery, container image signatures, DNS cutovers, and API rate limiting.
 - Rendered body depth, content hashes, route inventory, source date, and similarity evidence are recorded in `.paperclip/daily-content/2026-10-02/blog.json`.
 - This is a local Blog draft checkpoint only. DEV-90 owns the five-Research local handoff; DEV-91 will integrate and perform the sole combined non-force production push after combined validation.
 
