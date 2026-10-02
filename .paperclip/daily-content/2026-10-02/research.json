@@ -9,6 +9,7 @@
   "productionBranch": "main",
   "localBranch": "research/dev-90-20261002",
   "baseline": "90d0606209f22dd02e4b4c40978ed86cebf4263c",
+  "contentCommit": "aed848a45202544ee48bd4e2887c9594b73562ec",
   "cycleLabel": "2026-10-02",
   "sourcePublicationDate": "2026-10-02",
   "publicationDateStatus": "pending Blog integrator reconciliation immediately before the sole combined push; do not publish with this date after local midnight",
