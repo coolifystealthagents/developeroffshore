@@ -75,6 +75,12 @@ All currently listed contextual candidates are delivered locally. Select a later
 - Every route links to an existing relevant service pillar and the Blog and Research indexes. Combined rendered depth and similarity evidence is stored in `.paperclip/daily-content/2026-09-28/`.
 - Content routines do not deploy. After the sole production push, the browser operator owns exact-SHA Coolify history review and any necessary submission for application `spv5prvi4giijp2o4bq2t04o`.
 
+## October 2, 2026 Blog draft
+
+- DEV-91 owns twelve new Blog decision guides covering PostgreSQL row security, passkey recovery, Node.js shutdown, Kubernetes readiness gates, concurrent index builds, GitHub Actions OIDC, incomplete multipart uploads, GraphQL query cost, React error recovery, Next.js cache tags, DNS cutovers, and API rate limiting.
+- Rendered body depth, content hashes, route inventory, source date, and similarity evidence are recorded in `.paperclip/daily-content/2026-10-02/blog.json`.
+- This is a local Blog draft checkpoint only. DEV-90 owns the five-Research local handoff; DEV-91 will integrate and perform the sole combined non-force production push after combined validation.
+
 ## Release status — 2026-09-13
 
 - Rendered source: `40f633272b661e2994364fc594f6b192838f6a29` passed the focused handoff test, TypeScript check, production build, and local artifact proof. The built route has the DevOps Release Support link three times in route-local `<main>`, current Open Graph and BlogPosting modified dates, and sitemap `<lastmod>` `2026-09-13`.
