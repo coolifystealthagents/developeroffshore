@@ -2,7 +2,7 @@
   "routine": "Daily Research Publishing",
   "issue": "DEV-90",
   "pairedBlogIssue": "DEV-91",
-  "status": "local_handoff",
+  "status": "combined_release_ready",
   "required": 5,
   "verified": 0,
   "repository": "coolifystealthagents/developeroffshore",
@@ -18,7 +18,7 @@
   "validation": {
     "dependencyInstall": "npm ci --include=dev passed; npm reported 4 pre-existing audit findings (3 high, 1 critical) and no lockfile change",
     "typescript": "passed",
-    "productionBuild": "passed with 756 static pages and the pre-existing CSS autoprefixer warning",
+    "productionBuild": "combined head passed with 768 static pages and the pre-existing CSS autoprefixer warning",
     "renderedLocalRoutes": 5,
     "bodyWordCountsExcludingSourceAppendices": [1324, 1385, 1384, 1350, 1393],
     "maximumPairwiseFiveWordShingleJaccard": 0.002206693637366679,

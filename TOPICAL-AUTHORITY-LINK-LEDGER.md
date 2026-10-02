@@ -80,6 +80,7 @@ All currently listed contextual candidates are delivered locally. Select a later
 - DEV-91 owns twelve new Blog decision guides covering PostgreSQL row security, passkey recovery, Node.js shutdown, Kubernetes readiness gates, concurrent index builds, GitHub Actions OIDC, incomplete multipart uploads, GraphQL query cost, React error recovery, container image signatures, DNS cutovers, and API rate limiting.
 - Rendered body depth, content hashes, route inventory, source date, and similarity evidence are recorded in `.paperclip/daily-content/2026-10-02/blog.json`.
 - This is a local Blog draft checkpoint only. DEV-90 owns the five-Research local handoff; DEV-91 will integrate and perform the sole combined non-force production push after combined validation.
+- DEV-90 handoff `85421c9b3b34cc59919d3dd1058d8fc194235d71` was integrated. The combined 12 Blog + 5 Research head passed TypeScript, the clean 768-page production build, rendered metadata and sitemap checks, family-specific depth thresholds, and five-word-shingle similarity thresholds before release.
 
 ## Release status — 2026-09-13
 

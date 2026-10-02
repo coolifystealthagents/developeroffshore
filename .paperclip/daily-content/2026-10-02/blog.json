@@ -1,6 +1,6 @@
 {
-  "routine":"Daily Blog Publishing","issue":"DEV-91","cycleLabel":"2026-10-02","status":"local_blog_ready","required":12,"verified":0,
-  "repository":"coolifystealthagents/developeroffshore","productionBranch":"main","branch":"routine/dev91-blog-20261002","baseline":"90d0606209f22dd02e4b4c40978ed86cebf4263c","sourcePublicationDate":"2026-10-02","timezone":"UTC",
+  "routine":"Daily Blog Publishing","issue":"DEV-91","cycleLabel":"2026-10-02","status":"combined_release_ready","required":12,"verified":0,
+  "repository":"coolifystealthagents/developeroffshore","productionBranch":"main","branch":"routine/dev91-blog-20261002","baseline":"90d0606209f22dd02e4b4c40978ed86cebf4263c","contentCommit":"75568e14af2940cd55f41f9edea58c2439c44a3c","sourcePublicationDate":"2026-10-02","timezone":"UTC",
   "deployment":{"provider":"Coolify3","application":"spv5prvi4giijp2o4bq2t04o","owner":"browser operator","status":"not submitted"},
   "validation":{"typescript":"passed","productionBuild":"passed with pre-existing CSS autoprefixer warning","combinedStaticPages":768,"staticRoutes":12,"bodyWordCounts":[1181,1126,1164,1110,1156,1128,1164,1110,1151,1103,1193,1104],"maximumPairwiseFiveWordShingleJaccard":0.48360083740404747,"similarityThreshold":0.5},
   "articles":[
