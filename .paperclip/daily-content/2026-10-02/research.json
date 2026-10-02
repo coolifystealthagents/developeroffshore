@@ -1,0 +1,34 @@
+{
+  "routine": "Daily Research Publishing",
+  "issue": "DEV-90",
+  "pairedBlogIssue": "DEV-91",
+  "status": "local_handoff",
+  "required": 5,
+  "verified": 0,
+  "repository": "coolifystealthagents/developeroffshore",
+  "productionBranch": "main",
+  "localBranch": "research/dev-90-20261002",
+  "baseline": "90d0606209f22dd02e4b4c40978ed86cebf4263c",
+  "cycleLabel": "2026-10-02",
+  "sourcePublicationDate": "2026-10-02",
+  "publicationDateStatus": "pending Blog integrator reconciliation immediately before the sole combined push; do not publish with this date after local midnight",
+  "timezone": "UTC",
+  "deployment": {"provider":"Coolify3","application":"spv5prvi4giijp2o4bq2t04o","owner":"Browser Operator","status":"not submitted by Research"},
+  "validation": {
+    "dependencyInstall": "npm ci --include=dev passed; npm reported 4 pre-existing audit findings (3 high, 1 critical) and no lockfile change",
+    "typescript": "passed",
+    "productionBuild": "passed with 756 static pages and the pre-existing CSS autoprefixer warning",
+    "renderedLocalRoutes": 5,
+    "bodyWordCountsExcludingSourceAppendices": [1324, 1385, 1384, 1350, 1393],
+    "maximumPairwiseFiveWordShingleJaccard": 0.002206693637366679,
+    "similarityThreshold": 0.5,
+    "localRouteChecks": "all 5 returned 200 with title, visible date, datePublished, exact canonical, Research index entry, sitemap entry, and HTTP 200 image/svg+xml"
+  },
+  "articles": [
+    {"family":"research","topic":"Node.js AbortSignal cancellation across API dependencies","slug":"offshore-developer-node-abort-signal-cancellation-study-2026-10-02","contentHash":"96ac3fec970417cdf79c59a91595842d893364bc705f55cdeed9a9ab47dd4097","liveUrl":"https://developeroffshore.com/research/offshore-developer-node-abort-signal-cancellation-study-2026-10-02","verifiedAt":null},
+    {"family":"research","topic":"PostgreSQL logical replication replica identity changes","slug":"offshore-developer-postgresql-replica-identity-change-study-2026-10-02","contentHash":"353f110255a8dcae4c68ed146110434a95e6762c0de468dbd471b84bbb802efc","liveUrl":"https://developeroffshore.com/research/offshore-developer-postgresql-replica-identity-change-study-2026-10-02","verifiedAt":null},
+    {"family":"research","topic":"Playwright trace artifact data exposure","slug":"offshore-developer-playwright-trace-data-exposure-study-2026-10-02","contentHash":"c6c586e34ab0c324444fe361ec37270d327640f410eef499577e76f9ec446fa9","liveUrl":"https://developeroffshore.com/research/offshore-developer-playwright-trace-data-exposure-study-2026-10-02","verifiedAt":null},
+    {"family":"research","topic":"Kubernetes startup readiness and liveness probe transitions","slug":"offshore-developer-kubernetes-probe-state-transition-study-2026-10-02","contentHash":"49da3e961ac67d11a4f88ed48c7719c40b30e474142e7d51969e4e086e566e98","liveUrl":"https://developeroffshore.com/research/offshore-developer-kubernetes-probe-state-transition-study-2026-10-02","verifiedAt":null},
+    {"family":"research","topic":"Next.js route and data cache invalidation","slug":"offshore-developer-nextjs-cache-invalidation-study-2026-10-02","contentHash":"dddc2456cb26953cb989212890afd467a57cf18906bfd5ab34a02cb27d377c68","liveUrl":"https://developeroffshore.com/research/offshore-developer-nextjs-cache-invalidation-study-2026-10-02","verifiedAt":null}
+  ]
+}
