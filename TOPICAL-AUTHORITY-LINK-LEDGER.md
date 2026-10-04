@@ -106,3 +106,9 @@ All currently listed contextual candidates are delivered locally. Select a later
 
 - Rendered source: `7ca9c2dd646423be55445a27683c4f0dd296159d` passed the focused Node.js handoff regression, all five Node tests, TypeScript linting, and a fresh 733-page production build. The generated API-error-taxonomy route has the expected H1 and canonical, one `api-contract-review-brief` target, one route-local `/services/node-js-api-development` link, visible `2026-09-27`, `article:modified_time` and `ResearchArticle.dateModified` `2026-09-27`, and sitemap `<lastmod>` `2026-09-27`.
 - Preserve rendered-source commit `7ca9c2dd646423be55445a27683c4f0dd296159d`. Cache-busted apex and `www` pages each returned HTTP 200 HTML with the expected legacy H1 and apex canonical but omitted the API contract review marker and route-local Node.js API Development link, retained `article:modified_time` `2026-08-17`, and each XML sitemap retained the route record with `<lastmod>` `2026-08-17`. The documented Coolify application is browser-operator-owned and no repository-approved deploy credential or workflow is available here, so no trigger was attempted. This is `deployment_pending_public_verification / deployment_configuration_unavailable / public_stale`, not a published rollout.
+
+## October 2 route-to-service reconciliation
+
+- Fresh October 4 production artifacts confirm all 12 October 2 Blog guides and all 5 October 2 Research studies resolve to self-canonical generated routes and appear in the sitemap.
+- Each Blog route has its declared service link in route-local `<main>` through the related guide and banner positions. Each Research route has its declared one or two related-service links in route-local `<main>`.
+- These 17 source-to-service paths are delivered and non-duplicable. The next topical-authority action must start with a new clean-baseline candidate audit rather than add another CTA to this release set.
