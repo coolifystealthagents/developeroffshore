@@ -1,0 +1,94 @@
+{
+  "routine": "Daily Research Publishing",
+  "issue": "DEV-93",
+  "pairedBlogIssue": "DEV-94",
+  "runId": "583a955d-fb92-4233-b2be-b8c6799be041",
+  "status": "local_handoff_ready",
+  "required": 5,
+  "verified": 0,
+  "repository": "coolifystealthagents/developeroffshore",
+  "productionBranch": "main",
+  "localBranch": "research/dev-93-20261005",
+  "worktree": ".paperclip/worktrees/dev-93-20261005",
+  "baseline": "e25b24d6c8a937f4015143ab760ba9a9768dc00a",
+  "contentCommit": null,
+  "handoffCommit": null,
+  "cycleLabel": "2026-10-05",
+  "sourcePublicationDate": "2026-10-05",
+  "publicationDateStatus": "UTC source date is valid only if the combined release first becomes public and passes verification on 2026-10-05 UTC; Blog integrator must reconcile all date surfaces immediately before the sole push and must change them if publication occurs on another local date.",
+  "timezone": "UTC",
+  "deployment": {
+    "provider": "Coolify3",
+    "application": "spv5prvi4giijp2o4bq2t04o",
+    "owner": "Browser Operator",
+    "status": "not submitted by Research"
+  },
+  "validation": {
+    "dependencyInstall": "npm ci --include=dev passed; 0 vulnerabilities",
+    "typescript": "npm run lint passed",
+    "productionBuild": "npm run build passed; 773 static pages; pre-existing CSS autoprefixer warning only",
+    "renderedLocalRoutes": 5,
+    "renderedBodyParagraphEquality": "80 of 80 source body paragraphs found exactly in rendered output after HTML decoding",
+    "bodyWordCountsExcludingSourceAppendices": [1383, 1307, 1280, 1236, 1281],
+    "maximumPairwiseFiveWordShingleJaccard": 0.0022115739034279398,
+    "similarityThreshold": 0.5,
+    "repeatedSubstantiveParagraphs": 0,
+    "qualitativeOriginality": "passed: different engineering decisions, fixtures, controls, failure taxonomies, review sequences, worked cases, and reader outcomes; no shared argument or section sequence",
+    "priorCorpusCollision": "passed repository inventory audit; no slug or substantive-topic duplicate found",
+    "authoritativeSourceLinks": "15 of 15 returned HTTP 200 on 2026-10-05",
+    "internalLinks": "all service and Research links are repository-defined routes and passed local rendering",
+    "localRouteChecks": "all 5 returned 200 with title, visible UTC date, datePublished, exact canonical, full body, Research index entry, sitemap entry, and HTTP 200 image/svg+xml with valid SVG signature"
+  },
+  "articles": [
+    {
+      "family": "research",
+      "topic": "Node.js AsyncLocalStorage context preservation and cross-request contamination",
+      "slug": "offshore-developer-nodejs-async-context-integrity-study-2026-10-05",
+      "sources": ["https://nodejs.org/api/async_context.html", "https://nodejs.org/api/events.html", "https://nodejs.org/api/diagnostics_channel.html"],
+      "contentHash": "6b3987f75f8f910c83063ae87b07caba51540a4e9f1013fdd3e1e62a9b0fe370",
+      "actualPublicationDate": null,
+      "liveUrl": "https://developeroffshore.com/research/offshore-developer-nodejs-async-context-integrity-study-2026-10-05",
+      "verifiedAt": null
+    },
+    {
+      "family": "research",
+      "topic": "PostgreSQL staged CHECK and foreign-key constraint validation",
+      "slug": "offshore-developer-postgresql-staged-constraint-validation-study-2026-10-05",
+      "sources": ["https://www.postgresql.org/docs/current/sql-altertable.html", "https://www.postgresql.org/docs/current/explicit-locking.html", "https://www.postgresql.org/docs/current/ddl-constraints.html"],
+      "contentHash": "52ff5ab7b2de846e239078ce0457b229cfa42f2f864e88e356e1f5a2e26dacb3",
+      "actualPublicationDate": null,
+      "liveUrl": "https://developeroffshore.com/research/offshore-developer-postgresql-staged-constraint-validation-study-2026-10-05",
+      "verifiedAt": null
+    },
+    {
+      "family": "research",
+      "topic": "Playwright authenticated-state isolation under parallel test execution",
+      "slug": "offshore-developer-playwright-auth-state-isolation-study-2026-10-05",
+      "sources": ["https://playwright.dev/docs/auth", "https://playwright.dev/docs/api/class-browsercontext", "https://playwright.dev/docs/test-configuration"],
+      "contentHash": "c1c440b256a44a35f7a56210ec075bad9066d52dd709f42fa0f95f60a73260e7",
+      "actualPublicationDate": null,
+      "liveUrl": "https://developeroffshore.com/research/offshore-developer-playwright-auth-state-isolation-study-2026-10-05",
+      "verifiedAt": null
+    },
+    {
+      "family": "research",
+      "topic": "Kubernetes PodDisruptionBudget behavior during reviewed node drains",
+      "slug": "offshore-developer-kubernetes-disruption-budget-drain-study-2026-10-05",
+      "sources": ["https://kubernetes.io/docs/concepts/workloads/pods/disruptions/", "https://kubernetes.io/docs/tasks/run-application/configure-pdb/", "https://kubernetes.io/docs/concepts/scheduling-eviction/api-eviction/"],
+      "contentHash": "2c90ab128b09b5cb3f258f681d7f9eb4a19df69138a909d5fcd826d1eec62226",
+      "actualPublicationDate": null,
+      "liveUrl": "https://developeroffshore.com/research/offshore-developer-kubernetes-disruption-budget-drain-study-2026-10-05",
+      "verifiedAt": null
+    },
+    {
+      "family": "research",
+      "topic": "Next.js Server Action authorization and proxy-origin handling",
+      "slug": "offshore-developer-nextjs-server-action-authorization-study-2026-10-05",
+      "sources": ["https://nextjs.org/docs/app/guides/data-security", "https://nextjs.org/docs/app/getting-started/mutating-data", "https://nextjs.org/docs/app/api-reference/config/next-config-js/serverActions"],
+      "contentHash": "2516b12c97c1c6165c1bcd383c6c935e576523f5a3712b11466d66e694542324",
+      "actualPublicationDate": null,
+      "liveUrl": "https://developeroffshore.com/research/offshore-developer-nextjs-server-action-authorization-study-2026-10-05",
+      "verifiedAt": null
+    }
+  ]
+}
