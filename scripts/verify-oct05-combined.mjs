@@ -3,11 +3,15 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import ts from 'typescript';
+import sharp from 'sharp';
 
 const root = process.cwd();
 const base = process.env.VERIFY_BASE_URL || 'http://127.0.0.1:3000';
 const expectedDate = process.env.VERIFY_PUBLICATION_DATE || '2026-10-05';
 const timeoutMs = 20000;
+const qualitativePriorAuditPath = path.join(root, '.paperclip/daily-content/2026-10-05/qualitative-prior-corpus-audit.json');
+const qualitativePriorAuditDocument = JSON.parse(fs.readFileSync(qualitativePriorAuditPath, 'utf8'));
+const qualitativePriorAudit = qualitativePriorAuditDocument.articles;
 
 function sourceFile(file) {
   const source = fs.readFileSync(path.join(root, file), 'utf8');
@@ -101,6 +105,14 @@ const articles = [...parseBlog(), ...parseResearch()];
 assert.equal(articles.filter((item) => item.family === 'blog').length, 12);
 assert.equal(articles.filter((item) => item.family === 'research').length, 5);
 assert.equal(new Set(articles.map((item) => item.slug)).size, 17, 'cycle slugs must be unique');
+assert.equal(Object.keys(qualitativePriorAudit).length, 17, 'qualitative audit must cover all17');
+for (const article of articles) {
+  const audit = qualitativePriorAudit[article.slug];
+  assert(audit?.nearestPriorSlug && audit?.nearestPriorFile && audit?.decisionComparison && audit?.workedExampleComparison, `qualitative prior audit missing: ${article.slug}`);
+  const priorSource = fs.readFileSync(path.join(root, audit.nearestPriorFile), 'utf8');
+  assert(priorSource.includes(audit.nearestPriorSlug), `qualitative prior target does not exist: ${article.slug} -> ${audit.nearestPriorSlug}`);
+  assert.equal(audit.verdict, 'pass', `qualitative prior-corpus rewrite required: ${article.slug} duplicates ${audit.nearestPriorSlug}`);
+}
 
 const corpusFiles = fs.readdirSync(path.join(root, 'app')).filter((name) => /batch\.ts$/.test(name) && !/^oct05-/.test(name));
 for (const article of articles) {
@@ -158,9 +170,14 @@ for (const article of articles) {
   assert(type.startsWith('image/'), `${route} image MIME ${type}`);
   assert(image.bytes.length > 100, `${route} image length`);
   assert(imageSignature(image.bytes, type), `${route} image signature/decode`);
+  const decodedImage = sharp(image.bytes, { failOn: 'error' });
+  const imageMetadata = await decodedImage.metadata();
+  assert(imageMetadata.width > 0 && imageMetadata.height > 0, `${route} decoded image dimensions`);
+  const raster = await decodedImage.png().toBuffer({ resolveWithObject: true });
+  assert(raster.info.width === imageMetadata.width && raster.info.height === imageMetadata.height && raster.data.length > 100, `${route} SVG raster decode`);
   for (const url of article.sources) sourceUrls.add(url);
   for (const href of article.links) internalUrls.add(href);
-  routeEvidence.push({ family: article.family, slug: article.slug, route, title: article.title, bodyWordCount: wordCount, bodyHash: sha(article.paragraphs.join('\n\n')), paragraphs: article.paragraphs.length, canonical, imageUrl: new URL(imageMatch[1], 'https://developeroffshore.com').href, imageType: type });
+  routeEvidence.push({ family: article.family, slug: article.slug, route, title: article.title, bodyWordCount: wordCount, bodyHash: sha(article.paragraphs.join('\n\n')), paragraphs: article.paragraphs.length, canonical, imageUrl: new URL(imageMatch[1], 'https://developeroffshore.com').href, imageType: type, imageDimensions: [imageMetadata.width, imageMetadata.height], rasterDecodedBytes: raster.data.length, qualitativePriorAudit: qualitativePriorAudit[article.slug] });
 }
 for (const href of internalUrls) {
   const result = await request(`${base}${href}`);
@@ -172,4 +189,4 @@ for (const url of sourceUrls) {
   assert(result.response.status < 400, `source link ${url}: ${result.response.status}`);
   sourceEvidence.push({ url, status: result.response.status, finalUrl: result.response.url });
 }
-console.log(JSON.stringify({ verifiedAt: new Date().toISOString(), base, expectedDate, counts: { blog: 12, research: 5, total: 17 }, familySimilarity, internalLinks: [...internalUrls], sourceEvidence, routes: routeEvidence }, null, 2));
+console.log(JSON.stringify({ verifiedAt: new Date().toISOString(), base, expectedDate, counts: { blog: 12, research: 5, total: 17 }, familySimilarity, qualitativePriorAuditCount: Object.keys(qualitativePriorAudit).length, internalLinks: [...internalUrls], sourceEvidence, routes: routeEvidence }, null, 2));

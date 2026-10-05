@@ -2,7 +2,7 @@
   "routine": "Daily Blog Publishing",
   "issue": "DEV-94",
   "cycleLabel": "2026-10-05",
-  "status": "all17_combined_local_validation_passed_pending_rebase",
+  "status": "qualitative_prior_corpus_audit_failed_7_rewrites_required",
   "required": 12,
   "verified": 0,
   "draftCommit": "ed61313b01a8d47be92e69fa73272e8315654212",
@@ -16,6 +16,8 @@
   "timezone": "UTC",
   "publicationDateRule": "Set all source, structured, index, sitemap, and ledger dates to each route's first successful public verification date in UTC before the sole production push; the cycle label is not a publication date.",
   "validation": {
+    "dependencyInstall": "npm ci --include=dev passed with package-lock.json after declaring the validator's direct sharp dependency",
+    "dependencyAudit": "npm audit --include=dev --audit-level=low passed; 0 vulnerabilities",
     "verifiedAt": "2026-10-05T19:53:42.883Z",
     "validator": "scripts/verify-oct05-combined.mjs",
     "typescript": "passed",
@@ -31,7 +33,11 @@
     "authoritativeSourcesHttpPassed": 46,
     "internalLinksPassed": true,
     "titlesDatesCanonicalsSchemaIndexesSitemapPassed": true,
-    "imagesHttpMimeSignatureDecodePassed": 17
+    "imagesHttpMimeSignatureDecodePassed": 17,
+    "qualitativePriorCorpusAudit": "failed: 7 of 17 repeat a prior decision and worked-example boundary; see qualitative-prior-corpus-audit.json",
+    "qualitativePriorCorpusPassed": 10,
+    "qualitativePriorCorpusRewriteRequired": 7,
+    "appropriateTests": "npm run lint passed; repository defines no dedicated test script; combined route validator is the release-specific test and now fails closed on the 7 qualitative duplicates before HTTP checks"
   },
   "deployment": {
     "provider": "Coolify3",
