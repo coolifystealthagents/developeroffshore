@@ -29,12 +29,12 @@
     "productionBuild": "npm run build passed; 773 static pages; pre-existing CSS autoprefixer warning only",
     "renderedLocalRoutes": 5,
     "renderedBodyParagraphEquality": "80 of 80 source body paragraphs found exactly in rendered output after HTML decoding",
-    "bodyWordCountsExcludingSourceAppendices": [1782, 1307, 1280, 1236, 1281],
+    "bodyWordCountsExcludingSourceAppendices": [1782, 1789, 1280, 1236, 1281],
     "maximumPairwiseFiveWordShingleJaccard": 0.0022115739034279398,
     "similarityThreshold": 0.5,
     "repeatedSubstantiveParagraphs": 0,
-    "qualitativeOriginality": "repair in progress: the Node.js worker-transfer replacement passes a manual prior-corpus comparison; three Research replacements remain",
-    "priorCorpusCollision": "Node.js worker-transfer replacement passes against the nearest AsyncLocalStorage prior; PostgreSQL, Kubernetes, and Next.js rewrites remain fail-closed",
+    "qualitativeOriginality": "repair in progress: the Node.js worker-transfer and PostgreSQL notification-wakeup replacements pass manual prior-corpus comparisons; two Research replacements remain",
+    "priorCorpusCollision": "Node.js and PostgreSQL replacements pass against their nearest prior studies; Kubernetes and Next.js rewrites remain fail-closed",
     "authoritativeSourceLinks": "15 of 15 returned HTTP 200 on 2026-10-05",
     "internalLinks": "all service and Research links are repository-defined routes and passed local rendering",
     "localRouteChecks": "all 5 returned 200 with title, visible UTC date, datePublished, exact canonical, full body, Research index entry, sitemap entry, and HTTP 200 image/svg+xml with valid SVG signature"
@@ -52,12 +52,12 @@
     },
     {
       "family": "research",
-      "topic": "PostgreSQL staged CHECK and foreign-key constraint validation",
-      "slug": "offshore-developer-postgresql-staged-constraint-validation-study-2026-10-05",
-      "sources": ["https://www.postgresql.org/docs/current/sql-altertable.html", "https://www.postgresql.org/docs/current/explicit-locking.html", "https://www.postgresql.org/docs/current/ddl-constraints.html"],
-      "contentHash": "52ff5ab7b2de846e239078ce0457b229cfa42f2f864e88e356e1f5a2e26dacb3",
+      "topic": "PostgreSQL LISTEN/NOTIFY as a wakeup for durable outbox recovery",
+      "slug": "offshore-developer-postgresql-listen-notify-outbox-study-2026-10-05",
+      "sources": ["https://www.postgresql.org/docs/current/sql-listen.html", "https://www.postgresql.org/docs/current/sql-notify.html", "https://www.postgresql.org/docs/current/libpq-notify.html"],
+      "contentHash": "0402f67064698c39163dc411ed7d39bbd77e5b9dc5a957beef956a3f16646699",
       "actualPublicationDate": null,
-      "liveUrl": "https://developeroffshore.com/research/offshore-developer-postgresql-staged-constraint-validation-study-2026-10-05",
+      "liveUrl": "https://developeroffshore.com/research/offshore-developer-postgresql-listen-notify-outbox-study-2026-10-05",
       "verifiedAt": null
     },
     {

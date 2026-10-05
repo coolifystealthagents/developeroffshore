@@ -131,47 +131,137 @@ export const october5ResearchBatch: readonly ResearchPost[] = [
     ]
   },
   {
-    slug:'offshore-developer-postgresql-staged-constraint-validation-study-2026-10-05',
-    title:'A PostgreSQL Staged Constraint Validation Study for Offshore Data Work',published:'2026-10-05',
-    excerpt:'A version-pinned protocol for separating enforcement on new writes, validation of historical rows, lock behavior, and application compatibility.',
-    keyStats:['1 synthetic high-write table','4 constraint lifecycle states','6 concurrent workload cases'],
-    takeaways:['Separate new-write enforcement from proof about existing rows.','Measure locks and application outcomes, not command duration alone.','Make invalid historical data an owned product decision.'],
-    sections:[
-      {heading:'The migration decision',body:[
-        'The decision is whether one PostgreSQL CHECK or foreign-key constraint can be introduced in stages without misrepresenting data quality or application availability. The study follows an exact schema through baseline, ADD CONSTRAINT NOT VALID, concurrent application work, VALIDATE CONSTRAINT, and recovery. It asks what is enforced for new or changed rows, what remains unproven about stored rows, which locks and scans occur, and how a failed validation is handled. The reader receives a migration brief, not a generic promise of zero downtime.',
-        'This lane fits distributed data work because a Philippines-based developer can reproduce the schema, workload, invalid rows, and proposed statements in isolation. The data owner defines whether historical exceptions are legitimate. The application owner judges compatibility and error handling. The database owner reviews locks, capacity, monitoring, and execution timing. The release owner authorizes production sequencing and abort criteria. A syntactically accepted command does not transfer those decisions to the developer or prove that production traffic, volume, and replicas match the fixture.'
-      ]},
-      {heading:'Database facts and working hypotheses',body:[
-        'PostgreSQL ALTER TABLE documentation states that NOT VALID can be used when adding foreign-key or CHECK constraints, and that subsequent VALIDATE CONSTRAINT scans existing rows. The constraint remains enforced for later inserts or updates while the initial check of historical rows is deferred. PostgreSQL also documents the lock modes acquired by ALTER TABLE forms, with some subforms using weaker locks than the default. Those facts define the mechanism. They do not establish acceptable blocking or data semantics for a particular system.',
-        'The first hypothesis is that staged validation can shorten the most restrictive phase compared with an immediate historical scan, while still rejecting new violating writes. The second is that validation cost and interference depend on version, table shape, indexes, workload, and conflicting operations. The third is that a successful validation proves only the declared predicate at that database state; it does not prove application meaning, future correctness, or validity on another replica. Each hypothesis is tested separately so operational convenience cannot become a data-quality claim.'
-      ]},
-      {heading:'Representative schema and workload',body:[
-        'Create a disposable, version-pinned database with one parent and one child table, realistic row width, a declared primary key, and synthetic distribution across valid and deliberately invalid historical rows. Generate enough rows for scans to be observable without copying production data. Run a concurrent workload of inserts, qualifying updates, violating updates, deletes, and a transaction that holds a conflicting lock. Capture DDL, configuration, row generator seed, statistics state, indexes, extension list, and storage characteristics. Reset from the same snapshot before every comparison.',
-        'Study a CHECK predicate and a foreign key separately because their supporting evidence and failure modes differ. For the foreign key, compare an appropriate referencing index with its absence without asserting that the index changes the logical result. Include nulls and boundary values supported by the schema. Add one historical violation that validation must find and one new violation that the not-valid constraint must reject. These seeded controls establish that the procedure detects both incomplete history and enforcement failure rather than rewarding a command that merely returns successfully.'
-      ]},
-      {heading:'Execution matrix and observations',body:[
-        'Run immediate constraint creation as a reference, then the staged path. Observe normal writes before and after ADD CONSTRAINT NOT VALID, the seeded new violation, concurrent reads, a long transaction, validation with clean history, validation with the seeded historical violation, correction followed by revalidation, cancellation, and retry. For every case capture statement start and finish, transaction state, lock request and grant, blocked process, rows examined where available, error code, application-visible result, replica or WAL indicators if included, and final catalog state.',
-        'Use server-side identifiers and monotonic case ordering rather than aligning evidence only by wall clocks. Sample locks often enough to see meaningful waits without claiming every transient state was captured. Distinguish the duration of the DDL statement from time spent waiting for a lock. Distinguish a rejected violating write from an outage. After cancellation or failure, query the catalog and test both a valid and invalid write so the handoff shows the actual enforcement state. Never infer rollback merely because the client stopped waiting.'
-      ]},
-      {heading:'Interpreting failure and remediation',body:[
-        'A failed validation is evidence about at least one stored row, not permission to delete or rewrite it. Preserve the predicate, sample identifiers produced through approved queries, aggregate count, and correction owner without copying sensitive values into logs. Determine whether the row violates intended business meaning, reflects a retired exception, or exposes a mistaken predicate. Another failure class is operational: validation waits behind a long transaction or increases resource pressure beyond a stop rule even though all data is valid. Logical and operational failures require different decisions.',
-        'Remediation may correct source data through an approved workflow, narrow or revise the predicate, add a supporting index through its own reviewed plan, schedule a bounded validation window, or abandon the migration. Do not disable triggers, change replica roles, terminate unrelated sessions, or broaden access simply to obtain a passing fixture. If cancellation is part of recovery, test the catalog and application state afterward. The smallest safe next step is often an inventory of violation classes and lock conflicts rather than an automated cleanup that erases business context.'
-      ]},
-      {heading:'Handoff for asynchronous review',body:[
-        'The developer supplies schema and configuration hashes, volume model, workload generator, constraint lifecycle diagram, exact statements, lock timeline, case rows, seeded-control results, invalid-row classification process, proposed sequence, stop conditions, and rollback or pause procedure. A reviewer reproduces rejection of the new violation, discovery of the historical violation, correction in the synthetic workflow, and successful revalidation. The review verifies final catalog flags and application behavior rather than accepting a screenshot or elapsed-time summary.',
-        'Access remains confined to the disposable environment until owners approve an environment-specific evidence plan. The developer can implement fixtures and reviewed migration code. The data owner approves treatment of existing records. The database owner chooses execution controls and monitors capacity. Application owners accept error behavior, while release owners control timing. The record names triggers for renewed analysis: PostgreSQL upgrades, schema or index changes, major volume or traffic changes, new partitioning, logical replication, altered transaction patterns, or a different managed-service configuration.'
-      ]},
-      {heading:'Limits and decision rule',body:[
-        'Synthetic scale cannot reproduce production cache state, autovacuum, storage latency, replicas, connection pools, failover, or every concurrent statement. Lock sampling can miss short events. Estimated row distributions may understate skew. A clean validation says that rows satisfied one database predicate at one point; it does not establish referential meaning outside the database or future application correctness. Conversely, a slower fixture does not prove production will block for the same duration. Report observed values as observations and keep projections labeled as uncertain estimates.',
-        'Pass requires seeded controls to behave as expected, new writes to be enforced in the declared stage, historical validation to produce a defensible result, lock and workload effects to stay within owner-defined limits, recovery to leave an explicit catalog state, and every decision owner to be named. Conditional pass identifies scale or environment evidence still required. Fail names whether the problem is invalid data, incorrect predicate, conflicting lock, capacity, recovery, or application behavior. The study supports a reviewable migration choice; it never authorizes live DDL.'
-      ]},
-      {heading:'Sources checked October 5, 2026',body:[
-        'PostgreSQL, ALTER TABLE: https://www.postgresql.org/docs/current/sql-altertable.html. PostgreSQL, Explicit Locking: https://www.postgresql.org/docs/current/explicit-locking.html. PostgreSQL, Constraints: https://www.postgresql.org/docs/current/ddl-constraints.html. These primary documents define supported syntax, constraint behavior, and lock concepts. The workload design, evidence categories, stop rules, and ownership boundaries are analysis for a DeveloperOffshore.com data-pipeline handoff, not performance guarantees from the PostgreSQL project.',
-        'The current documentation may differ from an installed major version, so the handoff records both server_version and the corresponding manual. Managed services can impose additional controls. Documentation cannot predict row distribution, transaction conflicts, I/O, or application semantics. Where monitoring fields are unavailable, mark the observation gap. Do not substitute EXPLAIN on a different query, a vendor estimate, or an empty-table result for the exact staged operation against a representative disposable fixture.'
-      ]}
-    ],sources:[{name:'PostgreSQL: ALTER TABLE',url:'https://www.postgresql.org/docs/current/sql-altertable.html'},{name:'PostgreSQL: Explicit Locking',url:'https://www.postgresql.org/docs/current/explicit-locking.html'},{name:'PostgreSQL: Constraints',url:'https://www.postgresql.org/docs/current/ddl-constraints.html'}],
-    faqs:[{question:'Does NOT VALID mean the constraint is disabled?',answer:'No. PostgreSQL can enforce it for new or changed rows while validation of pre-existing rows remains pending; verify the exact constraint type and version.'},{question:'Who decides how to fix historical violations?',answer:'The accountable data or product owner decides meaning and correction; the developer provides bounded evidence and implementation options.'}],
-    related:[{title:'Data pipeline development',href:'/services/data-pipeline-development'},{title:'Legacy application maintenance',href:'/services/legacy-application-maintenance'},{title:'Research library',href:'/research'}]
+    "slug": "offshore-developer-postgresql-listen-notify-outbox-study-2026-10-05",
+    "title": "A PostgreSQL LISTEN/NOTIFY and Durable Outbox Study for Event Wakeups",
+    "published": "2026-10-05",
+    "excerpt": "A failure-driven study of PostgreSQL notifications as low-latency wakeups while durable outbox rows remain the recoverable record of work.",
+    "keyStats": [
+      "1 version-pinned PostgreSQL instance",
+      "18 delivery and recovery cases",
+      "4 disconnect windows"
+    ],
+    "takeaways": [
+      "Store work before signaling it.",
+      "Treat a notification as permission to look, not as the event record.",
+      "Recover from an outbox cursor after every reconnect."
+    ],
+    "sections": [
+      {
+        "heading": "The decision under review",
+        "body": [
+          "This study asks whether a PostgreSQL-backed service may use LISTEN and NOTIFY to wake an event consumer without treating a notification as durable work. The producer writes a synthetic outbox row and calls pg_notify in the same transaction. A listener wakes, queries rows after its durable cursor, claims them, and advances only after the fixture records the chosen processing outcome. The comparison includes polling without notifications, notification-assisted polling, disconnect recovery, duplicate wakes, and consumer replacement.",
+          "The distinction matters because a fast signal and a recoverable record solve different problems. A notification can reduce the delay before a consumer looks for work. The outbox row survives a listener restart and gives the consumer something it can query again. The study does not promise exactly-once effects or present LISTEN/NOTIFY as a general message broker. It produces a narrow decision: whether notifications are safe as hints for this service when correctness comes from committed rows, an ordered cursor, and idempotent processing."
+        ]
+      },
+      {
+        "heading": "Facts that shape the experiment",
+        "body": [
+          "PostgreSQL documents that LISTEN registers a database session for a named channel and takes effect when its transaction commits. NOTIFY events issued inside a transaction are delivered only if that transaction commits. A listening client receives notifications between transactions, so a listener that stays inside a long transaction can delay delivery. Identical channel and payload combinations issued more than once in one transaction may collapse into one notification. Those rules make a notification unsuitable as the only count of business events.",
+          "The documentation also describes a startup race. A client should commit LISTEN first, inspect relevant database state in a new transaction, and then rely on later notifications to prompt another inspection. Early notifications may refer to rows already seen by the initial query. The fixture follows that order and accepts redundant wakes. It rejects any design that listens and then waits without first catching up from durable state, because a transaction can commit before the registration becomes effective or while the client has no active session."
+        ]
+      },
+      {
+        "heading": "Create the durable fixture",
+        "body": [
+          "Create an outbox table with a monotonic sequence, event identifier, aggregate identifier, event kind, synthetic payload, committed timestamp, and processing metadata required by the selected ownership model. Create a consumer checkpoint table keyed by consumer name. The fixture uses invented order references and contains no customer records, secrets, or production payloads. A producer transaction changes one synthetic order, inserts its outbox row, and calls pg_notify with a small wake token. The token contains no event body and is never needed to recover the row.",
+          "Pin the PostgreSQL version, client library, schema migration, isolation level, connection settings, and application commit. Preserve setup and reset commands plus hashes for producer and consumer code. Run each case from a known empty schema or a recorded checkpoint. The test clock labels observations, but sequence order comes from committed database values rather than wall-clock assumptions. A second producer and two named consumers reveal whether the method accidentally depends on one connection, one process identifier, or one convenient order of callbacks."
+        ]
+      },
+      {
+        "heading": "Define the consumer loop",
+        "body": [
+          "The consumer obtains a dedicated session, executes LISTEN, commits that registration, and immediately reads outbox rows after its stored cursor. It then waits for socket activity or a bounded poll interval. Any notification causes the same query; its payload does not select the only row to process. The query uses a deterministic sequence order and a fixed batch limit. After a disconnect, the replacement session repeats LISTEN, commit, catch-up query, and wait. This makes reconnection a normal state transition rather than a special attempt to reconstruct missed messages.",
+          "Choose checkpoint semantics before running the fixture. One option advances after each idempotent side effect succeeds. Another claims rows for a bounded lease and records attempts separately. The article does not prescribe one universal outbox processor, but the evidence must show what happens if the process stops before work, during work, after the effect, or before checkpoint commit. A notification handler must remain small. It schedules a drain and coalesces concurrent wake requests instead of starting an unbounded query for every callback."
+        ]
+      },
+      {
+        "heading": "Exercise commit and rollback boundaries",
+        "body": [
+          "Begin a producer transaction, insert an outbox row, issue NOTIFY, and hold the transaction open. The consumer must see neither committed row nor delivered wake before commit. Commit and record the row sequence, notification receipt, query start, and processing result. Repeat with rollback. The rolled-back row and its notification must not appear. Then insert two distinct rows with identical notification payloads in one transaction. Even if PostgreSQL folds the duplicate notifications, one drain must retrieve both rows from the table.",
+          "Reverse the variation by sending distinct payloads in one transaction and by committing rows from two producer sessions. Record notification order without assuming that one wake equals one row. Hold the listening session in a transaction while a producer commits, then end that listener transaction and observe delivery. This case verifies a documented source of latency. The repair is to keep the listening connection out of long transactions, not to move the business event into a larger notification payload or add sleep calls until the test happens to pass."
+        ]
+      },
+      {
+        "heading": "Cut the connection in four windows",
+        "body": [
+          "The first disconnect happens before LISTEN commits while a producer commits a row. The replacement must catch up from its checkpoint. The second happens after registration but before the consumer receives the signal. The third happens after wake receipt but before the outbox query. The fourth happens after the query returns but before the checkpoint commits. Each case restarts with the same algorithm: establish the listener, commit it, inspect durable state, and process everything beyond the durable cursor according to the declared retry rule.",
+          "Record whether each row is unseen, attempted, completed, repeated, or left uncertain. The fixture passes recovery when every committed row reaches an allowed terminal outcome and no rolled-back row is processed. A repeated attempt is not automatically a defect, because a crash after an external effect but before checkpoint commit can make the next consumer see the row again. The effect boundary therefore needs an idempotency key or another explicit reconciliation method. LISTEN/NOTIFY cannot close that application-level ambiguity."
+        ]
+      },
+      {
+        "heading": "Test duplicate wakes and competing consumers",
+        "body": [
+          "Send several notifications for one committed row, send one notification for a batch, and send a notification when no new row exists. The drain should tolerate every case. Keep counters for wakes, drain schedules, rows fetched, attempts, successful outcomes, repeats, and empty drains. The counters describe behavior but do not establish correctness by themselves. Case-level evidence must connect each committed event identifier to its outbox row, processing attempts, checkpoint movement, and final disposition.",
+          "Run two instances under the intended consumer model. If both represent the same logical subscription, use a reviewed claim or partition rule so they do not perform the same non-idempotent effect concurrently. If each represents a different subscriber, give each its own checkpoint and expected outcome. Notifications reach listening sessions; they do not assign exclusive ownership of a row. Stop one instance during a claimed batch and prove that the other can recover work after the documented lease or reconciliation boundary without skipping the remaining sequence."
+        ]
+      },
+      {
+        "heading": "Inspect queue pressure and operational limits",
+        "body": [
+          "PostgreSQL keeps notifications in a queue until listening sessions can process them. The documentation notes that a listener left in a transaction can prevent cleanup, and pg_notification_queue_usage reports the occupied fraction. Add a controlled case with one stalled listener and a bounded notification volume. Observe queue usage, server warnings available to the test operator, producer commit results, and recovery after the listener leaves its transaction. Do not attempt to fill a shared environment or turn this into an exhaustion test without an isolated approved database.",
+          "Operational checks include listener connection state, reconnect attempts, last successful catch-up, oldest unprocessed outbox age, checkpoint lag, drain duration, batch saturation, repeated attempts, dead-letter or review outcomes, and notification queue usage. Alerts should focus on durable lag and failed processing, not merely the absence of notifications. A quiet channel can mean there is no work. A healthy stream of wakes can coexist with a stuck cursor. The database owner sets queue and connection limits; the service owner sets lag and retry thresholds."
+        ]
+      },
+      {
+        "heading": "Challenge the preferred design",
+        "body": [
+          "Run the consumer with notifications disabled while bounded polling remains active. All rows should still complete, with higher wake latency allowed by the test. Then disable periodic catch-up and drop the listener connection during a commit. The seeded defect must leave a row unprocessed until another wake or restart exposes it. This pair demonstrates what notifications improve and what they cannot guarantee. If both variants appear equally reliable under every disconnect, the harness may not be cutting the connection at the intended boundary.",
+          "Test a tempting alternative that places the full synthetic event in the notification payload and omits the outbox insert. Disconnect the listener, commit the producer, and show that the application has no queryable record from which to recover that event. Keep this negative case isolated from the acceptable implementation. Also test a consumer that assumes one callback per NOTIFY. Identical notifications in one transaction may collapse, so the row count must come from the table, not from callback arithmetic."
+        ]
+      },
+      {
+        "heading": "Handoff, limits, and decision rule",
+        "body": [
+          "The handoff contains database and client versions, schema and code hashes, channel ownership, producer transaction sequence, consumer state machine, checkpoint rule, case matrix, raw event timeline, disconnect controls, duplicate-wake results, queue observations, idempotency boundary, access scope, rollback, and named reviewers. A second engineer reproduces the startup sequence, rollback case, collapsed-wake case, one disconnect before query, one crash after effect, and recovery with notifications disabled. The review uses synthetic data and a restricted test database.",
+          "Pass requires every committed outbox row to remain discoverable after restart, no rolled-back row to be processed, seeded disconnects to recover from durable state, redundant notifications to be harmless, checkpoint movement to follow the declared effect rule, and bounded behavior under empty or repeated wakes. Conditional pass names uncertain external-effect or failover paths and their owner. Fail preserves the smallest missing, skipped, or concurrently duplicated case. The conclusion applies only to the pinned topology and says that LISTEN/NOTIFY may accelerate a durable outbox consumer, not replace it."
+        ]
+      },
+      {
+        "heading": "Sources checked for this study",
+        "body": [
+          "PostgreSQL's current LISTEN documentation defines session registration, commit behavior, and the startup race that requires registration before the initial state inspection. The current NOTIFY documentation defines transaction delivery, duplicate folding, ordering, payload limits, and notification queue behavior. The current libpq asynchronous-notification documentation explains how a client consumes pending notifications and integrates socket input with PQnotifies. These sources define database and client mechanisms; the outbox schema, failure cases, and decision thresholds are DeveloperOffshore.com analysis for a bounded handoff.",
+          "The study does not prove cross-region failover, logical replication, connection-pool proxy behavior, operating-system socket timing, every client driver, or external side-effect exactly-once semantics. A managed database may expose different monitoring and connection controls. Re-run after a PostgreSQL upgrade, driver or pool change, schema change, failover design change, checkpoint change, new subscriber model, or revised processing effect. Treat an untested disconnect window as unknown rather than inferring recovery from a successful steady-state run."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "name": "PostgreSQL: LISTEN",
+        "url": "https://www.postgresql.org/docs/current/sql-listen.html"
+      },
+      {
+        "name": "PostgreSQL: NOTIFY",
+        "url": "https://www.postgresql.org/docs/current/sql-notify.html"
+      },
+      {
+        "name": "PostgreSQL: Asynchronous Notification",
+        "url": "https://www.postgresql.org/docs/current/libpq-notify.html"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Can a notification replace the outbox row?",
+        "answer": "No. The tested design uses notifications only to wake a consumer. Recovery comes from committed rows and a durable cursor."
+      },
+      {
+        "question": "Does one NOTIFY mean one event?",
+        "answer": "No. Identical notifications in one transaction may collapse, and one wake can cover a batch of committed rows. The consumer queries the table for truth."
+      }
+    ],
+    "related": [
+      {
+        "title": "Data pipeline development",
+        "href": "/services/data-pipeline-development"
+      },
+      {
+        "title": "Legacy application maintenance",
+        "href": "/services/legacy-application-maintenance"
+      },
+      {
+        "title": "Research library",
+        "href": "/research"
+      }
+    ]
   },
   {
     slug:'offshore-developer-playwright-auth-state-isolation-study-2026-10-05',title:'Testing Playwright Authentication-State Isolation in Parallel QA',published:'2026-10-05',
