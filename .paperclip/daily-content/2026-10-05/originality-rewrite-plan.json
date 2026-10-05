@@ -64,7 +64,9 @@
       "title": "A Kubernetes StatefulSet Partitioned-Rollout Study for Ordered Services",
       "decision": "How a rollingUpdate partition, ordinal identity, readiness, and rollback interact during a staged StatefulSet change.",
       "workedExample": "A three-replica synthetic StatefulSet updates the highest ordinal first, pauses at a partition, injects a readiness failure, then verifies revision and storage identity during recovery.",
-      "sources": ["https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/", "https://kubernetes.io/docs/reference/kubernetes-api/apps/stateful-set-v1/"]
+      "sources": ["https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/", "https://kubernetes.io/docs/reference/kubernetes-api/apps/stateful-set-v1/"],
+      "status": "draft_complete_1779_body_words_pending_integration_and_audit",
+      "draftPath": ".paperclip/daily-content/2026-10-05/drafts/kubernetes-statefulset-partition-study.json"
     },
     {
       "family": "research",
