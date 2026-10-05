@@ -370,4 +370,116 @@ export const october05BlogBatch: readonly BlogPost[] = [
       { name: 'WCAG 2.2', url: 'https://www.w3.org/TR/WCAG22/', note: 'Keyboard, focus, name, role, value, and status requirements.' },
     ],
   },
+  {
+    slug: 'terraform-moved-block-refactor-review',
+    title: 'Refactor Terraform Resource Addresses Without Recreating Infrastructure',
+    excerpt: 'A reviewable handoff for using moved blocks, inspecting state lineage, proving a no-replacement plan, and recovering from partial refactors.',
+    minutes: 11,
+    revision: 'daily-blog-2026-10-05-terraform-moved-block-refactor-review',
+    keyTakeaways: ['Map old and new addresses before changing configuration.', 'Review saved-plan actions and provider identity, not only plan totals.', 'Keep state surgery outside the routine refactor path.'],
+    sections: [
+      { heading: 'Define the refactor as an identity claim', body: [
+        'Moving a resource into a module, renaming it, or changing count to for_each alters its Terraform address. The infrastructure object may be intended to remain the same. Write that claim explicitly for every instance: this old address and this new address represent one remote object whose lifecycle must continue. Include the resource type, provider configuration, workspace, backend, state lineage, and stable remote identifier. A matching human-readable name is not enough when accounts or regions contain similar objects.',
+        'Use a low-risk worked case first, such as moving one synthetic object from the root module into a child module. Capture the last applied revision, serial and lineage from approved state metadata, provider lockfile, configuration, and a fresh plan before refactoring. The baseline should show no unexplained change. If it already contains drift or pending replacement, separate that work; otherwise the later plan cannot distinguish refactor behavior from an existing problem.'
+      ]},
+      { heading: 'Build an address map that covers every instance', body: [
+        'List source address, destination address, instance key, resource ID, provider alias, dependencies, and reason. Count and for_each conversions need an explicit mapping for each retained instance. A numerical index does not automatically correspond to a chosen string key. Modules can also be moved, but nested resources and module instances still deserve inspection. Search configuration, outputs, tests, policy rules, import scripts, runbooks, and external automation for old addresses.',
+        'Confirm that no two source addresses map to one destination and that the destination is not already occupied. Decide separately whether removed instances should be destroyed, retained unmanaged, or migrated elsewhere. A moved block expresses address history; it does not merge two resources or resolve business duplication. Product or platform owners must decide which remote object survives before code makes the mapping look authoritative.'
+      ]},
+      { heading: 'Keep provider identity stable', body: [
+        'A resource address move can coincide with a provider alias, account, region, or subscription change. Those are not necessarily pure refactors. Record the provider configuration associated with the old state object and the provider selected at the new address. Inspect the detailed plan for provider-driven replacement or updates. Never interpret a zero net change count as safety when one object is destroyed and another is created.',
+        'Pin the reviewed provider selections with the dependency lockfile and run the plan in the same workspace and backend intended for the change. Missing credentials or unavailable APIs make refresh evidence incomplete. Stop rather than using a no-refresh shortcut as production approval. An offshore developer can prepare configuration and a synthetic rehearsal; protected accounts, backend access, and acceptance of provider-side effects remain with the client platform owner.'
+      ]},
+      { heading: 'Write moved blocks as durable history', body: [
+        'Place each moved block alongside the destination module or in the repository location used for refactor history. Review from and to addresses character by character, including module and instance keys. Run formatting and static validation, then create a saved plan. The expected plan should identify address moves without remote create, destroy, or replacement for the retained objects. Inspect every action and relevant attribute rather than relying on the summary line.',
+        'Keep moved blocks long enough for every supported upgrade path to pass through the migration. Removing them immediately after one workspace applies can break a less frequently updated workspace or downstream module consumer. The module owner defines compatibility policy and an eventual removal release. Document the oldest supported source address and how callers skipping versions will be handled.'
+      ]},
+      { heading: 'Rehearse in a disposable state lineage', body: [
+        'Create representative infrastructure in an approved sandbox from the pre-refactor revision. Record remote identifiers and externally visible behavior. Upgrade to the refactor revision, plan, apply only after review, and compare identifiers, attributes, dependencies, outputs, and behavior. Run a second plan that must be empty. Then destroy the sandbox through the new addresses to show lifecycle ownership did not become orphaned.',
+        'Add failure cases: one moved block omitted, an incorrect key, destination already present, provider alias changed, a workspace that skipped an intermediate revision, and interrupted automation before apply. Preserve plan files only according to security rules because they can contain sensitive values. Durable evidence can retain cryptographic hashes, sanitized actions, resource aliases, tool versions, and reviewer decisions.'
+      ]},
+      { heading: 'Handle drift and imports as different decisions', body: [
+        'A moved block updates Terraform address association; it does not import an unmanaged remote object or repair drift. If refresh shows a remote change, classify it before continuing. The owner may accept the remote value into configuration, restore declared configuration, or leave it for a separate incident. Mixing drift correction into a refactor broadens the change and weakens rollback evidence.',
+        'Likewise, import blocks or import commands establish management for an object not already represented at the intended address. State mv can be useful in exceptional workflows, but direct state operations demand exact backups, locks, peer review, and recovery ownership. Prefer declarative moved history for a normal code refactor. Never edit state JSON manually or copy a production state into a general handoff.'
+      ]},
+      { heading: 'Plan rollback around applied and unapplied states', body: [
+        'Before apply, rollback may simply mean reverting the configuration and saved plan. After a successful address move, reverting code without reverse migration history can make Terraform propose the wrong lifecycle. Write the rollback revision and address mapping before approval. Rehearse it in the sandbox if the release requires fast reversal. Confirm remote identifiers remain stable in both directions.',
+        'If automation stops during the operation, acquire the backend through its supported locking path and run a fresh plan against the actual state. Do not assume that an absent job result means no state change. Record state serial, run identifier, apply output, and remote observations. The platform owner decides whether to resume, roll forward, or restore; the developer provides the evidence and avoids concurrent speculative commands.'
+      ]},
+      { heading: 'Deliver a plan a reviewer can challenge', body: [
+        'The packet includes baseline revision and clean plan, backend and workspace alias, state lineage and serial, address map, provider mapping, moved blocks, saved-plan hash, full sanitized action review, sandbox before-and-after identifiers, empty second plan, skip-version test, compatibility window, rollback mapping, and open drift. Exact credentials and sensitive plan values stay in approved systems.',
+        'Acceptance requires every retained object to show the intended address migration without create, destroy, or replacement; unexplained updates fail the refactor. Platform owners approve backend use and infrastructure identity. Module owners approve compatibility. Release owners authorize apply. A Developer Offshore engineer can prepare the map, code, sandbox and evidence, giving an internal reviewer a bounded decision instead of a vague request to approve a clean-up.'
+      ]},
+    ],
+    relatedLinks: [
+      { label: 'DevOps release support', href: '/services/devops-release-support', note: 'Prepare controlled plan and recovery evidence.' },
+      { label: 'Legacy application maintenance', href: '/services/legacy-application-maintenance', note: 'Refactor ownership without losing operational history.' },
+      { label: 'Discuss the infrastructure role', href: '/contact', note: 'Bring the address map, backend boundary, and reviewer.' },
+    ],
+    faqs: [
+      { question: 'Does a moved block change the remote infrastructure object?', answer: 'Its purpose is to update Terraform address association. Still inspect the detailed plan because provider, configuration, drift, or mapping changes can introduce real remote actions.' },
+      { question: 'Can moved blocks be deleted after one apply?', answer: 'Not automatically. Keep them for every supported upgrade path and workspace, then remove them under a documented module compatibility policy.' },
+    ],
+    sources: [
+      { name: 'HashiCorp: Refactor Modules', url: 'https://developer.hashicorp.com/terraform/language/modules/develop/refactoring', note: 'Moved block syntax and module refactoring behavior.' },
+      { name: 'HashiCorp: Resource Addressing', url: 'https://developer.hashicorp.com/terraform/cli/state/resource-addressing', note: 'Module and instance address structure.' },
+      { name: 'HashiCorp: Plan', url: 'https://developer.hashicorp.com/terraform/cli/commands/plan', note: 'Saved plans and speculative plan behavior.' },
+    ],
+  },
+  {
+    slug: 'kubernetes-server-side-apply-ownership-review',
+    title: 'Review Kubernetes Server-Side Apply Ownership Before Forcing Conflicts',
+    excerpt: 'A field-level handoff for understanding managedFields, testing controller interaction, resolving conflicts, and avoiding accidental ownership theft.',
+    minutes: 11,
+    revision: 'daily-blog-2026-10-05-kubernetes-server-side-apply-ownership-review',
+    keyTakeaways: ['Treat field managers as operational identities.', 'Resolve why another manager owns a field before forcing it.', 'Test defaulting, list semantics, and controller reconciliation.'],
+    sections: [
+      { heading: 'Start with one disputed field', body: [
+        'Server-Side Apply tracks which manager last owns declared fields. A conflict is useful evidence that two actors claim authority over the same field with different intent. Begin with a concrete object and field, such as a Deployment replica count owned by an autoscaler while a release manifest also declares replicas. Record object identity, API version, manager names, operation types, field path, live value, desired values, and controllers. The decision is who should own that field, not how to suppress the message.',
+        'Export a sanitized live object through the supported API and inspect metadata.managedFields without treating it as a hand-edited configuration. Capture generation, resourceVersion, relevant status, and controller events. Map each manager to a real delivery system, controller, operator, command, or human workflow. Generic names such as kubectl or pipeline are poor operational identities because reviewers cannot tell which actor made the claim.'
+      ]},
+      { heading: 'Build a field-authority table', body: [
+        'For the selected object, list fields set by the application manifest, platform defaults, admission, controllers, autoscalers, operators, and emergency operations. Name the accountable owner and whether ownership is declarative, computed, or temporary. Omitted fields also matter: an Apply manager can relinquish fields it previously owned by leaving them out, while defaulting or another manager may then supply values.',
+        'Pay special attention to associative lists and map keys such as containers, environment variables, ports, labels, and tolerations. Kubernetes schema determines whether list elements are tracked by key, atomically, or as sets. Two managers may safely own different keyed entries but conflict on one element. Test against the actual CustomResourceDefinition or built-in schema; assumptions from a similar resource can be wrong.'
+      ]},
+      { heading: 'Use stable manager names and consistent operations', body: [
+        'Assign a distinct fieldManager to each delivery actor and keep it stable across runs. Changing the name on every pipeline execution leaves ownership history fragmented and makes omission behavior surprising. Decide whether a workflow uses Apply or Update for its declared surface. Mixing imperative patches, client-side apply annotations, and Server-Side Apply without a migration plan can create unclear authority.',
+        'Record content type, field manager, force flag, object revision, and response for each fixture. Do not log secrets embedded in manifests. Use synthetic Secret keys or omit protected payloads while preserving metadata behavior. A developer can build these fixtures in an isolated namespace; cluster-wide resources, admission policy, production manager identities, and force decisions remain with platform owners.'
+      ]},
+      { heading: 'Reproduce the conflict rather than bypassing it', body: [
+        'Create an object with manager A, then have manager B apply a different value to the same owned field. Assert that the request conflicts and the live value remains unchanged. Apply B to a different field and show both managers can coexist. Have A omit a formerly owned field and inspect ownership and resulting value. These cases distinguish genuine contention from a broad fear of multiple managers.',
+        'Repeat with defaulted fields, webhook mutations, controller reconciliation, and a list element if they matter. Observe immediate API response and the later steady state. A successful apply followed by a controller restoring another value means the ownership and reconciliation model is still unresolved. Compare generation, managedFields, events, controller logs, and workload behavior on one timeline.'
+      ]},
+      { heading: 'Choose among alignment, transfer, and force', body: [
+        'The cleanest resolution may be to remove the disputed field from one actor’s desired configuration. Another option is an explicit ownership transfer: the current manager aligns or relinquishes the field, then the intended manager applies it. Force can take ownership and overwrite the value, but it does not prove the other controller will stop acting. Use force only when owners understand the field, the displaced manager, and the resulting behavior.',
+        'Document the choice per field. For replicas, a deployment tool may omit the field while an autoscaler owns it. For an operator-managed custom resource, editing generated child objects may be the wrong boundary entirely. For emergency response, temporary ownership needs an expiry and restoration plan. Platform and workload owners approve these semantics; the developer should not turn force-conflicts into a global pipeline default.'
+      ]},
+      { heading: 'Test schema and version changes', body: [
+        'Managed field behavior depends on structural schemas and field merge markers. Upgrade fixtures should cover API version conversion, changed defaults, and CustomResourceDefinition schema revisions. Apply through the served version used by automation and inspect storage or conversion outcomes through supported APIs. A field renamed or made atomic can alter conflict boundaries even when the manifest looks similar.',
+        'Include an older object created before Server-Side Apply adoption and migrate it under a documented manager. Compare dry-run server results with actual isolated apply; dry-run exercises admission and validation but not every later controller effect. If schema is non-structural or ownership evidence is incomplete, keep the recommendation conditional instead of forcing a migration to obtain a green result.'
+      ]},
+      { heading: 'Prepare rollback without erasing ownership evidence', body: [
+        'Save the reviewed manifests and manager identities at both ends of the change. Rollback should apply a known compatible declaration with its intended manager, not delete managedFields or replace the whole object casually. If force was approved, record which ownership paths changed and how the former manager will resume, if at all. Rehearse on the isolated object and observe controllers until stable.',
+        'Do not hand-edit metadata.managedFields. Do not delete and recreate a production object merely to clear conflicts without reviewing immutable fields, generated identities, service endpoints, disruption, and retained data. A conflict is safer than silent ownership theft. If recovery requires protected cluster action, name the platform operator and stop at the authorized boundary.'
+      ]},
+      { heading: 'Package ownership evidence for review', body: [
+        'The handoff includes object and schema revisions, manager-to-owner map, field-authority table, sanitized managedFields evidence, conflict fixtures, allowed coexistence case, omission case, defaulting and controller observations, selected resolutions, any force scope, rollout cohort, rollback manifests, and limitations. Include precise commands or API requests with safe placeholders and state which environment produced the result.',
+        'Acceptance means every disputed field has one deliberate authority model and the object reaches the expected steady state after admission and controllers act. Unexplained conflicts, repeated reconciliation, broad force, or unknown managers fail the change. Developer Offshore can support a bounded namespace and manifest set while the client platform and workload owners retain cluster access, policy, and release approval.'
+      ]},
+    ],
+    relatedLinks: [
+      { label: 'DevOps release support', href: '/services/devops-release-support', note: 'Review declarative changes and recovery.' },
+      { label: 'Developer services', href: '/services', note: 'Scope workload and controller evidence.' },
+      { label: 'Discuss the handoff', href: '/contact', note: 'Bring the manifest, manager identities, and reviewer.' },
+    ],
+    faqs: [
+      { question: 'Should a pipeline always use force conflicts?', answer: 'No. Force transfers ownership and may overwrite another actor’s value. First decide which actor should own the disputed field and whether the other actor will keep reconciling it.' },
+      { question: 'Can we edit managedFields to resolve ownership?', answer: 'Treat managedFields as API-maintained metadata. Resolve ownership through reviewed apply behavior and manager responsibilities, not manual metadata editing.' },
+    ],
+    sources: [
+      { name: 'Kubernetes: Server-Side Apply', url: 'https://kubernetes.io/docs/reference/using-api/server-side-apply/', note: 'Field management, conflicts, transfer, and force behavior.' },
+      { name: 'Kubernetes: Field Managers', url: 'https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management', note: 'Manager identity and operation tracking.' },
+      { name: 'Kubernetes: CustomResourceDefinition Structural Schemas', url: 'https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema', note: 'Schema requirements affecting custom resources.' },
+    ],
+  },
 ];
