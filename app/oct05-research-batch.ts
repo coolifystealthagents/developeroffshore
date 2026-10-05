@@ -306,46 +306,140 @@ export const october5ResearchBatch: readonly ResearchPost[] = [
     related:[{title:'QA automation engineering',href:'/services/qa-automation-engineering'},{title:'React frontend development',href:'/services/react-frontend-development'},{title:'Research library',href:'/research'}]
   },
   {
-    slug:'offshore-developer-kubernetes-disruption-budget-drain-study-2026-10-05',title:'A Kubernetes Disruption Budget Study for Reviewed Node Drains',published:'2026-10-05',
-    excerpt:'A controlled drain experiment that separates eviction admission, workload availability, replacement scheduling, graceful termination, and user-visible service.',
-    keyStats:['1 isolated cluster fixture','7 drain and failure cases','5 separately timed transitions'],
-    takeaways:['A permitted eviction is not proof of service availability.','Test selectors, unhealthy pods, capacity, and replacement scheduling together.','Keep node-drain authority with the platform owner.'],
-    sections:[
-      {heading:'Operational decision and scope',body:[
-        'The decision is whether one replicated Kubernetes workload has a PodDisruptionBudget and surrounding capacity plan that support a reviewed node drain. The study traces a voluntary disruption from cordon and eviction request through budget admission, Pod termination, endpoint removal, replacement scheduling, readiness, and client outcome. It does not claim to validate every cluster workload, cloud upgrade, or involuntary failure. The unit is one version-pinned cluster fixture, workload controller, service, budget, node layout, and synthetic traffic stream.',
-        'This is a bounded DevOps support task: a Philippines-based developer can prepare manifests, execute an approved experiment in an isolated cluster, and assemble evidence across time zones. Application owners define meaningful availability and health. Platform owners control nodes, capacity, evictions, timeouts, and production maintenance. Release owners set stop and rollback rules. The developer must not drain a production node or bypass a blocking budget to complete a report. A blocked drain can be a correct safety outcome requiring an owner decision.'
-      ]},
-      {heading:'Kubernetes mechanics and hypotheses',body:[
-        'Kubernetes documentation distinguishes voluntary from involuntary disruptions and states that a PodDisruptionBudget limits simultaneous voluntary disruption for selected Pods. Tools such as kubectl drain use the Eviction API, which can reject an eviction while a budget would be violated and retry until success or timeout. The documentation also notes that direct Pod or controller deletion can bypass this protection, involuntary disruptions count against the budget, and workload rolling updates are governed by controller strategy rather than directly limited by the PDB.',
-        'The primary hypothesis is that a correctly selected budget prevents eviction from reducing healthy replicas below the owner’s declared floor during a drain. A second is that budget admission alone cannot ensure service: insufficient spare capacity, topology rules, slow readiness, or a shared dependency can leave replacement Pods pending or ineffective. A third is that unhealthyPodEvictionPolicy changes drain behavior under unhealthy conditions and must be chosen deliberately. The study observes each mechanism independently instead of treating a completed drain as proof of resilience.'
-      ]},
-      {heading:'Cluster fixture and safeguards',body:[
-        'Create an isolated cluster on pinned Kubernetes and tooling versions with at least three schedulable nodes or equivalent controlled topology. Deploy a synthetic HTTP workload with declared replica count, resource requests, readiness behavior, termination handling, topology spread, and a Service. Add unique Pod response IDs and a client that records every request. Record node capacity, controller strategy, scheduler events, EndpointSlices, PDB generation and status, image digest, manifests, and cluster add-ons. Keep fault controls restricted to the fixture namespace and labeled nodes.',
-        'Seed controls that the method must expose: a budget selector that matches no Pods, a minAvailable value that leaves no disruption allowance, a replacement that cannot schedule because of resource pressure, and one unready replica. Begin every comparison from a documented steady state and wait for controller observations rather than trusting a manifest apply. Define stop rules for sustained client failure, unexpected namespace impact, repeated restart, prolonged unschedulability, or any effect outside fixture nodes. Preserve recovery steps before introducing disruption.'
-      ]},
-      {heading:'Drain matrix and measurements',body:[
-        'Run a normal drain with spare capacity, a budget-blocked drain, an unready replica under the default unhealthy policy, the owner-reviewed alternative unhealthy policy, insufficient capacity, a direct deletion control, and an involuntary node-loss simulation only if the fixture safely supports it. Change one condition at a time. For each case restore the node and workload to the declared baseline. Include a second drain attempt after recovery to detect state that only appears clean once.',
-        'Record cordon time, eviction requests and responses, PDB currentHealthy, desiredHealthy and disruptionsAllowed, Pod deletion timestamp, endpoint membership, termination events, replacement scheduling and readiness, client status and responding Pod, drain completion, and recovery. Time intervals are fixture observations, not service-level promises. Separate established connections from new requests. Separate API admission from kubelet termination. Separate a ready Pod count from successful user requests. Preserve rejected evictions as evidence rather than deleting them from a success-oriented summary.'
-      ]},
-      {heading:'Failure classification and correction options',body:[
-        'Failure classes include an empty or over-broad selector, rounding surprises in percentages, a budget stricter than available replicas, unready Pods that block maintenance, missing spare capacity, topology constraints that prevent placement, readiness that becomes true before useful service, termination exceeding the grace period, and clients receiving errors during endpoint transitions. A direct delete succeeding despite the budget demonstrates the documented control boundary; it is not evidence that the budget failed. Likewise, an involuntary loss is counted but cannot be prevented by PDB admission.',
-        'Corrections may adjust replicas, integer or percentage budget semantics, selector labels, unhealthy eviction policy, resource requests, topology, readiness meaning, application shutdown, or maintenance sequencing. Each changes a different risk and needs its owner. Do not force delete Pods, disable budgets, inflate grace periods without evidence, or add capacity outside the approved fixture merely to finish a drain. When requirements conflict, the handoff states the choice: delay maintenance, accept bounded downtime, add capacity, fail over, or redesign the workload.'
-      ]},
-      {heading:'Asynchronous platform handoff',body:[
-        'The handoff includes cluster and client versions, manifest and image hashes, workload availability statement, selector proof, capacity snapshot, scenario matrix, eviction responses, controller and scheduler events, endpoint and client series, stop rules, recovery results, and proposed diff. The reviewer reproduces a permitted eviction, blocked eviction, selector fault, and unschedulable replacement. They verify restored steady state and confirm that client evidence agrees with the declared service outcome. A final list of Running Pods is not a sufficient history.',
-        'The developer’s access is limited to the isolated cluster and approved namespace. Application engineering owns health semantics and shutdown behavior. Platform engineering owns cluster capacity, drain commands, budget policy, and maintenance windows. Security reviews diagnostic exposure. Release or operations leadership accepts downtime and emergency overrides. Retest after Kubernetes upgrades, provider changes, replica or topology changes, autoscaler changes, new resource requests, revised health behavior, altered termination logic, or changed client traffic patterns.'
-      ]},
-      {heading:'Limitations and decision rule',body:[
-        'A small cluster cannot reproduce a managed provider’s upgrades, autoscaler, admission webhooks, network, load balancer, storage attachments, zone failures, or real traffic. Synthetic requests do not represent every session or background job. Controller status may lag actual state. Sampling can miss short endpoint transitions. A successful voluntary drain cannot establish tolerance of involuntary loss, and one workload’s budget says nothing about dependencies. These constraints make a conditional result more accurate than extrapolating a demonstration into a universal availability claim.',
-        'Pass requires correct selection, expected admission decisions, schedulable and ready replacements, client outcomes within the owner’s declared boundary, graceful termination evidence, detected seeded faults, and complete recovery. Conditional pass names capacity, provider, or dependency evidence still required. Fail identifies budget, scheduling, health, shutdown, routing, or client behavior as the first unsafe boundary. The outcome is a drain-readiness brief an internal platform owner can approve, revise, or reject; it never grants the researcher authority to mutate production.'
-      ]},
-      {heading:'Sources checked October 5, 2026',body:[
-        'Kubernetes, Disruptions: https://kubernetes.io/docs/concepts/workloads/pods/disruptions/. Kubernetes, Specifying a Disruption Budget: https://kubernetes.io/docs/tasks/run-application/configure-pdb/. Kubernetes, API-initiated Eviction: https://kubernetes.io/docs/concepts/scheduling-eviction/api-eviction/. These primary sources define the PDB, voluntary-disruption, and eviction mechanisms. The experimental matrix, user-observation model, stop rules, and role boundaries are DeveloperOffshore.com analysis for scoped release support.',
-        'Kubernetes documentation does not define a particular application’s availability requirement or guarantee provider behavior. Features and defaults depend on cluster version, and managed services may add maintenance automation. Pair citations with server and client versions. If the test cannot observe a provider or dependency layer, record that gap and assign it to the platform owner. Do not interpret an API object’s desired state as evidence that users experienced the intended transition.'
-      ]}
-    ],sources:[{name:'Kubernetes: Disruptions',url:'https://kubernetes.io/docs/concepts/workloads/pods/disruptions/'},{name:'Kubernetes: Specify a disruption budget',url:'https://kubernetes.io/docs/tasks/run-application/configure-pdb/'},{name:'Kubernetes: API-initiated eviction',url:'https://kubernetes.io/docs/concepts/scheduling-eviction/api-eviction/'}],
-    faqs:[{question:'Does a PDB protect against every outage?',answer:'No. It constrains qualifying voluntary evictions; involuntary failures and direct deletion have different control boundaries.'},{question:'Can the researcher force a blocked drain?',answer:'No. A blocked eviction is evidence for the platform owner, who decides whether to wait, add capacity, change policy, or accept downtime.'}],
-    related:[{title:'DevOps release support',href:'/services/devops-release-support'},{title:'Node.js API development',href:'/services/node-js-api-development'},{title:'Research library',href:'/research'}]
+    "slug": "offshore-developer-kubernetes-statefulset-partition-study-2026-10-05",
+    "title": "A Kubernetes StatefulSet Partitioned-Rollout Study for Ordered Services",
+    "published": "2026-10-05",
+    "excerpt": "A controlled study of StatefulSet partition changes, ordinal identity, readiness failures, and rollback evidence for an ordered service.",
+    "keyStats": [
+      "1 version-pinned Kubernetes cluster",
+      "3 stable Pod ordinals",
+      "16 rollout, failure, and recovery cases"
+    ],
+    "takeaways": [
+      "Use the partition as an explicit ordinal boundary.",
+      "Verify identity and storage separately from readiness.",
+      "Rehearse rollback before changing the next ordinal."
+    ],
+    "sections": [
+      {
+        "heading": "The rollout decision",
+        "body": [
+          "This study asks how a team should stage one StatefulSet revision when Pod identity and update order matter. A synthetic three-replica service exposes its ordinal, controller revision, persistent-volume marker, readiness state, and application compatibility result. The operator raises and lowers rollingUpdate.partition to choose which ordinals may change. The fixture pauses after each boundary, injects a failure into the first updated Pod, and records what Kubernetes does before anyone approves the next ordinal.",
+          "The result is a rollout rule for one ordered service, not a claim that StatefulSet partitions are a universal canary system. A partition controls which ordinal numbers receive an update under the RollingUpdate strategy. It does not decide whether the new application is semantically compatible, whether stored data can be read by an older revision, or whether rollback is safe. Those decisions stay with the application and data owners. The engineer supplies observable evidence about controller behavior, identity, storage, and readiness."
+        ]
+      },
+      {
+        "heading": "Documented behavior to test",
+        "body": [
+          "Kubernetes documents that StatefulSet Pods have stable ordinal identities and are created and deleted in a defined order under the default OrderedReady policy. With RollingUpdate, the controller updates Pods in reverse ordinal order, waiting for an updated Pod to become Running and Ready before proceeding. A partition causes Pods with an ordinal lower than the partition to remain at the previous template while Pods at or above it receive the new template. The fixture tests those rules on the pinned cluster rather than assuming every workload is configured for them.",
+          "The API reference defines updateStrategy, rollingUpdate.partition, maxUnavailable where supported, podManagementPolicy, currentRevision, updateRevision, currentReplicas, updatedReplicas, readyReplicas, and availableReplicas. Capture the exact API server version and feature gates before interpreting those fields. Keep maxUnavailable at its declared baseline unless it is the variable under study. A percentage or parallel policy would change the experiment. The manifest, not a familiar mental model, determines which guarantees apply."
+        ]
+      },
+      {
+        "heading": "Build a stateful but harmless fixture",
+        "body": [
+          "Create a headless Service and a StatefulSet named ledger with three replicas: ledger-0, ledger-1, and ledger-2. Each Pod mounts its own test volume, writes a persistent marker containing its ordinal and a generated fixture identifier, then serves a small status endpoint. The endpoint reports image revision, ordinal, marker hash, readiness, and a synthetic protocol version. It contains no credentials or production data. The old and new images differ only in revision label, compatibility behavior, and the seeded readiness control.",
+          "Pin cluster, kubectl, storage driver, container image digests, manifest hash, namespace, and observation commands. Record StatefulSet generation, observedGeneration, currentRevision, updateRevision, Pod UID, creation time, node, image ID, readiness transitions, volume claim name, and marker hash. A Pod recreation should change UID while preserving the expected ordinal, claim, and marker. A rollout conclusion based only on Pod names misses whether the controller actually replaced a Pod or whether storage identity followed it correctly."
+        ]
+      },
+      {
+        "heading": "Establish the old revision",
+        "body": [
+          "Apply revision A with partition 3, wait for all three Pods to become Ready, and verify every volume marker. Query the synthetic protocol from each ordinal directly and through the governing Service. Save the controller revisions and status fields. Delete ledger-1 once before the rollout and prove that its replacement keeps the ledger-1 network identity and claim marker. This baseline separates ordinary StatefulSet replacement from the later template update.",
+          "Seed negative controls before changing the template. A wrong marker must fail the identity check. A status endpoint that reports revision B while the container image remains A must fail the revision check. A Pod that is Running but not Ready must not count as an accepted stage. These controls matter because a green kubectl wait can otherwise conceal an incorrect assertion or a fixture that reads a mutable label rather than the running image and mounted state."
+        ]
+      },
+      {
+        "heading": "Update only the highest ordinal",
+        "body": [
+          "Change the template to revision B while keeping partition 3. The updateRevision should change, but no Pod should move to B because every ordinal is below the partition boundary. Then set partition 2. The controller should replace ledger-2 while ledger-1 and ledger-0 remain on A. Record the deletion and creation sequence, readiness, revision labels, endpoint result, claim name, and marker. Do not lower the partition merely because the new Pod reaches Running.",
+          "Acceptance for this stage requires ledger-2 to report B, retain its expected persistent marker, pass the compatibility probe, and remain Ready for the declared observation window. The two lower ordinals must still report A and serve their expected protocol. Send synthetic reads and writes across the mixed revision set to expose a compatibility assumption. The application owner defines the allowed mixed-version behavior. Kubernetes can order replacement, but it cannot certify that A and B understand the same stored or network data."
+        ]
+      },
+      {
+        "heading": "Inject a readiness failure",
+        "body": [
+          "Repeat the ledger-2 stage with a revision B variant whose readiness endpoint fails after startup. Observe the controller status, Pod events, restart behavior, and whether lower ordinals remain unchanged. The expected safety property is that the ordered rollout does not advance to ledger-1 while ledger-2 is not Ready. Preserve the exact timeline and distinguish container restarts from Pod replacement. A liveness probe is not added unless the experiment explicitly studies it, because liveness could erase the evidence by creating a separate restart loop.",
+          "Repair the readiness configuration without lowering the partition. Confirm that ledger-2 eventually becomes Ready with the intended revision and the same claim marker. If the controller appears stuck after reverting the template, test the documented forced-rollback caveat on the pinned version: an unhealthy Pod created under a bad template may require manual deletion after the template is reverted. Record whether manual deletion was needed, who authorized it, the old and new UIDs, and the storage marker after recreation."
+        ]
+      },
+      {
+        "heading": "Advance and pause at each boundary",
+        "body": [
+          "After ledger-2 passes, lower the partition to 1. Verify that only ledger-1 changes, then repeat identity, storage, readiness, protocol, and mixed-version checks across B at ordinals 2 and 1 with A at ordinal 0. Lower the partition to 0 only after the second review is accepted. This sequence gives the reviewer an explicit stop before each ordinal. It does not create an automatic approval merely because the controller is capable of continuing.",
+          "At every stage, compare desired replicas, current replicas, updated replicas, ready replicas, currentRevision, and updateRevision with per-Pod observations. Status counts can lag or summarize a state that is too coarse for the decision. Preserve watch output or timestamped snapshots rather than one final describe command. A pass requires agreement between controller status, Pod identity, image digest, readiness, application response, and volume marker. Disagreement pauses the rollout even when aggregate availability looks healthy."
+        ]
+      },
+      {
+        "heading": "Rehearse rollback from a mixed revision",
+        "body": [
+          "Stop with ledger-2 and ledger-1 on B and ledger-0 on A. Restore the revision A template while holding a partition that changes only the intended ordinal. Observe updateRevision and the reverse-ordinal replacement sequence. Verify that each recreated Pod can read its existing marker and serve the old synthetic protocol. If revision B wrote a format that A cannot read, the application compatibility probe must fail even though Kubernetes successfully applies the older template.",
+          "Test rollback with one Pod unavailable, one pending because of a seeded scheduling constraint, and one readiness failure. Keep these cases separate so the evidence identifies the blocking condition. Do not force-delete a Pod, remove a finalizer, detach storage, or broaden scheduling permissions merely to make the rehearsal finish. Those operations have different risk owners. The handoff names the smallest authorized recovery action and the evidence required before moving the partition again."
+        ]
+      },
+      {
+        "heading": "Check configuration variants without mixing claims",
+        "body": [
+          "Run a separate comparison with Parallel podManagementPolicy only if the service uses it. Document which ordering expectations no longer apply to scaling and initial management, and retain the rollout observations independently. If the cluster and workload use maxUnavailable for StatefulSet rolling updates, test the exact configured value in another lane. Do not combine partition, availability, scheduling, and storage changes in one run, because a successful outcome would not reveal which setting controlled it.",
+          "Also test a no-op template application, a rapid second template change before the first partition stage completes, and an operator who accidentally lowers the partition by two ordinals. Admission policy or release tooling may prevent the last case, but the fixture should expose the consequence in its approved namespace. Record controller revisions and Pod images so an intermediate revision cannot disappear from the narrative. The recovery rule must choose a known template and partition rather than guessing from whichever Pod happens to be Ready."
+        ]
+      },
+      {
+        "heading": "Operational evidence and handoff",
+        "body": [
+          "The evidence bundle contains cluster and client versions, feature gates, namespace, manifest and image hashes, storage class, partition changes, controller revisions, per-Pod UID and image history, readiness events, claim and marker mapping, compatibility results, seeded failures, rollback results, commands, timestamps, owners, and exclusions. Another engineer reproduces the baseline replacement, partition 2 update, readiness failure, recovery, partition 1 update, and mixed-version rollback from a clean namespace.",
+          "Cluster access stays limited to the approved test scope. The developer may prepare manifests, synthetic images, checks, and a proposed rollout procedure. The platform owner controls cluster policy, storage operations, force deletion, and production rollout. The application and data owners approve mixed-version and rollback compatibility. Release approval requires a named person; a passing fixture does not grant it. The final procedure includes stop conditions, rollback commands, and the observation window for each ordinal."
+        ]
+      },
+      {
+        "heading": "Decision rule and limits",
+        "body": [
+          "Pass requires only intended ordinals to update at each partition, stable ordinal and claim mapping, correct marker retention, detectable seeded failures, no advance past an unready Pod under the tested policy, accepted mixed-version behavior, and a reproduced rollback path. Conditional pass identifies untested storage, scheduling, or compatibility cases with an owner. Fail preserves the first unexpected replacement, identity mismatch, data incompatibility, or uncontrolled advance. The useful result is a reviewed ordinal-by-ordinal procedure for this StatefulSet.",
+          "The study does not prove application replication, database consensus, backup restoration, zone failure, storage durability, network ordering, or production capacity. A synthetic readiness endpoint can differ from real dependency health. Controller behavior may change with Kubernetes version, feature gates, podManagementPolicy, update strategy, maxUnavailable, admission, scheduler, or storage driver. Re-run after any of those change, after altering probe semantics or data format, and before relying on the procedure for another StatefulSet."
+        ]
+      },
+      {
+        "heading": "Sources checked for this study",
+        "body": [
+          "Kubernetes StatefulSet documentation defines stable identity, ordered behavior, RollingUpdate, partitions, controller revisions, and the forced-rollback caveat. The Kubernetes API reference defines StatefulSet specification and status fields used by the fixture. These first-party sources describe controller contracts. The three-ordinal workload, persistent markers, compatibility probes, failure injection, evidence thresholds, and review sequence are DeveloperOffshore.com analysis for a bounded engineering handoff.",
+          "The live documentation can describe a newer release than an installed cluster. Record the applicable Kubernetes version and retain the checked references with the run. API availability does not prove that a cluster enables an optional feature or that a storage provider preserves the assumed behavior. Unknown capability stays unknown until a version-pinned, authorized test demonstrates it. Do not rewrite a successful controller transition as proof that the application or its data survived correctly."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "name": "Kubernetes: StatefulSets",
+        "url": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/"
+      },
+      {
+        "name": "Kubernetes API: StatefulSet v1",
+        "url": "https://kubernetes.io/docs/reference/kubernetes-api/apps/stateful-set-v1/"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Does a partition prove the new revision is a safe canary?",
+        "answer": "No. It limits which ordinals update. Application compatibility, storage behavior, and readiness still require explicit checks."
+      },
+      {
+        "question": "Does reverting the template always repair an unhealthy rollout automatically?",
+        "answer": "No. The pinned-version rehearsal must account for the documented forced-rollback caveat and record whether an unhealthy Pod needs authorized deletion."
+      }
+    ],
+    "related": [
+      {
+        "title": "DevOps release support",
+        "href": "/services/devops-release-support"
+      },
+      {
+        "title": "Legacy application maintenance",
+        "href": "/services/legacy-application-maintenance"
+      },
+      {
+        "title": "Research library",
+        "href": "/research"
+      }
+    ]
   },
   {
     slug:'offshore-developer-nextjs-server-action-authorization-study-2026-10-05',title:'A Next.js Server Action Authorization Study Behind Reverse Proxies',published:'2026-10-05',

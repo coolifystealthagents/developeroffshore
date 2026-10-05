@@ -29,12 +29,12 @@
     "productionBuild": "npm run build passed; 773 static pages; pre-existing CSS autoprefixer warning only",
     "renderedLocalRoutes": 5,
     "renderedBodyParagraphEquality": "80 of 80 source body paragraphs found exactly in rendered output after HTML decoding",
-    "bodyWordCountsExcludingSourceAppendices": [1782, 1789, 1280, 1236, 1281],
+    "bodyWordCountsExcludingSourceAppendices": [1782, 1789, 1280, 1779, 1281],
     "maximumPairwiseFiveWordShingleJaccard": 0.0022115739034279398,
     "similarityThreshold": 0.5,
     "repeatedSubstantiveParagraphs": 0,
-    "qualitativeOriginality": "repair in progress: the Node.js worker-transfer and PostgreSQL notification-wakeup replacements pass manual prior-corpus comparisons; two Research replacements remain",
-    "priorCorpusCollision": "Node.js and PostgreSQL replacements pass against their nearest prior studies; Kubernetes and Next.js rewrites remain fail-closed",
+    "qualitativeOriginality": "repair in progress: the Node.js, PostgreSQL, and Kubernetes replacements pass manual prior-corpus comparisons; the Next.js replacement remains",
+    "priorCorpusCollision": "Node.js, PostgreSQL, and Kubernetes replacements pass against their nearest prior studies; the Next.js rewrite remains fail-closed",
     "authoritativeSourceLinks": "15 of 15 returned HTTP 200 on 2026-10-05",
     "internalLinks": "all service and Research links are repository-defined routes and passed local rendering",
     "localRouteChecks": "all 5 returned 200 with title, visible UTC date, datePublished, exact canonical, full body, Research index entry, sitemap entry, and HTTP 200 image/svg+xml with valid SVG signature"
@@ -72,12 +72,12 @@
     },
     {
       "family": "research",
-      "topic": "Kubernetes PodDisruptionBudget behavior during reviewed node drains",
-      "slug": "offshore-developer-kubernetes-disruption-budget-drain-study-2026-10-05",
-      "sources": ["https://kubernetes.io/docs/concepts/workloads/pods/disruptions/", "https://kubernetes.io/docs/tasks/run-application/configure-pdb/", "https://kubernetes.io/docs/concepts/scheduling-eviction/api-eviction/"],
-      "contentHash": "2c90ab128b09b5cb3f258f681d7f9eb4a19df69138a909d5fcd826d1eec62226",
+      "topic": "Kubernetes StatefulSet partitioned rollout, ordinal identity, readiness, and rollback",
+      "slug": "offshore-developer-kubernetes-statefulset-partition-study-2026-10-05",
+      "sources": ["https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/", "https://kubernetes.io/docs/reference/kubernetes-api/apps/stateful-set-v1/"],
+      "contentHash": "2a77a5fb7c16acf9b4bbef292c08bf713de68cd1049dc620b973e8f7fbf98b45",
       "actualPublicationDate": null,
-      "liveUrl": "https://developeroffshore.com/research/offshore-developer-kubernetes-disruption-budget-drain-study-2026-10-05",
+      "liveUrl": "https://developeroffshore.com/research/offshore-developer-kubernetes-statefulset-partition-study-2026-10-05",
       "verifiedAt": null
     },
     {
