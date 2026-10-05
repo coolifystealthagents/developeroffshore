@@ -31,7 +31,9 @@
       "title": "Prevent Overlapping Bookings With a PostgreSQL Exclusion Constraint",
       "decision": "Whether a database range and exclusion constraint should own the non-overlap invariant instead of an application check followed by insert.",
       "workedExample": "Two transactions reserve overlapping half-open time ranges for the same synthetic room while a separate room remains valid.",
-      "sources": ["https://www.postgresql.org/docs/current/rangetypes.html", "https://www.postgresql.org/docs/current/ddl-constraints.html"]
+      "sources": ["https://www.postgresql.org/docs/current/rangetypes.html", "https://www.postgresql.org/docs/current/ddl-constraints.html", "https://www.postgresql.org/docs/current/btree-gist.html"],
+      "status": "draft_complete_pending_integration_and_audit",
+      "draftPath": ".paperclip/daily-content/2026-10-05/drafts/postgres-exclusion-constraint-booking-review.json"
     },
     {
       "family": "research",
