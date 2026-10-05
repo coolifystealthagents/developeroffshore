@@ -594,4 +594,116 @@ export const october05BlogBatch: readonly BlogPost[] = [
       { name: 'IETF RFC 6455: WebSocket Protocol', url: 'https://www.rfc-editor.org/rfc/rfc6455', note: 'Frames, closing handshake, and protocol behavior.' },
     ],
   },
+  {
+    slug: 'css-container-query-component-test-handoff',
+    title: 'Test CSS Container Queries as a Component Contract',
+    excerpt: 'A focused frontend handoff for choosing containment, testing boundary widths, preserving content, and separating component behavior from viewport assumptions.',
+    minutes: 10,
+    revision: 'daily-blog-2026-10-05-css-container-query-component-test-handoff',
+    keyTakeaways: ['Define the containing context before writing breakpoints.', 'Test just below, at, and above every query boundary.', 'Use real content and nested layouts to expose feedback and overflow.'],
+    sections: [
+      { heading: 'Start with where the component must work', body: [
+        'A card may appear in a full-width page, narrow sidebar, dashboard grid, dialog, and embedded panel. Viewport media queries cannot describe all those available spaces. Begin with a placement matrix: host layout, expected inline size, writing mode, content variants, interactive states, and required outcome. Use one example such as a pricing card that changes from horizontal to stacked when its parent becomes narrow, while preserving price, action, comparison text, and reading order.',
+        'Name the element intended to be the query container and why it owns layout context. Record whether size, inline-size, style, or scroll-state queries are in scope and which browsers the product supports. Adding containment can affect intrinsic sizing and layout, so the wrapper choice is architecture, not merely a selector. The component owner approves its behavior; the page owner controls available space.'
+      ]},
+      { heading: 'Choose container boundaries without breaking sizing', body: [
+        'Inspect the ancestors that determine the component width: grid tracks, flex items, min-content rules, max widths, gaps, padding, and overflow. Apply a container type only where the sizing consequences are understood. A component cannot generally query its own size to style itself; it queries an ancestor container. Creating an extra wrapper may be appropriate, but the wrapper must not alter semantics, focus order, or styling hooks accidentally.',
+        'Give named containers to reusable regions when nesting could otherwise select the wrong ancestor. Test the component inside another query container and inside a page that changes containment. A generic nearest-container rule can work until a new wrapper is introduced. Record the selected container for each fixture through computed styles or a test marker, rather than inferring it from the final screenshot.'
+      ]},
+      { heading: 'Derive breakpoints from failure, not device labels', body: [
+        'Resize the container with representative content until the existing arrangement first loses readability, overlaps, clips, or creates an unusable control. Record that range and choose a threshold based on the component’s needs. Avoid labels such as tablet or desktop when the same component can occupy very different widths on one screen. Use relative units where they match typography and user scaling, and document the root assumptions.',
+        'For every threshold, test a width just below, exactly at, and just above it. Capture layout mode, order, visible content, control dimensions, overflow, focus outline, and computed query result. Fractional pixels, zoom, scrollbars, and device scale can expose oscillation around an equality boundary. The expected condition should follow the CSS comparison precisely rather than a screenshot made at an approximate drag position.'
+      ]},
+      { heading: 'Use hostile but legitimate content', body: [
+        'Build fixtures with short and long headings, unbroken identifiers, translated labels, large prices, missing optional media, validation messages, badges, multiple actions, and user-generated text within product limits. Increase text zoom and browser zoom. A layout that works only with English placeholders is not reusable evidence. Let content wrap unless the product explicitly requires truncation and provides access to the full value.',
+        'Check left-to-right and right-to-left direction where supported, plus vertical writing only if the product claims it. Prefer logical properties so inline and block behavior follows the writing mode. Container query units can be useful, but clamp typography and spacing to readable bounds. Verify fallback when no eligible container exists; the base style should remain coherent rather than depending on a query that never matches.'
+      ]},
+      { heading: 'Prevent layout feedback and nested surprises', body: [
+        'A query changes descendants based on container size, and those descendants can influence surrounding layout. Construct a grid where several instances switch near the same width, then resize slowly through the boundary. Watch for repeated mode changes, horizontal scroll, track expansion, and unstable height. Keep the queried style from changing the container’s own determining dimension in a way that creates feedback.',
+        'Place the component in nested containers with different names and widths. Add an unrelated wrapper and confirm named queries still bind to the intended context. Test a container hidden and then revealed, moved between regions, and rendered before fonts load. If JavaScript measures the same component, define which system owns the decision so CSS and script do not fight and produce hydration or resize loops.'
+      ]},
+      { heading: 'Preserve semantics through visual rearrangement', body: [
+        'Changing grid areas or flex order can alter visual order without changing DOM and assistive-technology order. Design source order to remain meaningful in every mode. Navigate by keyboard across each arrangement and compare focus sequence with the visual presentation. Do not duplicate content for wide and narrow modes unless duplicate names, IDs, hidden states, form values, and announcements are deliberately handled.',
+        'Check target size, focus visibility, error association, headings, list semantics, table meaning, and live status after each layout switch. Resize while an inner control has focus; focus should remain on the same logical element and stay visible. Reduced motion preferences apply if transitions animate the rearrangement. Accessibility review is behavior evidence, not a final automated score.'
+      ]},
+      { heading: 'Automate the component matrix without screenshot-only approval', body: [
+        'Create a harness that sets container width directly instead of relying only on viewport size. Assert layout mode using stable attributes or computed properties, then add focused visual snapshots for representative states. Include boundary widths, nested containers, long content, zoom-compatible checks, and keyboard traversal. Reset fonts and animation conditions so differences are meaningful.',
+        'Run supported browser engines because query behavior, subpixel layout, fonts, and screenshots can differ. A pixel diff may flag harmless antialiasing while missing a clipped accessible name, so pair it with DOM, overflow, focus, and text assertions. Record browser versions, container dimensions, content fixture, expected mode, observed result, and uncovered combinations.'
+      ]},
+      { heading: 'Hand off reusable evidence', body: [
+        'The packet includes placement matrix, selected container and name, containment effects, breakpoint rationale, boundary results, content fixtures, nested-container cases, accessibility sequence, browser matrix, automated assertions, visual evidence, fallback behavior, known limits, and exact source revision. The offshore developer can implement the component and tests; design and product owners approve information priority; accessibility owners review interaction; release owners accept browser coverage.',
+        'Acceptance requires stable behavior across declared placements, no content loss or unexplained overflow, meaningful source order, visible focus, and reproducible boundary outcomes. A clean desktop screenshot does not pass the contract. Developer Offshore clients can use one component across three real placements as a bounded frontend assignment with a named design and accessibility reviewer.'
+      ]},
+    ],
+    relatedLinks: [
+      { label: 'React frontend development', href: '/services/react-frontend-development', note: 'Build reusable responsive components.' },
+      { label: 'QA automation engineering', href: '/services/qa-automation-engineering', note: 'Automate boundary and browser matrices.' },
+      { label: 'Discuss the frontend lane', href: '/contact', note: 'Bring the component, placements, and reviewers.' },
+    ],
+    faqs: [
+      { question: 'Should container-query breakpoints match viewport breakpoints?', answer: 'Not by default. Derive them from the component’s content and layout failure in its actual containers.' },
+      { question: 'Is a visual snapshot enough to test a container query?', answer: 'No. Pair snapshots with exact container widths, layout assertions, overflow checks, keyboard order, content preservation, and supported-browser evidence.' },
+    ],
+    sources: [
+      { name: 'W3C CSS Containment Module Level 3', url: 'https://www.w3.org/TR/css-contain-3/', note: 'Container queries, containment, and query syntax.' },
+      { name: 'MDN: CSS Container Queries', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries', note: 'Container types, names, units, and practical usage.' },
+      { name: 'WCAG 2.2', url: 'https://www.w3.org/TR/WCAG22/', note: 'Reflow, focus, text spacing, and interaction requirements.' },
+    ],
+  },
+  {
+    slug: 'http-message-signature-proxy-boundary-review',
+    title: 'Verify HTTP Message Signatures Across a Reverse-Proxy Boundary',
+    excerpt: 'A security handoff for choosing covered components, preserving request meaning through proxies, preventing replay, and rotating verifier trust.',
+    minutes: 11,
+    revision: 'daily-blog-2026-10-05-http-message-signature-proxy-boundary-review',
+    keyTakeaways: ['Sign the request components that carry the authorization meaning.', 'Define whether verification happens before or after proxy normalization.', 'Bind freshness, nonce, key identity, and replay state to one policy.'],
+    sections: [
+      { heading: 'Define the authenticated message at one hop', body: [
+        'HTTP Message Signatures protect selected components, not an abstract request independent of its route. Start with one integration: an external system sends a state-changing request through a managed reverse proxy to an application verifier. Record signer, verifier, request method, target authority and path, query meaning, selected headers, body representation, proxy transformations, key identifier, algorithm, and business authorization. State which hop the signature authenticates and which components can change afterward.',
+        'Use a harmless synthetic command with an independent state observation. The valid fixture should change one seeded record once. Negative fixtures must leave it untouched. A successful cryptographic check proves that the selected signature base matches a trusted key; it does not by itself prove the caller may perform the action, the body is fresh, or the operation is safe to repeat.'
+      ]},
+      { heading: 'Choose covered components from threats', body: [
+        'List what an attacker or intermediary must not alter: method, scheme, authority, path, query parameters, content type, content digest, timestamp, nonce, and an application account or tenant header where appropriate. Cover derived components according to the standard rather than inventing a concatenated string. If query order, repeated fields, encoding, or normalization carry meaning, create explicit fixtures and confirm signer and verifier construct the same base.',
+        'Do not sign volatile transport headers merely because they exist. Proxies may add forwarding, tracing, connection, or compression metadata. Conversely, omitting the target authority or path can let a valid signed body move to another endpoint. The security owner approves the component set and residual risks; the developer implements the declared base and produces evidence for each mutation.'
+      ]},
+      { heading: 'Locate verification relative to the proxy', body: [
+        'Draw the exact request seen at the public edge and the exact request exposed to the verifier. Test host rewriting, TLS termination, path prefix removal, percent encoding, query normalization, header combination, whitespace handling, and body decompression if applicable. Decide whether the edge verifies the external form, the application reconstructs trusted external components from controlled forwarding metadata, or both hops use separate signatures.',
+        'Never trust client-supplied Forwarded or X-Forwarded fields simply because the application sits behind a proxy. Define which proxy removes untrusted values, writes authoritative metadata, and connects through an authenticated boundary. A mismatch should fail with a safe response and no side effect. Broad fallback that retries verification against several guessed host or path forms creates ambiguity an attacker may exploit.'
+      ]},
+      { heading: 'Bind the body without parser ambiguity', body: [
+        'For requests with content, use a reviewed digest mechanism and cover the relevant digest and content-type components. Compute against the bytes at the declared hop before parsing or transforming them. Then validate syntax and business fields separately. Re-serializing JSON can change whitespace, number formatting, property order, or Unicode representation, while two syntactically different bodies may parse into similar data.',
+        'Test a changed byte, changed digest header, valid digest over a disallowed media type, duplicate or conflicting headers, empty body, oversized body, and body altered by middleware. Limit buffering and parsing so authentication cannot be used for memory exhaustion. Streaming designs need a declared digest and commit boundary; no irreversible business action should occur before the full authenticated content is accepted.'
+      ]},
+      { heading: 'Add freshness and replay state', body: [
+        'Require created time and an expiration or bounded age appropriate to the integration, and define clock skew explicitly. Include a nonce or stable request identifier when replay would cause harm. Store replay state atomically for at least the accepted window, scoped to signer and identifier. A timestamp alone allows the same signed request to repeat throughout its validity.',
+        'Run the same valid request concurrently against multiple application replicas and assert one accepted business effect. Test reuse after success, reuse after a temporary internal failure, an expired signature, future timestamp, unknown nonce, and verifier clock offset. Decide whether a failed business operation consumes the replay identifier. That choice affects safe retry and must be visible to the client and service owner.'
+      ]},
+      { heading: 'Resolve keys through a bounded trust policy', body: [
+        'A key identifier is a lookup input, not proof of authority. Map it to an approved signer, algorithm, public key or shared-secret reference, allowed operations, tenant scope, validity window, and revocation status. Reject unknown algorithms and identifiers before expensive work where possible. Prevent a caller from selecting an arbitrary URL or filesystem path for key retrieval.',
+        'Cache remote key material only under authenticated retrieval, bounded freshness, and failure rules. Rehearse rotation with old and new keys, queued requests, revocation, retrieval outage, and rollback. Logs can contain key identifiers and decision reasons but not shared secrets, reusable signatures, complete sensitive bodies, or private keys. Security owners control trust changes; developers receive safe fixtures or public material.'
+      ]},
+      { heading: 'Separate verification from authorization', body: [
+        'After signature verification, authenticate the signer’s application identity and authorize the requested resource, tenant, and action using current policy. Test a correctly signed request for another tenant, an excessive operation, a deleted account, and permission revoked after signing. Each must leave state unchanged. Do not let an integration key become implicit administrator authority.',
+        'Return stable response categories without disclosing which signature bytes nearly matched or which protected resource exists. Internally distinguish malformed signature input, unsupported algorithm, unknown key, cryptographic mismatch, stale request, replay, digest mismatch, authentication failure, authorization denial, validation error, and business conflict. Those classes have different owners and recovery actions.'
+      ]},
+      { heading: 'Deliver a byte-level verification packet', body: [
+        'The handoff includes topology, trust owners, covered-component rationale, signature parameters, proxy transformations, canonical fixture requests, expected signature-base hashes, body-digest tests, freshness and replay rules, multi-replica results, authorization negatives, key rotation, bounded logs, rollback, and exact code and configuration revisions. Preserve literal non-secret fixtures so another working window can reproduce the base without guessing.',
+        'Acceptance requires one unambiguous message form at the verification hop, mutation failures for every covered component, unchanged state on all denied cases, bounded replay, scoped keys, and a tested rotation path. Developer Offshore can implement parsing, fixtures, verifier integration and evidence while the client security, platform and product owners retain proxy trust, key authority, business permissions, and release approval.'
+      ]},
+    ],
+    relatedLinks: [
+      { label: 'Node.js API development', href: '/services/node-js-api-development', note: 'Implement signed integration boundaries.' },
+      { label: 'DevOps release support', href: '/services/devops-release-support', note: 'Review proxy configuration and key rotation.' },
+      { label: 'Discuss the API assignment', href: '/contact', note: 'Bring the topology, signer contract, and security owner.' },
+    ],
+    faqs: [
+      { question: 'Does a valid HTTP message signature authorize the requested action?', answer: 'No. It authenticates covered message components under a trusted key. Current tenant, resource, and operation authorization still needs a separate decision.' },
+      { question: 'Can the application reconstruct the public request from any forwarded header?', answer: 'No. Only metadata replaced by a trusted proxy on an authenticated boundary should influence reconstruction; client-supplied forwarding values must not be trusted.' },
+    ],
+    sources: [
+      { name: 'IETF RFC 9421: HTTP Message Signatures', url: 'https://www.rfc-editor.org/rfc/rfc9421', note: 'Signature base, covered components, parameters, and verification.' },
+      { name: 'IETF RFC 9530: Digest Fields', url: 'https://www.rfc-editor.org/rfc/rfc9530', note: 'Content digest fields for HTTP messages.' },
+      { name: 'OWASP REST Security Cheat Sheet', url: 'https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html', note: 'Transport, authorization, input, and replay-related controls.' },
+    ],
+  },
 ];
