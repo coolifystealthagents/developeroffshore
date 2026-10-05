@@ -4,57 +4,57 @@ import type { BlogPost } from './data';
 // release date is known in UTC. Do not infer a date from the cycle label.
 export const october05BlogBatch: readonly BlogPost[] = [
   {
-    slug: 'webhook-signing-secret-rotation-handoff',
-    title: 'Webhook Signing-Secret Rotation Without a Verification Gap',
-    excerpt: 'A practical handoff for rotating webhook secrets while delayed deliveries, retries, and multiple receivers remain verifiable.',
+    slug: 'http-425-early-data-replay-review',
+    title: 'Review HTTP 425 Before Early Data Replays a Product Action',
+    excerpt: 'A gateway-to-origin review for deciding which requests may use TLS early data and which must wait for a completed handshake.',
     minutes: 10,
-    revision: 'daily-blog-2026-10-05-webhook-signing-secret-rotation-handoff',
+    revision: 'daily-blog-2026-10-05-http-425-early-data-replay-review',
     keyTakeaways: [
-      'Inventory every signer and verifier before introducing a second secret.',
-      'Accept old and new signatures only for a measured overlap window.',
-      'Retire the old secret using delivery evidence, not a guessed delay.',
+      'Classify replay consequences at the origin instead of trusting the HTTP method alone.',
+      'Preserve Early-Data: 1 across every intermediary that may forward a replayed request.',
+      'Use 425 only when the request arrived in early data or carries the Early-Data signal.',
     ],
     sections: [
       {
-        heading: 'Treat rotation as a protocol change',
+        heading: 'Begin with the action that must not repeat',
         body: [
-          'A webhook secret is shared state between the system that signs an event and every endpoint that verifies it. Replacing the value in one dashboard is therefore not a complete rotation. The useful unit of work is one delivery path: producer, signing configuration, network route, receiver, secret store, verification library, retry queue, dead-letter path, and operational owner. List those components before changing code. Include staging and disaster-recovery receivers if they can receive real retries. A forgotten receiver can fail silently while the primary endpoint looks healthy.',
-          'Record how the sender builds the signed message. Some providers sign the raw request body plus a timestamp; others publish a versioned envelope or several signatures. Parsing JSON and serializing it again can change bytes even when the data looks identical. The handoff should name the exact header, signed bytes, algorithm, timestamp rule, encoding, and library version. HMAC describes a construction, but the provider contract determines the message and comparison behavior. Never invent a generic verifier from the secret alone.',
+          'TLS early data can reduce a connection round trip, but the server may receive the same early bytes more than once. Start with a product action where that matters. In the working fixture, a client asks to hold one synthetic reservation. The request passes through a gateway to an origin that records the hold. If a replay creates two holds or extends the expiry twice, the optimization has changed product behavior. Write the expected database state before configuring the gateway, and give the reservation owner authority over whether any replay risk is acceptable.',
+          'Do not classify safety from GET, POST, or another method name alone. A nominally safe request can trigger expensive generation, consume a one-time token, or call a dependency with side effects. A POST may already have an idempotency boundary that makes a duplicate observable and harmless. Trace authentication, authorization, cache lookup, database work, queue publication, remote calls, and response generation for the selected route. The result is a route-level replay decision, not a blanket rule that every read is safe and every write must be slow.',
         ],
       },
       {
-        heading: 'Map secret custody before adding overlap',
+        heading: 'Map every TLS and HTTP hop',
         body: [
-          'Identify the authoritative secret store, the identity allowed to read each value, the deployment mechanism that delivers it, and the process for revoking access. Give the incoming and retiring secrets distinct identifiers such as versions, not labels such as current and old that can reverse meaning during rollback. Logs may show the version that matched, but must not contain the secret, complete signature, or request body merely to make troubleshooting easier. Synthetic event identifiers are enough for a repeatable test.',
-          'When several application replicas verify webhooks, prove that they receive the same approved secret set before the sender begins using the new value. A rolling deployment can create a mixed fleet: an early replica accepts the new signature while a late replica accepts only the old one. Route controlled deliveries across every replica or inspect configuration revision and readiness evidence that genuinely identifies the loaded versions. Restart behavior matters because a process may cache secret material rather than reread it on every request.',
+          'Draw the client, edge, content delivery network, load balancer, service mesh, and origin connections separately. Mark where TLS terminates and where a new TLS connection begins. The origin might never see transport-level early-data state from the public client because a gateway accepted and forwarded the request over another connection. RFC 8470 defines the Early-Data request header so that an intermediary can carry this risk signal forward. The header has the value 1, and a forwarding intermediary must not erase it merely because its own handshake has finished.',
+          'Document which component enables early data, which adds the signal, which components preserve it, and which component makes the route decision. Treat a client-supplied Early-Data header as untrusted at the public boundary. The owned gateway should normalize forwarding metadata under the same trust model used for host and client address information. Capture configuration revisions without dumping session tickets or traffic secrets. If the team cannot show how the signal reaches the origin, the origin cannot make the route-specific decision promised by the design.',
         ],
       },
       {
-        heading: 'Build a two-key verifier with one result',
+        heading: 'Separate defer, reject, and process decisions',
         body: [
-          'During overlap, calculate verification against each allowed secret according to the provider specification and return one authorization decision. Keep the comparison timing-safe through the supported cryptographic API. Do not stop at a convenient string comparison or expose which part of a signature was correct. If the sender includes multiple versioned signatures, parse limits should prevent an attacker from submitting an unbounded header that forces excessive work. Reject malformed encodings, missing timestamps, unsupported algorithms, and duplicate ambiguous fields before business processing.',
-          'A successful signature proves knowledge of an accepted secret; it does not prove that the event is fresh, intended for this account, or safe to apply twice. Preserve the existing timestamp tolerance, event identity, tenant mapping, and idempotency control throughout rotation. Test a correctly signed replay outside the freshness window and a duplicate inside it. Both cases help reviewers see that rotating keys did not accidentally turn signature verification into the only gate.',
+          'A server has more than one response to early data. It can refuse early data at the TLS layer, defer HTTP processing until the handshake completes, process a route whose replay consequences are acceptable, or return 425 Too Early so a capable client retries without early data. Record which option applies at each hop. Waiting on the origin connection cannot remove replay risk already introduced on a previous hop, which is why a forwarded Early-Data signal still matters after the gateway-to-origin handshake completes.',
+          'Use 425 for the condition it describes. RFC 8470 says a server should not emit it unless the request was received in early data or carries Early-Data: 1. It is not a substitute for a load-shedding response, a generic retry signal, or an application conflict. A client that used early data is expected to retry after receiving 425, and that retry must not use early data. Preserve the response through intermediaries and confirm that an ordinary request does not enter an automatic retry loop because a component uses 425 for unrelated failures.',
         ],
       },
       {
-        heading: 'Rehearse delayed delivery and rollback',
+        heading: 'Run a replay-shaped fixture through the real gateway',
         body: [
-          'Create fixtures for a request signed only by the retiring value, only by the incoming value, by neither value, with a stale timestamp, with a changed body, and with a valid duplicate event identifier. Send them through the real HTTP body-reading path. Then hold a retiring-key event in a controlled retry queue until after the sender switches. It should remain verifiable during the declared overlap, while a newly created event should match the incoming key. Record receiver revision, secret-version match, status code, processing outcome, and redacted event identifier.',
-          'Rollback has two directions. If receivers cannot verify the incoming key, the sender may need to continue the retiring key while configuration is corrected. If the incoming key was exposed, restoring the retiring key may be unsafe; a third value and an incident decision may be required. Write both cases before the window opens. The security owner decides whether suspected exposure changes the plan, while the developer provides bounded verifier behavior and evidence rather than choosing which credential remains trustworthy.',
+          'Build a disposable route around reservation R-17 and a synthetic account. Send the request normally, as declared early data, and as the same early-data request delivered twice. The unsafe route should return 425 or remain deferred before it changes state. The subsequent non-early retry may create exactly one hold. Observe gateway decision, forwarded header class, origin decision, response status, reservation version, audit event, and downstream messages. Keep raw session material out of the record. The database assertion matters more than a screenshot of the response.',
+          'Add a route that is deliberately replay tolerant, such as a versioned static lookup with no hidden side effect, and show the contrast. Then try missing, repeated, and malformed Early-Data header fields, different gateway instances, an origin replica change, a delayed first request, a retry after 425, and a client that cannot retry automatically. The standard treats invalid or multiple header instances conservatively. The test should also prove that the gateway does not remove an existing signal and that every origin replica reaches the same safety decision for the same route revision.',
         ],
       },
       {
-        heading: 'Retire the old value from evidence',
+        heading: 'Keep idempotency and early-data policy distinct',
         body: [
-          'Choose the overlap from documented provider retry behavior plus observed queue age and receiver downtime policy. A fixed five-minute wait is not credible when deliveries can retry for hours. Watch matches by secret version, oldest retry age, invalid-signature counts, accepted duplicates, and dead-letter volume. Investigate a continuing retiring-key match instead of hiding it in an aggregate success rate. It may represent a delayed delivery, an unswitched signer, another environment, or an unauthorized caller with the old value.',
-          'Remove the retiring value only after the maximum relevant retry horizon has passed, every intended signer uses the incoming value, receiver fleets have converged, and owners have reviewed unresolved failures. Remove it from runtime configuration, secret stores, deployment variables, local recovery notes, and any temporary operator access. Restart or reload receivers and repeat both positive and negative fixtures. Deletion from one dashboard does not demonstrate that a cached process stopped accepting it.',
+          'An idempotency key can reduce the consequence of a duplicate, but it does not make an unexplained early-data path acceptable by itself. Define the operation identity, tenant scope, request fingerprint, retention period, concurrent acquisition rule, stored outcome, and behavior after partial failure. A key reused with different reservation details must fail rather than return an unrelated success. Two replicas racing on the same key need one atomic owner. If the retention window is shorter than the plausible replay window, the database may accept a replay after its evidence has expired.',
+          'Test the early-data rule without idempotency, then test idempotency without the signal, and finally combine them. This exposes which control stops which failure. If the early request receives 425, it must not reserve an idempotency record that blocks the later safe retry. If processing begins and fails after an external side effect, the recovery contract must not pretend that a transport retry can repair uncertainty. Product owners decide duplicate meaning, security owners decide replay exposure, and developers implement the reviewed boundaries with observable results.',
         ],
       },
       {
-        heading: 'Package the cross-time-zone handoff',
+        heading: 'Hand off a route table and rollback trigger',
         body: [
-          'The offshore developer can implement dual-version verification, bounded parsing, metrics, fixtures, and configuration changes in approved environments. The client-side security or service owner controls secret creation, protected values, production timing, exposure decisions, and final retirement. The handoff should include starting and ending revisions, signer and receiver inventory, provider specification, secret version identifiers, overlap start and stop conditions, fixture results, retry-age evidence, failed events, rollback choices, owner approvals, and the next authorized action.',
-          'End with an explicit state: preparing overlap, accepting both values, sender switched, observing retries, or old value retired. “Rotation complete” is too vague if one receiver still holds the retiring value or a queue contains older signatures. A precise state lets the next working window continue safely without receiving the credential itself. For staffing or support around this kind of bounded integration work, bring the provider, receiver stack, retry behavior, review owner, and first test case to the Developer Offshore contact conversation.',
+          'The handoff should contain a route table with replay consequence, chosen early-data action, idempotency dependency, client retry expectation, gateway rule, origin rule, and decision owner. Include TLS endpoints, trusted forwarding boundary, configuration hashes, fixture identities, state assertions, metrics, unsupported clients, rollout order, and a rollback trigger. Count 425 responses by route and client class, but avoid treating a low count as proof that replay cannot happen. A missing signal or inconsistent origin decision is a stop condition, not a reason to broaden the safe list.',
+          'An offshore API developer can prepare the topology, configuration change, synthetic harness, state assertions, dashboards, and rollback patch in an approved environment. The client security and platform owners control TLS policy and trusted intermediaries. Product and service owners approve the replay consequence for each action, while the release owner controls production enablement. Bring one route, its gateway chain, and its duplicate-effect rule to a Developer Offshore contact discussion. That is enough to scope useful work without turning a latency experiment into authority to change transaction semantics.',
         ],
       },
     ],
@@ -64,12 +64,12 @@ export const october05BlogBatch: readonly BlogPost[] = [
       { label: 'Discuss the assignment', href: '/contact', note: 'Bring the provider contract, stack, and review boundary.' },
     ],
     faqs: [
-      { question: 'How long should both webhook secrets remain valid?', answer: 'Base the overlap on the provider retry contract, observed queue age, receiver downtime, and unresolved deliveries. Retire the old value only when that evidence supports removal.' },
-      { question: 'Can the offshore developer own the production secret?', answer: 'The developer can implement and test version-aware verification. A designated client-side security or service owner should control protected values, production timing, and exposure decisions.' },
+      { question: 'Does 425 make a request replay safe?', answer: 'No. It asks a capable client to retry without early data. The route still needs correct authorization, transaction behavior, and any product-specific idempotency control.' },
+      { question: 'Can the gateway decide from the HTTP method?', answer: 'The method is one input, but the origin knows the route consequences. Review hidden side effects, idempotency, forwarding behavior, and client retry support before enabling early data.' },
     ],
     sources: [
-      { name: 'IETF RFC 2104: HMAC', url: 'https://www.rfc-editor.org/rfc/rfc2104', note: 'Cryptographic construction used by many webhook signature schemes.' },
-      { name: 'OWASP Secrets Management Cheat Sheet', url: 'https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html', note: 'Secret lifecycle, access, and rotation guidance.' },
+      { name: 'IETF RFC 8470: Using Early Data in HTTP', url: 'https://www.rfc-editor.org/rfc/rfc8470', note: 'Defines Early-Data forwarding behavior and 425 Too Early.' },
+      { name: 'IETF RFC 8446: TLS 1.3', url: 'https://www.rfc-editor.org/rfc/rfc8446', note: 'Defines TLS 1.3 early data and its replay properties.' },
     ],
   },
   {

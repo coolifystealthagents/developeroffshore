@@ -11,7 +11,8 @@
       "title": "Review HTTP 425 Before Early Data Replays a Product Action",
       "decision": "Which requests may be processed from TLS early data and which must wait or receive 425 at the gateway-to-origin boundary.",
       "workedExample": "A synthetic reservation command traverses a gateway twice with Early-Data: 1; the unsafe action remains unchanged and retries only after handshake completion.",
-      "sources": ["https://www.rfc-editor.org/rfc/rfc8470", "https://www.rfc-editor.org/rfc/rfc8446"]
+      "sources": ["https://www.rfc-editor.org/rfc/rfc8470", "https://www.rfc-editor.org/rfc/rfc8446"],
+      "status": "drafted_1046_body_words_audited_pass"
     },
     {
       "family": "blog",
