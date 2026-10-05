@@ -54,7 +54,8 @@
       "decision": "Whether LISTEN/NOTIFY may wake a consumer that reads durable outbox rows without being mistaken for the durable event channel itself.",
       "workedExample": "A producer commits a synthetic outbox row and NOTIFY in one transaction while a listener disconnects, reconnects, receives duplicates, and recovers every durable row by cursor.",
       "sources": ["https://www.postgresql.org/docs/current/sql-listen.html", "https://www.postgresql.org/docs/current/sql-notify.html", "https://www.postgresql.org/docs/current/libpq-notify.html"],
-      "status": "replacement_reselected_after_cross_family_audit_sources_http_200"
+      "status": "draft_complete_1789_body_words_pending_integration_and_audit",
+      "draftPath": ".paperclip/daily-content/2026-10-05/drafts/postgresql-listen-notify-outbox-study.json"
     },
     {
       "family": "research",
