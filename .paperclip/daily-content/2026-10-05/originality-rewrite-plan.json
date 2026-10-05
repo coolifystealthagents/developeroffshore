@@ -42,7 +42,9 @@
       "title": "A Node.js Worker Transfer-Ownership Study for CPU-Bound API Work",
       "decision": "When structured cloning, transfer lists, or shared memory preserve ownership and isolation for buffers sent to a worker pool.",
       "workedExample": "Aliased TypedArray views cross clone and transfer cases; the harness checks detachment, unintended pool disclosure, mutation visibility, cancellation, and worker replacement.",
-      "sources": ["https://nodejs.org/api/worker_threads.html", "https://nodejs.org/api/buffer.html"]
+      "sources": ["https://nodejs.org/api/worker_threads.html", "https://nodejs.org/api/buffer.html"],
+      "status": "draft_complete_pending_integration_and_audit",
+      "draftPath": ".paperclip/daily-content/2026-10-05/drafts/nodejs-worker-transfer-ownership-study.json"
     },
     {
       "family": "research",
