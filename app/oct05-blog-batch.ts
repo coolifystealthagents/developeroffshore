@@ -482,4 +482,116 @@ export const october05BlogBatch: readonly BlogPost[] = [
       { name: 'Kubernetes: CustomResourceDefinition Structural Schemas', url: 'https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema', note: 'Schema requirements affecting custom resources.' },
     ],
   },
+  {
+    slug: 'email-dmarc-alignment-delegated-sender-review',
+    title: 'Review DMARC Alignment Before a Delegated Sender Goes Live',
+    excerpt: 'A domain-owner handoff for tracing visible From identity, SPF and DKIM alignment, DNS evidence, reporting, and safe rollout across an email vendor.',
+    minutes: 11,
+    revision: 'daily-blog-2026-10-05-email-dmarc-alignment-delegated-sender-review',
+    keyTakeaways: ['Trace identifiers for each real message stream.', 'Test alignment at receiving systems, not only vendor dashboards.', 'Keep DNS and enforcement decisions with the domain owner.'],
+    sections: [
+      { heading: 'Start with the recipient-visible identity', body: [
+        'A product team may delegate transactional or campaign delivery while continuing to show its own domain in the visible From header. DMARC asks whether an authenticated identifier aligns with that visible domain. Begin with one message stream and one exact From domain. Record who creates content, which platform submits it, which system relays it, the envelope sender, DKIM signing domain and selector, return path, reply path, links, and accountable owner. Different streams can follow different paths even when users see the same brand.',
+        'Use distinct synthetic recipients at approved mailbox providers and retain full original headers. A vendor dashboard saying authenticated is not enough: it may refer to the vendor domain rather than the domain being evaluated by DMARC. Parse Authentication-Results from the receiver, the visible From domain, SPF result and evaluated domain, DKIM signatures and validated signing domains, and DMARC result. Remove recipient addresses and message content from durable handoffs unless explicitly required.'
+      ]},
+      { heading: 'Separate SPF success from SPF alignment', body: [
+        'SPF authenticates the domain used in the SMTP envelope or HELO evaluation, not the visible From address. A delegated sender can pass SPF for its own bounce domain while failing DMARC alignment with the client domain. Document the actual evaluated identity after forwarding and other routing. If the vendor supports a custom return-path subdomain, verify its DNS, ownership, and alignment rather than assuming a branded label changes protocol behavior.',
+        'Review the complete SPF record for the chosen domain, including includes, redirects, mechanisms, lookup behavior, and the ownership of every authorized source. Do not add broad ranges or duplicate records merely to satisfy setup instructions. Publish DNS through the domain owner’s controlled path and query authoritative answers after change. A local recursive resolver’s cached result does not establish what receiving systems can retrieve.'
+      ]},
+      { heading: 'Verify DKIM identity and key custody', body: [
+        'DKIM signs selected headers and the message body with a domain in the d= tag and a selector that locates the public key. For each stream, identify who holds the private key, who can rotate it, which headers are signed, canonicalization choices, key size and algorithm supported, selector naming, DNS record ownership, and revocation procedure. Test that the receiver reports a valid signature whose signing domain aligns with the visible From domain under the chosen DMARC mode.',
+        'Send variants that exercise template substitution, tracking links, attachments, long lines, non-ASCII content, and any relay that modifies messages. A modification after signing can break body or header verification. Inspect all signatures because an aligned signature can coexist with a failing vendor signature. Do not copy private keys into tickets, repositories, or general test artifacts. The vendor or domain security owner retains key authority; the developer records public evidence and integration behavior.'
+      ]},
+      { heading: 'Choose strict or relaxed alignment intentionally', body: [
+        'Relaxed alignment can allow an authenticated subdomain within the same organizational domain to align; strict alignment requires an exact match. Record the organizational-domain interpretation and subdomains involved rather than describing relaxed as less secure in every context. A dedicated sending subdomain can separate reputation and operations, but its visible From choice, DKIM domain, return path, and DMARC inheritance still need a coherent design.',
+        'Build a matrix with the production-like valid stream, a vendor-domain return path, an unaligned DKIM signature, a message from an unapproved subdomain, and a spoofed visible From address. For each, record SPF, SPF alignment, DKIM, DKIM alignment, DMARC result, disposition, and receiver. The expected outcomes should follow the written policy. A message reaching the inbox is not equivalent to passing authentication; receiver reputation and filtering decisions add separate variables.'
+      ]},
+      { heading: 'Use aggregate reports to find unknown streams', body: [
+        'DMARC aggregate reports can reveal sources using the domain, authentication outcomes, and policy application. Send reports only to approved addresses, validate any external reporting authorization required, and define retention and access. Group by source, header domain, disposition, SPF-aligned result, and DKIM-aligned result. Treat IP attribution carefully because forwarding services, gateways, and shared vendors complicate ownership.',
+        'Do not publish report addresses and then ignore their data. Assign each recurring source to an owner and classify it as authorized and aligned, authorized but needing remediation, unknown, forwarded or otherwise explainable, or abusive. Sampling periods should cover routine receipts, scheduled campaigns, billing, support, identity, and rarely used operational notifications. A short quiet window is weak evidence that all legitimate streams are represented.'
+      ]},
+      { heading: 'Stage policy without inventing delivery guarantees', body: [
+        'Move from observation toward quarantine or reject only after legitimate streams are inventoried and tested. If pct or subdomain policy is used, state exactly which traffic it changes and how progress will be judged. Monitor aggregate outcomes, vendor events, bounce classifications, support cases, and critical-message canaries. DMARC enforcement tells receivers the domain owner’s requested handling of failing mail; it does not guarantee inbox placement or consistent behavior by every receiver.',
+        'Define stop conditions for loss of password resets, receipts, security alerts, or other essential messages. Rollback means a reviewed DNS policy change with expected propagation and report effects, not deleting authentication records at random. Keep last-known-good values, TTL history, approvers, and emergency contact paths. Domain and security owners authorize policy changes; product owners identify critical streams; an offshore developer can prepare the inventory and evidence.'
+      ]},
+      { heading: 'Rehearse rotation and vendor exit', body: [
+        'Test a DKIM selector rotation by publishing the incoming public key, confirming receiver validation, switching signing, observing the retry horizon, and retiring the previous selector only when evidence supports removal. Include queued mail signed before the switch. For SPF or return-path changes, account for DNS caching and messages already accepted by the vendor. Record times in UTC and retain authoritative DNS answers.',
+        'Write the vendor-exit path while the integration is healthy. Remove sending authority, revoke or destroy private keys under the owner’s process, retire DNS records after safe overlap, preserve required reports, and verify that an old account cannot send aligned mail. If the same subdomain serves several vendors, separation may be needed before one can be removed safely. The exit record is part of delegated access, not optional procurement paperwork.'
+      ]},
+      { heading: 'Hand off evidence by stream', body: [
+        'The review packet includes message-stream inventory, visible From domains, envelope domains, DKIM domains and selectors, DNS records, authoritative query evidence, original-header extracts, receiver matrix, alignment mode, report analysis, unknown-source decisions, rollout stages, critical canaries, stop conditions, rotation, vendor exit, limitations, and named owners. It distinguishes authentication results from delivery outcomes and keeps secrets out of shared artifacts.',
+        'Acceptance requires at least one aligned authentication path for every approved stream, receiver-observed DMARC success, understood failures, bounded reporting, and an owner-approved policy stage. Unexplained sources or critical unaligned mail block enforcement. Developer Offshore can staff DNS review, test automation, header analysis, and documentation while the client retains domain control, vendor authority, security judgment, and the release decision.'
+      ]},
+    ],
+    relatedLinks: [
+      { label: 'DevOps release support', href: '/services/devops-release-support', note: 'Coordinate DNS changes and rollback evidence.' },
+      { label: 'QA automation engineering', href: '/services/qa-automation-engineering', note: 'Build repeatable message-stream fixtures.' },
+      { label: 'Discuss the integration', href: '/contact', note: 'Bring the sender inventory, domain owner, and reviewer.' },
+    ],
+    faqs: [
+      { question: 'Does SPF pass mean DMARC passes?', answer: 'Not necessarily. The SPF-authenticated domain must also align with the visible From domain, unless an aligned DKIM signature provides the passing path.' },
+      { question: 'Does a DMARC reject policy guarantee inbox delivery for legitimate mail?', answer: 'No. DMARC supplies authentication policy; receiver reputation, content, throttling, and other filtering still affect delivery.' },
+    ],
+    sources: [
+      { name: 'IETF RFC 7489: DMARC', url: 'https://www.rfc-editor.org/rfc/rfc7489', note: 'DMARC identifiers, alignment, policy, and reporting.' },
+      { name: 'IETF RFC 7208: SPF', url: 'https://www.rfc-editor.org/rfc/rfc7208', note: 'SPF evaluation and authenticated identity.' },
+      { name: 'IETF RFC 6376: DKIM', url: 'https://www.rfc-editor.org/rfc/rfc6376', note: 'DKIM signatures, domains, selectors, and verification.' },
+    ],
+  },
+  {
+    slug: 'websocket-backpressure-slow-client-review',
+    title: 'Design WebSocket Backpressure Before Slow Clients Exhaust the Service',
+    excerpt: 'A practical handoff for bounding outbound queues, choosing loss and disconnect rules, and proving recovery under uneven client speed.',
+    minutes: 11,
+    revision: 'daily-blog-2026-10-05-websocket-backpressure-slow-client-review',
+    keyTakeaways: ['Measure queued bytes and message age per connection.', 'Define which messages may coalesce, drop, pause, or force disconnect.', 'Test the real runtime because WebSocket APIs expose different controls.'],
+    sections: [
+      { heading: 'Begin with the receiver that stops reading', body: [
+        'A WebSocket server can produce updates faster than one phone, browser tab, or downstream client consumes them. The send call may appear successful while bytes accumulate in application memory, a runtime buffer, the operating system, or an intermediary. Start with a concrete flow: a dashboard receives snapshots and critical state transitions, then its network slows to a few kilobytes per second while publishers continue normally. State which messages must arrive, which may be replaced by newer state, and when the session becomes unusable.',
+        'Map producer, broker if present, application queue, serialization, WebSocket library, compression, socket buffers, proxy, network, client API, render loop, acknowledgments, and reconnect path. Record where capacity can accumulate and which metrics exist. A process-level memory chart cannot identify one slow connection; a library queue length may omit bytes already handed to the operating system. The evidence needs connection-level identity using synthetic clients, never customer payloads.'
+      ]},
+      { heading: 'Classify messages by delivery meaning', body: [
+        'Separate replaceable state, ordered events, commands, acknowledgments, heartbeats, and bulk transfers. A price snapshot may be coalesced by instrument so only the newest unsent value remains. An audit event may require ordered durable consumption rather than a best-effort socket. A command response may need a correlation result before another action is allowed. Write these rules per message class instead of applying one drop-oldest queue to every frame.',
+        'Define maximum queued bytes, message count, oldest-message age, and allowed lag for each class or connection tier. Byte limits matter because a count of ten can mean ten tiny signals or ten large documents. Include serialization and compression cost. Product owners decide freshness and loss semantics; reliability owners decide protection of shared capacity; the developer implements the bounded mechanism and makes each discard or disconnect explainable.'
+      ]},
+      { heading: 'Know what the chosen API can observe', body: [
+        'In browsers, WebSocket bufferedAmount reports bytes queued by the user agent for transmission but does not provide a standard way to pause incoming network delivery. Server runtimes and libraries expose different write callbacks, high-water marks, drain events, or no meaningful signal. Document exact versions and semantics. Do not copy a Node.js stream pattern into a library whose send callback means only that data entered another buffer.',
+        'Instrument application queue bytes before serialization, serialized frame bytes, runtime buffered bytes where available, socket write pressure, send completion age, event-loop delay, connection duration, and process memory. Sample responsibly so telemetry does not become the load. A rising buffered amount is a symptom; the decision still depends on message meaning, recovery, and whether the backlog can ever drain within the session’s useful lifetime.'
+      ]},
+      { heading: 'Create a deterministic slow-client fixture', body: [
+        'Use an isolated environment and a client that completes the handshake, then reads at a controlled small rate or pauses reads. Publish a known sequence with distinguishable identifiers and sizes. Include one normal client on the same instance. Record accepted publications, queue state, frames observed by each client, CPU, memory, event-loop delay, proxy behavior, close code, close reason class, and reconnection result. The normal client must remain responsive while the slow client reaches its bound.',
+        'Run steady small messages, a burst, one oversized allowed message, mixed critical and replaceable messages, compression on and off if supported, network recovery before the limit, and no recovery. Repeat across several slow clients until the approved test ceiling. Do not perform uncontrolled load against production. The purpose is to validate policy and isolation, not claim a universal capacity benchmark from a small fixture.'
+      ]},
+      { heading: 'Apply pressure at the earliest owned boundary', body: [
+        'When a connection queue approaches its limit, stop adding replaceable work before memory is exhausted. Coalesce state by stable key, pause a per-client subscription, reduce update frequency, or shed an optional stream according to the contract. For non-droppable ordered events, move durable delivery to a protocol designed for resumable consumption or disconnect before an unbounded in-memory promise develops. Never silently label lost critical messages as delivered.',
+        'Backpressure should propagate only as far as intended. One slow subscriber should not block a shared publisher loop and delay every healthy client. Conversely, pulling unlimited records from a broker into per-client queues merely relocates the backlog. Record cursor or offset ownership, in-flight limits, and acknowledgment meaning. Shared upstream pause needs a deliberate fairness decision when subscribers have different speeds.'
+      ]},
+      { heading: 'Disconnect with a resumable outcome', body: [
+        'Define when the server closes a slow connection: queue bytes, oldest age, deadline, repeated pressure, or an application invariant. Choose an appropriate close code and a safe reason that does not expose internal or customer data. Before closing, do not enqueue a large explanatory message behind the backlog. Metrics and server logs can retain a redacted reason classification and last confirmed sequence.',
+        'The client reconnect path should use bounded exponential backoff and jitter, not an immediate loop that recreates load. If resumable delivery exists, send or request a stable cursor and test expiry, gaps, duplicates, and server restart. If it does not, the interface must fetch a fresh snapshot and explain any unavailable history. A newer snapshot can repair state views but cannot recreate missed commands or audits; those require a different delivery guarantee.'
+      ]},
+      { heading: 'Test cleanup after every ending', body: [
+        'Exercise graceful client close, server policy close, proxy timeout, network disappearance, authentication expiry, process shutdown, and a client that reconnects while the old connection is half-open. Assert that subscriptions, timers, queue memory, broker consumers, and presence state are released or transferred exactly once. Monitor memory after repeated cycles to expose retained listener or closure references.',
+        'Coordinate heartbeat intervals with proxy idle timeouts and application load. A heartbeat confirms some liveness path; it does not prove the client is processing application messages quickly enough. Track last application acknowledgment separately when the protocol has one. Security and privacy owners approve connection identifiers and diagnostic retention; production termination remains with operations owners.'
+      ]},
+      { heading: 'Hand off a capacity-protection contract', body: [
+        'The packet includes topology, runtime versions, message taxonomy, per-class loss rules, byte and age limits, metric definitions, slow-reader harness, normal-client control, burst and recovery results, close behavior, cursor semantics, reconnect policy, cleanup evidence, observability, rollback, and untested limits. Include exact source revision and synthetic fixture hashes so another time zone can repeat the result.',
+        'Acceptance requires bounded connection memory, preserved healthy-client service, explicit handling for every message class, explainable disconnects, and a verified recovery outcome. An unbounded queue, hidden critical loss, global publisher stall, or reconnect storm fails. Developer Offshore can provide backend implementation, fixtures and operational handoffs while the client retains decisions about product loss, shared capacity, protected environments, and release approval.'
+      ]},
+    ],
+    relatedLinks: [
+      { label: 'Node.js API development', href: '/services/node-js-api-development', note: 'Implement bounded real-time service behavior.' },
+      { label: 'DevOps release support', href: '/services/devops-release-support', note: 'Observe capacity and recovery during rollout.' },
+      { label: 'Discuss the backend role', href: '/contact', note: 'Bring the runtime, message classes, and service owner.' },
+    ],
+    faqs: [
+      { question: 'Does a successful WebSocket send mean the client processed the message?', answer: 'No. It may only mean bytes entered a local or runtime buffer. Application acknowledgment is needed when processing confirmation matters.' },
+      { question: 'Should every slow client be disconnected immediately?', answer: 'Not necessarily. Replaceable messages may coalesce or optional streams may pause. The policy should follow message meaning, queue bounds, fairness, and a tested recovery path.' },
+    ],
+    sources: [
+      { name: 'MDN: WebSocket bufferedAmount', url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/bufferedAmount', note: 'Browser-visible queued byte behavior.' },
+      { name: 'WHATWG WebSockets Standard', url: 'https://websockets.spec.whatwg.org/', note: 'Browser WebSocket API processing model.' },
+      { name: 'IETF RFC 6455: WebSocket Protocol', url: 'https://www.rfc-editor.org/rfc/rfc6455', note: 'Frames, closing handshake, and protocol behavior.' },
+    ],
+  },
 ];
