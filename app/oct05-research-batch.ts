@@ -1,50 +1,134 @@
 import type {ResearchPost} from './fleet-data';
 
 export const october5ResearchBatch: readonly ResearchPost[] = [
-  {
-    slug:'offshore-developer-nodejs-async-context-integrity-study-2026-10-05',
-    title:'A Node.js Async Context Integrity Study for Distributed API Work',
-    published:'2026-10-05',
-    excerpt:'A controlled method for deciding whether request identity survives timers, event emitters, queues, and third-party callbacks without leaking into neighboring work.',
-    keyStats:['1 version-pinned Node.js service','6 asynchronous boundary classes','3 context-loss controls'],
-    takeaways:['Test context at each asynchronous boundary instead of trusting one correlated log.','Treat missing and cross-request identity as different failure classes.','Keep authorization independent from diagnostic context.'],
-    sections:[
-      {heading:'Decision, scope, and reader outcome',body:[
-        'The decision is whether one Node.js request path preserves diagnostic context well enough for a Philippines-based developer to change its instrumentation safely. The study follows a synthetic request identifier from ingress through promises, timers, event emitters, a queue adapter, and a callback-style dependency. It asks where the active AsyncLocalStorage store remains correct, becomes absent, or is replaced by a neighboring request. It does not claim that a correlation identifier proves causality, security, or complete tracing. The reader receives a reproducible boundary map and a narrow repair decision.',
-        'Context integrity matters during offshore handoffs because logs often stand in for a live conversation. A plausible identifier attached to the wrong operation is worse than an obvious blank: it can direct a reviewer toward another tenant, retry, or failure. The developer may build the fixture, instrument boundaries, and propose a correction. The API owner defines which diagnostic fields are allowed, the security owner controls sensitive data, and the service owner approves production instrumentation, retention, and rollout. No context value should grant authorization or select protected data.'
-      ]},
-      {heading:'Authoritative facts and testable hypotheses',body:[
-        'Node.js documents AsyncLocalStorage as a way to keep data coherent through asynchronous operations. A store is available inside run or enterWith scope, while bind and snapshot can capture an execution context for later calls. Node also documents AsyncResource for cases in which custom asynchronous operations must associate callbacks with the correct execution context. These are API facts for a pinned runtime, not evidence that a framework, queue library, emitter wrapper, or application helper preserves the intended store. Every integration boundary remains an empirical question.',
-        'The first hypothesis is that run creates request isolation when all work is initiated within its callback. The second is that callbacks retained and invoked by a custom abstraction may need an explicit binding or AsyncResource. The third is that enterWith can affect subsequent synchronous execution and therefore deserves a deliberate ownership review rather than routine use. The negative hypotheses are equally important: one missing value exposes loss, one incorrect non-empty value exposes contamination, and a correct identifier does not establish that spans, errors, or business side effects belong to the same operation.'
-      ]},
-      {heading:'Fixture design and seeded controls',body:[
-        'Build a small service on an exact Node.js release with one endpoint that creates an immutable synthetic context containing request ID, fixture cohort, and start sequence. Pass through native promises, setTimeout, EventEmitter, a callback converted to a promise, a worker-like queue shim, and one real project dependency if its license and setup permit. At every entry and exit, record the expected ID and observed store. A seeded control deliberately invokes an unbound callback outside its captured scope so the method must detect a loss rather than merely print reassuring logs.',
-        'Add a contamination control that interleaves at least fifty requests with unique IDs, varied delays, successes, expected failures, and cancellations. Include a callback registered under request A but invoked while request B is active. Keep payloads synthetic and exclude credentials, customer identifiers, tokens, and request bodies. Pin dependency revisions and preserve the fixture commit, command, random seed, and raw event sequence. The fixture fails if any unrecognized outbound connection occurs. A clean reset between variants prevents a cached module or retained listener from carrying state into the next comparison.'
-      ]},
-      {heading:'Measurement model and evidence interpretation',body:[
-        'Each event row contains operation ID, boundary name, expected request ID, observed request ID or absence, monotonic sequence, callback registration context, callback invocation context, result class, and process revision. Classify observations as preserved, absent, contaminated, duplicated, late-after-settlement, or indeterminate. Report counts only after retaining the case-level rows. A hundred preserved events do not cancel one cross-request contamination. Timestamp proximity is supporting detail, not proof of parentage, because concurrency and buffered output can reorder what a human sees.',
-        'Test the instrument before the implementation. The seeded loss and contamination controls must fail in recognizable ways; otherwise a green run is not credible. Compare context evidence with an independent explicit parameter on selected boundaries. Agreement supports the method for those cases, while disagreement identifies the first boundary needing investigation. Measure listener and active-resource counts before and after repeated runs to reveal retention. Do not convert fixture timing into a production performance promise, and do not claim that context presence proves every downstream system received the same identity.'
-      ]},
-      {heading:'Failure analysis and bounded repairs',body:[
-        'Likely failures include registering a callback outside run, reusing a mutable store object, calling enterWith in a shared emitter path, resolving a promise in an unmanaged callback, and retaining a bound function beyond its intended request. Another failure is semantic: two events carry the same request ID even though a retry or fan-out should have a distinct operation identity. The study identifies the earliest divergence and its ownership boundary. It does not recommend wrapping every function, because unnecessary capture can preserve stale context and conceal lifecycle mistakes.',
-        'A repair may move request creation into run, pass identity explicitly across a durable queue, use bind or snapshot for a narrow callback, create an AsyncResource in a custom abstraction, or redesign an emitter listener’s lifecycle. Choose the smallest change that makes the boundary observable and testable. Do not place authorization state in the context as a shortcut, change public error behavior, or add payload logging to improve correlation. If a third-party library loses context, record its version and minimal reproduction before deciding whether to adapt, upgrade, replace, or accept the diagnostic gap.'
-      ]},
-      {heading:'Distributed review and ownership boundaries',body:[
-        'The asynchronous handoff includes a diagram of context creation and consumption, pinned runtime and dependencies, fixture hash, boundary matrix, raw cases, seeded-control results, minimal failing example, proposed diff, regression checks, and known exclusions. A reviewer first runs the loss control, then the contamination control, then one corrected concurrent case. This sequence proves that the detector can distinguish wrong, missing, and preserved values. The review also checks that the proposed store is immutable enough for its purpose and that listeners are released after work settles.',
-        'Repository access can be limited to the service and synthetic harness. The developer owns reproduction and the reviewed code change, not production log access or retention policy. Security reviews allowed fields and redaction. Observability owners decide propagation into external tracing. API owners retain public behavior decisions, and release owners set rollback signals. The handoff must say what could falsify the conclusion: a runtime upgrade, dependency update, new queue boundary, worker process, alternate error path, or concurrency pattern that was not represented in the fixture.'
-      ]},
-      {heading:'Limitations and decision rule',body:[
-        'Results apply only to the pinned runtime, libraries, abstraction implementations, and exercised paths. The fixture cannot represent every native addon, worker, framework hook, telemetry agent, or production scheduling pattern. Correct context in a synthetic run does not prove complete logs, accurate distributed traces, or absence of sensitive data. Instrumentation can itself affect ordering. A missing record can mean that the operation never occurred rather than that context was lost. These uncertainties belong beside the result, not hidden behind a single preservation percentage.',
-        'Pass requires correct values at every included boundary, no cross-request contamination, detectable seeded failures, stable cleanup, and an explicit rule for durable messages that cross process lifetime. Conditional pass identifies untested or explicitly unsupported boundaries and their owner. Fail names the first divergence and preserves the minimal reproduction. The useful outcome is not “AsyncLocalStorage works”; it is a defensible map of where context is created, transported, checked, and retired for one API path, giving an internal reviewer enough evidence to approve or narrow the work.'
-      ]},
-      {heading:'Sources checked October 5, 2026',body:[
-        'Node.js, Asynchronous context tracking: https://nodejs.org/api/async_context.html. Node.js, Events: https://nodejs.org/api/events.html. Node.js, Diagnostics Channel: https://nodejs.org/api/diagnostics_channel.html. These first-party documents define AsyncLocalStorage, AsyncResource, emitter behavior, and diagnostic mechanisms. The fixture design, contamination classification, ownership model, and decision thresholds in this report are DeveloperOffshore.com analysis for a bounded engineering handoff, not claims made by the Node.js project.',
-        'Documentation describes supported APIs but cannot prove a specific application preserves context. Runtime versions differ, and stable status for individual helpers depends on the installed release. Record the applicable documentation with the runtime version, and retest after changing either. Where a dependency manages its own asynchronous resource, its source or official documentation should join the evidence set. Unobserved behavior remains unknown; it should never be rewritten as preserved simply because the final request log contains the expected identifier.'
-      ]}
+{
+    "slug": "offshore-developer-nodejs-worker-transfer-ownership-study-2026-10-05",
+    "title": "A Node.js Worker Transfer-Ownership Study for CPU-Bound API Work",
+    "published": "2026-10-05",
+    "excerpt": "A version-pinned experiment for deciding when worker messages should clone, transfer, or share binary data without corrupting the request path.",
+    "keyStats": [
+      "1 pinned Node.js runtime",
+      "14 clone, transfer, alias, failure, and recovery cases",
+      "2 worker replacement paths"
     ],
-    sources:[{name:'Node.js: Asynchronous context tracking',url:'https://nodejs.org/api/async_context.html'},{name:'Node.js: Events',url:'https://nodejs.org/api/events.html'},{name:'Node.js: Diagnostics Channel',url:'https://nodejs.org/api/diagnostics_channel.html'}],
-    faqs:[{question:'Can AsyncLocalStorage hold authorization state?',answer:'Diagnostic context should not replace explicit authentication and authorization checks. Treat every protected operation as independently authorized.'},{question:'What should trigger a repeat?',answer:'Repeat after runtime, framework, queue, telemetry, callback-library, or asynchronous-boundary changes.'}],
-    related:[{title:'Node.js API development',href:'/services/node-js-api-development'},{title:'QA automation engineering',href:'/services/qa-automation-engineering'},{title:'Research library',href:'/research'}]
+    "takeaways": [
+      "Choose ownership before choosing a transfer list.",
+      "Assert detachment and alias behavior on both sides of the message.",
+      "Keep cancellation and worker replacement separate from memory transfer."
+    ],
+    "sections": [
+      {
+        "heading": "The engineering decision",
+        "body": [
+          "This study asks how a Node.js API should hand binary work to a worker thread when the main request path still owns references to the same bytes. The fixture parses a synthetic image header, sends a payload to a CPU-bound checksum worker, and returns an independent result. It compares structured cloning, ArrayBuffer transfer, SharedArrayBuffer, and an intentional rejection path. The outcome is an ownership contract for one worker pool, not a claim that workers improve every API or that transfer is always faster.",
+          "A transfer list can avoid copying an owned ArrayBuffer, but transfer changes who may use that memory. Existing views on the sending side can become unusable after the message is posted. Cloning preserves sender access at a memory and serialization cost. Shared memory keeps access on both sides and therefore needs a synchronization protocol. The service owner decides whether the main thread may retain, retry, log, cache, or validate the bytes after dispatch. The developer may measure each option, but must not infer ownership from a convenient benchmark."
+        ]
+      },
+      {
+        "heading": "Facts to verify against the installed runtime",
+        "body": [
+          "Node.js worker_threads documentation describes message values through the structured clone algorithm and permits transferable objects in transferList. It warns that transferring an ArrayBuffer makes other views over that buffer unusable. Buffer allocation matters because some Buffer instances use an internal pool, while others own transferable backing storage. markAsUntransferable can prevent an object from entering a transfer list. These are mechanism facts. The study still has to show how the installed Node.js version, allocator path, library wrappers, and application references behave.",
+          "Pin the Node.js release, operating system, architecture, worker options, package lock, allocation method, payload sizes, pool configuration, and invocation command. Record whether the worker is created per task or reused. Preserve source hashes for the main module, worker module, and harness. Do not substitute the online documentation version for the executable under test. Run a startup assertion that identifies the runtime and fails when the expected worker APIs or transfer behavior are unavailable, rather than silently falling back to a different mechanism."
+        ]
+      },
+      {
+        "heading": "Build aliases that reveal ownership mistakes",
+        "body": [
+          "Create an ArrayBuffer with two TypedArray views that cover overlapping regions, plus a DataView over the same storage. Seed recognizable bytes and hash every view. In a second family, allocate Buffer instances with Buffer.alloc, Buffer.allocUnsafeSlow, Buffer.from, and a small pooled allocation. Record byteOffset, byteLength, backing-buffer length, and whether another fixture shares that backing buffer. These details expose a dangerous assumption: a small Buffer can represent a narrow slice while its ArrayBuffer covers more memory than the application intended to send.",
+          "The worker reports the received byte length, selected boundary bytes, checksum, constructor class, and whether mutation is permitted by the case. The main thread checks every original view immediately after postMessage, after the worker starts, and after completion. A transfer case passes only when intended sender views detach and the worker receives exactly the owned data. A clone case passes only when sender views remain valid and worker mutation does not alter them. Any extra pool bytes, unexpected alias mutation, or nondeterministic result is a failure."
+        ]
+      },
+      {
+        "heading": "Compare clone, transfer, and shared memory",
+        "body": [
+          "Run the same owned ArrayBuffer through structured cloning and transfer. Measure dispatch-to-start time, completion time, event-loop delay, process memory, worker memory where available, and garbage-collection conditions without presenting a small synthetic run as a capacity forecast. Vary payload size across declared fixture classes and repeat enough times to show distribution rather than one fastest sample. Correctness assertions run on every repetition. A lower median is irrelevant if the sender later reads detached storage or the worker receives unintended bytes.",
+          "Use SharedArrayBuffer only in a separate protocol. Define which indexes hold payload, state, sequence, cancellation request, and completion result. Use Atomics for the declared coordination points and seed a race that must be detected. A plain shared flag without an ordering rule is not adequate evidence. Compare the shared case with message ownership, but do not call it zero-copy success merely because both threads see the same memory. Shared access expands the reasoning surface and may be a poor trade for an API whose tasks are naturally isolated."
+        ]
+      },
+      {
+        "heading": "Test the Buffer pool boundary",
+        "body": [
+          "The pool case is a security and memory-scope check, not just performance trivia. Send only a small Buffer view and prove what the worker actually receives under cloning. Then attempt transfer only when the harness has established exclusive ownership of the backing ArrayBuffer. Cases that Node.js rejects should remain expected rejections. Never work around the protection by exposing the whole backing store. The evidence must show that bytes before and after the intended slice cannot appear in worker output, logs, errors, or retained task state.",
+          "Call markAsUntransferable on an owned fixture and prove that an attempted transfer fails in the pinned runtime while ordinary cloning remains available. Record the error class without treating its text as a permanent contract. Include duplicate entries in a transfer list, an already detached buffer, a non-transferable value, and a message that structured clone cannot represent. The API boundary should classify these as programmer or task-construction failures, remove the task safely, and keep the pool able to process the next valid item."
+        ]
+      },
+      {
+        "heading": "Separate task cancellation from memory ownership",
+        "body": [
+          "An HTTP client disconnect does not reverse a transfer. Once the worker owns the buffer, the main thread cannot recover it by marking the request cancelled. Define whether cancellation means stop spending CPU, suppress the result, terminate a dedicated worker, or let a shared worker finish while discarding output. Pass a task identity and explicit cancellation signal rather than relying on a detached view as an accidental stop mechanism. Test cancellation before dispatch, immediately after transfer, during computation, and after the result is ready.",
+          "A reusable pool needs a rule for late messages. Terminate one worker during a transferred task and record whether the task becomes failed, uncertain, or eligible for reconstruction from a separate durable input. If the only input was transferred and the worker dies, the main thread may have no bytes to retry. That can make cloning the safer choice for retryable work. The product owner decides whether the request may be retried; the developer proves which data remains available at every failure point and prevents a late result from completing a replacement task with the same slot."
+        ]
+      },
+      {
+        "heading": "Rehearse worker failure and replacement",
+        "body": [
+          "Seed a thrown worker exception, nonzero exit, malformed response, checksum mismatch, timeout, memory-limit exit where safe, and a worker that stops responding. Track task identity, worker generation, input ownership, accepted time, start time, terminal event, result disposition, and replacement state. Error and exit can both occur, so cleanup must be idempotent. Remove listeners, timers, queued references, and cancellation state once. A replacement worker should accept a fresh control task before the pool resumes normal traffic.",
+          "Run two requests concurrently, one valid and one failing, then replace the failed worker while the valid worker continues. Verify that task results cannot cross request boundaries and that a recycled numeric worker index is not mistaken for the old generation. Repeat shutdown with queued, running, transferred, cloned, and shared tasks. The release path needs a bounded drain rule and an explicit outcome for unfinished work. Killing every worker at a deadline may be acceptable, but the application must not report those tasks as completed."
+        ]
+      },
+      {
+        "heading": "Inspect application and operational consequences",
+        "body": [
+          "Measure the main event loop while the worker performs the CPU task, but keep the conclusion narrow. Worker threads can move JavaScript computation away from the main thread; they do not make database, network, or filesystem waits inherently faster. Serialization, copying, coordination, startup, and memory can outweigh the benefit for small tasks. Compare against a direct main-thread baseline using the same implementation and inputs. Record tail latency and request outcomes, not only worker computation time.",
+          "Set a bounded pool size and queue length for the fixture. Overload should reject or defer tasks according to a declared API outcome rather than allocate workers without limit. Observe queue age, active workers, generation, clone and transfer bytes, cancellations, failures, replacements, process memory, and event-loop delay. Avoid payload content in metrics. The platform owner approves CPU and memory limits; the application owner chooses overload behavior; security reviews any diagnostic capture that could contain binary input."
+        ]
+      },
+      {
+        "heading": "Qualitative counterchecks",
+        "body": [
+          "Challenge the preferred transfer design with three counterexamples: the main path needs the original bytes for validation after dispatch, a pooled Buffer exposes a larger backing store than its visible slice, and worker termination removes the only transferable input before a retry. Challenge the cloning design with a large owned payload under measured memory pressure. Challenge shared memory with an omitted Atomics transition that the seeded race must expose. A credible result keeps the losing cases and explains why each mechanism fails the selected ownership contract.",
+          "Search the application for references retained in closures, request objects, caches, error metadata, and telemetry before declaring exclusive ownership. Inspect dependencies that wrap Buffer values or construct worker messages. A local variable name such as payload does not prove that no alias exists. If ownership cannot be demonstrated, clone a bounded view or redesign the boundary. Unknown aliasing is a reason to withhold transfer, not a reason to assume the detached references will never be used."
+        ]
+      },
+      {
+        "heading": "Handoff and decision rule",
+        "body": [
+          "The handoff contains runtime and platform versions, allocation map, alias diagram, worker and task lifecycle, source hashes, case matrix, raw timing samples, memory observations, byte assertions, detachment results, cancellation outcomes, worker replacement evidence, overload behavior, known exclusions, rollback, and owners. Another reviewer reproduces one clone, one safe transfer, one prohibited pooled transfer, one shared-memory race, one cancellation, and one worker replacement from a clean checkout. Customer files and production payloads are excluded.",
+          "Pass requires exact byte scope, intended sender detachment or preservation, no cross-task mutation, detectable seeded failures, bounded pool behavior, and a defined outcome after cancellation and worker death. Conditional pass names allocation or library paths whose ownership remains unknown. Fail preserves the smallest alias or lifecycle case that breaks the contract. The result tells a team when this one API may transfer, clone, share, or refuse a payload; it does not turn worker threads into a general performance recommendation."
+        ]
+      },
+      {
+        "heading": "Sources and limits",
+        "body": [
+          "Node.js worker_threads documentation defines Worker messaging, structured cloning, transferList behavior, SharedArrayBuffer handling, markAsUntransferable, lifecycle events, and worker limits. Node.js Buffer documentation defines allocation and pool behavior. These primary sources support the mechanism design, while every application finding comes from the version-pinned fixture. Online documentation can move ahead of the deployed runtime, so retain the checked URLs and installed version with the evidence.",
+          "The study does not prove native add-ons, WebAssembly modules, third-party worker pools, operating-system scheduling, or production payload distributions behave like the fixture. Memory measurements can vary with garbage collection and allocator state. A successful transfer does not prove the input was safe to expose to the worker, and isolation between JavaScript threads is not an authorization boundary. Re-run after Node.js, allocation, worker-pool, serialization, native dependency, payload-shape, or deployment-limit changes."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "name": "Node.js: Worker threads",
+        "url": "https://nodejs.org/api/worker_threads.html"
+      },
+      {
+        "name": "Node.js: Buffer",
+        "url": "https://nodejs.org/api/buffer.html"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is transferring always faster than cloning?",
+        "answer": "No. Measure the selected payload and runtime, and reject transfer when the sender still needs the bytes or cannot prove exclusive backing-store ownership."
+      },
+      {
+        "question": "Can a transferred task always be retried after worker failure?",
+        "answer": "No. If the failed worker held the only input, the main thread may have nothing left to retry. The ownership and recovery contract must decide this before dispatch."
+      }
+    ],
+    "related": [
+      {
+        "title": "Node.js API development",
+        "href": "/services/node-js-api-development"
+      },
+      {
+        "title": "QA automation engineering",
+        "href": "/services/qa-automation-engineering"
+      },
+      {
+        "title": "Research library",
+        "href": "/research"
+      }
+    ]
   },
   {
     slug:'offshore-developer-postgresql-staged-constraint-validation-study-2026-10-05',

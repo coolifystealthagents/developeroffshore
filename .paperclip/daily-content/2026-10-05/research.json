@@ -3,7 +3,7 @@
   "issue": "DEV-93",
   "pairedBlogIssue": "DEV-94",
   "runId": "583a955d-fb92-4233-b2be-b8c6799be041",
-  "status": "local_handoff_ready",
+  "status": "integrated_originality_rewrite_in_progress_by_DEV94",
   "required": 5,
   "verified": 0,
   "repository": "coolifystealthagents/developeroffshore",
@@ -29,12 +29,12 @@
     "productionBuild": "npm run build passed; 773 static pages; pre-existing CSS autoprefixer warning only",
     "renderedLocalRoutes": 5,
     "renderedBodyParagraphEquality": "80 of 80 source body paragraphs found exactly in rendered output after HTML decoding",
-    "bodyWordCountsExcludingSourceAppendices": [1383, 1307, 1280, 1236, 1281],
+    "bodyWordCountsExcludingSourceAppendices": [1782, 1307, 1280, 1236, 1281],
     "maximumPairwiseFiveWordShingleJaccard": 0.0022115739034279398,
     "similarityThreshold": 0.5,
     "repeatedSubstantiveParagraphs": 0,
-    "qualitativeOriginality": "passed: different engineering decisions, fixtures, controls, failure taxonomies, review sequences, worked cases, and reader outcomes; no shared argument or section sequence",
-    "priorCorpusCollision": "passed repository inventory audit; no slug or substantive-topic duplicate found",
+    "qualitativeOriginality": "repair in progress: the Node.js worker-transfer replacement passes a manual prior-corpus comparison; three Research replacements remain",
+    "priorCorpusCollision": "Node.js worker-transfer replacement passes against the nearest AsyncLocalStorage prior; PostgreSQL, Kubernetes, and Next.js rewrites remain fail-closed",
     "authoritativeSourceLinks": "15 of 15 returned HTTP 200 on 2026-10-05",
     "internalLinks": "all service and Research links are repository-defined routes and passed local rendering",
     "localRouteChecks": "all 5 returned 200 with title, visible UTC date, datePublished, exact canonical, full body, Research index entry, sitemap entry, and HTTP 200 image/svg+xml with valid SVG signature"
@@ -42,12 +42,12 @@
   "articles": [
     {
       "family": "research",
-      "topic": "Node.js AsyncLocalStorage context preservation and cross-request contamination",
-      "slug": "offshore-developer-nodejs-async-context-integrity-study-2026-10-05",
-      "sources": ["https://nodejs.org/api/async_context.html", "https://nodejs.org/api/events.html", "https://nodejs.org/api/diagnostics_channel.html"],
-      "contentHash": "6b3987f75f8f910c83063ae87b07caba51540a4e9f1013fdd3e1e62a9b0fe370",
+      "topic": "Node.js worker-thread clone, transfer, and shared-memory ownership for CPU-bound API work",
+      "slug": "offshore-developer-nodejs-worker-transfer-ownership-study-2026-10-05",
+      "sources": ["https://nodejs.org/api/worker_threads.html", "https://nodejs.org/api/buffer.html"],
+      "contentHash": "2f3f5970d6eb15e6320ee6ddeccf0cb4d38bf6f5c9b20f88752af1d3804dfadd",
       "actualPublicationDate": null,
-      "liveUrl": "https://developeroffshore.com/research/offshore-developer-nodejs-async-context-integrity-study-2026-10-05",
+      "liveUrl": "https://developeroffshore.com/research/offshore-developer-nodejs-worker-transfer-ownership-study-2026-10-05",
       "verifiedAt": null
     },
     {
