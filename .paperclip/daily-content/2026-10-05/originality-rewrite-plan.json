@@ -1,0 +1,73 @@
+{
+  "cycleLabel": "2026-10-05",
+  "preparedAt": "2026-10-05T20:54:00Z",
+  "status": "topics_selected_sources_verified_drafting_required",
+  "rule": "Replace the seven failed articles in place with independent topics. Do not retain their old argument sequence, worked example, title, slug, hash, or audit verdict.",
+  "replacements": [
+    {
+      "family": "blog",
+      "replaceSlug": "webhook-signing-secret-rotation-handoff",
+      "newSlug": "http-425-early-data-replay-review",
+      "title": "Review HTTP 425 Before Early Data Replays a Product Action",
+      "decision": "Which requests may be processed from TLS early data and which must wait or receive 425 at the gateway-to-origin boundary.",
+      "workedExample": "A synthetic reservation command traverses a gateway twice with Early-Data: 1; the unsafe action remains unchanged and retries only after handshake completion.",
+      "sources": ["https://www.rfc-editor.org/rfc/rfc8470", "https://www.rfc-editor.org/rfc/rfc8446"]
+    },
+    {
+      "family": "blog",
+      "replaceSlug": "service-worker-update-lifecycle-handoff",
+      "newSlug": "permissions-policy-iframe-delegation-review",
+      "title": "Review Permissions Policy Before an Embedded Tool Uses Browser Features",
+      "decision": "Which document origins may use a selected browser capability across response-header and iframe allow boundaries.",
+      "workedExample": "A same-origin page, an approved embedded origin, and an unapproved sibling each request geolocation under a narrow policy and record the browser decision.",
+      "sources": ["https://www.w3.org/TR/permissions-policy-1/", "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy"]
+    },
+    {
+      "family": "blog",
+      "replaceSlug": "websocket-backpressure-slow-client-review",
+      "newSlug": "postgres-exclusion-constraint-booking-review",
+      "title": "Prevent Overlapping Bookings With a PostgreSQL Exclusion Constraint",
+      "decision": "Whether a database range and exclusion constraint should own the non-overlap invariant instead of an application check followed by insert.",
+      "workedExample": "Two transactions reserve overlapping half-open time ranges for the same synthetic room while a separate room remains valid.",
+      "sources": ["https://www.postgresql.org/docs/current/rangetypes.html", "https://www.postgresql.org/docs/current/ddl-constraints.html"]
+    },
+    {
+      "family": "research",
+      "replaceSlug": "offshore-developer-nodejs-async-context-integrity-study-2026-10-05",
+      "newSlug": "offshore-developer-nodejs-worker-transfer-ownership-study-2026-10-05",
+      "title": "A Node.js Worker Transfer-Ownership Study for CPU-Bound API Work",
+      "decision": "When structured cloning, transfer lists, or shared memory preserve ownership and isolation for buffers sent to a worker pool.",
+      "workedExample": "Aliased TypedArray views cross clone and transfer cases; the harness checks detachment, unintended pool disclosure, mutation visibility, cancellation, and worker replacement.",
+      "sources": ["https://nodejs.org/api/worker_threads.html", "https://nodejs.org/api/buffer.html"]
+    },
+    {
+      "family": "research",
+      "replaceSlug": "offshore-developer-postgresql-staged-constraint-validation-study-2026-10-05",
+      "newSlug": "offshore-developer-postgresql-exclusion-concurrency-study-2026-10-05",
+      "title": "A PostgreSQL Exclusion-Constraint Concurrency Study for Scheduling Work",
+      "decision": "Whether range semantics and a GiST exclusion constraint enforce one scheduling invariant under concurrent inserts and updates.",
+      "workedExample": "Barrier-synchronized transactions attempt adjacent, overlapping, empty, unbounded, and cross-resource reservations, with lock and error evidence retained.",
+      "sources": ["https://www.postgresql.org/docs/current/rangetypes.html", "https://www.postgresql.org/docs/current/ddl-constraints.html", "https://www.postgresql.org/docs/current/btree-gist.html"]
+    },
+    {
+      "family": "research",
+      "replaceSlug": "offshore-developer-kubernetes-disruption-budget-drain-study-2026-10-05",
+      "newSlug": "offshore-developer-kubernetes-statefulset-partition-study-2026-10-05",
+      "title": "A Kubernetes StatefulSet Partitioned-Rollout Study for Ordered Services",
+      "decision": "How a rollingUpdate partition, ordinal identity, readiness, and rollback interact during a staged StatefulSet change.",
+      "workedExample": "A three-replica synthetic StatefulSet updates the highest ordinal first, pauses at a partition, injects a readiness failure, then verifies revision and storage identity during recovery.",
+      "sources": ["https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/", "https://kubernetes.io/docs/reference/kubernetes-api/apps/stateful-set-v1/"]
+    },
+    {
+      "family": "research",
+      "replaceSlug": "offshore-developer-nextjs-server-action-authorization-study-2026-10-05",
+      "newSlug": "offshore-developer-nextjs-after-lifecycle-study-2026-10-05",
+      "title": "A Next.js after() Lifecycle Study for Post-Response Work",
+      "decision": "Which post-response tasks can use after(), how self-hosted waitUntil support affects completion, and which durable effects still require a queue.",
+      "workedExample": "A route schedules synthetic audit work across success, thrown error, redirect, timeout, process termination, static generation, and duplicate request cases.",
+      "sources": ["https://nextjs.org/docs/15/app/api-reference/functions/after", "https://nextjs.org/docs/app/api-reference/functions/after"]
+    }
+  ],
+  "corpusCheck": "No proposed new slug or exact topic phrase occurs in the repository's prior batch files. Final prose still requires a fresh qualitative comparison after drafting.",
+  "sourceCheck": "All 13 unique primary-source URLs returned HTTP 200 after following redirects on 2026-10-05 UTC."
+}

@@ -37,6 +37,7 @@
     "qualitativePriorCorpusAudit": "failed: 7 of 17 repeat a prior decision and worked-example boundary; see qualitative-prior-corpus-audit.json",
     "qualitativePriorCorpusPassed": 10,
     "qualitativePriorCorpusRewriteRequired": 7,
+    "originalityRewritePlan": ".paperclip/daily-content/2026-10-05/originality-rewrite-plan.json; seven replacement topics selected with distinct decisions, worked examples, and current primary sources; drafting remains required",
     "appropriateTests": "npm run lint passed; repository defines no dedicated test script; combined route validator is the release-specific test and now fails closed on the 7 qualitative duplicates before HTTP checks"
   },
   "deployment": {
