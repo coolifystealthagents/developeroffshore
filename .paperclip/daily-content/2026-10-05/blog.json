@@ -2,12 +2,12 @@
   "routine": "Daily Blog Publishing",
   "issue": "DEV-94",
   "cycleLabel": "2026-10-05",
-  "status": "drafting_3_of_12",
+  "status": "drafting_4_of_12_research_integrated",
   "required": 12,
   "verified": 0,
-  "draftCommit": "c84734adf9728d2edb57cf41cf6216ab58009b6f",
+  "draftCommit": "bac03231fc18afc6f27b3ac2b08133697a4f83e7",
   "draftSource": "app/oct05-blog-batch.ts",
-  "drafted": 3,
+  "drafted": 4,
   "repository": "coolifystealthagents/developeroffshore",
   "productionBranch": "main",
   "branch": "routine/dev94-blog-20261005",
@@ -25,7 +25,10 @@
     "issue": "DEV-93",
     "branch": "research/dev-93-20261005",
     "worktree": ".paperclip/worktrees/dev-93-20261005",
-    "status": "awaiting validated local handoff commit"
+    "contentCommit": "9c4539166c885645fd601e594e2c72343597a3f7",
+    "handoffCommit": "b20579c6de6754bc6da4c9f1c9786d4cb825d6bc",
+    "integratedCommits": ["3b50789d91f72ee30a001cbf4c5eb4ed85cb93dd", "4bb18355a0f324a806e34b239439696d95f5393b"],
+    "status": "integrated_5_of_5_pending_combined_revalidation"
   },
   "articles": [
     {"family":"blog","topic":"Webhook signing-secret rotation with overlapping verification windows","slug":"webhook-signing-secret-rotation-handoff","source":"https://www.rfc-editor.org/rfc/rfc2104","contentHash":null,"liveUrl":"https://developeroffshore.com/blog/webhook-signing-secret-rotation-handoff","verifiedAt":null},
