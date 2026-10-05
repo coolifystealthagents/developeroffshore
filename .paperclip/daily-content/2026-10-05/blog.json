@@ -2,7 +2,7 @@
   "routine": "Daily Blog Publishing",
   "issue": "DEV-94",
   "cycleLabel": "2026-10-05",
-  "status": "qualitative_prior_corpus_repair_in_progress_5_rewrites_required",
+  "status": "qualitative_prior_corpus_repair_in_progress_4_rewrites_required",
   "required": 12,
   "verified": 0,
   "draftCommit": "ed61313b01a8d47be92e69fa73272e8315654212",
@@ -24,7 +24,7 @@
     "productionBuild": "previous combined head passed; final build pending after originality rewrites",
     "renderedRoutes": 17,
     "orderedSourceRenderParagraphParity": "previous combined head passed all17; final parity pending after originality rewrites",
-    "blogBodyWordCounts": [1046,981,944,1119,1167,1101,1023,974,1067,1032,977,945],
+    "blogBodyWordCounts": [1046,981,944,1119,1167,1101,1023,974,1067,973,977,945],
     "researchBodyWordCounts": [1364,1299,1260,1225,1266],
     "blogMaximumPairwiseFiveWordShingleJaccard": 0.000513083632632119,
     "researchMaximumPairwiseFiveWordShingleJaccard": 0.0018628912071535022,
@@ -34,10 +34,10 @@
     "internalLinksPassed": true,
     "titlesDatesCanonicalsSchemaIndexesSitemapPassed": true,
     "imagesHttpMimeSignatureDecodePassed": 17,
-    "qualitativePriorCorpusAudit": "repair in progress: 12 of 17 pass; 5 still repeat a prior decision and worked-example boundary; see qualitative-prior-corpus-audit.json",
-    "qualitativePriorCorpusPassed": 12,
-    "qualitativePriorCorpusRewriteRequired": 5,
-    "originalityRewritePlan": ".paperclip/daily-content/2026-10-05/originality-rewrite-plan.json; two of seven replacements drafted and audited; five remain",
+    "qualitativePriorCorpusAudit": "repair in progress: 13 of 17 pass; 4 Research articles still repeat a prior decision and worked-example boundary; see qualitative-prior-corpus-audit.json",
+    "qualitativePriorCorpusPassed": 13,
+    "qualitativePriorCorpusRewriteRequired": 4,
+    "originalityRewritePlan": ".paperclip/daily-content/2026-10-05/originality-rewrite-plan.json; all three Blog replacements drafted, integrated, and audited; four Research replacements remain",
     "appropriateTests": "npm run lint passed after first rewrite; repository defines no dedicated test script; combined route validator now fails closed on the next remaining qualitative duplicate before HTTP checks"
   },
   "deployment": {
@@ -65,7 +65,7 @@
     {"family":"blog","topic":"Terraform resource-address refactoring with moved blocks","slug":"terraform-moved-block-refactor-review","source":"https://developer.hashicorp.com/terraform/language/modules/develop/refactoring","contentHash":"4fd125e98f590bdc06758866c7f6ad6858f7115aca686fc109b9c7e111a26576","liveUrl":"https://developeroffshore.com/blog/terraform-moved-block-refactor-review","verifiedAt":null},
     {"family":"blog","topic":"Kubernetes server-side apply field ownership and conflict review","slug":"kubernetes-server-side-apply-ownership-review","source":"https://kubernetes.io/docs/reference/using-api/server-side-apply/","contentHash":"4e876ea4331d6ee34662261fc51789bd7f0beaf073128a079b46eca1a611ac20","liveUrl":"https://developeroffshore.com/blog/kubernetes-server-side-apply-ownership-review","verifiedAt":null},
     {"family":"blog","topic":"Email authentication alignment across delegated senders","slug":"email-dmarc-alignment-delegated-sender-review","source":"https://www.rfc-editor.org/rfc/rfc7489","contentHash":"43eb9405fb851da8064d2b7f91f5a703764e249e6cf240565c8fb6618d65ff7e","liveUrl":"https://developeroffshore.com/blog/email-dmarc-alignment-delegated-sender-review","verifiedAt":null},
-    {"family":"blog","topic":"WebSocket send-queue backpressure and slow-client handling","slug":"websocket-backpressure-slow-client-review","source":"https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/bufferedAmount","contentHash":"154f32da7e1f125e80312d96f38fa496bdde60950c12e192e15eba895d3ef456","liveUrl":"https://developeroffshore.com/blog/websocket-backpressure-slow-client-review","verifiedAt":null},
+    {"family":"blog","topic":"PostgreSQL range and exclusion constraints preventing concurrent overlapping bookings","slug":"postgres-exclusion-constraint-booking-review","source":"https://www.postgresql.org/docs/current/rangetypes.html","contentHash":"861ef1e4367340c8cd79e397c95475241eef3cc4dda64e9ea4f15a57c4cdffee","liveUrl":"https://developeroffshore.com/blog/postgres-exclusion-constraint-booking-review","verifiedAt":null},
     {"family":"blog","topic":"CSS container-query component test matrix","slug":"css-container-query-component-test-handoff","source":"https://www.w3.org/TR/css-contain-3/","contentHash":"ab2bdbb9035a3e5fa45041c8230b77f5073740a1ce4b90dc5dc16ce1ef78da2c","liveUrl":"https://developeroffshore.com/blog/css-container-query-component-test-handoff","verifiedAt":null},
     {"family":"blog","topic":"HTTP message-signature verification behind reverse proxies","slug":"http-message-signature-proxy-boundary-review","source":"https://www.rfc-editor.org/rfc/rfc9421","contentHash":"ba39688f20eabec7a2849e22c4c0819218251cdcbb6c10b03e15093e1efbffb9","liveUrl":"https://developeroffshore.com/blog/http-message-signature-proxy-boundary-review","verifiedAt":null}
   ]

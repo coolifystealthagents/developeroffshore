@@ -509,61 +509,105 @@ export const october05BlogBatch: readonly BlogPost[] = [
       { name: 'IETF RFC 6376: DKIM', url: 'https://www.rfc-editor.org/rfc/rfc6376', note: 'DKIM signatures, domains, selectors, and verification.' },
     ],
   },
-  {
-    slug: 'websocket-backpressure-slow-client-review',
-    title: 'Design WebSocket Backpressure Before Slow Clients Exhaust the Service',
-    excerpt: 'A practical handoff for bounding outbound queues, choosing loss and disconnect rules, and proving recovery under uneven client speed.',
-    minutes: 11,
-    revision: 'daily-blog-2026-10-05-websocket-backpressure-slow-client-review',
-    keyTakeaways: ['Measure queued bytes and message age per connection.', 'Define which messages may coalesce, drop, pause, or force disconnect.', 'Test the real runtime because WebSocket APIs expose different controls.'],
-    sections: [
-      { heading: 'Begin with the receiver that stops reading', body: [
-        'A WebSocket server can produce updates faster than one phone, browser tab, or downstream client consumes them. The send call may appear successful while bytes accumulate in application memory, a runtime buffer, the operating system, or an intermediary. Start with a concrete flow: a dashboard receives snapshots and critical state transitions, then its network slows to a few kilobytes per second while publishers continue normally. State which messages must arrive, which may be replaced by newer state, and when the session becomes unusable.',
-        'Map producer, broker if present, application queue, serialization, WebSocket library, compression, socket buffers, proxy, network, client API, render loop, acknowledgments, and reconnect path. Record where capacity can accumulate and which metrics exist. A process-level memory chart cannot identify one slow connection; a library queue length may omit bytes already handed to the operating system. The evidence needs connection-level identity using synthetic clients, never customer payloads.'
-      ]},
-      { heading: 'Classify messages by delivery meaning', body: [
-        'Separate replaceable state, ordered events, commands, acknowledgments, heartbeats, and bulk transfers. A price snapshot may be coalesced by instrument so only the newest unsent value remains. An audit event may require ordered durable consumption rather than a best-effort socket. A command response may need a correlation result before another action is allowed. Write these rules per message class instead of applying one drop-oldest queue to every frame.',
-        'Define maximum queued bytes, message count, oldest-message age, and allowed lag for each class or connection tier. Byte limits matter because a count of ten can mean ten tiny signals or ten large documents. Include serialization and compression cost. Product owners decide freshness and loss semantics; reliability owners decide protection of shared capacity; the developer implements the bounded mechanism and makes each discard or disconnect explainable.'
-      ]},
-      { heading: 'Know what the chosen API can observe', body: [
-        'In browsers, WebSocket bufferedAmount reports bytes queued by the user agent for transmission but does not provide a standard way to pause incoming network delivery. Server runtimes and libraries expose different write callbacks, high-water marks, drain events, or no meaningful signal. Document exact versions and semantics. Do not copy a Node.js stream pattern into a library whose send callback means only that data entered another buffer.',
-        'Instrument application queue bytes before serialization, serialized frame bytes, runtime buffered bytes where available, socket write pressure, send completion age, event-loop delay, connection duration, and process memory. Sample responsibly so telemetry does not become the load. A rising buffered amount is a symptom; the decision still depends on message meaning, recovery, and whether the backlog can ever drain within the session’s useful lifetime.'
-      ]},
-      { heading: 'Create a deterministic slow-client fixture', body: [
-        'Use an isolated environment and a client that completes the handshake, then reads at a controlled small rate or pauses reads. Publish a known sequence with distinguishable identifiers and sizes. Include one normal client on the same instance. Record accepted publications, queue state, frames observed by each client, CPU, memory, event-loop delay, proxy behavior, close code, close reason class, and reconnection result. The normal client must remain responsive while the slow client reaches its bound.',
-        'Run steady small messages, a burst, one oversized allowed message, mixed critical and replaceable messages, compression on and off if supported, network recovery before the limit, and no recovery. Repeat across several slow clients until the approved test ceiling. Do not perform uncontrolled load against production. The purpose is to validate policy and isolation, not claim a universal capacity benchmark from a small fixture.'
-      ]},
-      { heading: 'Apply pressure at the earliest owned boundary', body: [
-        'When a connection queue approaches its limit, stop adding replaceable work before memory is exhausted. Coalesce state by stable key, pause a per-client subscription, reduce update frequency, or shed an optional stream according to the contract. For non-droppable ordered events, move durable delivery to a protocol designed for resumable consumption or disconnect before an unbounded in-memory promise develops. Never silently label lost critical messages as delivered.',
-        'Backpressure should propagate only as far as intended. One slow subscriber should not block a shared publisher loop and delay every healthy client. Conversely, pulling unlimited records from a broker into per-client queues merely relocates the backlog. Record cursor or offset ownership, in-flight limits, and acknowledgment meaning. Shared upstream pause needs a deliberate fairness decision when subscribers have different speeds.'
-      ]},
-      { heading: 'Disconnect with a resumable outcome', body: [
-        'Define when the server closes a slow connection: queue bytes, oldest age, deadline, repeated pressure, or an application invariant. Choose an appropriate close code and a safe reason that does not expose internal or customer data. Before closing, do not enqueue a large explanatory message behind the backlog. Metrics and server logs can retain a redacted reason classification and last confirmed sequence.',
-        'The client reconnect path should use bounded exponential backoff and jitter, not an immediate loop that recreates load. If resumable delivery exists, send or request a stable cursor and test expiry, gaps, duplicates, and server restart. If it does not, the interface must fetch a fresh snapshot and explain any unavailable history. A newer snapshot can repair state views but cannot recreate missed commands or audits; those require a different delivery guarantee.'
-      ]},
-      { heading: 'Test cleanup after every ending', body: [
-        'Exercise graceful client close, server policy close, proxy timeout, network disappearance, authentication expiry, process shutdown, and a client that reconnects while the old connection is half-open. Assert that subscriptions, timers, queue memory, broker consumers, and presence state are released or transferred exactly once. Monitor memory after repeated cycles to expose retained listener or closure references.',
-        'Coordinate heartbeat intervals with proxy idle timeouts and application load. A heartbeat confirms some liveness path; it does not prove the client is processing application messages quickly enough. Track last application acknowledgment separately when the protocol has one. Security and privacy owners approve connection identifiers and diagnostic retention; production termination remains with operations owners.'
-      ]},
-      { heading: 'Hand off a capacity-protection contract', body: [
-        'The packet includes topology, runtime versions, message taxonomy, per-class loss rules, byte and age limits, metric definitions, slow-reader harness, normal-client control, burst and recovery results, close behavior, cursor semantics, reconnect policy, cleanup evidence, observability, rollback, and untested limits. Include exact source revision and synthetic fixture hashes so another time zone can repeat the result.',
-        'Acceptance requires bounded connection memory, preserved healthy-client service, explicit handling for every message class, explainable disconnects, and a verified recovery outcome. An unbounded queue, hidden critical loss, global publisher stall, or reconnect storm fails. Developer Offshore can provide backend implementation, fixtures and operational handoffs while the client retains decisions about product loss, shared capacity, protected environments, and release approval.'
-      ]},
+{
+    "slug": "postgres-exclusion-constraint-booking-review",
+    "title": "Prevent Overlapping Bookings With a PostgreSQL Exclusion Constraint",
+    "excerpt": "A database review for turning a no-overlap booking rule into one atomic constraint with inspectable concurrent evidence.",
+    "minutes": 10,
+    "revision": "daily-blog-2026-10-05-postgres-exclusion-constraint-booking-review",
+    "keyTakeaways": [
+      "Define interval bounds and resource identity before choosing a range type.",
+      "Let one database constraint arbitrate concurrent overlapping writes.",
+      "Test adjacency, updates, cancellation, and error handling with two real sessions."
     ],
-    relatedLinks: [
-      { label: 'Node.js API development', href: '/services/node-js-api-development', note: 'Implement bounded real-time service behavior.' },
-      { label: 'DevOps release support', href: '/services/devops-release-support', note: 'Observe capacity and recovery during rollout.' },
-      { label: 'Discuss the backend role', href: '/contact', note: 'Bring the runtime, message classes, and service owner.' },
+    "sections": [
+      {
+        "heading": "Start with the overlap the product forbids",
+        "body": [
+          "A booking rule sounds simple until two requests arrive together. Use one concrete case: room Cedar is free from 10:00 to 11:00, and two clients try to reserve 10:15 to 10:45 and 10:30 to 11:15. An application that checks for conflicts and then inserts has a gap between those operations. Both checks can see an empty schedule before either insert commits. The desired result is one accepted reservation and one explainable conflict, regardless of which request reaches the database first.",
+          "Write the business rule before the SQL. Name the resource key, time zone, precision, permitted duration, meaning of cancellation, whether adjacent reservations may touch, and whether maintenance blocks ordinary bookings. Decide how open-ended holds behave and whether tentative and confirmed records conflict. The database can enforce a declared predicate, but it cannot decide what the product means by overlap. Product and operations owners approve that meaning; the developer translates it into a reviewed schema and concurrent fixture."
+        ]
+      },
+      {
+        "heading": "Choose range bounds deliberately",
+        "body": [
+          "PostgreSQL range types record lower and upper values together with inclusive or exclusive bounds. Half-open intervals such as [10:00,11:00) usually let one booking end exactly when the next begins. That convention must match the user interface and every importer. If one path stores an inclusive end while another assumes an exclusive end, the constraint will enforce a rule users did not agree to. Pick timestamp with or without time zone according to the application model, then test daylight-saving transitions where local schedules matter.",
+          "Normalize input before persistence. Reject an end before its start, decide whether an empty range is valid, and record how precision is rounded. Do not accept a text range from an untrusted client and treat successful parsing as product validation. Construct the range from validated fields on the server or in a typed database expression. Preserve the original user-facing zone separately when the product needs it. The constraint should compare canonical scheduling values, while the interface explains them in the agreed local context."
+        ]
+      },
+      {
+        "heading": "Express resource equality and time overlap together",
+        "body": [
+          "An exclusion constraint can reject pairs of rows when all selected operator comparisons are true. For room bookings, the useful combination is equality on the room identifier and overlap on the time range. The btree_gist extension supplies GiST operator classes for ordinary scalar types that can sit beside the range overlap operator. This allows overlapping times in different rooms while preventing them for the same room. Review extension availability and ownership in the actual PostgreSQL service before relying on it.",
+          "Keep status semantics visible. A cancelled row may remain for audit without blocking new work, which can call for a partial constraint over active statuses. If several statuses conflict differently, one boolean predicate may hide too much product meaning. Model the states and transitions first. Changing a status from cancelled back to confirmed is a write that must pass the same overlap rule. Avoid a trigger that silently shifts times or cancels another booking to make the constraint pass; rejection should preserve both requests for an owner to resolve."
+        ]
+      },
+      {
+        "heading": "Prove concurrency with separate sessions",
+        "body": [
+          "Build a disposable schema with room Cedar, room Maple, and synthetic reservations. Open two database sessions, begin both transactions, and hold them at a barrier before inserting overlapping Cedar ranges. Release them together and retain statement start, lock waits, commit order, SQLSTATE, final rows, and application response. Repeat with the arrival order reversed. A serial test that inserts one row after another proves the predicate but misses the race that motivated database enforcement.",
+          "Add controls: adjacent Cedar ranges, the same time in Maple, an exact duplicate, a range contained inside another, a range that contains another, an update that moves an existing booking into conflict, and two non-overlapping writes. Exercise cancellation and reactivation under concurrency. If transactions retry, prove the retry does not create duplicate notifications or audit events. Use a stable operation identifier and inspect database state after every case rather than assuming an error response means no other side effect occurred."
+        ]
+      },
+      {
+        "heading": "Handle the conflict as a product outcome",
+        "body": [
+          "A constraint violation is expected competition, not necessarily a server fault. Map the named constraint or reviewed SQLSTATE path to a stable conflict response without exposing another customer’s booking details. The interface can say the slot is no longer available and fetch current availability. It should preserve the user’s search inputs and offer a deliberate next choice. Do not parse a localized database error string or return raw detail containing identifiers and ranges that the caller is not authorized to see.",
+          "Keep authorization ahead of conflict disclosure. A caller who cannot access Cedar should not learn that a particular time is occupied. Validation, resource lookup, permission checks, and the attempted write need an order that matches the application’s disclosure policy. Record allowed conflict, denied caller, missing room, malformed range, and dependency failure separately. Metrics should count safe classifications and constraint name, not booking contents. Product owners approve the recovery text; security owners approve what the response may reveal."
+        ]
+      },
+      {
+        "heading": "Plan migration and operational review",
+        "body": [
+          "Adding the rule to an existing table requires evidence about historical overlaps. Inventory them with an approved query and classify their causes before changing data. An exclusion constraint cannot be introduced as NOT VALID in the same way as the staged CHECK and foreign-key pattern, so do not copy that migration plan. Review PostgreSQL version, table size, index build behavior, locks, write volume, maintenance window, backup posture, and rollback. Existing conflicts are product records, not debris a migration may delete automatically.",
+          "The handoff should include schema and extension versions, range convention, status predicate, exact constraint definition, historical-conflict report, two-session fixture, SQLSTATE mapping, authorization cases, migration rehearsal, lock observations, rollback, and named owners. An offshore developer can prepare the schema change, application mapping, tests, and evidence in an approved environment. Database and product owners decide historical correction and production timing. Bring the table shape, booking rule, volume, and one conflict example to a Developer Offshore discussion to scope the work precisely."
+        ]
+      }
     ],
-    faqs: [
-      { question: 'Does a successful WebSocket send mean the client processed the message?', answer: 'No. It may only mean bytes entered a local or runtime buffer. Application acknowledgment is needed when processing confirmation matters.' },
-      { question: 'Should every slow client be disconnected immediately?', answer: 'Not necessarily. Replaceable messages may coalesce or optional streams may pause. The policy should follow message meaning, queue bounds, fairness, and a tested recovery path.' },
+    "relatedLinks": [
+      {
+        "label": "Data pipeline development",
+        "href": "/services/data-pipeline-development",
+        "note": "Review durable data rules and migrations."
+      },
+      {
+        "label": "Node.js API development",
+        "href": "/services/node-js-api-development",
+        "note": "Map database conflicts to a safe API outcome."
+      },
+      {
+        "label": "Discuss the database assignment",
+        "href": "/contact",
+        "note": "Bring the schema, booking rule, and decision owners."
+      }
     ],
-    sources: [
-      { name: 'MDN: WebSocket bufferedAmount', url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/bufferedAmount', note: 'Browser-visible queued byte behavior.' },
-      { name: 'WHATWG WebSockets Standard', url: 'https://websockets.spec.whatwg.org/', note: 'Browser WebSocket API processing model.' },
-      { name: 'IETF RFC 6455: WebSocket Protocol', url: 'https://www.rfc-editor.org/rfc/rfc6455', note: 'Frames, closing handshake, and protocol behavior.' },
+    "faqs": [
+      {
+        "question": "Why not check for overlaps in application code?",
+        "answer": "A check followed by an insert can race with another session. The database constraint evaluates the invariant at the write boundary."
+      },
+      {
+        "question": "Can adjacent bookings be allowed?",
+        "answer": "Yes, when the product uses consistent half-open bounds such as [start,end). The interface, imports, and database must share that convention."
+      }
     ],
+    "sources": [
+      {
+        "name": "PostgreSQL: Range Types",
+        "url": "https://www.postgresql.org/docs/current/rangetypes.html",
+        "note": "Range bounds, overlap operators, indexing, and exclusion examples."
+      },
+      {
+        "name": "PostgreSQL: Constraints",
+        "url": "https://www.postgresql.org/docs/current/ddl-constraints.html",
+        "note": "Exclusion-constraint behavior and generated indexes."
+      },
+      {
+        "name": "PostgreSQL: btree_gist",
+        "url": "https://www.postgresql.org/docs/current/btree-gist.html",
+        "note": "GiST operator classes for scalar equality beside range overlap."
+      }
+    ]
   },
   {
     slug: 'css-container-query-component-test-handoff',
