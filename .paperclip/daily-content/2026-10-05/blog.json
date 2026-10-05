@@ -2,7 +2,7 @@
   "routine": "Daily Blog Publishing",
   "issue": "DEV-94",
   "cycleLabel": "2026-10-05",
-  "status": "drafted_12_of_12_research_integrated_pending_registration",
+  "status": "all17_registered_pending_combined_validation",
   "required": 12,
   "verified": 0,
   "draftCommit": "ed61313b01a8d47be92e69fa73272e8315654212",
@@ -12,7 +12,7 @@
   "productionBranch": "main",
   "branch": "routine/dev94-blog-20261005",
   "baseline": "e25b24d6c8a937f4015143ab760ba9a9768dc00a",
-  "sourcePublicationDate": null,
+  "sourcePublicationDate": "2026-10-05",
   "timezone": "UTC",
   "publicationDateRule": "Set all source, structured, index, sitemap, and ledger dates to each route's first successful public verification date in UTC before the sole production push; the cycle label is not a publication date.",
   "deployment": {
