@@ -37,7 +37,7 @@
     "qualitativePriorCorpusAudit": "repair in progress: 13 of 17 pass; 4 Research articles still repeat a prior decision and worked-example boundary; see qualitative-prior-corpus-audit.json",
     "qualitativePriorCorpusPassed": 13,
     "qualitativePriorCorpusRewriteRequired": 4,
-    "originalityRewritePlan": ".paperclip/daily-content/2026-10-05/originality-rewrite-plan.json; all three Blog replacements drafted, integrated, and audited; four Research replacements remain",
+    "originalityRewritePlan": ".paperclip/daily-content/2026-10-05/originality-rewrite-plan.json; all three Blog replacements integrated; PostgreSQL Research plan reselected to LISTEN/NOTIFY durable-outbox recovery after cross-family audit; four Research replacements remain",
     "appropriateTests": "npm run lint passed after first rewrite; repository defines no dedicated test script; combined route validator now fails closed on the next remaining qualitative duplicate before HTTP checks"
   },
   "deployment": {

@@ -47,11 +47,12 @@
     {
       "family": "research",
       "replaceSlug": "offshore-developer-postgresql-staged-constraint-validation-study-2026-10-05",
-      "newSlug": "offshore-developer-postgresql-exclusion-concurrency-study-2026-10-05",
-      "title": "A PostgreSQL Exclusion-Constraint Concurrency Study for Scheduling Work",
-      "decision": "Whether range semantics and a GiST exclusion constraint enforce one scheduling invariant under concurrent inserts and updates.",
-      "workedExample": "Barrier-synchronized transactions attempt adjacent, overlapping, empty, unbounded, and cross-resource reservations, with lock and error evidence retained.",
-      "sources": ["https://www.postgresql.org/docs/current/rangetypes.html", "https://www.postgresql.org/docs/current/ddl-constraints.html", "https://www.postgresql.org/docs/current/btree-gist.html"]
+      "newSlug": "offshore-developer-postgresql-listen-notify-outbox-study-2026-10-05",
+      "title": "A PostgreSQL LISTEN/NOTIFY and Durable Outbox Study for Event Wakeups",
+      "decision": "Whether LISTEN/NOTIFY may wake a consumer that reads durable outbox rows without being mistaken for the durable event channel itself.",
+      "workedExample": "A producer commits a synthetic outbox row and NOTIFY in one transaction while a listener disconnects, reconnects, receives duplicates, and recovers every durable row by cursor.",
+      "sources": ["https://www.postgresql.org/docs/current/sql-listen.html", "https://www.postgresql.org/docs/current/sql-notify.html", "https://www.postgresql.org/docs/current/libpq-notify.html"],
+      "status": "replacement_reselected_after_cross_family_audit_sources_http_200"
     },
     {
       "family": "research",
@@ -73,5 +74,6 @@
     }
   ],
   "corpusCheck": "No proposed new slug or exact topic phrase occurs in the repository's prior batch files. Final prose still requires a fresh qualitative comparison after drafting.",
+  "crossFamilyCheck": "The initial PostgreSQL Research exclusion-constraint plan was rejected because it duplicated the integrated Blog booking decision and two-session overlap fixture. The replacement LISTEN/NOTIFY study concerns lossy wakeups plus durable outbox recovery, uses no range or exclusion constraint, and has no exact topic or slug hit in prior or current corpus.",
   "sourceCheck": "All 13 unique primary-source URLs returned HTTP 200 after following redirects on 2026-10-05 UTC."
 }
