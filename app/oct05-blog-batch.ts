@@ -258,4 +258,116 @@ export const october05BlogBatch: readonly BlogPost[] = [
       { name: 'web.dev: Service worker lifecycle', url: 'https://web.dev/articles/service-worker-lifecycle', note: 'Practical explanation of waiting, skipWaiting, and clients.claim.' },
     ],
   },
+  {
+    slug: 'trusted-types-enforcement-rollout',
+    title: 'Roll Out Trusted Types Without Hiding DOM Injection Risk',
+    excerpt: 'A staged assignment for finding browser injection sinks, reviewing policy transformations, enforcing CSP, and keeping bypasses owned.',
+    minutes: 11,
+    revision: 'daily-blog-2026-10-05-trusted-types-enforcement-rollout',
+    keyTakeaways: ['Inventory real injection sinks before enforcement.', 'Review each policy as security code, not a compatibility shim.', 'Make report-only findings and exceptions traceable to owners.'],
+    sections: [
+      { heading: 'Frame the protection accurately', body: [
+        'Trusted Types narrows how script-relevant DOM sinks receive values. It does not inspect every security property of an application, repair server-side injection, or make arbitrary HTML safe. Begin with one claim: browser code in the selected routes should not pass ordinary strings into covered sinks after enforcement. Name the browsers, application revision, Content Security Policy delivery path, third-party scripts, extensions excluded from the test, and report collection boundary. This keeps a compatibility project from being presented as universal cross-site scripting prevention.',
+        'Use a worked path such as a support article preview that converts approved markup into a rendered fragment. Trace input from editor, API, state, transformation, policy, sink, and resulting DOM. Add an adversarial synthetic string that would create an event handler or script-capable URL if handled unsafely. The expected result should identify where it is rejected or transformed. Merely showing that no alert appeared is weak evidence because the browser, sanitizer, CSP, or test payload may have failed for unrelated reasons.'
+      ]},
+      { heading: 'Build the sink inventory from execution and source', body: [
+        'Search for direct assignments and APIs such as innerHTML, outerHTML, insertAdjacentHTML, document.write, script URL creation, and library wrappers that reach them. Then exercise representative routes with browser reporting because aliases, minified dependencies, runtime branches, and framework internals may not be obvious in source. Record source module, owning component, data origin, sink class, call count, route, user action, and current mitigation. Treat a wrapper as a boundary to inspect, not proof that every caller is safe.',
+        'Group findings by required outcome. Static owned markup may become DOM construction or textContent. A rich-text feature may need an approved sanitizer and an HTML policy. A script loader may need a narrow script-URL allowlist owned by the platform team. A dependency may require upgrade, isolation, replacement, or a temporary exception. Do not create one default policy that returns every input unchanged just to reduce violations. That converts enforcement into a ceremonial type cast.'
+      ]},
+      { heading: 'Use report-only mode as an investigation', body: [
+        'Deliver a report-only Content Security Policy through the same response path intended for enforcement. Confirm the browser receives the header on documents that matter, including error and authenticated routes where applicable. Generate a known synthetic violation and trace it from browser to the approved collector. Record directive, disposition, effective directive, route class, source location when available, application revision, and a redacted sample category. Avoid collecting page content, tokens, query secrets, or personal fields.',
+        'Exercise normal navigation, lazy routes, editors, analytics consent states, localization, uploads, error boundaries, browser back-forward restoration, and third-party widgets. Deduplicate reports without hiding frequency or affected paths. Reports can be absent because the browser lacks support, the header was stripped, sampling dropped the event, or the code path never ran. Pair telemetry with source review and explicit fixtures. The goal is a bounded inventory, not a dashboard whose declining line becomes its own approval.'
+      ]},
+      { heading: 'Design policies around reviewed transformations', body: [
+        'For every policy, document its name, returned Trusted Type, allowed callers, input provenance, transformation, rejection behavior, tests, owner, and removal or review trigger. Keep policy creation in a small module instead of scattering it through components. An HTML policy should call a version-pinned sanitizer configured for the product’s allowed markup, URLs, attributes, and namespaces. Test mutated markup after parsing, not only input strings, because browser interpretation can create structures the source did not make obvious.',
+        'A script-URL policy should construct or allow destinations from a tight owned set rather than accept prefixes that can be confused by alternate hosts, credentials, encodings, or redirects. A script policy deserves exceptional scrutiny and may be unnecessary for most product code. Use separate policies when trust decisions differ. Policy names aid governance only when names map to stable reviewed behavior; descriptive naming cannot compensate for permissive transformation.'
+      ]},
+      { heading: 'Rehearse third-party and browser differences', body: [
+        'Load every required third-party integration under report-only and enforcement in an isolated environment. Identify whether it creates a policy, expects a default policy, writes unsafe HTML, or loads script URLs dynamically. Verify the exact supported version and vendor guidance. If it cannot operate under the chosen boundary, the product and security owners choose upgrade, removal, isolation, or a time-bounded exception. An offshore developer can produce evidence but should not silently weaken policy for a marketing tag.',
+        'Test supported browsers that implement Trusted Types and browsers that ignore the directive. The latter still depend on sanitization, output encoding, safe APIs, and the rest of CSP. Confirm server-rendered markup, hydration, client navigation, and embedded documents separately. If enforcement is limited to selected routes, document navigation across the boundary and whether shared bundles behave differently. A passing Chromium check does not establish protection in every supported browser.'
+      ]},
+      { heading: 'Turn enforcement on with a stop rule', body: [
+        'Choose a rollout unit such as a low-risk route cohort, named application shell, or controlled user segment. Pin the response header and application revision. Before enforcement, establish that known unsafe fixtures fail under the candidate policy and that required journeys pass. During rollout watch violation count by owned source, failed journeys, support signals, policy creation, and collector health. Stop or roll back when a required flow breaks or an unexplained bypass appears; do not add a permissive default policy during an incident.',
+        'Rollback means restoring the last reviewed header and application pair. If policy code and CSP deploy independently, define compatible combinations so reverting one does not strand the other. Keep report-only observation during rollback where privacy rules permit. A production exception needs exact scope, reason, approver, expiry, compensating control, and closure evidence. Broad wildcard policy names or unrestricted duplicate policies are not reasonable emergency controls.'
+      ]},
+      { heading: 'Test bypass resistance and maintenance', body: [
+        'Add regression fixtures for direct string assignment, unsafe markup, encoded and nested markup, disallowed URL schemes, malicious SVG or MathML when accepted formats make them relevant, policy misuse from an unauthorized module, and sanitized allowed content. Assert the sink result and DOM, not only an exception. Seed a deliberately permissive test policy and ensure governance checks or code review rules detect it. Record sanitizer version and configuration hash so later dependency changes reopen the conclusion.',
+        'Review new violation reports as code changes land. Track policy count, exceptional callers, outstanding dependency findings, and expired exemptions without presenting those numbers as proof of safety. Re-audit after framework, sanitizer, rich-text editor, tag manager, build pipeline, or browser-support changes. A clean report set means the observed paths produced no collected violation under that revision; it does not prove that every injection path disappeared.'
+      ]},
+      { heading: 'Give reviewers a reproducible handoff', body: [
+        'The packet includes route scope, browser matrix, sink inventory, data-flow diagrams, report-only header, collector validation, policy code, sanitizer settings, positive and adversarial fixtures, third-party decisions, enforcement cohort, stop conditions, rollback pair, exceptions, and residual unknowns. Link exact revisions and keep raw approved evidence separate from the public article. Security owns accepted transformations and exceptions; product owners decide lost features; platform owners control headers and collection; release owners approve enforcement.',
+        'The developer can locate sinks, refactor owned code, implement reviewed policies, create fixtures, and summarize evidence across time zones. The next owner should know whether to fix a call site, review a transformation, contact a vendor, approve a cohort, or stop. Developer Offshore clients can use the first route and one known violation as a bounded trial assignment, with an internal security reviewer retaining the trust decision.'
+      ]},
+    ],
+    relatedLinks: [
+      { label: 'React frontend development', href: '/services/react-frontend-development', note: 'Refactor browser code around reviewed boundaries.' },
+      { label: 'QA automation engineering', href: '/services/qa-automation-engineering', note: 'Exercise route and browser enforcement cases.' },
+      { label: 'Discuss the security handoff', href: '/contact', note: 'Bring the application scope, CSP path, and reviewer.' },
+    ],
+    faqs: [
+      { question: 'Does Trusted Types sanitize HTML automatically?', answer: 'No. A policy creates trusted values; its transformation still needs careful review and usually a configured sanitizer for approved rich HTML.' },
+      { question: 'Should we add a permissive default policy to avoid breakage?', answer: 'No. A policy that returns arbitrary input can hide unsafe flows and erase the value of enforcement. Fix, isolate, or explicitly govern each incompatibility.' },
+    ],
+    sources: [
+      { name: 'W3C Trusted Types', url: 'https://www.w3.org/TR/trusted-types/', note: 'Trusted type objects, policies, sinks, and CSP integration.' },
+      { name: 'MDN: require-trusted-types-for', url: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/require-trusted-types-for', note: 'Browser enforcement directive and usage.' },
+      { name: 'OWASP DOM based XSS Prevention Cheat Sheet', url: 'https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html', note: 'DOM injection context and safe API guidance.' },
+    ],
+  },
+  {
+    slug: 'accessible-virtualized-list-test-handoff',
+    title: 'Test an Accessible Virtualized List Beyond the Visible Rows',
+    excerpt: 'A practical assignment for preserving focus, semantics, position, selection, and recovery when a large list renders only a moving window.',
+    minutes: 11,
+    revision: 'daily-blog-2026-10-05-accessible-virtualized-list-test-handoff',
+    keyTakeaways: ['Choose list interaction semantics before adding ARIA.', 'Keep logical identity separate from recycled DOM nodes.', 'Test keyboard and assistive-technology journeys across window boundaries.'],
+    sections: [
+      { heading: 'Choose the widget the product actually needs', body: [
+        'A long collection can be a plain list of links, a selectable listbox, a grid, a tree, or a table. Those patterns have different keyboard and semantic contracts. Do not add role=listbox because a component library exposes it or because rows can be clicked. Start with user actions: read items, open one, select one, select many, reorder, expand hierarchy, or edit cells. Native links, buttons, lists, and tables are often simpler and more robust when the interface does not require composite-widget behavior.',
+        'Write a concrete journey before measuring speed: a keyboard user filters 20,000 results, moves from item 18 to item 23 as the render window shifts, opens details, returns, and expects focus and position to remain meaningful. Add a screen-reader journey that announces the item label, selected state, and position without claiming that only the 12 mounted rows exist. The desired experience determines the implementation and evidence.'
+      ]},
+      { heading: 'Separate collection identity from DOM recycling', body: [
+        'Every logical item needs a stable identifier that survives sorting, filtering, insertion, removal, and recycling. Array position alone is unsafe when new results appear above the focused item. Store active and selected state by logical identity. When a DOM row is reused, update its accessible name, state, position metadata, descendants, and event bindings before it becomes observable. A stale selected class is visible; a stale accessible label can be harder to notice and just as harmful.',
+        'Record the collection revision, ordered identifiers, rendered range, active identifier, selected identifiers, scroll anchor, and focused DOM element during tests. Seed similar labels so an assertion cannot pass by matching text accidentally. Include items with long names, localized text, disabled states, and dynamic status. If row height varies, preserve the anchor when measurements settle rather than letting focus jump because content above changed size.'
+      ]},
+      { heading: 'Pick one focus model and complete it', body: [
+        'A composite widget may use roving tabindex, moving DOM focus among mounted options, or aria-activedescendant, keeping focus on a stable container while identifying the active option. Each approach has constraints. With moving focus, the next logical row must be mounted before focus transfers. With aria-activedescendant, the referenced element must exist and the container needs the correct role and keyboard handling. Mixing models during recycling can leave focus on the body or point assistive technology to a removed node.',
+        'Define Arrow, Home, End, Page Up, Page Down, type-ahead, Enter, Space, and modified selection behavior only as required by the chosen pattern. Browser scrolling is not the same as changing the active option. Prevent defaults selectively and verify pointer, touch, and keyboard paths still agree. If End would require loading an unknown remote total, state the product behavior instead of simulating certainty the data source cannot provide.'
+      ]},
+      { heading: 'Represent position without inventing completeness', body: [
+        'Virtualization removes off-screen elements from the accessibility tree, so visual smoothness can conceal missing collection context. Where the selected ARIA pattern supports set size and position, derive them from the logical collection, not the mounted window. If the total is genuinely unknown during incremental loading, avoid reporting a guessed final count. Announce loading and updated result context through a controlled status message rather than causing every scroll event to speak.',
+        'Filtering creates a new logical collection. Recalculate positions, decide whether the active item remains, and move to a predictable fallback when it disappears. Sorting should preserve identity while changing position. Insertion above the viewport should not silently change which record an active DOM node represents. Test these transitions with duplicated display labels and stable hidden identifiers so the evidence proves identity rather than coincidental text.'
+      ]},
+      { heading: 'Cross the render-window boundary deliberately', body: [
+        'Start with focus near the bottom of the mounted range and press Arrow Down repeatedly. Capture the order of logical active changes, rendered ranges, focus target, scroll offset, and announcements. Reverse direction, jump Home and End where supported, page through several windows, and hold a key long enough to expose asynchronous rendering. Focus must never land on a spacer, disappear during unmount, or skip an enabled logical item because the next row was not ready.',
+        'Repeat after resizing the container, zooming text, increasing browser zoom, enabling reduced motion, and loading an item whose measured height changes. Test an empty result, one item, fewer items than a window, a very large collection, and a fetch failure at the next boundary. The failure state needs a reachable retry that does not reset the person to the collection start without warning.'
+      ]},
+      { heading: 'Preserve selection and action meaning', body: [
+        'Active focus, visual hover, current item, and selected items are separate states. Document how each appears and is announced. For multiselect, test selection across several windows, filtering selected items out, selecting all when not all records are loaded, and applying an action. The product must define whether select all means loaded results, current filtered query, or the entire server-side set. A checkbox count is not enough when its scope is ambiguous.',
+        'After an action deletes or moves the active item, choose the next meaningful focus target and announce the outcome. On validation failure, retain the selection and return focus to an actionable error or item. Never rely solely on row color for state. The developer implements the reviewed model; product and accessibility owners decide selection semantics and acceptable behavior when remote data changes.'
+      ]},
+      { heading: 'Test with more than an automated rule set', body: [
+        'Automated checks can catch missing names, invalid references, duplicate IDs, and some role relationships. Add component tests that assert logical identity, rendered range, tab stops, active descendant existence, selection, and position metadata after transitions. Then run keyboard journeys in supported browsers and targeted screen-reader checks using the team’s declared matrix. Record browser, operating system, assistive technology, version, interaction, expected announcement, observed announcement, and limitation.',
+        'Do not claim universal screen-reader support from one pairing. Different combinations may announce virtualization metadata or dynamic changes differently. Look for severe outcomes: unreachable items, lost focus, incorrect identity, false selection, repeated noisy announcements, and no recovery from load failure. Performance evidence belongs beside accessibility evidence because delayed mounting can break keyboard behavior even when final markup is correct.'
+      ]},
+      { heading: 'Hand off the component as a behavior contract', body: [
+        'The review packet includes chosen pattern and rationale, collection and item identity rules, focus model, keyboard table, selection scope, dynamic-change rules, position semantics, loading and error behavior, responsive cases, component assertions, manual matrix, performance thresholds, known gaps, and owner decisions. Link the exact component, virtualization library, browser matrix, and synthetic dataset revisions. Screenshots may support visual review but cannot replace ordered interaction evidence.',
+        'An offshore frontend or QA developer can build fixtures, instrument identity, implement reviewed behavior, automate deterministic transitions, and document manual observations. The client-side accessibility and product owners retain decisions about interaction semantics and supported combinations. Reopen the review when the virtualization library, row markup, focus model, selection behavior, data loading, or browser matrix changes. Developer Offshore clients can start with one critical journey and a named reviewer rather than assigning a vague accessibility cleanup.'
+      ]},
+    ],
+    relatedLinks: [
+      { label: 'React frontend development', href: '/services/react-frontend-development', note: 'Implement reviewable component behavior.' },
+      { label: 'QA automation engineering', href: '/services/qa-automation-engineering', note: 'Build keyboard and state-transition fixtures.' },
+      { label: 'Plan the assignment', href: '/contact', note: 'Bring the component, user journey, and supported matrix.' },
+    ],
+    faqs: [
+      { question: 'Can an automated accessibility scanner prove a virtualized list works?', answer: 'No. It can catch some markup defects, but ordered keyboard movement, focus persistence, announcements, loading, and selection need behavioral and targeted manual checks.' },
+      { question: 'Should a long list always use role=listbox?', answer: 'No. Choose semantics from the interaction. A list of links or buttons may remain a native list; listbox is for a specific composite selection pattern.' },
+    ],
+    sources: [
+      { name: 'WAI-ARIA Authoring Practices: Listbox Pattern', url: 'https://www.w3.org/WAI/ARIA/apg/patterns/listbox/', note: 'Listbox semantics and keyboard interaction.' },
+      { name: 'WAI-ARIA 1.2', url: 'https://www.w3.org/TR/wai-aria-1.2/', note: 'Roles, states, properties, set size, position, and active descendant.' },
+      { name: 'WCAG 2.2', url: 'https://www.w3.org/TR/WCAG22/', note: 'Keyboard, focus, name, role, value, and status requirements.' },
+    ],
+  },
 ];
