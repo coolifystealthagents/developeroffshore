@@ -54,7 +54,7 @@
       "decision": "Whether LISTEN/NOTIFY may wake a consumer that reads durable outbox rows without being mistaken for the durable event channel itself.",
       "workedExample": "A producer commits a synthetic outbox row and NOTIFY in one transaction while a listener disconnects, reconnects, receives duplicates, and recovers every durable row by cursor.",
       "sources": ["https://www.postgresql.org/docs/current/sql-listen.html", "https://www.postgresql.org/docs/current/sql-notify.html", "https://www.postgresql.org/docs/current/libpq-notify.html"],
-      "status": "integrated_1789_body_words_audited_pass",
+      "status": "integrated_1798_body_words_audited_pass",
       "draftPath": ".paperclip/daily-content/2026-10-05/drafts/postgresql-listen-notify-outbox-study.json"
     },
     {
@@ -65,7 +65,7 @@
       "decision": "How a rollingUpdate partition, ordinal identity, readiness, and rollback interact during a staged StatefulSet change.",
       "workedExample": "A three-replica synthetic StatefulSet updates the highest ordinal first, pauses at a partition, injects a readiness failure, then verifies revision and storage identity during recovery.",
       "sources": ["https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/", "https://kubernetes.io/docs/reference/kubernetes-api/apps/stateful-set-v1/"],
-      "status": "integrated_1779_body_words_audited_pass",
+      "status": "integrated_1782_body_words_audited_pass",
       "draftPath": ".paperclip/daily-content/2026-10-05/drafts/kubernetes-statefulset-partition-study.json"
     },
     {
@@ -75,7 +75,9 @@
       "title": "A Next.js after() Lifecycle Study for Post-Response Work",
       "decision": "Which post-response tasks can use after(), how self-hosted waitUntil support affects completion, and which durable effects still require a queue.",
       "workedExample": "A route schedules synthetic audit work across success, thrown error, redirect, timeout, process termination, static generation, and duplicate request cases.",
-      "sources": ["https://nextjs.org/docs/15/app/api-reference/functions/after", "https://nextjs.org/docs/app/api-reference/functions/after"]
+      "sources": ["https://nextjs.org/docs/15/app/api-reference/functions/after", "https://nextjs.org/docs/app/api-reference/functions/after"],
+      "status": "integrated_1792_body_words_audited_pass",
+      "draftPath": ".paperclip/daily-content/2026-10-05/drafts/nextjs-after-lifecycle-study.json"
     }
   ],
   "corpusCheck": "No proposed new slug or exact topic phrase occurs in the repository's prior batch files. Final prose still requires a fresh qualitative comparison after drafting.",

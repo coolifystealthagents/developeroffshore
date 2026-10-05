@@ -29,12 +29,12 @@
     "productionBuild": "npm run build passed; 773 static pages; pre-existing CSS autoprefixer warning only",
     "renderedLocalRoutes": 5,
     "renderedBodyParagraphEquality": "80 of 80 source body paragraphs found exactly in rendered output after HTML decoding",
-    "bodyWordCountsExcludingSourceAppendices": [1782, 1789, 1280, 1779, 1281],
+    "bodyWordCountsExcludingSourceAppendices": [1782, 1798, 1260, 1782, 1792],
     "maximumPairwiseFiveWordShingleJaccard": 0.0022115739034279398,
     "similarityThreshold": 0.5,
     "repeatedSubstantiveParagraphs": 0,
-    "qualitativeOriginality": "repair in progress: the Node.js, PostgreSQL, and Kubernetes replacements pass manual prior-corpus comparisons; the Next.js replacement remains",
-    "priorCorpusCollision": "Node.js, PostgreSQL, and Kubernetes replacements pass against their nearest prior studies; the Next.js rewrite remains fail-closed",
+    "qualitativeOriginality": "passed: all five Research articles have distinct decisions, argument sequences, worked examples, and reader outcomes",
+    "priorCorpusCollision": "passed manual comparison against each nearest prior repository article",
     "authoritativeSourceLinks": "15 of 15 returned HTTP 200 on 2026-10-05",
     "internalLinks": "all service and Research links are repository-defined routes and passed local rendering",
     "localRouteChecks": "all 5 returned 200 with title, visible UTC date, datePublished, exact canonical, full body, Research index entry, sitemap entry, and HTTP 200 image/svg+xml with valid SVG signature"
@@ -82,12 +82,12 @@
     },
     {
       "family": "research",
-      "topic": "Next.js Server Action authorization and proxy-origin handling",
-      "slug": "offshore-developer-nextjs-server-action-authorization-study-2026-10-05",
-      "sources": ["https://nextjs.org/docs/app/guides/data-security", "https://nextjs.org/docs/app/getting-started/mutating-data", "https://nextjs.org/docs/app/api-reference/config/next-config-js/serverActions"],
-      "contentHash": "2516b12c97c1c6165c1bcd383c6c935e576523f5a3712b11466d66e694542324",
+      "topic": "Next.js after() completion boundaries, self-hosted waitUntil, and durable effect recovery",
+      "slug": "offshore-developer-nextjs-after-lifecycle-study-2026-10-05",
+      "sources": ["https://nextjs.org/docs/15/app/api-reference/functions/after", "https://nextjs.org/docs/app/api-reference/functions/after"],
+      "contentHash": "bc32cf75100b57a1f4470c9b46af2881de5afc9264fafd160a5726b589c1c266",
       "actualPublicationDate": null,
-      "liveUrl": "https://developeroffshore.com/research/offshore-developer-nextjs-server-action-authorization-study-2026-10-05",
+      "liveUrl": "https://developeroffshore.com/research/offshore-developer-nextjs-after-lifecycle-study-2026-10-05",
       "verifiedAt": null
     }
   ]
