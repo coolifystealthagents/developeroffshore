@@ -21,7 +21,8 @@
       "title": "Review Permissions Policy Before an Embedded Tool Uses Browser Features",
       "decision": "Which document origins may use a selected browser capability across response-header and iframe allow boundaries.",
       "workedExample": "A same-origin page, an approved embedded origin, and an unapproved sibling each request geolocation under a narrow policy and record the browser decision.",
-      "sources": ["https://www.w3.org/TR/permissions-policy-1/", "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy"]
+      "sources": ["https://www.w3.org/TR/permissions-policy-1/", "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy"],
+      "status": "drafted_1119_body_words_audited_pass"
     },
     {
       "family": "blog",

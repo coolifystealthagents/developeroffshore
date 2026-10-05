@@ -175,73 +175,45 @@ export const october05BlogBatch: readonly BlogPost[] = [
     ],
   },
   {
-    slug: 'service-worker-update-lifecycle-handoff',
-    title: 'A Safe Service-Worker Update Handoff for Offshore Frontend Work',
-    excerpt: 'How to test installation, waiting, activation, mixed client versions, and recovery before a new service worker controls a live application.',
+    slug: 'permissions-policy-iframe-delegation-review',
+    title: 'Review Permissions Policy Before an Embedded Tool Uses Browser Features',
+    excerpt: 'A browser-policy review for deciding which document origins may use sensitive capabilities inside an embedded product flow.',
     minutes: 11,
-    revision: 'daily-blog-2026-10-05-service-worker-update-lifecycle-handoff',
+    revision: 'daily-blog-2026-10-05-permissions-policy-iframe-delegation-review',
     keyTakeaways: [
-      'Model the worker, page shell, caches, and API contract as one versioned system.',
-      'Test mixed old and new tabs before choosing immediate activation.',
-      'Give users and operators a recoverable update path when compatibility breaks.',
+      'Start with one browser capability, one embedded origin, and one user action.',
+      'Review the response policy and iframe allow attribute as separate restrictions.',
+      'Test browser behavior and user permission prompts without claiming universal support.',
     ],
     sections: [
-      {
-        heading: 'Begin with the mixed-version failure',
-        body: [
-          'A service-worker release can put four versions into one browser session: an older page document, older cached assets, a newly installed worker waiting to activate, and a server that already speaks the new API. The dangerous question is not whether the new worker installs on a clean profile. It is whether every allowed combination has a defined result. Start with a worked case: a user opens an editor in tab A, deploys occur, tab B opens, the worker updates, and tab A submits unsaved work through whichever controller now owns its requests.',
-          'Write the compatibility promise before implementation. Name the page-shell revision, asset-manifest revision, cache schema, worker revision, API versions, persisted browser data, and message formats. State which combinations may coexist and for how long. If a new worker cannot serve the old page safely, activation needs coordination. If the new server rejects the old client immediately, leaving the worker waiting does not solve the whole problem. Product and platform owners must decide the supported transition, while the developer makes it observable.'
-        ],
-      },
-      {
-        heading: 'Draw the browser lifecycle as states',
-        body: [
-          'Record registration, update check, download, install, waiting, activation, claim, fetch handling, redundancy, and unregister behavior. Attach the event or observable browser property that proves each state. A console message from install is not evidence that the worker controls the current page. navigator.serviceWorker.controller, registration.active, registration.waiting, controllerchange, and a worker-to-client version message answer different questions. Preserve browser and operating-system versions because lifecycle timing and background behavior vary.',
-          'Map every trigger that asks the browser to look for an update: navigation, an explicit registration update, a scheduled application check, or a user action. Document cache headers on the worker script and imported code. The browser update algorithm and HTTP caching both matter, so “the file changed on the server” is not a complete observation. Use version markers in synthetic responses and cache names, but do not derive correctness solely from a name; inspect actual controller and response provenance.'
-        ],
-      },
-      {
-        heading: 'Choose waiting or immediate activation deliberately',
-        body: [
-          'The default waiting phase protects pages controlled by the previous worker until those clients close. That is useful when old pages must finish with old behavior, but it can leave a worker waiting for days when a user keeps a tab open. Calling skipWaiting shortens that delay and can cause the new worker to activate while old documents remain open. clients.claim can then give the new worker control of pages that were loaded under different assumptions. Neither option is automatically safer.',
-          'Build a decision table for an unchanged release, backward-compatible cache change, incompatible message format, urgent security fix, and API contract break. For each, state whether activation waits, whether users see an update prompt, what happens to unsaved work, and what recovery remains. An urgent fix may justify immediate control, but it still needs a tested user outcome. The offshore developer should not add skipWaiting to make an automated check faster without the owner accepting the mixed-client consequence.'
-        ],
-      },
-      {
-        heading: 'Rehearse with two tabs and interrupted timing',
-        body: [
-          'Use a fresh isolated browser context and a version-pinned local production build. Load tab A under worker V1 and create unsaved synthetic input. Make V2 available, trigger the documented update check, and observe it install and wait. Open tab B, close only one tab, navigate tab A, and finally release the last V1-controlled client. Record controller identity, worker state, cache contents, visible application revision, requests, responses, and preservation of the input at each step.',
-          'Repeat with immediate activation if the product permits it. Pause V2 during install, fail one cache population request, close the browser between install and activation, go offline, restore connectivity, and update again to V3 while V2 controls clients. Test a page restored from browser history and a client that never receives the update message. Assertions should wait for lifecycle events and explicit state, not arbitrary sleeps. A passing single-tab reload cannot establish safe update behavior.'
-        ],
-      },
-      {
-        heading: 'Version caches by ownership and migration rule',
-        body: [
-          'List every cache the worker reads or writes, the request class it owns, and the rule for adding and deleting entries. During activate, remove only cache versions owned by this application and understood by the migration. A broad prefix or delete-all loop can erase another application’s data or remove a cache still needed by an older controlled client. If old and new clients coexist, either retain compatible assets for the overlap or prove that requests are content-addressed and remain available.',
-          'Test partial installation so a failed precache does not become an apparently complete release. Test an asset referenced by an old page after V2 activates, an API error cached accidentally, an opaque cross-origin response, a changed navigation fallback, storage pressure, and cache deletion followed by offline navigation. Compare response headers and bodies with network evidence. The browser returning status 200 does not prove the intended revision served it or that private content stayed outside a shared cache.'
-        ],
-      },
-      {
-        heading: 'Protect mutations and browser data across the transition',
-        body: [
-          'Separate safe asset reads from writes, queued background work, and synchronization. A worker update can replay or strand a queued mutation if its schema or acknowledgment rule changes. Give each logical mutation an idempotency identity and define which revision interprets its stored payload. Rehearse a request queued under V1 and delivered after V2 activates. Inspect durable application state, not only the queue becoming empty. Production replay or correction remains an owner decision.',
-          'If IndexedDB or another browser store changes, coordinate its migration with tabs that may still execute older code. An old tab can write an obsolete shape after a new tab migrates the database. Version-change events, blocked upgrades, and explicit read compatibility need their own fixture. Preserve unsaved work or state clearly that it cannot survive. The product owner decides acceptable loss; the developer supplies migration and recovery evidence without using customer browser data.'
-        ],
-      },
-      {
-        heading: 'Design a recovery path users can reach',
-        body: [
-          'An update prompt should identify that a new version is ready, explain whether refreshing can discard work, and offer the action only when its consequence is known. Move focus and announce status accessibly. If immediate activation occurs, listen for controllerchange without creating a reload loop. Store a bounded marker for the attempted transition so a broken worker does not force endless refreshes. Provide an escape that can reach a network page or support path when cached navigation is unusable.',
-          'Operational recovery may require serving a corrected worker at the same registration scope, not merely unregistering from application code that no longer loads. Test V3 recovering clients from a faulty V2 and document whether one navigation, all-tab closure, or storage clearing is needed. Do not tell users to clear all browser data as the primary rollback plan. That discards evidence and unrelated state while avoiding the application’s responsibility to recover its own scope.'
-        ],
-      },
-      {
-        heading: 'Hand off exact evidence and authority',
-        body: [
-          'The review packet includes scope, script URL, worker and shell revisions, compatibility table, lifecycle traces, two-tab results, cache inventory, offline cases, queued-mutation result, browser-data migration, accessible update flow, recovery rehearsal, browsers tested, limitations, and rollback owner. Link the source and build revision and retain synthetic fixtures. State whether V2 is installing, waiting, active but not controlling, controlling new clients, or controlling all observed clients instead of saying only deployed.',
-          'An offshore frontend developer can implement the registration flow, version messages, caches, fixtures, and accessible prompt inside an approved environment. Product owners decide acceptable interruption and data loss; security reviews caching and urgent fixes; release owners authorize public activation. Recheck after changes to scope, framework build output, cache strategy, API compatibility, browser storage, or supported browsers. Teams using Developer Offshore can start with this bounded assignment by bringing the current worker, release path, target browsers, and named reviewer.'
-        ],
-      },
+      { heading: 'Name the capability and the user action', body: [
+        'Permissions Policy controls whether a document or an embedded frame may use selected browser features. Begin with one capability and one reason for using it. The working case is an appointment tool embedded from booking.example inside an account page. The tool asks for geolocation only after a user chooses “use my location” to find a nearby office. The host page, approved frame, unapproved sibling frame, and top-level navigation each need an expected result. Do not begin with a header copied from another site or a wish to disable everything.',
+        'Write the product boundary beside the technical one. The tool must still support manual location entry when geolocation is unavailable, denied, unsupported, or blocked by policy. Browser permission and organizational authorization are different decisions. A browser prompt does not prove that the product should collect a location, and a policy grant does not bypass the user’s permission choice. Product and privacy owners define the purpose, retention, and fallback. The developer implements the narrow browser boundary and records what the tested policy actually does.'
+      ]},
+      { heading: 'Inventory origins and embedding paths', body: [
+        'List the top-level origin, every frame origin, redirects, authentication handoffs, development hosts, and any content delivery host that can serve the embedded document. Use exact origins in the evidence. “Our vendor” is not a browser origin, and a shared parent domain does not make sibling subdomains equivalent. Confirm which response emits Permissions-Policy and which element creates the iframe. A reverse proxy may add, replace, or merge headers, so inspect the browser response rather than trusting an application configuration file in isolation.',
+        'Map alternate paths that change the frame relationship. The same tool may open top level during login, return through a redirect, or nest another provider. A sandbox attribute can also limit behavior independently of Permissions Policy. Record iframe sandbox tokens, allow attribute, response headers, Content Security Policy frame rules, and the final document origin, but do not collapse them into one control. They answer different questions. Test the owned deployment path and one deliberately unapproved origin so the result can detect an allowlist that is wider than intended.'
+      ]},
+      { heading: 'Treat header policy and iframe delegation separately', body: [
+        'The response header sets policy for the document and its descendants. The iframe allow attribute applies another policy to that frame. Effective access is constrained by both; adding a permissive allow attribute cannot widen a feature that the parent response policy has already denied. Conversely, a broad parent policy does not mean every iframe should receive delegation. Keep the two layers visible in the review so a developer does not “fix” a blocked feature by weakening the wrong surface.',
+        'Create a small matrix: top-level self, approved booking origin, unapproved sibling, and a nested child if the product uses one. For each, record the response directive, iframe allow value, expected feature availability, expected permission prompt, and fallback. Start with the narrowest intended policy. Avoid wildcard delegation unless the product and security owners can name why every possible framed origin should receive the capability. If the application builds iframe attributes from data, validate that only reviewed feature and origin combinations can be emitted.'
+      ]},
+      { heading: 'Exercise a real API call with synthetic data', body: [
+        'Use an isolated browser profile and a version-pinned production build. Give the approved frame a synthetic coordinate through the browser test harness rather than using a person’s location. Trigger the request from the visible user action and record the frame origin, policy state where the browser exposes it, prompt or preconfigured permission result, callback outcome, fallback control, console message, and network behavior. The test passes only when the approved frame receives the fixture and the account page remains usable when it does not.',
+        'Run the same action in the unapproved sibling frame and from the host page if the host was not granted the feature. Test no prior permission decision, explicit denial, browser-level grant, policy denial despite a grant, missing allow attribute, wrong origin, redirected frame, and an unsupported browser. A policy denial may surface through a rejected promise, error callback, or diagnostic message depending on the API and browser. Assert the user-visible fallback and absence of unwanted data transfer instead of matching one console string.'
+      ]},
+      { heading: 'Check compatibility without overstating it', body: [
+        'Permissions Policy features and directive support vary across browsers and versions. MDN marks the header as having limited availability, so a Chromium-only pass cannot support a universal claim. Record browser name, version, platform, directive, API, frame topology, and observation. In a browser that ignores part of the policy, the application still needs ordinary permission handling, purpose limitation, authorization, and safe fallbacks. The review should distinguish “blocked by policy in this browser” from “the product never collects this data.”',
+        'Unknown or renamed directives need deliberate handling. Check the browser’s developer diagnostics and official compatibility information for the versions the product supports. Do not add speculative directives and infer protection because the response looks strict. Automated checks can confirm header presence and selected behavior, while a focused manual pass can inspect prompts, keyboard access, and fallback text. Revisit the matrix when the embedding origin, browser support list, capability, or response delivery path changes.'
+      ]},
+      { heading: 'Keep reporting and logs privacy bounded', body: [
+        'Policy violation reporting can help find blocked use, but a report is not permission to collect page content, coordinates, account identifiers, or arbitrary URLs. Define the approved endpoint, fields, access, retention, sampling, and owner before enabling reports. Seed one harmless violation and prove that it reaches the intended destination without sensitive application state. Browser support for reporting also varies, so absence of a report does not prove that no violation occurred.',
+        'Application telemetry should classify capability request, policy outcome, user permission outcome, fallback choice, frame origin class, and application revision using non-sensitive fixture identifiers. Never log the precise coordinate merely to prove the browser API returned. Separate expected user denial from configuration failure. An increase in denials might reflect user choice, a changed browser default, an incorrect allow attribute, or a proxy stripping the header. Each explanation has a different owner and next check.'
+      ]},
+      { heading: 'Deliver a review another shift can replay', body: [
+        'The handoff includes the selected capability, purpose owner, origin map, response header, iframe markup, sandbox and CSP context, browser matrix, synthetic fixture, allowed and denied observations, accessible fallback, reporting limits, deployment revisions, rollback, and open compatibility questions. Preserve literal non-sensitive response headers and frame HTML so the next reviewer can reproduce the material claim. A screenshot of a permission prompt cannot prove which frame received delegation or what happened after denial.',
+        'An offshore frontend developer can implement the policy, frame attribute, fallback, automated cases, and bounded telemetry in an approved environment. Client product and privacy owners decide whether the capability serves the user and how any resulting data may be used. Security owns delegation exceptions, platform owners control proxy headers, and release owners approve production exposure. Bring the current embed URL, desired capability, fallback, supported browsers, and named decision owners to a Developer Offshore contact discussion to scope this work without granting broad production access.'
+      ]},
     ],
     relatedLinks: [
       { label: 'React frontend development', href: '/services/react-frontend-development', note: 'Scope browser behavior and accessible recovery.' },
@@ -249,13 +221,12 @@ export const october05BlogBatch: readonly BlogPost[] = [
       { label: 'Discuss the assignment', href: '/contact', note: 'Bring the worker scope, release process, and reviewer.' },
     ],
     faqs: [
-      { question: 'Should every new service worker call skipWaiting?', answer: 'No. It can activate a new worker while older pages remain open. Use it only when the mixed-version behavior and user recovery are explicitly designed and tested.' },
-      { question: 'Does a successful install mean the new worker controls the page?', answer: 'No. It may be waiting, active without controlling the current page, or controlling only some clients. Record the lifecycle and controller state directly.' },
+      { question: 'Does an iframe allow attribute override the response header?', answer: 'No. The effective frame policy is constrained by both layers. A permissive iframe attribute cannot widen a feature denied by the parent response policy.' },
+      { question: 'Does policy delegation mean the user granted permission?', answer: 'No. Delegation makes the feature eligible in that document. The browser permission decision, product purpose, authorization, and fallback still apply.' },
     ],
     sources: [
-      { name: 'MDN: Using Service Workers', url: 'https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers', note: 'Registration, installation, activation, updates, and client control.' },
-      { name: 'W3C Service Workers', url: 'https://www.w3.org/TR/service-workers/', note: 'Normative lifecycle and processing model.' },
-      { name: 'web.dev: Service worker lifecycle', url: 'https://web.dev/articles/service-worker-lifecycle', note: 'Practical explanation of waiting, skipWaiting, and clients.claim.' },
+      { name: 'W3C Permissions Policy', url: 'https://www.w3.org/TR/permissions-policy-1/', note: 'Policy inheritance, declarations, container policy, and feature control.' },
+      { name: 'MDN: Permissions-Policy header', url: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy', note: 'Header syntax, browser compatibility, directives, and reporting behavior.' },
     ],
   },
   {
