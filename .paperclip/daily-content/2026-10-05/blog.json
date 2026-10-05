@@ -27,7 +27,7 @@
     "worktree": ".paperclip/worktrees/dev-93-20261005",
     "contentCommit": "9c4539166c885645fd601e594e2c72343597a3f7",
     "handoffCommit": "b20579c6de6754bc6da4c9f1c9786d4cb825d6bc",
-    "integratedCommits": ["3b50789d91f72ee30a001cbf4c5eb4ed85cb93dd", "4bb18355a0f324a806e34b239439696d95f5393b"],
+    "integratedCommits": ["3b50789c612392b134eedaf9f7177ec21f098fd9", "4bb18351556ab08c493636728799a9d47f8c651a"],
     "status": "integrated_5_of_5_pending_combined_revalidation"
   },
   "articles": [
