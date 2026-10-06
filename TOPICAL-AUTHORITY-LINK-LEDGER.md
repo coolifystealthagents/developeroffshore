@@ -112,3 +112,13 @@ All currently listed contextual candidates are delivered locally. Select a later
 - Fresh October 4 production artifacts confirm all 12 October 2 Blog guides and all 5 October 2 Research studies resolve to self-canonical generated routes and appear in the sitemap.
 - Each Blog route has its declared service link in route-local `<main>` through the related guide and banner positions. Each Research route has its declared one or two related-service links in route-local `<main>`.
 - These 17 source-to-service paths are delivered and non-duplicable. The next topical-authority action must start with a new clean-baseline candidate audit rather than add another CTA to this release set.
+
+## October 5 research route-to-service reconciliation
+
+- A fresh production build on 2026-10-06 confirmed that the five current October 5 research studies are generated, self-canonical, and listed in the sitemap. Their service links are record-owned in `app/oct05-research-batch.ts` and render once inside each route-local `<main>`.
+- `/research/offshore-developer-nodejs-worker-transfer-ownership-study-2026-10-05` links to `/services/node-js-api-development` and `/services/qa-automation-engineering`.
+- `/research/offshore-developer-postgresql-listen-notify-outbox-study-2026-10-05` links to `/services/data-pipeline-development` and `/services/legacy-application-maintenance`.
+- `/research/offshore-developer-playwright-auth-state-isolation-study-2026-10-05` links to `/services/qa-automation-engineering` and `/services/react-frontend-development`.
+- `/research/offshore-developer-kubernetes-statefulset-partition-study-2026-10-05` links to `/services/devops-release-support` and `/services/legacy-application-maintenance`.
+- `/research/offshore-developer-nextjs-after-lifecycle-study-2026-10-05` links to `/services/next-js-application-development` and `/services/node-js-api-development`.
+- All ten route-to-service placements are delivered and non-duplicable. Do not add another contextual CTA to these studies; select a later artifact-backed candidate for the next reader-facing improvement.
