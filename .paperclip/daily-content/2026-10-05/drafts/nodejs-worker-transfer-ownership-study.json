@@ -1,7 +1,7 @@
 {
   "slug": "offshore-developer-nodejs-worker-transfer-ownership-study-2026-10-05",
   "title": "A Node.js Worker Transfer-Ownership Study for CPU-Bound API Work",
-  "published": "2026-10-05",
+  "published": "2026-10-06",
   "excerpt": "A version-pinned experiment for deciding when worker messages should clone, transfer, or share binary data without corrupting the request path.",
   "keyStats": ["1 pinned Node.js runtime", "14 clone, transfer, alias, failure, and recovery cases", "2 worker replacement paths"],
   "takeaways": ["Choose ownership before choosing a transfer list.", "Assert detachment and alias behavior on both sides of the message.", "Keep cancellation and worker replacement separate from memory transfer."],

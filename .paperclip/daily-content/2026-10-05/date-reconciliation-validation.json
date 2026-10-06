@@ -1,0 +1,666 @@
+{
+  "verifiedAt": "2026-10-06T08:18:15.938Z",
+  "base": "http://127.0.0.1:3106",
+  "expectedDate": "2026-10-06",
+  "counts": {
+    "blog": 12,
+    "research": 5,
+    "total": 17
+  },
+  "familySimilarity": {
+    "blog": {
+      "value": 0.0009694619486185168,
+      "pair": [
+        "email-dmarc-alignment-delegated-sender-review",
+        "postgres-exclusion-constraint-booking-review"
+      ]
+    },
+    "research": {
+      "value": 0.0027533039647577094,
+      "pair": [
+        "offshore-developer-postgresql-listen-notify-outbox-study-2026-10-05",
+        "offshore-developer-nextjs-after-lifecycle-study-2026-10-05"
+      ]
+    }
+  },
+  "qualitativePriorAuditCount": 17,
+  "internalLinks": [
+    "/services/node-js-api-development",
+    "/services",
+    "/contact",
+    "/services/qa-automation-engineering",
+    "/services/legacy-application-maintenance",
+    "/services/data-pipeline-development",
+    "/services/react-frontend-development",
+    "/services/devops-release-support",
+    "/research",
+    "/services/next-js-application-development"
+  ],
+  "sourceEvidence": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc8470",
+      "status": 200,
+      "finalUrl": "https://www.rfc-editor.org/info/rfc8470/"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc8446",
+      "status": 200,
+      "finalUrl": "https://www.rfc-editor.org/info/rfc8446/"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110",
+      "status": 200,
+      "finalUrl": "https://www.rfc-editor.org/info/rfc9110/"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/ETag",
+      "status": 200,
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/ETag"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/transaction-iso.html",
+      "status": 200,
+      "finalUrl": "https://www.postgresql.org/docs/current/transaction-iso.html"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/explicit-locking.html",
+      "status": 200,
+      "finalUrl": "https://www.postgresql.org/docs/current/explicit-locking.html"
+    },
+    {
+      "url": "https://www.w3.org/TR/permissions-policy-1/",
+      "status": 200,
+      "finalUrl": "https://www.w3.org/TR/permissions-policy-1/"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy",
+      "status": 200,
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy"
+    },
+    {
+      "url": "https://www.w3.org/TR/trusted-types/",
+      "status": 200,
+      "finalUrl": "https://www.w3.org/TR/trusted-types/"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/require-trusted-types-for",
+      "status": 200,
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/require-trusted-types-for"
+    },
+    {
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html",
+      "status": 200,
+      "finalUrl": "https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html"
+    },
+    {
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/listbox/",
+      "status": 200,
+      "finalUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/listbox/"
+    },
+    {
+      "url": "https://www.w3.org/TR/wai-aria-1.2/",
+      "status": 200,
+      "finalUrl": "https://www.w3.org/TR/wai-aria-1.2/"
+    },
+    {
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "status": 200,
+      "finalUrl": "https://www.w3.org/TR/WCAG22/"
+    },
+    {
+      "url": "https://developer.hashicorp.com/terraform/language/modules/develop/refactoring",
+      "status": 200,
+      "finalUrl": "https://developer.hashicorp.com/terraform/language/modules/develop/refactoring"
+    },
+    {
+      "url": "https://developer.hashicorp.com/terraform/cli/state/resource-addressing",
+      "status": 200,
+      "finalUrl": "https://developer.hashicorp.com/terraform/cli/state/resource-addressing"
+    },
+    {
+      "url": "https://developer.hashicorp.com/terraform/cli/commands/plan",
+      "status": 200,
+      "finalUrl": "https://developer.hashicorp.com/terraform/cli/commands/plan"
+    },
+    {
+      "url": "https://kubernetes.io/docs/reference/using-api/server-side-apply/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/reference/using-api/server-side-apply/"
+    },
+    {
+      "url": "https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/reference/using-api/server-side-apply/"
+    },
+    {
+      "url": "https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7489",
+      "status": 200,
+      "finalUrl": "https://www.rfc-editor.org/info/rfc7489/"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7208",
+      "status": 200,
+      "finalUrl": "https://www.rfc-editor.org/info/rfc7208/"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc6376",
+      "status": 200,
+      "finalUrl": "https://www.rfc-editor.org/info/rfc6376/"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/rangetypes.html",
+      "status": 200,
+      "finalUrl": "https://www.postgresql.org/docs/current/rangetypes.html"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/ddl-constraints.html",
+      "status": 200,
+      "finalUrl": "https://www.postgresql.org/docs/current/ddl-constraints.html"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/btree-gist.html",
+      "status": 200,
+      "finalUrl": "https://www.postgresql.org/docs/current/btree-gist.html"
+    },
+    {
+      "url": "https://www.w3.org/TR/css-contain-3/",
+      "status": 200,
+      "finalUrl": "https://www.w3.org/TR/css-contain-3/"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries",
+      "status": 200,
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_queries"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9421",
+      "status": 200,
+      "finalUrl": "https://www.rfc-editor.org/info/rfc9421/"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9530",
+      "status": 200,
+      "finalUrl": "https://www.rfc-editor.org/info/rfc9530/"
+    },
+    {
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html",
+      "status": 200,
+      "finalUrl": "https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html"
+    },
+    {
+      "url": "https://nodejs.org/api/worker_threads.html",
+      "status": 200,
+      "finalUrl": "https://nodejs.org/api/worker_threads.html"
+    },
+    {
+      "url": "https://nodejs.org/api/buffer.html",
+      "status": 200,
+      "finalUrl": "https://nodejs.org/api/buffer.html"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/sql-listen.html",
+      "status": 200,
+      "finalUrl": "https://www.postgresql.org/docs/current/sql-listen.html"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/sql-notify.html",
+      "status": 200,
+      "finalUrl": "https://www.postgresql.org/docs/current/sql-notify.html"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/libpq-notify.html",
+      "status": 200,
+      "finalUrl": "https://www.postgresql.org/docs/current/libpq-notify.html"
+    },
+    {
+      "url": "https://playwright.dev/docs/auth",
+      "status": 200,
+      "finalUrl": "https://playwright.dev/docs/auth"
+    },
+    {
+      "url": "https://playwright.dev/docs/api/class-browsercontext",
+      "status": 200,
+      "finalUrl": "https://playwright.dev/docs/api/class-browsercontext"
+    },
+    {
+      "url": "https://playwright.dev/docs/test-configuration",
+      "status": 200,
+      "finalUrl": "https://playwright.dev/docs/test-configuration"
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/"
+    },
+    {
+      "url": "https://kubernetes.io/docs/reference/kubernetes-api/apps/stateful-set-v1/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/reference/kubernetes-api/apps/stateful-set-v1/"
+    },
+    {
+      "url": "https://nextjs.org/docs/15/app/api-reference/functions/after",
+      "status": 200,
+      "finalUrl": "https://nextjs.org/docs/15/app/api-reference/functions/after"
+    },
+    {
+      "url": "https://nextjs.org/docs/app/api-reference/functions/after",
+      "status": 200,
+      "finalUrl": "https://nextjs.org/docs/app/api-reference/functions/after"
+    }
+  ],
+  "routes": [
+    {
+      "family": "blog",
+      "slug": "http-425-early-data-replay-review",
+      "route": "/blog/http-425-early-data-replay-review",
+      "title": "Review HTTP 425 Before Early Data Replays a Product Action",
+      "bodyWordCount": 1046,
+      "bodyHash": "45b94bf1ef1b8f9f4ddb3e1d709a219ddc8996cb3f228fa8641a4eb93219731c",
+      "paragraphs": 12,
+      "canonical": "https://developeroffshore.com/blog/http-425-early-data-replay-review",
+      "imageUrl": "https://developeroffshore.com/visuals/philippines-time-zone-handoff.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 94332,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "offshore-developer-webhook-replay-protection-2026-08-13",
+        "nearestPriorFile": "app/aug13-blog-batch.ts",
+        "decisionComparison": "The prior article authenticates and deduplicates repeated webhook events; this article decides whether an HTTP request exposed to TLS early-data replay must be deferred or retried with 425 across intermediary hops.",
+        "workedExampleComparison": "A synthetic reservation traverses a gateway twice with Early-Data: 1 and is retried after handshake completion, rather than replaying a signed webhook fixture.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "blog",
+      "slug": "http-etag-lost-update-review",
+      "route": "/blog/http-etag-lost-update-review",
+      "title": "Use HTTP ETags to Stop Lost Updates in Distributed Product Work",
+      "bodyWordCount": 981,
+      "bodyHash": "ba38eab572156298fb68c2fcc6a28e2b5f51d5f225a5a39548ca92e0f5ea897b",
+      "paragraphs": 14,
+      "canonical": "https://developeroffshore.com/blog/http-etag-lost-update-review",
+      "imageUrl": "https://developeroffshore.com/visuals/philippines-time-zone-handoff.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 94332,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "offshore-developer-optimistic-lock-conflict-2026-09-07",
+        "nearestPriorFile": "app/sep07-blog-batch.ts",
+        "decisionComparison": "The prior article centers on user conflict recovery; this article defines strong validators, If-Match semantics, intermediary behavior, and an atomic persistence predicate.",
+        "workedExampleComparison": "Ana and Ben's version-14 request demonstrates the wire and commit contract rather than only the conflict UI.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "blog",
+      "slug": "postgres-transaction-isolation-anomaly-handoff",
+      "route": "/blog/postgres-transaction-isolation-anomaly-handoff",
+      "title": "Rehearse PostgreSQL Transaction Anomalies Before Choosing Isolation",
+      "bodyWordCount": 944,
+      "bodyHash": "61fc77b6e64e0a615dcb057cc55bf9cb8fe3b7c31a2c15912bdc95f20082cfac",
+      "paragraphs": 14,
+      "canonical": "https://developeroffshore.com/blog/postgres-transaction-isolation-anomaly-handoff",
+      "imageUrl": "https://developeroffshore.com/visuals/philippines-time-zone-handoff.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 94332,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "offshore-developer-postgresql-transaction-retry-study-2026-09-08",
+        "nearestPriorFile": "app/sep08-research-batch.ts",
+        "decisionComparison": "The prior work asks which failures can be retried; this article chooses isolation or constraint controls for a multi-row invariant.",
+        "workedExampleComparison": "Two barrier-synchronized sessions produce write skew, rather than replaying a serialization failure.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "blog",
+      "slug": "permissions-policy-iframe-delegation-review",
+      "route": "/blog/permissions-policy-iframe-delegation-review",
+      "title": "Review Permissions Policy Before an Embedded Tool Uses Browser Features",
+      "bodyWordCount": 1119,
+      "bodyHash": "e3e43dd755c2d95b4f2797f99c00cfdf86382f01a7cbc64f80cb4c0dabb1260c",
+      "paragraphs": 14,
+      "canonical": "https://developeroffshore.com/blog/permissions-policy-iframe-delegation-review",
+      "imageUrl": "https://developeroffshore.com/visuals/managed-team-comparison.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 65475,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "offshore-developer-csp-rollout-checklist-2026-09-01",
+        "nearestPriorFile": "app/sep01-blog-batch.ts",
+        "decisionComparison": "The prior article stages resource restrictions through Content Security Policy; this article decides capability eligibility for exact document origins through Permissions-Policy inheritance and iframe container policy.",
+        "workedExampleComparison": "An approved booking frame, unapproved sibling, and host page request synthetic geolocation under separate header and allow restrictions rather than loading a checkout resource from an undocumented host.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "blog",
+      "slug": "trusted-types-enforcement-rollout",
+      "route": "/blog/trusted-types-enforcement-rollout",
+      "title": "Roll Out Trusted Types Without Hiding DOM Injection Risk",
+      "bodyWordCount": 1167,
+      "bodyHash": "7af2a2633c0984c0f5e9674719c930c0f41021542215feeae8d5d885f783a038",
+      "paragraphs": 16,
+      "canonical": "https://developeroffshore.com/blog/trusted-types-enforcement-rollout",
+      "imageUrl": "https://developeroffshore.com/visuals/launch-roadmap.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 89443,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "offshore-developer-csp-rollout-checklist-2026-09-01",
+        "nearestPriorFile": "app/sep01-blog-batch.ts",
+        "decisionComparison": "The prior article governs CSP deployment broadly; this one inventories DOM sinks and governs Trusted Type policy transformations before require-trusted-types-for enforcement.",
+        "workedExampleComparison": "The support-preview adversarial markup fixture exercises the policy-to-sink transformation boundary.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "blog",
+      "slug": "accessible-virtualized-list-test-handoff",
+      "route": "/blog/accessible-virtualized-list-test-handoff",
+      "title": "Test an Accessible Virtualized List Beyond the Visible Rows",
+      "bodyWordCount": 1101,
+      "bodyHash": "2d9006ffc570aa3e5baa5eeab58560cebc0cddecf57fe83736ae54d75b93aeb3",
+      "paragraphs": 16,
+      "canonical": "https://developeroffshore.com/blog/accessible-virtualized-list-test-handoff",
+      "imageUrl": "https://developeroffshore.com/visuals/operations-dashboard.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 58750,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "accessibility-regression-2026-08-19",
+        "nearestPriorFile": "app/aug19-blog-batch.ts",
+        "decisionComparison": "The prior work is a general accessibility regression lane; this article resolves logical identity, set position, recycled DOM, and focus behavior in a virtualized collection.",
+        "workedExampleComparison": "Keyboard movement from logical item 18 to 23 crosses and re-enters the mounted window.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "blog",
+      "slug": "terraform-moved-block-refactor-review",
+      "route": "/blog/terraform-moved-block-refactor-review",
+      "title": "Refactor Terraform Resource Addresses Without Recreating Infrastructure",
+      "bodyWordCount": 1023,
+      "bodyHash": "4fd125e98f590bdc06758866c7f6ad6858f7115aca686fc109b9c7e111a26576",
+      "paragraphs": 16,
+      "canonical": "https://developeroffshore.com/blog/terraform-moved-block-refactor-review",
+      "imageUrl": "https://developeroffshore.com/visuals/philippines-time-zone-handoff.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 94332,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "terraform-drift-review-offshore-team",
+        "nearestPriorFile": "app/sep28-blog-batch.ts",
+        "decisionComparison": "The prior work reconciles unexplained remote drift; this article preserves state identity during an intentional address refactor.",
+        "workedExampleComparison": "A synthetic root resource moves into a child module while retaining the same remote ID.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "blog",
+      "slug": "kubernetes-server-side-apply-ownership-review",
+      "route": "/blog/kubernetes-server-side-apply-ownership-review",
+      "title": "Review Kubernetes Server-Side Apply Ownership Before Forcing Conflicts",
+      "bodyWordCount": 974,
+      "bodyHash": "4e876ea4331d6ee34662261fc51789bd7f0beaf073128a079b46eca1a611ac20",
+      "paragraphs": 16,
+      "canonical": "https://developeroffshore.com/blog/kubernetes-server-side-apply-ownership-review",
+      "imageUrl": "https://developeroffshore.com/visuals/managed-team-comparison.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 65475,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "kubernetes-readiness-gate-review",
+        "nearestPriorFile": "app/oct02-blog-batch.ts",
+        "decisionComparison": "The prior work decides readiness; this article resolves field-manager ownership and whether a conflict may be forced.",
+        "workedExampleComparison": "An autoscaler and release manager contend specifically over Deployment replicas.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "blog",
+      "slug": "email-dmarc-alignment-delegated-sender-review",
+      "route": "/blog/email-dmarc-alignment-delegated-sender-review",
+      "title": "Review DMARC Alignment Before a Delegated Sender Goes Live",
+      "bodyWordCount": 1067,
+      "bodyHash": "43eb9405fb851da8064d2b7f91f5a703764e249e6cf240565c8fb6618d65ff7e",
+      "paragraphs": 16,
+      "canonical": "https://developeroffshore.com/blog/email-dmarc-alignment-delegated-sender-review",
+      "imageUrl": "https://developeroffshore.com/visuals/va-workflow.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 79134,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "offshore-developer-email-bounce-handling-2026-09-01",
+        "nearestPriorFile": "app/sep01-blog-batch.ts",
+        "decisionComparison": "The prior work governs bounce-state handling; this article proves SPF or DKIM organizational-domain alignment for a delegated sender.",
+        "workedExampleComparison": "Receiver headers show SPF passing for a vendor bounce domain while visible-From alignment still fails.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "blog",
+      "slug": "postgres-exclusion-constraint-booking-review",
+      "route": "/blog/postgres-exclusion-constraint-booking-review",
+      "title": "Prevent Overlapping Bookings With a PostgreSQL Exclusion Constraint",
+      "bodyWordCount": 973,
+      "bodyHash": "861ef1e4367340c8cd79e397c95475241eef3cc4dda64e9ea4f15a57c4cdffee",
+      "paragraphs": 12,
+      "canonical": "https://developeroffshore.com/blog/postgres-exclusion-constraint-booking-review",
+      "imageUrl": "https://developeroffshore.com/visuals/operations-dashboard.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 58750,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "offshore-developer-postgresql-transaction-retry-study-2026-09-08",
+        "nearestPriorFile": "app/sep08-research-batch.ts",
+        "decisionComparison": "The prior study classifies transaction failures for retry; this article moves a room-and-time non-overlap invariant into a GiST exclusion constraint with explicit range semantics.",
+        "workedExampleComparison": "Two barrier-synchronized sessions attempt overlapping Cedar reservations plus adjacent and cross-room controls, rather than replaying a failed transaction to decide retry safety.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "blog",
+      "slug": "css-container-query-component-test-handoff",
+      "route": "/blog/css-container-query-component-test-handoff",
+      "title": "Test CSS Container Queries as a Component Contract",
+      "bodyWordCount": 977,
+      "bodyHash": "ab2bdbb9035a3e5fa45041c8230b77f5073740a1ce4b90dc5dc16ce1ef78da2c",
+      "paragraphs": 16,
+      "canonical": "https://developeroffshore.com/blog/css-container-query-component-test-handoff",
+      "imageUrl": "https://developeroffshore.com/visuals/philippines-time-zone-handoff.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 94332,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "offshore-developer-responsive-regression-research-2026-08-18",
+        "nearestPriorFile": "app/aug18-research-batch.ts",
+        "decisionComparison": "The prior work selects viewport cohorts for a journey; this article derives a component breakpoint from containing-block failure independent of viewport.",
+        "workedExampleComparison": "One pricing card is measured around its failure width while embedded in three different hosts.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "blog",
+      "slug": "http-message-signature-proxy-boundary-review",
+      "route": "/blog/http-message-signature-proxy-boundary-review",
+      "title": "Verify HTTP Message Signatures Across a Reverse-Proxy Boundary",
+      "bodyWordCount": 945,
+      "bodyHash": "ba39688f20eabec7a2849e22c4c0819218251cdcbb6c10b03e15093e1efbffb9",
+      "paragraphs": 16,
+      "canonical": "https://developeroffshore.com/blog/http-message-signature-proxy-boundary-review",
+      "imageUrl": "https://developeroffshore.com/visuals/philippines-time-zone-handoff.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 94332,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "oauth-token-exchange-boundary-review",
+        "nearestPriorFile": "app/sep28-blog-batch.ts",
+        "decisionComparison": "The prior work delegates bearer authority; this article fixes covered HTTP component canonicalization across proxy rewrites.",
+        "workedExampleComparison": "Host and path mutations around a signed command reveal which representation each hop verifies.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "research",
+      "slug": "offshore-developer-nodejs-worker-transfer-ownership-study-2026-10-05",
+      "route": "/research/offshore-developer-nodejs-worker-transfer-ownership-study-2026-10-05",
+      "title": "A Node.js Worker Transfer-Ownership Study for CPU-Bound API Work",
+      "bodyWordCount": 1782,
+      "bodyHash": "2f3f5970d6eb15e6320ee6ddeccf0cb4d38bf6f5c9b20f88752af1d3804dfadd",
+      "paragraphs": 22,
+      "canonical": "https://developeroffshore.com/research/offshore-developer-nodejs-worker-transfer-ownership-study-2026-10-05",
+      "imageUrl": "https://developeroffshore.com/visuals/launch-roadmap.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 89443,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "node-async-context-propagation-pilot",
+        "nearestPriorFile": "app/sep28-research-batch.ts",
+        "decisionComparison": "The prior study measures AsyncLocalStorage propagation and request-context contamination; this study decides between structured cloning, ArrayBuffer transfer, and shared memory for worker-thread buffer ownership, including detachment, cancellation, worker failure, and replacement.",
+        "workedExampleComparison": "Aliased TypedArray and DataView slices plus pooled Buffer views cross clone, transfer, and shared-memory cases; the fixture does not reuse the prior study's interleaved request markers.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "research",
+      "slug": "offshore-developer-postgresql-listen-notify-outbox-study-2026-10-05",
+      "route": "/research/offshore-developer-postgresql-listen-notify-outbox-study-2026-10-05",
+      "title": "A PostgreSQL LISTEN/NOTIFY and Durable Outbox Study for Event Wakeups",
+      "bodyWordCount": 1798,
+      "bodyHash": "0402f67064698c39163dc411ed7d39bbd77e5b9dc5a957beef956a3f16646699",
+      "paragraphs": 22,
+      "canonical": "https://developeroffshore.com/research/offshore-developer-postgresql-listen-notify-outbox-study-2026-10-05",
+      "imageUrl": "https://developeroffshore.com/visuals/launch-roadmap.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 89443,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "offshore-developer-outbox-delivery-study-2026-09-04",
+        "nearestPriorFile": "app/sep04-research-batch.ts",
+        "decisionComparison": "The prior study asks what atomic outbox persistence guarantees across a downstream relay and consumer effect; this study decides whether PostgreSQL LISTEN/NOTIFY may reduce wake latency while a queryable cursor remains the sole recovery path, with PostgreSQL-specific startup, transaction, duplicate-folding, and queue rules.",
+        "workedExampleComparison": "A listener is cut in four windows around LISTEN commit, wake receipt, outbox query, and checkpoint commit, then must recover by cursor; the prior study follows one transaction through a generic relay and downstream message duplicate.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "research",
+      "slug": "offshore-developer-playwright-auth-state-isolation-study-2026-10-05",
+      "route": "/research/offshore-developer-playwright-auth-state-isolation-study-2026-10-05",
+      "title": "Testing Playwright Authentication-State Isolation in Parallel QA",
+      "bodyWordCount": 1260,
+      "bodyHash": "05120fe2f0e7a70954cd40edc5eaa17a38c4208aba42562e440720f1b0666a32",
+      "paragraphs": 16,
+      "canonical": "https://developeroffshore.com/research/offshore-developer-playwright-auth-state-isolation-study-2026-10-05",
+      "imageUrl": "https://developeroffshore.com/visuals/va-workflow.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 79134,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "offshore-developer-playwright-trace-data-exposure-study-2026-10-02",
+        "nearestPriorFile": "app/oct02-research-batch.ts",
+        "decisionComparison": "The prior study decides whether trace artifacts are safe to share; this one prevents account and tenant state leakage between parallel BrowserContexts.",
+        "workedExampleComparison": "Member-A and member-B workers use cross-tenant tripwires under parallel execution.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "research",
+      "slug": "offshore-developer-kubernetes-statefulset-partition-study-2026-10-05",
+      "route": "/research/offshore-developer-kubernetes-statefulset-partition-study-2026-10-05",
+      "title": "A Kubernetes StatefulSet Partitioned-Rollout Study for Ordered Services",
+      "bodyWordCount": 1782,
+      "bodyHash": "2a77a5fb7c16acf9b4bbef292c08bf713de68cd1049dc620b973e8f7fbf98b45",
+      "paragraphs": 24,
+      "canonical": "https://developeroffshore.com/research/offshore-developer-kubernetes-statefulset-partition-study-2026-10-05",
+      "imageUrl": "https://developeroffshore.com/visuals/managed-team-comparison.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 65475,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "kubernetes-pod-disruption-budget-drain-pilot",
+        "nearestPriorFile": "app/sep28-research-batch.ts",
+        "decisionComparison": "The prior study decides eviction feasibility during a node drain under disruption budgets; this study decides how rollingUpdate.partition stages StatefulSet template revisions while preserving ordinal, claim, readiness, and rollback evidence.",
+        "workedExampleComparison": "A three-ordinal StatefulSet updates ledger-2 then ledger-1, stops on a seeded readiness failure, checks persistent markers, and rehearses mixed-revision rollback; it does not evict Pods or vary a disruption budget.",
+        "verdict": "pass"
+      }
+    },
+    {
+      "family": "research",
+      "slug": "offshore-developer-nextjs-after-lifecycle-study-2026-10-05",
+      "route": "/research/offshore-developer-nextjs-after-lifecycle-study-2026-10-05",
+      "title": "A Next.js after() Lifecycle Study for Post-Response Work",
+      "bodyWordCount": 1792,
+      "bodyHash": "bc32cf75100b57a1f4470c9b46af2881de5afc9264fafd160a5726b589c1c266",
+      "paragraphs": 24,
+      "canonical": "https://developeroffshore.com/research/offshore-developer-nextjs-after-lifecycle-study-2026-10-05",
+      "imageUrl": "https://developeroffshore.com/visuals/philippines-time-zone-handoff.svg",
+      "imageType": "image/svg+xml",
+      "imageDimensions": [
+        1200,
+        760
+      ],
+      "rasterDecodedBytes": 94332,
+      "qualitativePriorAudit": {
+        "nearestPriorSlug": "nextjs-server-action-authorization-review",
+        "nearestPriorFile": "app/sep28-blog-batch.ts",
+        "decisionComparison": "The prior article protects identity, object authorization, and origin handling for a directly reachable mutation; this study classifies post-response work by loss tolerance and tests after(), self-hosted waitUntil, maxDuration, build execution, shutdown, and durable recovery.",
+        "workedExampleComparison": "A synthetic audit task runs across success, error, redirect, timeout, duplicate request, build, graceful stop, and forced termination, then compares a durable job; it does not replay another tenant's Server Action.",
+        "verdict": "pass"
+      }
+    }
+  ]
+}

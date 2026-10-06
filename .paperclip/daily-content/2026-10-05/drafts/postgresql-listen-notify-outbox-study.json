@@ -1,7 +1,7 @@
 {
   "slug": "offshore-developer-postgresql-listen-notify-outbox-study-2026-10-05",
   "title": "A PostgreSQL LISTEN/NOTIFY and Durable Outbox Study for Event Wakeups",
-  "published": "2026-10-05",
+  "published": "2026-10-06",
   "excerpt": "A failure-driven study of PostgreSQL notifications as low-latency wakeups while durable outbox rows remain the recoverable record of work.",
   "keyStats": ["1 version-pinned PostgreSQL instance", "18 delivery and recovery cases", "4 disconnect windows"],
   "takeaways": ["Store work before signaling it.", "Treat a notification as permission to look, not as the event record.", "Recover from an outbox cursor after every reconnect."],

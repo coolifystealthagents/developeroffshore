@@ -721,4 +721,4 @@ export const october05BlogBatch: readonly BlogPost[] = [
       { name: 'OWASP REST Security Cheat Sheet', url: 'https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html', note: 'Transport, authorization, input, and replay-related controls.' },
     ],
   },
-].map((post) => ({ ...post, datePublished: '2026-10-05' }));
+].map((post) => ({ ...post, datePublished: '2026-10-06' }));

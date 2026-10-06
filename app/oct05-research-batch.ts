@@ -4,7 +4,7 @@ export const october5ResearchBatch: readonly ResearchPost[] = [
 {
     "slug": "offshore-developer-nodejs-worker-transfer-ownership-study-2026-10-05",
     "title": "A Node.js Worker Transfer-Ownership Study for CPU-Bound API Work",
-    "published": "2026-10-05",
+    "published": "2026-10-06",
     "excerpt": "A version-pinned experiment for deciding when worker messages should clone, transfer, or share binary data without corrupting the request path.",
     "keyStats": [
       "1 pinned Node.js runtime",
@@ -133,7 +133,7 @@ export const october5ResearchBatch: readonly ResearchPost[] = [
   {
     "slug": "offshore-developer-postgresql-listen-notify-outbox-study-2026-10-05",
     "title": "A PostgreSQL LISTEN/NOTIFY and Durable Outbox Study for Event Wakeups",
-    "published": "2026-10-05",
+    "published": "2026-10-06",
     "excerpt": "A failure-driven study of PostgreSQL notifications as low-latency wakeups while durable outbox rows remain the recoverable record of work.",
     "keyStats": [
       "1 version-pinned PostgreSQL instance",
@@ -264,7 +264,7 @@ export const october5ResearchBatch: readonly ResearchPost[] = [
     ]
   },
   {
-    slug:'offshore-developer-playwright-auth-state-isolation-study-2026-10-05',title:'Testing Playwright Authentication-State Isolation in Parallel QA',published:'2026-10-05',
+    slug:'offshore-developer-playwright-auth-state-isolation-study-2026-10-05',title:'Testing Playwright Authentication-State Isolation in Parallel QA',published:'2026-10-06',
     excerpt:'A role-aware experiment for deciding when saved browser state is reusable, when parallel tests need separate accounts, and how artifacts stay free of credentials.',
     keyStats:['3 synthetic roles','5 state-boundary attacks','2 parallel execution models'],
     takeaways:['Treat saved browser state as a credential-bearing artifact.','Use separate accounts when tests mutate shared server state.','Prove denied actions and cleanup, not only successful login.'],
@@ -308,7 +308,7 @@ export const october5ResearchBatch: readonly ResearchPost[] = [
   {
     "slug": "offshore-developer-kubernetes-statefulset-partition-study-2026-10-05",
     "title": "A Kubernetes StatefulSet Partitioned-Rollout Study for Ordered Services",
-    "published": "2026-10-05",
+    "published": "2026-10-06",
     "excerpt": "A controlled study of StatefulSet partition changes, ordinal identity, readiness failures, and rollback evidence for an ordered service.",
     "keyStats": [
       "1 version-pinned Kubernetes cluster",
@@ -444,7 +444,7 @@ export const october5ResearchBatch: readonly ResearchPost[] = [
   {
     "slug": "offshore-developer-nextjs-after-lifecycle-study-2026-10-05",
     "title": "A Next.js after() Lifecycle Study for Post-Response Work",
-    "published": "2026-10-05",
+    "published": "2026-10-06",
     "excerpt": "A version-pinned test of when Next.js after() completes useful post-response work and when a durable queue is still required.",
     "keyStats": [
       "1 pinned Next.js self-hosted build",

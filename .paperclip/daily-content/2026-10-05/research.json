@@ -14,8 +14,8 @@
   "contentCommit": "9c4539166c885645fd601e594e2c72343597a3f7",
   "handoffCommit": "recorded in DEV-93 and DEV-94 handoff comments after the ledger commit",
   "cycleLabel": "2026-10-05",
-  "sourcePublicationDate": "2026-10-05",
-  "publicationDateStatus": "UTC source date is valid only if the combined release first becomes public and passes verification on 2026-10-05 UTC; Blog integrator must reconcile all date surfaces immediately before the sole push and must change them if publication occurs on another local date.",
+  "sourcePublicationDate": "2026-10-06",
+  "publicationDateStatus": "UTC source date was reconciled locally to the operator-confirmed first-publication window of 2026-10-06; actualPublicationDate and verifiedAt remain null until exact-SHA deployment and public verification.",
   "timezone": "UTC",
   "deployment": {
     "provider": "Coolify3",

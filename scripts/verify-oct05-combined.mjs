@@ -7,7 +7,7 @@ import sharp from 'sharp';
 
 const root = process.cwd();
 const base = process.env.VERIFY_BASE_URL || 'http://127.0.0.1:3000';
-const expectedDate = process.env.VERIFY_PUBLICATION_DATE || '2026-10-05';
+const expectedDate = process.env.VERIFY_PUBLICATION_DATE || '2026-10-06';
 const timeoutMs = 20000;
 const qualitativePriorAuditPath = path.join(root, '.paperclip/daily-content/2026-10-05/qualitative-prior-corpus-audit.json');
 const qualitativePriorAuditDocument = JSON.parse(fs.readFileSync(qualitativePriorAuditPath, 'utf8'));
