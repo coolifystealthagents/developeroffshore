@@ -3,6 +3,7 @@ import { Header, Footer } from '../components';
 import { blogPosts, site } from '../data';
 import { compareNewestBatchFirst, postsPerPage } from '../fleet-data';
 import { articleThumbnail } from '../article-thumbnails';
+const visibleDate=(date:string)=>new Intl.DateTimeFormat('en-US',{year:'numeric',month:'long',day:'numeric',timeZone:'UTC'}).format(new Date(`${date}T00:00:00Z`));
 
 export const metadata = {
   title: { absolute: 'Offshore Developer Guides | Developer Offshore' },
@@ -15,6 +16,6 @@ export default function Blog() {
   const posts = [...blogPosts].sort((a, b) => compareNewestBatchFirst(a, b, a.datePublished ?? '', b.datePublished ?? '')).slice(0, postsPerPage);
   return <><Header/><main><section className="fleet-hero variant-3"><div className="container"><p className="eyebrow">Blog</p><h1>Developer Offshore guides</h1><p className="lead">Practical planning for Philippines-based software development roles, workflows, and manager handoffs.</p></div></section><section className="section"><div className="container fleet-service-grid">{posts.map((post) => {
     const thumbnail = articleThumbnail('blog', post.slug, post.title);
-    return <a className="card article-card" href={`/blog/${post.slug}`} key={post.slug}><img src={thumbnail.src} alt={thumbnail.alt} width={thumbnail.width} height={thumbnail.height}/><h2>{post.title}</h2><p>{post.excerpt}</p><b>Read article →</b></a>;
+    return <a className="card article-card" href={`/blog/${post.slug}`} key={post.slug}><img src={thumbnail.src} alt={thumbnail.alt} width={thumbnail.width} height={thumbnail.height}/><h2>{post.title}</h2><p>{post.excerpt}</p>{post.datePublished?<time dateTime={post.datePublished}>Published {visibleDate(post.datePublished)}</time>:null}<b>Read article →</b></a>;
   })}</div><nav className="pagination" aria-label="Blog pages">{Array.from({length: pages}, (_, index) => <a aria-current={index === 0 ? 'page' : undefined} href={index === 0 ? '/blog' : `/blog/page/${index + 1}`} key={index}>{index + 1}</a>)}</nav></section><FeaturedComparison/></main><Footer/></>;
 }
