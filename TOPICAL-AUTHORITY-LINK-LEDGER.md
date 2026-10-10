@@ -66,7 +66,7 @@ Last audited: 2026-09-13
 
 ## Next bounded release
 
-All currently listed contextual candidates are delivered locally. Select a later candidate only after a new clean-baseline artifact audit confirms both an existing supporting route and a matching service pillar with no route-local handoff.
+All previously listed contextual candidates are delivered locally. The 2026-10-10 clean-baseline artifact audit identified one later, verified-absent candidate: `/blog/offshore-developer-incident-escalation-handoff-2026-08-17` has three generic `/services` links and no route-local `/services/devops-release-support` link. Its incident escalation question matches the existing DevOps Release Support pillar, which covers release checks, health evidence, runbooks, and rollback preparation. A later reader-facing release must replace one generic related-guide placement through the typed blog record, refresh only that route's real modified date, and prove the source and target artifacts again before it is called delivered.
 
 ## September 28, 2026 combined content handoff
 
