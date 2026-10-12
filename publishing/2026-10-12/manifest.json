@@ -1,0 +1,98 @@
+{
+  "domain": "DeveloperOffshore.com",
+  "publicationDate": "2026-10-12",
+  "blog": [
+    {
+      "slug": "tls-ocsp-stapling-freshness-check",
+      "title": "Check TLS OCSP Stapling Freshness Before Release",
+      "thumbnail": "/october-12/tls-ocsp-stapling-freshness-check.svg"
+    },
+    {
+      "slug": "http-content-digest-proxy-verification",
+      "title": "Verify HTTP Content Digests Across a Proxy Chain",
+      "thumbnail": "/october-12/http-content-digest-proxy-verification.svg"
+    },
+    {
+      "slug": "redis-cluster-hash-tag-resharding-test",
+      "title": "Test Redis Cluster Hash Tags During Resharding",
+      "thumbnail": "/october-12/redis-cluster-hash-tag-resharding-test.svg"
+    },
+    {
+      "slug": "oauth-dpop-nonce-retry-runbook",
+      "title": "Build an OAuth DPoP Nonce Retry Runbook",
+      "thumbnail": "/october-12/oauth-dpop-nonce-retry-runbook.svg"
+    },
+    {
+      "slug": "ci-oidc-subject-claim-policy-review",
+      "title": "Review CI OIDC Subject-Claim Policies",
+      "thumbnail": "/october-12/ci-oidc-subject-claim-policy-review.svg"
+    },
+    {
+      "slug": "json-schema-unevaluated-properties-migration",
+      "title": "Migrate JSON Schema Unevaluated Properties Safely",
+      "thumbnail": "/october-12/json-schema-unevaluated-properties-migration.svg"
+    },
+    {
+      "slug": "kubernetes-token-audience-validation",
+      "title": "Validate Kubernetes Token Audiences at Service Boundaries",
+      "thumbnail": "/october-12/kubernetes-token-audience-validation.svg"
+    },
+    {
+      "slug": "nextjs-cache-tag-invalidation-proof",
+      "title": "Prove Next.js Cache-Tag Invalidation End to End",
+      "thumbnail": "/october-12/nextjs-cache-tag-invalidation-proof.svg"
+    },
+    {
+      "slug": "browser-bfcache-state-restoration-test",
+      "title": "Test Browser Back-Forward Cache State Restoration",
+      "thumbnail": "/october-12/browser-bfcache-state-restoration-test.svg"
+    },
+    {
+      "slug": "quic-connection-migration-observability",
+      "title": "Trace QUIC Connection Migration Without Losing Attribution",
+      "thumbnail": "/october-12/quic-connection-migration-observability.svg"
+    },
+    {
+      "slug": "npm-dependency-confusion-boundary-check",
+      "title": "Check npm Dependency-Confusion Boundaries",
+      "thumbnail": "/october-12/npm-dependency-confusion-boundary-check.svg"
+    },
+    {
+      "slug": "webhook-signature-key-rotation-drill",
+      "title": "Drill Webhook Signature-Key Rotation",
+      "thumbnail": "/october-12/webhook-signature-key-rotation-drill.svg"
+    }
+  ],
+  "research": [
+    {
+      "slug": "deployment-change-failure-censoring-study",
+      "title": "Deployment Change-Failure Censoring Research",
+      "thumbnail": "/october-12/deployment-change-failure-censoring-study.svg",
+      "sourceCount": 10
+    },
+    {
+      "slug": "feature-flag-exposure-missingness-study",
+      "title": "Feature-Flag Exposure Missingness Research",
+      "thumbnail": "/october-12/feature-flag-exposure-missingness-study.svg",
+      "sourceCount": 10
+    },
+    {
+      "slug": "flaky-test-quarantine-selection-bias-study",
+      "title": "Flaky-Test Quarantine Selection-Bias Research",
+      "thumbnail": "/october-12/flaky-test-quarantine-selection-bias-study.svg",
+      "sourceCount": 10
+    },
+    {
+      "slug": "build-provenance-verification-coverage-study",
+      "title": "Build-Provenance Verification Coverage Research",
+      "thumbnail": "/october-12/build-provenance-verification-coverage-study.svg",
+      "sourceCount": 10
+    },
+    {
+      "slug": "alert-deduplication-information-loss-study",
+      "title": "Alert-Deduplication Information-Loss Research",
+      "thumbnail": "/october-12/alert-deduplication-information-loss-study.svg",
+      "sourceCount": 10
+    }
+  ]
+}

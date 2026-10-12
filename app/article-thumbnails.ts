@@ -1,6 +1,11 @@
 export type ArticleKind = 'blog' | 'research' | 'alternatives';
 
 const RESEARCH_HEROES: Record<string, string> = {
+  'deployment-change-failure-censoring-study': '/october-12/deployment-change-failure-censoring-study.svg',
+  'feature-flag-exposure-missingness-study': '/october-12/feature-flag-exposure-missingness-study.svg',
+  'flaky-test-quarantine-selection-bias-study': '/october-12/flaky-test-quarantine-selection-bias-study.svg',
+  'build-provenance-verification-coverage-study': '/october-12/build-provenance-verification-coverage-study.svg',
+  'alert-deduplication-information-loss-study': '/october-12/alert-deduplication-information-loss-study.svg',
   'offshore-developer-cache-stampede-study-2026-09-04': '/research-heroes/2026-09-03/database-connection-pressure.png',
   'offshore-developer-token-refresh-rotation-study-2026-09-04': '/research-heroes/2026-09-03/container-image-identity.png',
   'offshore-developer-cdn-cache-variant-study-2026-09-04': '/research-heroes/2026-09-03/react-hydration-divergence.png',
@@ -24,6 +29,18 @@ const RESEARCH_HEROES: Record<string, string> = {
 };
 
 const BLOG_HEROES: Record<string, string> = {
+  'tls-ocsp-stapling-freshness-check': '/october-12/tls-ocsp-stapling-freshness-check.svg',
+  'http-content-digest-proxy-verification': '/october-12/http-content-digest-proxy-verification.svg',
+  'redis-cluster-hash-tag-resharding-test': '/october-12/redis-cluster-hash-tag-resharding-test.svg',
+  'oauth-dpop-nonce-retry-runbook': '/october-12/oauth-dpop-nonce-retry-runbook.svg',
+  'ci-oidc-subject-claim-policy-review': '/october-12/ci-oidc-subject-claim-policy-review.svg',
+  'json-schema-unevaluated-properties-migration': '/october-12/json-schema-unevaluated-properties-migration.svg',
+  'kubernetes-token-audience-validation': '/october-12/kubernetes-token-audience-validation.svg',
+  'nextjs-cache-tag-invalidation-proof': '/october-12/nextjs-cache-tag-invalidation-proof.svg',
+  'browser-bfcache-state-restoration-test': '/october-12/browser-bfcache-state-restoration-test.svg',
+  'quic-connection-migration-observability': '/october-12/quic-connection-migration-observability.svg',
+  'npm-dependency-confusion-boundary-check': '/october-12/npm-dependency-confusion-boundary-check.svg',
+  'webhook-signature-key-rotation-drill': '/october-12/webhook-signature-key-rotation-drill.svg',
   'offshore-developer-api-version-sunset-2026-09-04': '/blog-heroes/2026-09-03/api-timeout-budget.png',
   'offshore-developer-message-queue-poison-record-2026-09-04': '/blog-heroes/2026-09-03/database-lock-contention.png',
   'offshore-developer-multipart-upload-recovery-2026-09-04': '/blog-heroes/2026-09-03/object-storage-lifecycle.png',
@@ -106,7 +123,7 @@ function stableHash(value: string) {
 
 function thumbnailAlt(title: string) { return title.length <= 88 ? title : `${title.slice(0, 85).trimEnd()}…`; }
 export function articleThumbnail(kind: ArticleKind, slug: string, title: string) {
-  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: 1672, height: 941, backgroundIndex: -1 } as const;
+  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1536 : 1672, height: RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1024 : 941, backgroundIndex: -1 } as const;
   if (kind === 'blog' && BLOG_HEROES[slug]) return { src: BLOG_HEROES[slug], alt: thumbnailAlt(title), width: 1536, height: 1024, backgroundIndex: -1 } as const;
   const backgroundIndex = stableHash(`${kind}:${slug}`) % BACKGROUNDS.length;
   return {
