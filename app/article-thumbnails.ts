@@ -1,6 +1,11 @@
 export type ArticleKind = 'blog' | 'research' | 'alternatives';
 
 const RESEARCH_HEROES: Record<string, string> = {
+  'deployment-rollback-verification-delay-study': '/october-13/deployment-rollback-verification-delay-study.svg',
+  'code-review-rework-survivorship-study': '/october-13/code-review-rework-survivorship-study.svg',
+  'distributed-tracing-sampling-bias-study': '/october-13/distributed-tracing-sampling-bias-study.svg',
+  'dependency-canary-selection-bias-study': '/october-13/dependency-canary-selection-bias-study.svg',
+  'incident-severity-reclassification-study': '/october-13/incident-severity-reclassification-study.svg',
   'deployment-change-failure-censoring-study': '/october-12/deployment-change-failure-censoring-study.svg',
   'feature-flag-exposure-missingness-study': '/october-12/feature-flag-exposure-missingness-study.svg',
   'flaky-test-quarantine-selection-bias-study': '/october-12/flaky-test-quarantine-selection-bias-study.svg',
@@ -29,6 +34,18 @@ const RESEARCH_HEROES: Record<string, string> = {
 };
 
 const BLOG_HEROES: Record<string, string> = {
+  'postgres-logical-replication-slot-lag-drill': '/october-13/postgres-logical-replication-slot-lag-drill.svg',
+  'http-103-early-hints-cache-validation': '/october-13/http-103-early-hints-cache-validation.svg',
+  'webauthn-conditional-ui-fallback-test': '/october-13/webauthn-conditional-ui-fallback-test.svg',
+  'kubernetes-topology-spread-skew-audit': '/october-13/kubernetes-topology-spread-skew-audit.svg',
+  'graphql-persisted-query-cache-poisoning-check': '/october-13/graphql-persisted-query-cache-poisoning-check.svg',
+  'opentelemetry-baggage-privacy-boundary': '/october-13/opentelemetry-baggage-privacy-boundary.svg',
+  'service-worker-navigation-preload-recovery': '/october-13/service-worker-navigation-preload-recovery.svg',
+  's3-multipart-checksum-verification': '/october-13/s3-multipart-checksum-verification.svg',
+  'grpc-deadline-propagation-audit': '/october-13/grpc-deadline-propagation-audit.svg',
+  'terraform-state-move-rehearsal': '/october-13/terraform-state-move-rehearsal.svg',
+  'passkey-rp-id-migration-runbook': '/october-13/passkey-rp-id-migration-runbook.svg',
+  'kafka-static-membership-rollover': '/october-13/kafka-static-membership-rollover.svg',
   'tls-ocsp-stapling-freshness-check': '/october-12/tls-ocsp-stapling-freshness-check.svg',
   'http-content-digest-proxy-verification': '/october-12/http-content-digest-proxy-verification.svg',
   'redis-cluster-hash-tag-resharding-test': '/october-12/redis-cluster-hash-tag-resharding-test.svg',
@@ -123,8 +140,8 @@ function stableHash(value: string) {
 
 function thumbnailAlt(title: string) { return title.length <= 88 ? title : `${title.slice(0, 85).trimEnd()}…`; }
 export function articleThumbnail(kind: ArticleKind, slug: string, title: string) {
-  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1536 : 1672, height: RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1024 : 941, backgroundIndex: -1 } as const;
-  if (kind === 'blog' && BLOG_HEROES[slug]) return { src: BLOG_HEROES[slug], alt: thumbnailAlt(title), width: 1536, height: 1024, backgroundIndex: -1 } as const;
+  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: RESEARCH_HEROES[slug].startsWith('/october-13/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1536 : 1672, height: RESEARCH_HEROES[slug].startsWith('/october-13/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1024 : 941, backgroundIndex: -1 } as const;
+  if (kind === 'blog' && BLOG_HEROES[slug]) return { src: BLOG_HEROES[slug], alt: thumbnailAlt(title), width: BLOG_HEROES[slug].startsWith('/october-13/') ? 1200 : 1536, height: BLOG_HEROES[slug].startsWith('/october-13/') ? 630 : 1024, backgroundIndex: -1 } as const;
   const backgroundIndex = stableHash(`${kind}:${slug}`) % BACKGROUNDS.length;
   return {
     src: BACKGROUNDS[backgroundIndex],

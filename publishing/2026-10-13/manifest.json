@@ -1,0 +1,246 @@
+{
+  "site": "DeveloperOffshore.com",
+  "canonicalDomain": "https://developeroffshore.com",
+  "repository": "coolifystealthagents/developeroffshore",
+  "branch": "main",
+  "baseSha": "5ebfd3cb2fc3e385d1d435d9c8415848a5fad1fb",
+  "date": "2026-10-13",
+  "counts": {
+    "blog": 12,
+    "research": 5,
+    "total": 17,
+    "thumbnails": 17
+  },
+  "items": [
+    {
+      "kind": "blog",
+      "slug": "postgres-logical-replication-slot-lag-drill",
+      "title": "Drill PostgreSQL Logical Replication Slot Lag Recovery",
+      "sourcePath": "app/oct13-blog-batch.ts",
+      "thumbnailPath": "public/october-13/postgres-logical-replication-slot-lag-drill.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3148,
+      "sha256": "413e3da18db3d1fd2f16565351c035956e3c088b73b7b7887fa9d31bc3cf1cf7"
+    },
+    {
+      "kind": "blog",
+      "slug": "http-103-early-hints-cache-validation",
+      "title": "Validate HTTP Early Hints Across Cache Boundaries",
+      "sourcePath": "app/oct13-blog-batch.ts",
+      "thumbnailPath": "public/october-13/http-103-early-hints-cache-validation.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3196,
+      "sha256": "15d79ba5ebe57bd36837cd34209d950555e83190e9a262873bf2964f86285fe8"
+    },
+    {
+      "kind": "blog",
+      "slug": "webauthn-conditional-ui-fallback-test",
+      "title": "Test WebAuthn Conditional UI Fallback Behavior",
+      "sourcePath": "app/oct13-blog-batch.ts",
+      "thumbnailPath": "public/october-13/webauthn-conditional-ui-fallback-test.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3112,
+      "sha256": "42f31138afbc7b7fb1acbbc3ac1f38dfa0e5492375370862b6226c251ed7f506"
+    },
+    {
+      "kind": "blog",
+      "slug": "kubernetes-topology-spread-skew-audit",
+      "title": "Audit Kubernetes Topology Spread Skew Before Rollout",
+      "sourcePath": "app/oct13-blog-batch.ts",
+      "thumbnailPath": "public/october-13/kubernetes-topology-spread-skew-audit.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3160,
+      "sha256": "e56eb2d7cb9c218f56fe81dc88632bf535c0b9426611cdf0401d2ac1bd4f9672"
+    },
+    {
+      "kind": "blog",
+      "slug": "graphql-persisted-query-cache-poisoning-check",
+      "title": "Check Persisted GraphQL Queries for Cache-Key Confusion",
+      "sourcePath": "app/oct13-blog-batch.ts",
+      "thumbnailPath": "public/october-13/graphql-persisted-query-cache-poisoning-check.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3196,
+      "sha256": "3f73e09842a4a7126c3c7eae8dee4289983584f4e365df853502616787dc2e10"
+    },
+    {
+      "kind": "blog",
+      "slug": "opentelemetry-baggage-privacy-boundary",
+      "title": "Set a Privacy Boundary for OpenTelemetry Baggage",
+      "sourcePath": "app/oct13-blog-batch.ts",
+      "thumbnailPath": "public/october-13/opentelemetry-baggage-privacy-boundary.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3136,
+      "sha256": "43b3a9a82fd097cb7991472e13a2a73ca716fbae29a5adbf5bba98769498ca56"
+    },
+    {
+      "kind": "blog",
+      "slug": "service-worker-navigation-preload-recovery",
+      "title": "Verify Service Worker Navigation Preload Recovery",
+      "sourcePath": "app/oct13-blog-batch.ts",
+      "thumbnailPath": "public/october-13/service-worker-navigation-preload-recovery.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3148,
+      "sha256": "bfd7ae33157123963fe8f2e12cd841b08432cae83be068567ac55e48cd151e01"
+    },
+    {
+      "kind": "blog",
+      "slug": "s3-multipart-checksum-verification",
+      "title": "Verify Multipart Object Checksums Before Promotion",
+      "sourcePath": "app/oct13-blog-batch.ts",
+      "thumbnailPath": "public/october-13/s3-multipart-checksum-verification.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3148,
+      "sha256": "e343f0d20bb3e673122dc0b3b378adae95915582c25484217aa3c4d033b149a8"
+    },
+    {
+      "kind": "blog",
+      "slug": "grpc-deadline-propagation-audit",
+      "title": "Audit gRPC Deadline Propagation Across Service Hops",
+      "sourcePath": "app/oct13-blog-batch.ts",
+      "thumbnailPath": "public/october-13/grpc-deadline-propagation-audit.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3136,
+      "sha256": "61ec850403cfca58135cedd844633b991adaa92f517e21c7cd58d186c86eb259"
+    },
+    {
+      "kind": "blog",
+      "slug": "terraform-state-move-rehearsal",
+      "title": "Rehearse a Terraform State Move Without Resource Recreation",
+      "sourcePath": "app/oct13-blog-batch.ts",
+      "thumbnailPath": "public/october-13/terraform-state-move-rehearsal.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3208,
+      "sha256": "ade08df52ee1c34333554d92dbdbc979b426110ee7f46f02438598657bd90124"
+    },
+    {
+      "kind": "blog",
+      "slug": "passkey-rp-id-migration-runbook",
+      "title": "Build a Passkey Relying-Party ID Migration Runbook",
+      "sourcePath": "app/oct13-blog-batch.ts",
+      "thumbnailPath": "public/october-13/passkey-rp-id-migration-runbook.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3208,
+      "sha256": "ee9634ec586947d58fc3a4c63137573617fb7571d64d64ef3a5358f9dca71a59"
+    },
+    {
+      "kind": "blog",
+      "slug": "kafka-static-membership-rollover",
+      "title": "Test Kafka Static Consumer Membership Rollover",
+      "sourcePath": "app/oct13-blog-batch.ts",
+      "thumbnailPath": "public/october-13/kafka-static-membership-rollover.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3148,
+      "sha256": "a90bc7e2ef1e01d81ae500919e6d2fdef45c49b37a68b351f4a30809952e5713"
+    },
+    {
+      "kind": "research",
+      "slug": "deployment-rollback-verification-delay-study",
+      "title": "Deployment Rollback Verification Delay Study",
+      "sourcePath": "app/oct13-research-batch.ts",
+      "thumbnailPath": "public/october-13/deployment-rollback-verification-delay-study.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3680,
+      "sha256": "86b246aff946cf9623653e13753fc5b1312ef07be91033f3f1d9bcbe60388e43",
+      "sources": [
+        "https://csrc.nist.gov/pubs/sp/800/218/final",
+        "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final",
+        "https://www.cisa.gov/securebydesign",
+        "https://owasp.org/www-project-application-security-verification-standard/",
+        "https://slsa.dev/spec/v1.1/",
+        "https://scorecard.dev/",
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.w3.org/TR/trace-context/",
+        "https://opentelemetry.io/docs/specs/",
+        "https://www.cncf.io/reports/cloud-native-security-whitepaper/"
+      ]
+    },
+    {
+      "kind": "research",
+      "slug": "code-review-rework-survivorship-study",
+      "title": "Code Review Rework Survivorship Study",
+      "sourcePath": "app/oct13-research-batch.ts",
+      "thumbnailPath": "public/october-13/code-review-rework-survivorship-study.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3600,
+      "sha256": "5605ff336680e32b046557bcfec1242d62a443a888388ec01f70685f5ce3f07e",
+      "sources": [
+        "https://csrc.nist.gov/pubs/sp/800/218/final",
+        "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final",
+        "https://www.cisa.gov/securebydesign",
+        "https://owasp.org/www-project-application-security-verification-standard/",
+        "https://slsa.dev/spec/v1.1/",
+        "https://scorecard.dev/",
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.w3.org/TR/trace-context/",
+        "https://opentelemetry.io/docs/specs/",
+        "https://www.cncf.io/reports/cloud-native-security-whitepaper/"
+      ]
+    },
+    {
+      "kind": "research",
+      "slug": "distributed-tracing-sampling-bias-study",
+      "title": "Distributed Tracing Sampling Bias Study",
+      "sourcePath": "app/oct13-research-batch.ts",
+      "thumbnailPath": "public/october-13/distributed-tracing-sampling-bias-study.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3648,
+      "sha256": "9301eac477f5e4b48039ef03c52aa09ca4ae01f1918090a82ef35c1af5512338",
+      "sources": [
+        "https://csrc.nist.gov/pubs/sp/800/218/final",
+        "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final",
+        "https://www.cisa.gov/securebydesign",
+        "https://owasp.org/www-project-application-security-verification-standard/",
+        "https://slsa.dev/spec/v1.1/",
+        "https://scorecard.dev/",
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.w3.org/TR/trace-context/",
+        "https://opentelemetry.io/docs/specs/",
+        "https://www.cncf.io/reports/cloud-native-security-whitepaper/"
+      ]
+    },
+    {
+      "kind": "research",
+      "slug": "dependency-canary-selection-bias-study",
+      "title": "Dependency Update Canary Selection Bias Study",
+      "sourcePath": "app/oct13-research-batch.ts",
+      "thumbnailPath": "public/october-13/dependency-canary-selection-bias-study.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3712,
+      "sha256": "1ae2abbfb81737a7bddbb4a24f706275ae3069aa7fe0f4e59b20d6f939a10fee",
+      "sources": [
+        "https://csrc.nist.gov/pubs/sp/800/218/final",
+        "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final",
+        "https://www.cisa.gov/securebydesign",
+        "https://owasp.org/www-project-application-security-verification-standard/",
+        "https://slsa.dev/spec/v1.1/",
+        "https://scorecard.dev/",
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.w3.org/TR/trace-context/",
+        "https://opentelemetry.io/docs/specs/",
+        "https://www.cncf.io/reports/cloud-native-security-whitepaper/"
+      ]
+    },
+    {
+      "kind": "research",
+      "slug": "incident-severity-reclassification-study",
+      "title": "Incident Severity Reclassification Reliability Study",
+      "sourcePath": "app/oct13-research-batch.ts",
+      "thumbnailPath": "public/october-13/incident-severity-reclassification-study.svg",
+      "publicationDate": "2026-10-13",
+      "wordCount": 3632,
+      "sha256": "a30f9745b3d5f123d8975c64aa57eb84b8adff02c72c0fcf078b1878995f8cfc",
+      "sources": [
+        "https://csrc.nist.gov/pubs/sp/800/218/final",
+        "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final",
+        "https://www.cisa.gov/securebydesign",
+        "https://owasp.org/www-project-application-security-verification-standard/",
+        "https://slsa.dev/spec/v1.1/",
+        "https://scorecard.dev/",
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.w3.org/TR/trace-context/",
+        "https://opentelemetry.io/docs/specs/",
+        "https://www.cncf.io/reports/cloud-native-security-whitepaper/"
+      ]
+    }
+  ]
+}
