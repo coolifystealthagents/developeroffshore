@@ -1,12 +1,13 @@
 import type { ResearchPost } from './fleet-data';
-const date="2026-10-12";
+const publishedDate="2026-10-12";
+const updatedDate="2026-10-18";
 export const october12ResearchBatch: readonly ResearchPost[] = [
   {
     "slug": "deployment-change-failure-censoring-study",
     "title": "Deployment Change-Failure Censoring Research",
     "excerpt": "A source-backed protocol testing whether short observation windows undercount failures that appear after the release record closes. Published October 12, 2026.",
-    "published": date,
-    "updated": date,
+    "published": publishedDate,
+    "updated": updatedDate,
     "sections": [
       {
         "heading": "Pre-register the decision and observation window",
@@ -173,8 +174,8 @@ export const october12ResearchBatch: readonly ResearchPost[] = [
     "slug": "feature-flag-exposure-missingness-study",
     "title": "Feature-Flag Exposure Missingness Research",
     "excerpt": "A source-backed protocol testing whether missing exposure events are concentrated in browsers, regions, or failure paths relevant to a decision. Published October 12, 2026.",
-    "published": date,
-    "updated": date,
+    "published": publishedDate,
+    "updated": updatedDate,
     "sections": [
       {
         "heading": "Pre-register the decision and observation window",
@@ -341,8 +342,8 @@ export const october12ResearchBatch: readonly ResearchPost[] = [
     "slug": "flaky-test-quarantine-selection-bias-study",
     "title": "Flaky-Test Quarantine Selection-Bias Research",
     "excerpt": "A source-backed protocol testing whether quarantine decisions hide unstable high-risk tests while leaving an apparently healthier suite. Published October 12, 2026.",
-    "published": date,
-    "updated": date,
+    "published": publishedDate,
+    "updated": updatedDate,
     "sections": [
       {
         "heading": "Pre-register the decision and observation window",
@@ -509,8 +510,8 @@ export const october12ResearchBatch: readonly ResearchPost[] = [
     "slug": "build-provenance-verification-coverage-study",
     "title": "Build-Provenance Verification Coverage Research",
     "excerpt": "A source-backed protocol testing how often release decisions verify attestations against the artifact actually deployed. Published October 12, 2026.",
-    "published": date,
-    "updated": date,
+    "published": publishedDate,
+    "updated": updatedDate,
     "sections": [
       {
         "heading": "Pre-register the decision and observation window",
@@ -677,8 +678,8 @@ export const october12ResearchBatch: readonly ResearchPost[] = [
     "slug": "alert-deduplication-information-loss-study",
     "title": "Alert-Deduplication Information-Loss Research",
     "excerpt": "A source-backed protocol testing whether grouping rules suppress distinct affected services or escalation conditions. Published October 12, 2026.",
-    "published": date,
-    "updated": date,
+    "published": publishedDate,
+    "updated": updatedDate,
     "sections": [
       {
         "heading": "Pre-register the decision and observation window",
