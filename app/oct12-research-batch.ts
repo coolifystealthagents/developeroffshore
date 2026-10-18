@@ -153,9 +153,11 @@ export const october12ResearchBatch: readonly ResearchPost[] = [
     ],
     "related": [
       {
+        "title": "Check TLS OCSP Stapling Freshness Before Release",
         "href": "/blog/tls-ocsp-stapling-freshness-check"
       },
       {
+        "title": "Migrate JSON Schema Unevaluated Properties Safely",
         "href": "/blog/json-schema-unevaluated-properties-migration"
       }
     ],
@@ -319,9 +321,11 @@ export const october12ResearchBatch: readonly ResearchPost[] = [
     ],
     "related": [
       {
+        "title": "Verify HTTP Content Digests Across a Proxy Chain",
         "href": "/blog/http-content-digest-proxy-verification"
       },
       {
+        "title": "Validate Kubernetes Token Audiences at Service Boundaries",
         "href": "/blog/kubernetes-token-audience-validation"
       }
     ],
@@ -485,9 +489,11 @@ export const october12ResearchBatch: readonly ResearchPost[] = [
     ],
     "related": [
       {
+        "title": "Test Redis Cluster Hash Tags During Resharding",
         "href": "/blog/redis-cluster-hash-tag-resharding-test"
       },
       {
+        "title": "Prove Next.js Cache-Tag Invalidation End to End",
         "href": "/blog/nextjs-cache-tag-invalidation-proof"
       }
     ],
@@ -651,9 +657,11 @@ export const october12ResearchBatch: readonly ResearchPost[] = [
     ],
     "related": [
       {
+        "title": "Build an OAuth DPoP Nonce Retry Runbook",
         "href": "/blog/oauth-dpop-nonce-retry-runbook"
       },
       {
+        "title": "Test Browser Back-Forward Cache State Restoration",
         "href": "/blog/browser-bfcache-state-restoration-test"
       }
     ],
@@ -817,9 +825,11 @@ export const october12ResearchBatch: readonly ResearchPost[] = [
     ],
     "related": [
       {
+        "title": "Review CI OIDC Subject-Claim Policies",
         "href": "/blog/ci-oidc-subject-claim-policy-review"
       },
       {
+        "title": "Trace QUIC Connection Migration Without Losing Attribution",
         "href": "/blog/quic-connection-migration-observability"
       }
     ],
