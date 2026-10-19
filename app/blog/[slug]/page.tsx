@@ -6,6 +6,7 @@ import { articleThumbnail } from '../../article-thumbnails';
 import { compactSeoDescription, compactSeoTitle } from '../../seo-metadata';
 
 const baseUrl = 'https://developeroffshore.com';
+const headingId = (heading: string) => heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 const publicationDateFormatter = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
@@ -230,9 +231,14 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
   const roleSections = post.sections?.slice(2, 4) ?? [];
   const securitySections = post.sections?.slice(4, 6) ?? [];
   const finalSections = post.sections?.slice(6) ?? [];
+  const toc = post.sections?.length ? post.sections.map((section) => ({ id: headingId(section.heading), label: section.heading })) : [
+    { id: 'start-with-a-defined-role', label: 'Start with a defined role' },
+    { id: 'use-real-examples-safely', label: 'Use real examples safely' },
+    { id: 'limit-access-and-name-the-handoff-owner', label: 'Limit access and name the handoff owner' },
+  ];
 
   const renderSections = (sections: NonNullable<BlogPost['sections']>) => sections.map((section) => (
-    <section className="article-panel" key={section.heading}>
+    <section className="article-panel" id={headingId(section.heading)} key={section.heading}>
       <h2>{section.heading}</h2>
       {section.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
       {section.bullets?.length ? <ul>{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul> : null}
@@ -254,7 +260,12 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
             <img className="article-featured-image" src={thumbnail.src} alt={thumbnail.alt} width={thumbnail.width} height={thumbnail.height}/>
             {post.datePublished ? <p className="article-date">Published <time dateTime={post.datePublished}>{formatPublicationDate(post.datePublished)}</time></p> : null}
           </header>
-
+          <div className="article-layout">
+            <aside className="article-sidebar" aria-label="Article navigation and next action">
+              <nav aria-labelledby="blog-toc-title"><h2 id="blog-toc-title">Table of contents</h2><ol>{toc.map((item) => <li key={item.id}><a href={`#${item.id}`}>{item.label}</a></li>)}</ol></nav>
+              <div className="article-sidebar-action"><h2>Plan your developer role</h2><p>Bring the workflow, first outcome, and review owner to a focused staffing conversation.</p><a href="/contact-us">Contact Us</a></div>
+            </aside>
+            <div className="article-content">
           {fullArticle ? (
             <>
               <section className="article-panel takeaways">
@@ -308,11 +319,11 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
           ) : (
             <>
               <section className="article-panel">
-                <h2>Start with a defined role</h2>
+                <h2 id="start-with-a-defined-role">Start with a defined role</h2>
                 <p>Write down the work, tools, schedule, and expected result before candidate matching begins. Keep business judgment and final technical approval with a named manager.</p>
-                <h2>Use real examples safely</h2>
+                <h2 id="use-real-examples-safely">Use real examples safely</h2>
                 <p>Use redacted examples and a sandbox to explain what good work looks like. Review the first output together and update the written process when an exception appears.</p>
-                <h2>Limit access and name the handoff owner</h2>
+                <h2 id="limit-access-and-name-the-handoff-owner">Limit access and name the handoff owner</h2>
                 <p>Give only the access needed for the role and use named accounts where possible. Write down which questions must be escalated and who receives them.</p>
               </section>
               <ArticleBanner index={0} post={post} />
@@ -320,6 +331,8 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
               <ArticleBanner index={2} post={post} />
             </>
           )}
+            </div>
+          </div>
         <p className='article-source-note'><a href="https://www.ilo.org/global/topics/non-standard-employment/WCMS_534825/lang--en/index.htm" target="_blank" rel="noopener noreferrer">International Labour Organization guidance on remote work arrangements</a> reinforces why remote role briefs should document expectations, communication rhythms, and accountable handoffs.</p>
         </article>
       </main>

@@ -1,39 +1,35 @@
-import type { Metadata } from "next";
-import { Footer, Header } from "../components";
-import StandardContactForm from "./StandardContactForm";
-
+import type { Metadata } from 'next';
+import { Footer, Header } from '../components';
+import { TestimonialsRail } from '../booking-components';
+import StandardContactForm from './StandardContactForm';
 
 export const metadata: Metadata = {
-  title: "Contact Us | Offshore Developer Staffing",
-  description: "Talk with a staffing specialist about offshore software developers, technical delivery, team fit, and a practical hiring plan.",
-  alternates: { canonical: "/contact-us" },
+  title: { absolute: 'Contact Developer Offshore | Plan Your Engineering Team' },
+  description: 'Share your delivery backlog, technical stack, and review needs with a Philippines developer staffing specialist.',
+  alternates: { canonical: 'https://developeroffshore.com/contact-us' },
   robots: { index: true, follow: true },
 };
 
-
-const booking = "https://go.oncehub.com/StealthAgentsTeam";
-
-
 export default function ContactUsPage() {
-  return <><Header/><main className="contact-page">
-    <section className="contact-hero"><div className="contact-orbit" aria-hidden="true"/><div className="contact-shell contact-hero-grid">
-      <div className="contact-copy"><p className="contact-kicker">A clearer path to engineering capacity</p><h1>Build an offshore development team around your real roadmap.</h1><p className="contact-lead">Tell us where delivery is slowing down. We’ll help translate the backlog into clear roles, technical requirements, and a practical staffing plan.</p><div className="contact-trust"><span>35+ industries supported</span><span>Philippines-based talent</span><span>Structured matching</span></div><a className="contact-book" href={booking}>Book a discovery call <span>→</span></a></div>
-      <div className="contact-form"><StandardContactForm endpoint="/api/contact" encoding="form" /></div>
-    </div></section>
-    <section className="contact-section contact-intro"><div className="contact-shell"><p className="contact-kicker dark">Choose support with context</p><h2>What would make your next hire a better fit?</h2><div className="contact-cards">
-      <article><b>01</b><h3>Product engineering</h3><p>Add frontend, backend, or full-stack capacity aligned to your roadmap and stack.</p></article><article><b>02</b><h3>QA and automation</h3><p>Build repeatable test coverage, release checks, and defect feedback loops.</p></article><article><b>03</b><h3>Cloud and DevOps</h3><p>Strengthen deployment, observability, infrastructure, and operational handoffs.</p></article><article><b>04</b><h3>Maintenance teams</h3><p>Create dependable ownership for upgrades, fixes, documentation, and technical debt.</p></article>
-    </div></div></section>
-    <section className="contact-section contact-proof"><div className="contact-shell"><div className="contact-heading"><div><p className="contact-kicker dark">Trusted by busy teams</p><h2>Support that feels like part of your operation.</h2></div><a href={booking}>Discuss your role →</a></div><div className="contact-quotes">
-      <blockquote><span>★★★★★</span><p>“Lindsay has been incredible. She handles the tactical work, which has freed me up to focus on bigger-picture initiatives.”</p><cite>— Chad Sublet</cite></blockquote><blockquote><span>★★★★★</span><p>“They have made a real difference in our day-to-day operations and truly feel like part of our internal team.”</p><cite>— Alex Behrens</cite></blockquote><blockquote><span>★★★★★</span><p>“Stealth Agents provided me with a fantastic virtual assistant who has been an absolute asset.”</p><cite>— Lee Maasen</cite></blockquote>
-    </div><p className="contact-quote-source">Source: <a href="https://stealthagents.com/" target="_blank" rel="noopener noreferrer">Stealth Agents client testimonials</a>.</p></div></section>
-    <section className="contact-section contact-capabilities"><div className="contact-shell contact-cap-grid"><div><p className="contact-kicker">Built for a useful first call</p><h2>Bring the messy list. Leave with a clearer plan.</h2><p>We’ll focus on the work, the systems it touches, and the result you need—not a generic job description.</p><a className="contact-book light" href={booking}>Book a free consultation →</a></div><ul><li>Role and workload discovery</li><li>Experience and skill alignment</li><li>Coverage and schedule planning</li><li>Communication expectations</li><li>Onboarding priorities</li><li>Clear next-step recommendations</li></ul></div></section>
-    <section className="contact-section contact-why"><div className="contact-shell contact-why-grid"><figure><img src="/blog-heroes/2026-08-20/pull-request-review.png" alt="Offshore software development team reviewing a pull request" width="1200" height="800"/></figure><div><p className="contact-kicker dark">Why teams start here</p><h2>Strong technical matching starts with better questions.</h2><p>A successful offshore engineering relationship depends on stack, code ownership, delivery rhythm, review standards, and communication. Our conversation uncovers those details early, so the hiring plan is grounded in how your team actually ships.</p><div className="contact-stat"><strong>35+</strong><span>industries supported with role-specific context</span></div></div></div></section>
-    <section className="contact-about"><div className="contact-shell contact-about-grid"><div><p className="contact-kicker">The team behind the conversation</p><h2>About Stealth Agents</h2></div><div><p>Stealth Agents works with over 35+ different industries. We&apos;re featured on Forbes as the top rated virtual assistant company.</p><a href="https://stealthagents.com/">Powered by StealthAgents</a></div></div></section>
-    <section className="contact-close"><div className="contact-shell"><p>Ready when you are</p><h2>Let’s turn your roadmap into the right technical team.</h2><a href={booking}>Book a free consultation</a></div></section>
-  </main><Footer/><style>{`
-    .contact-page{--navy:#061b3c;--blue:#0d64d8;--gold:#f6c85f;--soft:#f4f7fb;color:#17243a;overflow:hidden}.contact-shell{width:min(1180px,calc(100% - 40px));margin:auto}.contact-hero{position:relative;padding:64px 0 74px;background:linear-gradient(135deg,#04132e,#073b78 70%,#0965a7);color:#fff}.contact-orbit{position:absolute;width:520px;height:520px;border:1px solid rgba(255,255,255,.15);border-radius:50%;left:-220px;top:-260px;box-shadow:0 0 0 70px rgba(255,255,255,.025),0 0 0 140px rgba(255,255,255,.018)}.contact-hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(520px,1.1fr);gap:62px;align-items:start}.contact-copy{padding-top:28px}.contact-kicker{text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:800;color:#8fd8ff}.contact-kicker.dark{color:#0d64d8}.contact-copy h1{font-family:Georgia,serif;font-size:clamp(47px,5.3vw,72px);line-height:.98;letter-spacing:-.045em;margin:0 0 25px}.contact-lead{max-width:630px;font-size:18px;line-height:1.65;color:#d8e8fa}.contact-trust{display:flex;gap:9px;flex-wrap:wrap;margin:28px 0}.contact-trust span{padding:9px 12px;border:1px solid rgba(255,255,255,.25);border-radius:999px;font-size:12px;font-weight:750}.contact-book{display:inline-flex;align-items:center;gap:16px;padding:16px 20px;background:var(--gold);color:#102447;border-radius:8px;font-weight:850}.contact-book.light{background:#fff;margin-top:22px}.contact-form{min-width:0}.contact-form .sa-form-card{padding:27px 30px 32px!important}.contact-form .sa-form-card h2{font-size:24px!important;margin-bottom:19px!important}.contact-form .sa-form-card form{gap:14px!important}.contact-form .sa-form-card label{font-size:14px!important;gap:5px!important}.contact-form .sa-form-card input,.contact-form .sa-form-card select,.contact-form .sa-form-card textarea{min-height:45px!important;padding:10px 12px!important;font-size:14px!important}.contact-form .sa-form-card textarea{min-height:75px!important}.contact-form .sa-form-card button{padding:14px!important;font-size:16px!important}.contact-section{padding:94px 0}.conta
-    @media(max-width:900px){.contact-hero-grid{grid-template-columns:1fr}.contact-form{order:-1}.contact-copy{padding-top:0}.contact-cards{grid-template-columns:1fr 1fr}.contact-quotes{grid-template-columns:1fr}.contact-cap-grid,.contact-why-grid,.contact-about-grid{grid-template-columns:1fr}.contact-cap-grid{gap:38px}}
-    @media(max-width:600px){.contact-shell{width:min(100% - 28px,1180px)}.contact-hero{padding:16px 0 54px}.contact-hero-grid{gap:42px}.contact-form .sa-form-card{padding:20px 16px 24px!important}.contact-form .sa-form-card h2{font-size:20px!important}.contact-copy h1{font-size:43px}.contact-section{padding:66px 0}.contact-cards{grid-template-columns:1fr}.contact-cards article{min-height:0}.contact-cards h3{margin-top:24px}.contact-heading{display:block}.contact-heading>a{display:inline-block;margin-top:18px}.contact-cap-grid ul{grid-template-columns:1fr}.contact-why img{height:320px}.contact-about{padding:58px 0}.contact-close{padding:66px 0}}
-  `}</style></>;
+  return <><Header /><main id="main-content" className="contact-v3">
+    <section className="contact-v3-hero">
+      <div className="container contact-v3-grid">
+        <div className="contact-v3-copy">
+          <p className="eyebrow">Plan the work before the hire</p>
+          <h1>Build engineering capacity around your real roadmap.</h1>
+          <p className="lead">Tell us where delivery is slowing down. We will use your stack, backlog, schedule, and approval boundaries to prepare a focused staffing conversation.</p>
+          <ul className="contact-scope" aria-label="Engagement scope"><li>Philippines-based talent</li><li>Role-specific matching</li><li>Documented handoffs</li></ul>
+          <TestimonialsRail contact />
+        </div>
+        <div className="contact-v3-form"><StandardContactForm /></div>
+      </div>
+    </section>
+    <section className="parent-proof" aria-labelledby="parent-proof-title">
+      <div className="container parent-proof-grid">
+        <figure><img src="/images/stealth-agents-team.webp" alt="Official Stealth Agents operations team in Bacolod" width="1600" height="1067" /><figcaption><img src="/images/stealth-agents-logo-black.png" alt="Stealth Agents" width="512" height="128" /><strong>Official team, Bacolod</strong></figcaption></figure>
+        <div><p className="eyebrow">Managed delivery context</p><h2 id="parent-proof-title">Powered by StealthAgents</h2><p>Developer Offshore focuses the conversation on software delivery. Stealth Agents provides the recruiting and managed-service operation behind candidate matching, onboarding coordination, and ongoing support.</p><p>Your team remains responsible for product priority, architecture, production approval, security exceptions, and accepted risk. The managed team helps make the staffing and communication process clear.</p><a className="btn primary" href="https://stealthagents.com/" target="_blank" rel="noopener noreferrer">Learn about Stealth Agents</a></div>
+      </div>
+    </section>
+    <section className="contact-v3-guide"><div className="container"><h2>What helps us prepare a useful response</h2><div className="contact-guide-grid"><article><h3>The delivery lane</h3><p>Name the product area, recurring work, and first result you want a new developer to own.</p></article><article><h3>The working system</h3><p>Include the stack, repository workflow, test expectations, and hours needed for decisions.</p></article><article><h3>The approval boundary</h3><p>Identify who reviews code, accepts risk, and approves production changes on your team.</p></article></div></div></section>
+  </main><Footer /></>;
 }
-

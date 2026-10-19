@@ -81,12 +81,11 @@ export default function Services() {
         </section>
         <section className="section">
           <div className="container fleet-service-grid">
-            {fleetServices.map((service, index) => (
+            {fleetServices.map((service) => (
               <a className="card fleet-service-card" href={`/services/${service.slug}`} key={service.slug}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
                 <h2>{service.title}</h2>
                 <p>{service.desc}</p>
-                <b>View service →</b>
+                <b>View service</b>
               </a>
             ))}
           </div>

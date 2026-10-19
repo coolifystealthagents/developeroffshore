@@ -14,7 +14,7 @@ const countryCodes = [
   ["🇲🇽", "+52"], ["🇧🇷", "+55"], ["🇿🇦", "+27"], ["🇩🇪", "+49"], ["🇫🇷", "+33"],
 ];
 
-export default function StandardContactForm({ endpoint = "/api/submit-lead", encoding = "json" }: Props) {
+export default function StandardContactForm({ endpoint = "/api/contact", encoding = "form" }: Props) {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [countryCode, setCountryCode] = useState("+1");
@@ -56,19 +56,12 @@ export default function StandardContactForm({ endpoint = "/api/submit-lead", enc
         ? { method: "POST", body: new URLSearchParams(payload) }
         : { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) };
       const response = await fetch(endpoint, request);
-      if (!response.ok) throw new Error("Lead endpoint rejected the request");
+      const result = await response.json().catch(() => null) as { accepted?: boolean; error?: string } | null;
+      if (!response.ok || result?.accepted !== true) throw new Error(result?.error || "Lead endpoint rejected the request");
       try { (window as TrackerWindow).acrTracker?.trackLead?.(payload); } catch {}
-      window.location.assign("/thank-you");
+      window.location.assign("/thanks-whats-next");
     } catch {
-      try {
-        const tracker = (window as TrackerWindow).acrTracker?.trackLead;
-        if (tracker) {
-          tracker(payload);
-          window.location.assign("/thank-you");
-          return;
-        }
-      } catch {}
-      setError("We could not submit your request. Please try again.");
+      setError("We could not deliver your request. Your information was not marked as sent. Please review the fields and try again.");
       setSubmitting(false);
     }
   }
@@ -95,7 +88,7 @@ export default function StandardContactForm({ endpoint = "/api/submit-lead", enc
         <label htmlFor="contact-referral">How Did You Hear About Us? *<select id="contact-referral" name="referral" required value={referral} onChange={(e) => setReferral(e.target.value)}><option value="" disabled>Select...</option>{referrals.map((x) => <option key={x}>{x}</option>)}</select></label>
         {referral === "Other" ? <label htmlFor="contact-referral-other">Please Specify *<input id="contact-referral-other" name="referralSpecify" required /></label> : null}
         <label htmlFor="contact-message">Message *<textarea id="contact-message" name="message" rows={4} required /></label>
-        {error ? <p className="sa-error" role="alert">{error}</p> : null}
+        <p className={error ? "sa-error" : "sa-sr-only"} role={error ? "alert" : "status"} aria-live="polite">{error || (submitting ? "Sending your request" : "Form ready")}</p>
         <button type="submit" disabled={submitting}>{submitting ? "Submitting..." : "Book a Free Consultation"}</button>
       </form>
       <style jsx>{`
