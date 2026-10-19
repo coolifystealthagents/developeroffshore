@@ -13,9 +13,10 @@ const STATIC_ENTRIES: readonly SitemapEntry[] = [
   { path: '/blog/top-30-offshore-development-companies', lastModified: '2026-07-29' },
   { path: '/research', lastModified: '2026-07-28' },
   { path: '/contact-us', lastModified: '2026-10-19' },
+  { path: '/about', lastModified: '2026-10-19' },
   { path: '/privacy', lastModified: '2026-07-28' },
   { path: '/terms', lastModified: '2026-07-28' },
-  { path: '/cancellation-policy', lastModified: '2026-07-28' },
+  { path: '/cancellation', lastModified: '2026-07-28' },
 ] as const;
 
 const SERVICES_LAST_MODIFIED = '2026-07-28';

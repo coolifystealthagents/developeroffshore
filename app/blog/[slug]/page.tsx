@@ -232,11 +232,31 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
   const roleSections = post.sections?.slice(2, 4) ?? [];
   const securitySections = post.sections?.slice(4, 6) ?? [];
   const finalSections = post.sections?.slice(6) ?? [];
-  const toc = post.sections?.length ? post.sections.map((section) => ({ id: headingId(section.heading), label: section.heading })) : [
+  const sectionToc = post.sections?.length ? post.sections.map((section) => ({ id: headingId(section.heading), label: section.heading, level: 2 as const })) : [
     { id: 'start-with-a-defined-role', label: 'Start with a defined role' },
     { id: 'use-real-examples-safely', label: 'Use real examples safely' },
     { id: 'limit-access-and-name-the-handoff-owner', label: 'Limit access and name the handoff owner' },
   ];
+  const tocForSections = (sections: NonNullable<BlogPost['sections']>) => sections.map((section) => ({ id: headingId(section.heading), label: section.heading, level: 2 as const }));
+  const toc = fullArticle ? [
+    { id: 'key-takeaways', label: 'Key takeaways', level: 2 as const },
+    ...tocForSections(firstSections),
+    ...(post.table ? [{ id: 'assessment-table-title', label: post.table.title, level: 2 as const }] : []),
+    ...tocForSections(roleSections),
+    ...(post.chart ? [{ id: 'score-chart-title', label: post.chart.title, level: 2 as const }] : []),
+    ...tocForSections(securitySections),
+    ...tocForSections(finalSections),
+    ...(post.graphic ? [{ id: 'work-sample-graphic-title', label: post.graphic.title, level: 2 as const }] : []),
+    ...(post.modules?.map((module) => ({ id: headingId(module.title), label: module.title, level: 2 as const })) ?? []),
+    ...(post.script ? [{ id: headingId(post.script.title), label: post.script.title, level: 2 as const }] : []),
+    ...(post.relatedLinks?.length ? [{ id: 'use-the-assessment-in-your-hiring-plan', label: 'Use the assessment in your hiring plan', level: 2 as const }] : []),
+    ...(post.faqs?.length ? [
+      { id: 'assessment-questions', label: 'Assessment questions', level: 2 as const },
+      ...post.faqs.map((faq) => ({ id: headingId(faq.question), label: faq.question, level: 3 as const })),
+    ] : []),
+    { id: 'provider-comparison-check', label: 'Provider comparison check', level: 2 as const },
+    ...(post.sources?.length ? [{ id: 'article-sources', label: 'Sources', level: 2 as const }] : []),
+  ] : sectionToc;
 
   const renderSections = (sections: NonNullable<BlogPost['sections']>) => sections.map((section) => (
     <section className="article-panel" id={headingId(section.heading)} key={section.heading}>
@@ -269,8 +289,8 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
             <div className="article-content">
           {fullArticle ? (
             <>
-              <section className="article-panel takeaways">
-                <h2>{post.title}</h2>
+              <section className="article-panel takeaways" id="key-takeaways">
+                <h2>Key takeaways</h2>
                 <ul>{post.keyTakeaways?.map((item) => <li key={item}>{item}</li>)}</ul>
               </section>
               <ArticleBanner index={0} post={post} />
@@ -291,27 +311,27 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
               {renderSections(finalSections)}
               <WorkSampleGraphic post={post} />
               {post.modules?.map((module) => (
-                <section className="article-panel" key={module.title}>
+                <section className="article-panel" id={headingId(module.title)} key={module.title}>
                   <h2>{module.title}</h2>
                   <div className="score-table">{module.rows.map((row) => <div className="score-row" key={row.label}><strong>{row.label}</strong><span>{row.value}</span></div>)}</div>
                 </section>
               ))}
-              {post.script ? <section className="article-panel script-box"><h2>{post.script.title}</h2>{post.script.lines.map((line) => <blockquote key={line}>{line}</blockquote>)}</section> : null}
+              {post.script ? <section className="article-panel script-box" id={headingId(post.script.title)}><h2>{post.script.title}</h2>{post.script.lines.map((line) => <blockquote key={line}>{line}</blockquote>)}</section> : null}
               {post.relatedLinks?.length ? (
-                <section className="article-panel related-guides">
+                <section className="article-panel related-guides" id="use-the-assessment-in-your-hiring-plan">
                   <h2>Use the assessment in your hiring plan</h2>
                   <div>{post.relatedLinks.map((link) => <a href={link.href} key={link.href}><strong>{link.label}</strong></a>)}</div>
                 </section>
               ) : null}
               {post.faqs?.length ? (
-                <section className="article-panel">
+                <section className="article-panel" id="assessment-questions">
                   <h2>Questions about assessing Philippine developers</h2>
-                  {post.faqs.map((faq) => <div className="faq-block" key={faq.question}><h3>{faq.question}</h3><p>{faq.answer}</p></div>)}
+                  {post.faqs.map((faq) => <div className="faq-block" key={faq.question}><h3 id={headingId(faq.question)}>{faq.question}</h3><p>{faq.answer}</p></div>)}
                 </section>
               ) : null}
               <ArticleBanner index={2} post={post} />
-              <aside className='article-rotation-banner article-rotation-banner-middle' data-article-banner='true'><p className='eyebrow'>Midpoint planning check</p><h2>Compare providers against one written workflow</h2><p className='article-banner-note'>Use one task lane, one reviewer, and one quality check so each provider conversation is easier to judge.</p><a className='btn' href='/contact-us'>Contact Us</a></aside>{post.sources?.length ? (
-                <section className="article-panel sources-card">
+              <aside className='article-rotation-banner article-rotation-banner-middle' data-article-banner='true'><p className='eyebrow'>Midpoint planning check</p><h2 id="provider-comparison-check">Compare providers against one written workflow</h2><p className='article-banner-note'>Use one task lane, one reviewer, and one quality check so each provider conversation is easier to judge.</p><a className='btn' href='/contact-us'>Contact Us</a></aside>{post.sources?.length ? (
+                <section className="article-panel sources-card" id="article-sources">
                   <h2>Sources</h2>
                   <ol>{post.sources.map((source) => <li key={source.url}><a href={source.url}>{source.name}</a>{source.note ? `: ${source.note}` : ''}</li>)}</ol>
                 </section>

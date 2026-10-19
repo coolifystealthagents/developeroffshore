@@ -17,11 +17,25 @@ function ParentMark({ dark = false, label }: { dark?: boolean; label: string }) 
 }
 
 export function Header(_props: unknown = {}) {
-  return <><a className="skip-link" href="#main-content">Skip to main content</a><header className="nav"><div className="nav-inner"><a className="logo" href="/" aria-label={`${site.brand} home`}><LogoMark /></a><ParentMark label="Powered by StealthAgents" /><nav className="links fleet-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/services">Services</a><a href="/contact-us">Contact Us</a></nav></div></header></>;
+  const navigationState = `(() => {
+    const header = document.querySelector('[data-site-header]');
+    const links = document.querySelectorAll('[data-primary-nav] a');
+    const path = window.location.pathname.replace(/\\/$/, '') || '/';
+    links.forEach((link) => {
+      const href = link.getAttribute('href');
+      const current = href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
+      if (current) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+    const updateHeader = () => header && header.classList.toggle('is-scrolled', window.scrollY > 12);
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+  })();`;
+  return <><a className="skip-link" href="#main-content">Skip to main content</a><header className="nav" data-site-header><div className="nav-inner"><a className="logo" href="/" aria-label={`${site.brand} home`}><LogoMark /></a><ParentMark label="Powered by StealthAgents" /><nav className="links fleet-nav" data-primary-nav aria-label="Main navigation"><a href="/">Home</a><a href="/services">Services</a><a href="/contact-us">Contact Us</a></nav></div></header><script dangerouslySetInnerHTML={{ __html: navigationState }} /></>;
 }
 
 export function Footer(_props: unknown = {}) {
-  return <footer className="footer legit-footer"><div className="footer-grid"><div className="footer-brand"><a className="footer-logo" href="/"><LogoMark /></a><p>Philippines-based {site.primary || 'software development'} support designed around documented scope and accountable handoffs.</p><ParentMark dark label="Powered by StealthAgents" /></div><div><h2>Services</h2><div className="footer-links">{fleetServices.slice(0, 6).map((service) => <a href={`/services/${service.slug}`} key={service.slug}>{service.title}</a>)}</div></div><div><h2>Explore</h2><div className="footer-links"><a href="/blog">Blog</a><a href="/research">Research</a><a href="/alternatives">Alternatives</a><a href="/contact-us">Contact Us</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms &amp; Conditions</a></div></div></div><div className="footer-bottom"><span>© {year} {site.brand}. All rights reserved.</span><span>{site.domain}</span></div></footer>;
+  return <footer className="footer legit-footer"><div className="footer-grid"><div className="footer-brand"><a className="footer-logo" href="/"><LogoMark /></a><p>Philippines-based {site.primary || 'software development'} support designed around documented scope and accountable handoffs.</p><ParentMark dark label="Powered by StealthAgents" /></div><div><h2>Services</h2><div className="footer-links">{fleetServices.slice(0, 6).map((service) => <a href={`/services/${service.slug}`} key={service.slug}>{service.title}</a>)}</div></div><div><h2>Explore</h2><div className="footer-links"><a href="/about">About</a><a href="/blog">Blog</a><a href="/research">Research</a><a href="/alternatives">Alternatives</a><a href="/contact-us">Contact Us</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms &amp; Conditions</a></div></div></div><div className="footer-bottom"><span>© {year} {site.brand}. All rights reserved.</span><span>{site.domain}</span></div></footer>;
 }
 
 export function CTA() {

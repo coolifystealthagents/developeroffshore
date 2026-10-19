@@ -3,8 +3,11 @@ const nextConfig = {
   async redirects() {
     return [
       { source: "/services/reporting-and-qa", destination: "/services/qa-automation-engineering", permanent: true },
+      { source: "/services/operations-support", destination: "/services/devops-release-support", permanent: true },
+      { source: "/services/admin-support", destination: "/services/legacy-application-maintenance", permanent: true },
+      { source: "/services/offshore-software-development", destination: "/services", permanent: true },
       { source: "/contact", destination: "/contact-us", permanent: true },
-      { source: "/thank-you", destination: "/thanks-whats-next", permanent: true },
+      { source: "/cancellation-policy", destination: "/cancellation", permanent: true },
     ];
   },
   async rewrites() {

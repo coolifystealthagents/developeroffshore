@@ -16,9 +16,14 @@ const config = read('next.config.mjs');
 const booking = read('app/booking-components.tsx');
 const css = read('app/globals.css');
 const success = read('app/thanks-whats-next/page.tsx');
+const thankYou = read('app/thank-you/page.tsx');
+const scheduler = read('app/thank-you/OnceHubScheduler.tsx');
 const api = read('app/api/contact/route.ts');
 const acrClient = read('app/acr-client.tsx');
 const articleToc = read('app/article-toc.tsx');
+const internalLinkSources = [read('app/sep19-blog-batch.ts'), read('app/sep22-blog-batch.ts'), read('app/alternatives/[slug]/page.tsx')].join('\n');
+const cancellation = read('app/cancellation/page.tsx');
+const legacyCancellation = read('app/cancellation-policy/page.tsx');
 
 test('sitewide chrome uses the canonical conversion route and parent attribution', () => {
   assert.match(components, /position:\s*sticky|className="nav"/);
@@ -32,7 +37,7 @@ test('sitewide chrome uses the canonical conversion route and parent attribution
 test('contact delivery fails closed and only confirmed API acceptance can navigate', () => {
   assert.match(form, /endpoint = "\/api\/contact"/);
   assert.match(form, /accepted/);
-  assert.match(form, /window\.location\.assign\("\/thanks-whats-next"\)/);
+  assert.match(form, /window\.location\.assign\("\/thank-you"\)/);
   assert.doesNotMatch(form, /tracker[\s\S]{0,180}window\.location\.assign/);
   assert.match(form, /role="status"|aria-live/);
 });
@@ -56,9 +61,8 @@ test('contact page has approved provenance-backed review and parent team archite
   assert.match(contact, /Official team, Bacolod/);
   assert.doesNotMatch(contact, /href=\{booking\}/);
   assert.match(booking, /review-provenance\.json/);
-  assert.match(booking, /Pause reviews/);
-  assert.match(booking, /aria-hidden="true"/);
-  assert.match(css, /\.sa-testimonials\.is-paused \.sa-testimonial-track\s*\{[^}]*animation-play-state:\s*paused/);
+  assert.doesNotMatch(booking, /Pause reviews|Resume reviews|Previous|Next/);
+  assert.match(css, /\.sa-testimonial-viewport:hover \.sa-testimonial-card[^{]*\{[^}]*animation-play-state:\s*paused/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
 });
 
@@ -85,11 +89,23 @@ test('blog and research details provide generated anchored TOCs and populated st
 
 test('conversion redirects, sitemap, canonical metadata, and security policy are explicit', () => {
   assert.match(config, /source: "\/contact"[\s\S]*destination: "\/contact-us"[\s\S]*permanent: true/);
-  assert.match(config, /source: "\/thank-you"[\s\S]*destination: "\/thanks-whats-next"[\s\S]*permanent: true/);
+  for (const [source, destination] of [
+    ['/services/reporting-and-qa', '/services/qa-automation-engineering'],
+    ['/services/operations-support', '/services/devops-release-support'],
+    ['/services/admin-support', '/services/legacy-application-maintenance'],
+    ['/services/offshore-software-development', '/services'],
+    ['/cancellation-policy', '/cancellation'],
+  ]) {
+    assert.match(config, new RegExp(`source: "${source.replaceAll('/', '\\/')}"[\\s\\S]*destination: "${destination.replaceAll('/', '\\/')}"[\\s\\S]*permanent: true`));
+  }
+  assert.doesNotMatch(config, /source: "\/thank-you"/);
   assert.match(config, /Permissions-Policy/);
   assert.match(config, /Content-Security-Policy/);
   assert.match(sitemap, /path: '\/contact-us'/);
+  assert.match(sitemap, /path: '\/about'/);
+  assert.match(sitemap, /path: '\/cancellation'/);
   assert.doesNotMatch(sitemap, /path: '\/contact'/);
+  assert.doesNotMatch(sitemap, /path: '\/cancellation-policy'/);
   assert.doesNotMatch(sitemap, /path: '\/thank-you'/);
   assert.ok(existsSync(new URL('../app/thanks-whats-next/page.tsx', import.meta.url)));
 });
@@ -101,18 +117,27 @@ test('commercial V3 source avoids forbidden punctuation and decorative numbering
   assert.doesNotMatch(commercial, /padStart\(2/);
 });
 
-test('success route is noindex and offers the direct scheduler before the embed', () => {
+test('lead success route is noindex and offers the direct scheduler before the embed', () => {
+  assert.match(thankYou, /robots:\s*\{\s*index:\s*false/);
+  assert.match(thankYou, /Request delivered/);
+  assert.ok(scheduler.indexOf('href={scheduler}') < scheduler.indexOf('<iframe'));
+  assert.match(scheduler, /src=\{`\$\{scheduler\}/);
+  assert.match(scheduler, /confirmationPath = '\/thanks-whats-next'/);
+});
+
+test('booking completion route is noindex and confirms the consultation', () => {
   assert.match(success, /robots:\s*\{\s*index:\s*false/);
-  assert.match(success, /Delivery confirmed/);
-  assert.ok(success.indexOf('href={scheduler}') < success.indexOf('<iframe'));
-  assert.match(success, /src=\{`\$\{scheduler\}/);
+  assert.match(success, /Consultation booked/);
+  assert.match(success, /meeting is confirmed/);
 });
 
 test('API acceptance is tied to primary delivery rather than tracking', () => {
   assert.match(api, /upstream\.ok/);
-  assert.match(api, /result\?\.ok!==true/);
-  assert.match(api, /accepted:true/);
-  assert.ok(api.indexOf('accepted:true') > api.indexOf('upstream.ok'));
+  assert.match(api, /result\?\.ok === true/);
+  assert.match(api, /sendLeadFallbackToMattermost/);
+  assert.match(api, /if \(!accepted\) return errorResponse\(502\)/);
+  assert.match(api, /accepted:\s*true/);
+  assert.ok(api.search(/accepted:\s*true/) > api.indexOf('upstream.ok'));
 });
 
 test('V3 responsive and accessibility styles cover new shared systems', () => {
@@ -120,4 +145,10 @@ test('V3 responsive and accessibility styles cover new shared systems', () => {
   assert.doesNotMatch(css, /html,body\{[^}]*overflow-x:\s*hidden/);
   assert.match(css, /:focus-visible/);
   assert.match(css, /@media\(max-width:\s*900px\)/);
+});
+
+test('published internal links avoid retired service routes and legal pages consolidate canonically', () => {
+  assert.doesNotMatch(internalLinkSources, /\/services\/(?:admin-support|operations-support|offshore-software-development)/);
+  assert.match(cancellation, /canonical:\s*'\/cancellation'/);
+  assert.match(legacyCancellation, /permanentRedirect\('\/cancellation'\)/);
 });
