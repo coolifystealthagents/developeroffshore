@@ -204,7 +204,7 @@ export const october13ResearchBatch: readonly ResearchPost[] = [
       "heading": "Build the evidence packet",
       "body": "Freeze the decision, population, versions, and owners before collecting outcomes.",
       "label": "Discuss developer support",
-      "href": "/contact",
+      "href": "/contact-us",
       "anchorId": "research-next-step"
     }
   },
@@ -412,7 +412,7 @@ export const october13ResearchBatch: readonly ResearchPost[] = [
       "heading": "Build the evidence packet",
       "body": "Freeze the decision, population, versions, and owners before collecting outcomes.",
       "label": "Discuss developer support",
-      "href": "/contact",
+      "href": "/contact-us",
       "anchorId": "research-next-step"
     }
   },
@@ -620,7 +620,7 @@ export const october13ResearchBatch: readonly ResearchPost[] = [
       "heading": "Build the evidence packet",
       "body": "Freeze the decision, population, versions, and owners before collecting outcomes.",
       "label": "Discuss developer support",
-      "href": "/contact",
+      "href": "/contact-us",
       "anchorId": "research-next-step"
     }
   },
@@ -828,7 +828,7 @@ export const october13ResearchBatch: readonly ResearchPost[] = [
       "heading": "Build the evidence packet",
       "body": "Freeze the decision, population, versions, and owners before collecting outcomes.",
       "label": "Discuss developer support",
-      "href": "/contact",
+      "href": "/contact-us",
       "anchorId": "research-next-step"
     }
   },
@@ -1036,7 +1036,7 @@ export const october13ResearchBatch: readonly ResearchPost[] = [
       "heading": "Build the evidence packet",
       "body": "Freeze the decision, population, versions, and owners before collecting outcomes.",
       "label": "Discuss developer support",
-      "href": "/contact",
+      "href": "/contact-us",
       "anchorId": "research-next-step"
     }
   }

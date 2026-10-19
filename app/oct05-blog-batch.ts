@@ -61,7 +61,7 @@ export const october05BlogBatch: readonly BlogPost[] = [
     relatedLinks: [
       { label: 'Node.js API development', href: '/services/node-js-api-development', note: 'Define a bounded integration and review path.' },
       { label: 'Developer services', href: '/services', note: 'Match the work with an accountable technical owner.' },
-      { label: 'Discuss the assignment', href: '/contact', note: 'Bring the provider contract, stack, and review boundary.' },
+      { label: 'Discuss the assignment', href: '/contact-us', note: 'Bring the provider contract, stack, and review boundary.' },
     ],
     faqs: [
       { question: 'Does 425 make a request replay safe?', answer: 'No. It asks a capable client to retry without early data. The route still needs correct authorization, transaction behavior, and any product-specific idempotency control.' },
@@ -112,7 +112,7 @@ export const october05BlogBatch: readonly BlogPost[] = [
     relatedLinks: [
       { label: 'Node.js API development', href: '/services/node-js-api-development', note: 'Scope API behavior and evidence.' },
       { label: 'QA automation engineering', href: '/services/qa-automation-engineering', note: 'Exercise real concurrent request paths.' },
-      { label: 'Contact Developer Offshore', href: '/contact', note: 'Discuss a bounded API delivery lane.' },
+      { label: 'Contact Developer Offshore', href: '/contact-us', note: 'Discuss a bounded API delivery lane.' },
     ],
     faqs: [
       { question: 'Does an ETag replace database locking?', answer: 'No. The server still needs an atomic compare-and-change operation. The validator carries the client precondition; persistence must enforce it without a race.' },
@@ -163,7 +163,7 @@ export const october05BlogBatch: readonly BlogPost[] = [
     relatedLinks: [
       { label: 'Legacy application maintenance', href: '/services/legacy-application-maintenance', note: 'Bound database changes and recovery evidence.' },
       { label: 'Data pipeline development', href: '/services/data-pipeline-development', note: 'Review durable state and replay behavior.' },
-      { label: 'Discuss the role', href: '/contact', note: 'Bring the invariant, environment, and approval owner.' },
+      { label: 'Discuss the role', href: '/contact-us', note: 'Bring the invariant, environment, and approval owner.' },
     ],
     faqs: [
       { question: 'Is Serializable always the right PostgreSQL isolation level?', answer: 'No. It is one tool. Compare constraints, locking, contention, retry behavior, and the exact invariant rather than selecting a label for every transaction.' },
@@ -218,7 +218,7 @@ export const october05BlogBatch: readonly BlogPost[] = [
     relatedLinks: [
       { label: 'React frontend development', href: '/services/react-frontend-development', note: 'Scope browser behavior and accessible recovery.' },
       { label: 'QA automation engineering', href: '/services/qa-automation-engineering', note: 'Build repeatable multi-tab lifecycle evidence.' },
-      { label: 'Discuss the assignment', href: '/contact', note: 'Bring the worker scope, release process, and reviewer.' },
+      { label: 'Discuss the assignment', href: '/contact-us', note: 'Bring the worker scope, release process, and reviewer.' },
     ],
     faqs: [
       { question: 'Does an iframe allow attribute override the response header?', answer: 'No. The effective frame policy is constrained by both layers. A permissive iframe attribute cannot widen a feature denied by the parent response policy.' },
@@ -273,7 +273,7 @@ export const october05BlogBatch: readonly BlogPost[] = [
     relatedLinks: [
       { label: 'React frontend development', href: '/services/react-frontend-development', note: 'Refactor browser code around reviewed boundaries.' },
       { label: 'QA automation engineering', href: '/services/qa-automation-engineering', note: 'Exercise route and browser enforcement cases.' },
-      { label: 'Discuss the security handoff', href: '/contact', note: 'Bring the application scope, CSP path, and reviewer.' },
+      { label: 'Discuss the security handoff', href: '/contact-us', note: 'Bring the application scope, CSP path, and reviewer.' },
     ],
     faqs: [
       { question: 'Does Trusted Types sanitize HTML automatically?', answer: 'No. A policy creates trusted values; its transformation still needs careful review and usually a configured sanitizer for approved rich HTML.' },
@@ -329,7 +329,7 @@ export const october05BlogBatch: readonly BlogPost[] = [
     relatedLinks: [
       { label: 'React frontend development', href: '/services/react-frontend-development', note: 'Implement reviewable component behavior.' },
       { label: 'QA automation engineering', href: '/services/qa-automation-engineering', note: 'Build keyboard and state-transition fixtures.' },
-      { label: 'Plan the assignment', href: '/contact', note: 'Bring the component, user journey, and supported matrix.' },
+      { label: 'Plan the assignment', href: '/contact-us', note: 'Bring the component, user journey, and supported matrix.' },
     ],
     faqs: [
       { question: 'Can an automated accessibility scanner prove a virtualized list works?', answer: 'No. It can catch some markup defects, but ordered keyboard movement, focus persistence, announcements, loading, and selection need behavioral and targeted manual checks.' },
@@ -385,7 +385,7 @@ export const october05BlogBatch: readonly BlogPost[] = [
     relatedLinks: [
       { label: 'DevOps release support', href: '/services/devops-release-support', note: 'Prepare controlled plan and recovery evidence.' },
       { label: 'Legacy application maintenance', href: '/services/legacy-application-maintenance', note: 'Refactor ownership without losing operational history.' },
-      { label: 'Discuss the infrastructure role', href: '/contact', note: 'Bring the address map, backend boundary, and reviewer.' },
+      { label: 'Discuss the infrastructure role', href: '/contact-us', note: 'Bring the address map, backend boundary, and reviewer.' },
     ],
     faqs: [
       { question: 'Does a moved block change the remote infrastructure object?', answer: 'Its purpose is to update Terraform address association. Still inspect the detailed plan because provider, configuration, drift, or mapping changes can introduce real remote actions.' },
@@ -441,7 +441,7 @@ export const october05BlogBatch: readonly BlogPost[] = [
     relatedLinks: [
       { label: 'DevOps release support', href: '/services/devops-release-support', note: 'Review declarative changes and recovery.' },
       { label: 'Developer services', href: '/services', note: 'Scope workload and controller evidence.' },
-      { label: 'Discuss the handoff', href: '/contact', note: 'Bring the manifest, manager identities, and reviewer.' },
+      { label: 'Discuss the handoff', href: '/contact-us', note: 'Bring the manifest, manager identities, and reviewer.' },
     ],
     faqs: [
       { question: 'Should a pipeline always use force conflicts?', answer: 'No. Force transfers ownership and may overwrite another actor’s value. First decide which actor should own the disputed field and whether the other actor will keep reconciling it.' },
@@ -497,7 +497,7 @@ export const october05BlogBatch: readonly BlogPost[] = [
     relatedLinks: [
       { label: 'DevOps release support', href: '/services/devops-release-support', note: 'Coordinate DNS changes and rollback evidence.' },
       { label: 'QA automation engineering', href: '/services/qa-automation-engineering', note: 'Build repeatable message-stream fixtures.' },
-      { label: 'Discuss the integration', href: '/contact', note: 'Bring the sender inventory, domain owner, and reviewer.' },
+      { label: 'Discuss the integration', href: '/contact-us', note: 'Bring the sender inventory, domain owner, and reviewer.' },
     ],
     faqs: [
       { question: 'Does SPF pass mean DMARC passes?', answer: 'Not necessarily. The SPF-authenticated domain must also align with the visible From domain, unless an aligned DKIM signature provides the passing path.' },
@@ -577,7 +577,7 @@ export const october05BlogBatch: readonly BlogPost[] = [
       },
       {
         "label": "Discuss the database assignment",
-        "href": "/contact",
+        "href": "/contact-us",
         "note": "Bring the schema, booking rule, and decision owners."
       }
     ],
@@ -653,7 +653,7 @@ export const october05BlogBatch: readonly BlogPost[] = [
     relatedLinks: [
       { label: 'React frontend development', href: '/services/react-frontend-development', note: 'Build reusable responsive components.' },
       { label: 'QA automation engineering', href: '/services/qa-automation-engineering', note: 'Automate boundary and browser matrices.' },
-      { label: 'Discuss the frontend lane', href: '/contact', note: 'Bring the component, placements, and reviewers.' },
+      { label: 'Discuss the frontend lane', href: '/contact-us', note: 'Bring the component, placements, and reviewers.' },
     ],
     faqs: [
       { question: 'Should container-query breakpoints match viewport breakpoints?', answer: 'Not by default. Derive them from the component’s content and layout failure in its actual containers.' },
@@ -709,7 +709,7 @@ export const october05BlogBatch: readonly BlogPost[] = [
     relatedLinks: [
       { label: 'Node.js API development', href: '/services/node-js-api-development', note: 'Implement signed integration boundaries.' },
       { label: 'DevOps release support', href: '/services/devops-release-support', note: 'Review proxy configuration and key rotation.' },
-      { label: 'Discuss the API assignment', href: '/contact', note: 'Bring the topology, signer contract, and security owner.' },
+      { label: 'Discuss the API assignment', href: '/contact-us', note: 'Bring the topology, signer contract, and security owner.' },
     ],
     faqs: [
       { question: 'Does a valid HTTP message signature authorize the requested action?', answer: 'No. It authenticates covered message components under a trusted key. Current tenant, resource, and operation authorization still needs a separate decision.' },

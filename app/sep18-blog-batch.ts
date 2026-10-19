@@ -89,7 +89,7 @@ function article(topic: Topic, index: number): BlogPost {
     relatedLinks: [
       { label: topic.serviceLabel, href: topic.service, note: 'See the nearest bounded engineering service lane.' },
       { label: 'Offshore development services', href: '/services', note: 'Compare role and delivery lanes.' },
-      { label: 'Discuss the first outcome', href: '/contact', note: 'Share the stack, scope, schedule, and review owner.' },
+      { label: 'Discuss the first outcome', href: '/contact-us', note: 'Share the stack, scope, schedule, and review owner.' },
     ],
     faqs: [
       { question: 'Can an offshore developer own this workflow?', answer: 'They can own the scoped investigation, implementation, evidence, and written handoff. The client-side owner should retain sensitive access, accepted risk, architecture exceptions, and production approval.' },

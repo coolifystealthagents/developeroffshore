@@ -1,8 +1,12 @@
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import test from 'node:test';
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
+const applicationSources = readdirSync(new URL('../app', import.meta.url), { recursive: true, withFileTypes: true })
+  .filter((entry) => entry.isFile() && /\.(?:tsx?|json)$/.test(entry.name))
+  .map((entry) => read(`app/${entry.parentPath.replace(new URL('../app', import.meta.url).pathname, '').replace(/^\//, '')}${entry.parentPath.endsWith('/') ? '' : '/'}${entry.name}`))
+  .join('\n');
 
 const components = read('app/components.tsx');
 const form = read('app/contact-us/StandardContactForm.tsx');
@@ -148,10 +152,13 @@ test('V3 responsive and accessibility styles cover new shared systems', () => {
   assert.match(css, /\.pagination\{[^}]*flex-wrap:\s*wrap/);
   assert.match(css, /\.article-card>img\{[^}]*width:\s*100%[^}]*aspect-ratio:\s*auto/);
   assert.doesNotMatch(css, /\.article-card>img\{[^}]*width:\s*calc\(100%\s*\+\s*48px\)/);
+  assert.match(css, /@media\(prefers-reduced-motion:reduce\)/);
+  assert.match(css, /\.sa-testimonial-card\{display:\s*flex!important;[^}]*animation:\s*none!important/);
 });
 
 test('published internal links avoid retired service routes and legal pages consolidate canonically', () => {
   assert.doesNotMatch(internalLinkSources, /\/services\/(?:admin-support|operations-support|offshore-software-development)/);
+  assert.doesNotMatch(applicationSources, /(?:href|ctaHref|path):\s*['"]\/contact['"]/);
   assert.match(cancellation, /canonical:\s*'\/cancellation'/);
   assert.match(legacyCancellation, /permanentRedirect\('\/cancellation'\)/);
 });

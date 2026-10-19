@@ -38,5 +38,5 @@ export const september19ResearchBatch:readonly ResearchPost[]=rows.map(r=>({
   ],
   sources:[{name:`${r.source1} (checked 2026-09-19)`,url:r.url1},{name:`${r.source2} (checked 2026-09-19)`,url:r.url2},{name:'NIST Secure Software Development Framework (checked 2026-09-19)',url:'https://csrc.nist.gov/pubs/sp/800/218/final'}],
   faqs:[{question:'Does this study prove the developer will succeed?',answer:'No. It supplies bounded evidence for one workflow, responsibility, and review decision.'},{question:'Who accepts the remaining risk?',answer:'The named client owner; the developer and automation may provide evidence but do not accept risk.'}],
-  related:[{title:'Relevant developer service',href:r.service},{title:'Research library',href:'/research'},{title:'Discuss a role',href:'/contact'}],
+  related:[{title:'Relevant developer service',href:r.service},{title:'Research library',href:'/research'},{title:'Discuss a role',href:'/contact-us'}],
 }));
