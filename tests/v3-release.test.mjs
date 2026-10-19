@@ -145,6 +145,9 @@ test('V3 responsive and accessibility styles cover new shared systems', () => {
   assert.doesNotMatch(css, /html,body\{[^}]*overflow-x:\s*hidden/);
   assert.match(css, /:focus-visible/);
   assert.match(css, /@media\(max-width:\s*900px\)/);
+  assert.match(css, /\.pagination\{[^}]*flex-wrap:\s*wrap/);
+  assert.match(css, /\.article-card>img\{[^}]*width:\s*100%[^}]*aspect-ratio:\s*auto/);
+  assert.doesNotMatch(css, /\.article-card>img\{[^}]*width:\s*calc\(100%\s*\+\s*48px\)/);
 });
 
 test('published internal links avoid retired service routes and legal pages consolidate canonically', () => {
