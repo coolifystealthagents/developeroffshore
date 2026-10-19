@@ -47,7 +47,7 @@ export const october2ResearchBatch: readonly ResearchPost[] = [
         'Source limitations are explicit. Platform documentation cannot establish behavior of an unlisted framework, database driver, proxy, or application wrapper. The live system may also contain work that cannot be cancelled safely. Record every unsupported boundary and do not substitute an assumption for an observation. The service owner decides whether to accept, redesign, isolate, or monitor remaining work.'
       ]}
     ],
-    sources:[{name:'Node.js: Global objects — AbortController',url:'https://nodejs.org/api/globals.html#class-abortcontroller'},{name:'Node.js: Asynchronous context tracking',url:'https://nodejs.org/api/async_context.html'},{name:'WHATWG DOM Standard: Aborting ongoing activities',url:'https://dom.spec.whatwg.org/#aborting-ongoing-activities'}],
+    sources:[{name:'Node.js: Global objects - AbortController',url:'https://nodejs.org/api/globals.html#class-abortcontroller'},{name:'Node.js: Asynchronous context tracking',url:'https://nodejs.org/api/async_context.html'},{name:'WHATWG DOM Standard: Aborting ongoing activities',url:'https://dom.spec.whatwg.org/#aborting-ongoing-activities'}],
     faqs:commonFaqs,related:[{title:'Node.js API development',href:'/services/node-js-api-development'},{title:'DevOps release support',href:'/services/devops-release-support'},{title:'Research library',href:'/research'}]
   },
   {

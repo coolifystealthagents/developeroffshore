@@ -14,6 +14,11 @@ const research = read('app/research/[slug]/page.tsx');
 const sitemap = read('app/sitemap.xml/route.ts');
 const config = read('next.config.mjs');
 const booking = read('app/booking-components.tsx');
+const css = read('app/globals.css');
+const success = read('app/thanks-whats-next/page.tsx');
+const api = read('app/api/contact/route.ts');
+const acrClient = read('app/acr-client.tsx');
+const articleToc = read('app/article-toc.tsx');
 
 test('sitewide chrome uses the canonical conversion route and parent attribution', () => {
   assert.match(components, /position:\s*sticky|className="nav"/);
@@ -32,6 +37,12 @@ test('contact delivery fails closed and only confirmed API acceptance can naviga
   assert.match(form, /role="status"|aria-live/);
 });
 
+test('the contact form is the only client-side lead delivery owner', () => {
+  assert.doesNotMatch(acrClient, /addEventListener\(['"]submit/);
+  assert.doesNotMatch(acrClient, /fetch\(action/);
+  assert.doesNotMatch(acrClient, /location\.assign/);
+});
+
 test('contact page has approved provenance-backed review and parent team architecture', () => {
   const provenance = JSON.parse(read('app/review-provenance.json'));
   assert.equal(provenance.source, 'https://stealthagents.com/');
@@ -46,6 +57,9 @@ test('contact page has approved provenance-backed review and parent team archite
   assert.doesNotMatch(contact, /href=\{booking\}/);
   assert.match(booking, /review-provenance\.json/);
   assert.match(booking, /Pause reviews/);
+  assert.match(booking, /aria-hidden="true"/);
+  assert.match(css, /\.sa-testimonials\.is-paused \.sa-testimonial-track\s*\{[^}]*animation-play-state:\s*paused/);
+  assert.match(css, /prefers-reduced-motion:\s*reduce/);
 });
 
 test('all service records support a substantial operational template', () => {
@@ -53,6 +67,7 @@ test('all service records support a substantial operational template', () => {
   for (const marker of ['outcomes:', 'audience:', 'inputs:', 'boundaries:', 'faqs:']) assert.match(serviceData, new RegExp(marker));
   for (const heading of ['Who this service is for','Outcomes and deliverables','Responsibilities and tasks','Quality controls','Your first week','Questions teams ask','Proof boundaries','Related services']) assert.match(services, new RegExp(heading));
   assert.match(services, /articleHero/);
+  assert.doesNotMatch(services, /export function articleHero/);
   assert.doesNotMatch(services, /href="\/contact"/);
 });
 
@@ -60,11 +75,12 @@ test('blog and research details provide generated anchored TOCs and populated st
   for (const source of [blog, research]) {
     assert.match(source, /article-layout/);
     assert.match(source, /article-sidebar/);
-    assert.match(source, /Table of contents/);
+    assert.match(source, /ArticleToc/);
     assert.match(source, /id=\{/);
-    assert.match(source, /href=\{`#/);
     assert.match(source, /Related|Plan your|Contact Us/);
   }
+  assert.match(articleToc, /Table of contents/);
+  assert.match(articleToc, /href=\{`#\$\{item\.id\}`\}/);
 });
 
 test('conversion redirects, sitemap, canonical metadata, and security policy are explicit', () => {
@@ -80,7 +96,28 @@ test('conversion redirects, sitemap, canonical metadata, and security policy are
 
 test('commercial V3 source avoids forbidden punctuation and decorative numbering', () => {
   const commercial = [components, contact, services, read('app/services/page.tsx'), read('app/thanks-whats-next/page.tsx')].join('\n');
-  assert.doesNotMatch(commercial, /[—–]/);
+  assert.doesNotMatch(commercial, /[\u2014\u2013]/);
   assert.doesNotMatch(commercial, />0[1-9]</);
   assert.doesNotMatch(commercial, /padStart\(2/);
+});
+
+test('success route is noindex and offers the direct scheduler before the embed', () => {
+  assert.match(success, /robots:\s*\{\s*index:\s*false/);
+  assert.match(success, /Delivery confirmed/);
+  assert.ok(success.indexOf('href={scheduler}') < success.indexOf('<iframe'));
+  assert.match(success, /src=\{`\$\{scheduler\}/);
+});
+
+test('API acceptance is tied to primary delivery rather than tracking', () => {
+  assert.match(api, /upstream\.ok/);
+  assert.match(api, /result\?\.ok!==true/);
+  assert.match(api, /accepted:true/);
+  assert.ok(api.indexOf('accepted:true') > api.indexOf('upstream.ok'));
+});
+
+test('V3 responsive and accessibility styles cover new shared systems', () => {
+  for (const selector of ['skip-link', 'parent-mark', 'service-v3-hero-grid', 'service-v3-body', 'article-layout', 'article-sidebar', 'contact-v3-grid', 'booking-v3']) assert.match(css, new RegExp(`\\.${selector}`));
+  assert.doesNotMatch(css, /html,body\{[^}]*overflow-x:\s*hidden/);
+  assert.match(css, /:focus-visible/);
+  assert.match(css, /@media\(max-width:\s*900px\)/);
 });

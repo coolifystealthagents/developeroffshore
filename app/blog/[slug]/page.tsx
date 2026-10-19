@@ -4,6 +4,7 @@ import { Header, Footer, JsonLd } from '../../components';
 import { blogPosts, site, type BlogPost } from '../../data';
 import { articleThumbnail } from '../../article-thumbnails';
 import { compactSeoDescription, compactSeoTitle } from '../../seo-metadata';
+import { ArticleToc } from '../../article-toc';
 
 const baseUrl = 'https://developeroffshore.com';
 const headingId = (heading: string) => heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -32,7 +33,7 @@ const defaultBanners = [
   },
   {
     label: 'Talk through the role',
-    href: '/contact',
+    href: '/contact-us',
     note: 'Share the stack, first outcome, schedule, and review owner. A staffing specialist can use that detail to discuss candidate fit.',
   },
 ] as const;
@@ -247,8 +248,8 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
 
   return (
     <>
-      <Header showScope={false} />
-      <main className="article-page">
+      <Header />
+      <main id="main-content" className="article-page">
         <article className="container article-shell" data-article-revision={post.revision || 'legacy-article'}>
           <JsonLd data={articleSchema} />
           <JsonLd data={breadcrumbSchema} />
@@ -262,7 +263,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
           </header>
           <div className="article-layout">
             <aside className="article-sidebar" aria-label="Article navigation and next action">
-              <nav aria-labelledby="blog-toc-title"><h2 id="blog-toc-title">Table of contents</h2><ol>{toc.map((item) => <li key={item.id}><a href={`#${item.id}`}>{item.label}</a></li>)}</ol></nav>
+              <ArticleToc items={toc} titleId="blog-toc-title" />
               <div className="article-sidebar-action"><h2>Plan your developer role</h2><p>Bring the workflow, first outcome, and review owner to a focused staffing conversation.</p><a href="/contact-us">Contact Us</a></div>
             </aside>
             <div className="article-content">
@@ -309,7 +310,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                 </section>
               ) : null}
               <ArticleBanner index={2} post={post} />
-              <aside className='article-rotation-banner article-rotation-banner-middle' data-article-banner='true'><p className='eyebrow'>Midpoint planning check</p><h2>Compare providers against one written workflow</h2><p className='article-banner-note'>Use one task lane, one reviewer, and one quality check so each provider conversation is easier to judge.</p><a className='btn' href='/contact'>Contact Us</a></aside>{post.sources?.length ? (
+              <aside className='article-rotation-banner article-rotation-banner-middle' data-article-banner='true'><p className='eyebrow'>Midpoint planning check</p><h2>Compare providers against one written workflow</h2><p className='article-banner-note'>Use one task lane, one reviewer, and one quality check so each provider conversation is easier to judge.</p><a className='btn' href='/contact-us'>Contact Us</a></aside>{post.sources?.length ? (
                 <section className="article-panel sources-card">
                   <h2>Sources</h2>
                   <ol>{post.sources.map((source) => <li key={source.url}><a href={source.url}>{source.name}</a>{source.note ? `: ${source.note}` : ''}</li>)}</ol>
@@ -336,7 +337,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
         <p className='article-source-note'><a href="https://www.ilo.org/global/topics/non-standard-employment/WCMS_534825/lang--en/index.htm" target="_blank" rel="noopener noreferrer">International Labour Organization guidance on remote work arrangements</a> reinforces why remote role briefs should document expectations, communication rhythms, and accountable handoffs.</p>
         </article>
       </main>
-      <Footer showScope={false} />
+      <Footer />
     </>
   );
 }

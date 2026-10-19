@@ -18,7 +18,7 @@ const serviceImages: Record<string, string> = {
   'legacy-application-maintenance': '/icons/getillustrations/sharpie-ui-design-icons-svg/delivery-tools.svg',
 };
 
-export function articleHero(slug: string) {
+function articleHero(slug: string) {
   return serviceImages[slug] || '/illustrations/getillustrations/inkdex-saas-illustrations-svg/offshore-developer.svg';
 }
 
