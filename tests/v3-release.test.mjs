@@ -28,6 +28,7 @@ const articleToc = read('app/article-toc.tsx');
 const internalLinkSources = [read('app/sep19-blog-batch.ts'), read('app/sep22-blog-batch.ts'), read('app/alternatives/[slug]/page.tsx')].join('\n');
 const cancellation = read('app/cancellation/page.tsx');
 const legacyCancellation = read('app/cancellation-policy/page.tsx');
+const middleware = read('middleware.ts');
 
 test('sitewide chrome uses the canonical conversion route and parent attribution', () => {
   assert.match(components, /position:\s*sticky|className="nav"/);
@@ -112,6 +113,18 @@ test('conversion redirects, sitemap, canonical metadata, and security policy are
   assert.doesNotMatch(sitemap, /path: '\/cancellation-policy'/);
   assert.doesNotMatch(sitemap, /path: '\/thank-you'/);
   assert.ok(existsSync(new URL('../app/thanks-whats-next/page.tsx', import.meta.url)));
+});
+
+test('canonical host middleware respects Cloudflare visitor scheme and exact hosts', () => {
+  assert.match(middleware, /CF-Visitor/i);
+  assert.match(middleware, /x-forwarded-proto/);
+  assert.match(middleware, /x-forwarded-host/);
+  assert.match(middleware, /host === CANONICAL_HOST \|\| host === WWW_HOST/);
+  assert.doesNotMatch(middleware, /endsWith\(CANONICAL_HOST\)/);
+  assert.match(middleware, /new URL\(CANONICAL_ORIGIN\)/);
+  assert.match(middleware, /destination\.pathname = request\.nextUrl\.pathname/);
+  assert.match(middleware, /destination\.search = request\.nextUrl\.search/);
+  assert.match(middleware, /NextResponse\.redirect\(destination, 308\)/);
 });
 
 test('commercial V3 source avoids forbidden punctuation and decorative numbering', () => {
