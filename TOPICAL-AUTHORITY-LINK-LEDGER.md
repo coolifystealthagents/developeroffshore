@@ -66,7 +66,7 @@ Last audited: 2026-09-13
 
 ## Next bounded release
 
-All previously listed contextual candidates are delivered locally. The 2026-10-10 clean-baseline artifact audit identified one later, verified-absent candidate: `/blog/offshore-developer-incident-escalation-handoff-2026-08-17` has three generic `/services` links and no route-local `/services/devops-release-support` link. Its incident escalation question matches the existing DevOps Release Support pillar, which covers release checks, health evidence, runbooks, and rollback preparation. A later reader-facing release must replace one generic related-guide placement through the typed blog record, refresh only that route's real modified date, and prove the source and target artifacts again before it is called delivered.
+All previously listed contextual candidates are delivered locally. The former incident-escalation candidate was delivered by `2d0984c6dac671142d1a06c7e4d91799600315df`: `/blog/offshore-developer-incident-escalation-handoff-2026-08-17` now has three intentional route-local `/services/devops-release-support` placements from reusable banners and its related guide. A fresh 2026-10-21 build confirms the exact source H1 and self-canonical, the named DevOps route in `<main>`, `article:modified_time` and source sitemap `<lastmod>` `2026-10-12`, plus the target's self-canonical sitemap entry. The client release owner retains production-risk and recovery decisions. This pair is delivered and non-duplicable; do not add another CTA.
 
 ## September 28, 2026 combined content handoff
 
