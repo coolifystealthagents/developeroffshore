@@ -122,3 +122,8 @@ All previously listed contextual candidates are delivered locally. The former in
 - `/research/offshore-developer-kubernetes-statefulset-partition-study-2026-10-05` links to `/services/devops-release-support` and `/services/legacy-application-maintenance`.
 - `/research/offshore-developer-nextjs-after-lifecycle-study-2026-10-05` links to `/services/next-js-application-development` and `/services/node-js-api-development`.
 - All ten route-to-service placements are delivered and non-duplicable. Do not add another contextual CTA to these studies; select a later artifact-backed candidate for the next reader-facing improvement.
+
+## Release status — 2026-10-22
+
+- Rendered source: `a5f730c1d5297b3d691b6e9b9abef782dd468589` adds the route-owned DevOps Release Support handoff to `/blog/offshore-developer-kubernetes-pod-termination-drain-2026-09-10`. A fresh 840-route build verified the expected H1, sole canonical, two intentional route-local `/services/devops-release-support` anchors (the banner and related-guides block), BlogPosting `dateModified` `2026-10-22`, and sitemap `<lastmod>` `2026-10-22`.
+- Preserve rendered-source commit `a5f730c1d5297b3d691b6e9b9abef782dd468589`. The documented browser operator owns the Coolify deployment and live verification for application `spv5prvi4giijp2o4bq2t04o`; no deployment or public probe was attempted by this routine. This remains `deployment_pending_policy_owned_public_verification`, not a live claim.
