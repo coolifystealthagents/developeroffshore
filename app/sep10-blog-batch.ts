@@ -1,5 +1,16 @@
 import type { BlogPost } from './data';
 
+const topicOverrides: Record<string, { modified: string; service: { label: string; href: string; note: string } }> = {
+  'offshore-developer-kubernetes-pod-termination-drain-2026-09-10': {
+    modified: '2026-10-22',
+    service: {
+      label: 'Plan DevOps release support',
+      href: '/services/devops-release-support',
+      note: 'Keep drain checks, rollback evidence, and production approval with your platform owner.',
+    },
+  },
+};
+
 const topics = [
 ['offshore-developer-http-cache-vary-review-2026-09-10','Audit a Vary header before it fragments your cache','web teams troubleshooting uneven CDN hit rates','show which request headers produce distinct stored responses','request headers, cache key, Age, Vary, response hash, and cache status','a harmless high-cardinality header enters the cache key'],
 ['offshore-developer-postgresql-transaction-id-wraparound-check-2026-09-10','Check PostgreSQL transaction ID age before maintenance becomes urgent','database teams responsible for tables with uneven write patterns','rank tables by transaction age and confirm vacuum can advance their frozen horizon','relfrozenxid age, database age, vacuum history, blockers, table size, and alert threshold','an idle transaction prevents cleanup on the oldest table'],
@@ -15,8 +26,10 @@ const topics = [
 ['offshore-developer-grpc-deadline-propagation-audit-2026-09-10','Carry a gRPC deadline across service boundaries','service teams tracing requests through several RPC hops','confirm that each hop receives a smaller remaining budget and stops work on expiry','start time, timeout header, remaining budget, hop latency, status, cancellation, and cleanup','an intermediate service retries after most of the caller budget is gone'],
 ] as const;
 
-export const september10BlogBatch: readonly BlogPost[] = topics.map(([slug,title,audience,decision,evidence,edge],index)=>({
-slug,title,excerpt:`A practical review for ${audience}. It defines a replayable check, the evidence to retain, and the decision that stays with the system owner.`,minutes:10+(index%3),datePublished:'2026-09-10',dateModified:'2026-09-10',revision:`daily-blog-2026-09-10-${slug}`,
+export const september10BlogBatch: readonly BlogPost[] = topics.map(([slug,title,audience,decision,evidence,edge],index)=>{
+  const override = topicOverrides[slug];
+  return {
+slug,title,excerpt:`A practical review for ${audience}. It defines a replayable check, the evidence to retain, and the decision that stays with the system owner.`,minutes:10+(index%3),datePublished:'2026-09-10',dateModified:override?.modified ?? '2026-09-10',revision:`daily-blog-2026-09-10-${slug}`,
 keyTakeaways:[`Write the question plainly: ${decision}.`,`Keep ${evidence}.`,`Include the uncomfortable case where ${edge}.`],
 sections:[
 {heading:'Name the behavior under review',body:[`This review is for ${audience}. Start with one observable claim: ${decision}. Record the repository revision, environment, test identity, time source, and reviewer.`,`Keep the first run small. A teammate in another time zone should be able to repeat it without reconstructing assumptions from chat.`]},
@@ -26,7 +39,8 @@ sections:[
 {heading:'Hand off the decision',body:[`An offshore developer can design fixtures, inspect code, prepare a patch, and assemble evidence. The internal owner retains protected credentials, sensitive data, exceptions, and production release authority.`,`The handoff names revisions, changed files, commands, passed and skipped checks, rollback, remaining uncertainty, and the next owner.`]},
 ],
 table:{title:'Review record',columns:['Checkpoint','Evidence','Owner'],rows:[['Baseline',evidence,'Assigned reviewer'],['Boundary case',edge,'Technical owner'],['Release','Checks, limits, and rollback note','Internal release owner']]},
-relatedLinks:[{label:'Developer services',href:'/services',note:'Choose a bounded engineering lane.'},{label:'Research library',href:'/research',note:'Use a measured protocol.'},{label:'Contact',href:'/contact-us',note:'Define the first outcome.'}],
+relatedLinks:[override?.service ?? {label:'Developer services',href:'/services',note:'Choose a bounded engineering lane.'},{label:'Research library',href:'/research',note:'Use a measured protocol.'},{label:'Contact',href:'/contact-us',note:'Define the first outcome.'}],
 faqs:[{question:'Can an offshore developer run this review?',answer:'Yes, with scoped access, approved fixtures, a fixed revision, and a named reviewer.'},{question:'Who approves production?',answer:'The accountable internal owner reviews the evidence, limits, and rollback plan.'}],
 sources:index%3===0?[{name:'MDN Web Docs',url:'https://developer.mozilla.org/en-US/docs/Web'},{name:'IETF Datatracker',url:'https://datatracker.ietf.org/'}]:index%3===1?[{name:'PostgreSQL documentation',url:'https://www.postgresql.org/docs/current/'},{name:'Kubernetes documentation',url:'https://kubernetes.io/docs/'}]:[{name:'GitHub documentation',url:'https://docs.github.com/en'},{name:'Google Engineering Practices',url:'https://google.github.io/eng-practices/review/'}],
-}));
+};
+});
