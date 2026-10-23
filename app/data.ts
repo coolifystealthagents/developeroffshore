@@ -120,6 +120,9 @@ type RoutineTopic = {
   evidence: string;
   risk: string;
   owner: string;
+  dateModified?: string;
+  revision?: string;
+  relatedLinks?: BlogLink[];
 };
 
 const routineTopics: RoutineTopic[] = [
@@ -169,7 +172,7 @@ const routineTopics: RoutineTopic[] = [
   {slug:'offshore-developer-incident-postmortem-template',keyword:'offshore developer incident postmortem template',reader:'teams learning from service incidents',outcome:'a blameless record with evidence, owners, and a small prevention plan',stack:'incident record, logs, metrics, deploy history, ticket board, and review calendar',work:'timeline, impact, contributing factors, actions, and follow-up review',evidence:'UTC timestamps, links, customer impact, action owners, and due dates',risk:'turning the postmortem into blame or unsupported speculation',owner:'incident lead'},
   {slug:'offshore-developer-scope-change-control-guide',keyword:'offshore developer scope change control guide',reader:'managers keeping distributed work predictable',outcome:'a documented scope decision that protects the current delivery goal',stack:'ticket board, roadmap, pull requests, decision log, and team channel',work:'change request, impact review, options, approval, and backlog update',evidence:'original acceptance criteria, new impact, decision owner, and revised handoff',risk:'allowing small additions to silently change the delivery commitment',owner:'product owner'},
   {slug:'offshore-developer-remote-pairing-guide',keyword:'offshore developer remote pairing guide',reader:'teams using pairing for complex changes',outcome:'a focused pairing session that leaves behind a reviewable next step',stack:'video call, shared editor, repository, test runner, and ticket board',work:'session setup, problem framing, implementation, tests, notes, and follow-up',evidence:'session goal, changed files, test output, unresolved questions, and owner',risk:'using meetings as a substitute for written ownership and review',owner:'technical lead'},
-  {slug:'offshore-developer-webhook-security-guide',keyword:'offshore developer webhook security guide',reader:'teams receiving events from external systems',outcome:'a verified webhook path with authentication and replay handling',stack:'API repository, webhook provider, signature checks, queue, and test fixtures',work:'event validation, signature handling, idempotency, retries, logging, and alerts',evidence:'signed and invalid fixtures, replay tests, queue records, logs, and runbook steps',risk:'accepting forged or duplicated events as if they were trusted actions',owner:'integration owner'},
+  {slug:'offshore-developer-webhook-security-guide',keyword:'offshore developer webhook security guide',reader:'teams receiving events from external systems',outcome:'a verified webhook path with authentication and replay handling',stack:'API repository, webhook provider, signature checks, queue, and test fixtures',work:'event validation, signature handling, idempotency, retries, logging, and alerts',evidence:'signed and invalid fixtures, replay tests, queue records, logs, and runbook steps',risk:'accepting forged or duplicated events as if they were trusted actions',owner:'integration owner',dateModified:'2026-10-23',revision:'2026-10-23-offshore-developer-webhook-security-guide-v2',relatedLinks:[{label:'Plan Node.js API development',href:'/services/node-js-api-development',note:'Use a bounded API lane to implement signature checks, replay handling, and safe failure behavior. Your API owner approves contract or security exceptions.'},{label:'Review developer services',href:'/services',note:'Match the role to a bounded software delivery lane. Compare the lane with the review time your own team can provide.'},{label:'Use the assessment guide',href:'/blog/hire-software-developers-philippines-assessment-guide',note:'Build the interview and paid exercise around observable work. Record the same evidence for every finalist.'}]},
   {slug:'offshore-developer-accessibility-testing-guide',keyword:'offshore developer accessibility testing guide',reader:'product teams adding accessibility checks to delivery',outcome:'repeatable accessibility checks for one important user journey',stack:'browser tests, accessibility tooling, component library, and CI workflow',work:'journey selection, test setup, manual checks, defect triage, and regression review',evidence:'test cases, keyboard path, findings, corrected states, and repeat results',risk:'assuming automated checks cover every interaction or assistive technology',owner:'frontend lead'},
 ];
 
@@ -186,8 +189,8 @@ function buildRoutinePost(topic: RoutineTopic): BlogPost {
     excerpt: `A practical guide for ${topic.reader}. Define the work, evidence, access, review, and handoff needed to reach ${topic.outcome}. Use a role-specific assessment, least-privilege access, named approval boundaries, and a two-week pilot so your team can judge real delivery evidence before widening the assignment.`,
     minutes: 14,
     datePublished: published,
-    dateModified: published,
-    revision: `${published}-${topic.slug}-v1`,
+    dateModified: topic.dateModified ?? published,
+    revision: topic.revision ?? `${published}-${topic.slug}-v1`,
     keyTakeaways: [
       `Write ${topic.outcome} as the first measurable result.`,
       `Assess candidates in ${topic.stack} with a small representative task.`,
@@ -234,7 +237,7 @@ function buildRoutinePost(topic: RoutineTopic): BlogPost {
       ],
     },
     quote:{text:'Least privilege means giving users only those privileges which are essential to perform assigned work.',by:'NIST',role:'access-control guidance',sourceUrl:'https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final'},
-    relatedLinks:[
+    relatedLinks: topic.relatedLinks ?? [
       {label:'Plan developer staffing',href:'/contact-us',note:'Share the stack, first outcome, working hours, and review owner. Keep the first conversation tied to a real delivery lane.'},
       {label:'Review developer services',href:'/services',note:'Match the role to a bounded software delivery lane. Compare the lane with the review time your own team can provide.'},
       {label:'Use the assessment guide',href:'/blog/hire-software-developers-philippines-assessment-guide',note:'Build the interview and paid exercise around observable work. Record the same evidence for every finalist.'},
