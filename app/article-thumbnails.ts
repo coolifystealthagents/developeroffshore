@@ -1,6 +1,12 @@
 export type ArticleKind = 'blog' | 'research' | 'alternatives';
 
 const RESEARCH_HEROES: Record<string, string> = {
+  'code-review-latency-method': '/oct22-heroes/code-review-latency-method.webp',
+  'migration-rollback-verification-method': '/oct22-heroes/migration-rollback-verification-method.webp',
+  'feature-flag-retirement-method': '/oct22-heroes/feature-flag-retirement-method.webp',
+  'alert-noise-baseline-method': '/oct22-heroes/alert-noise-baseline-method.webp',
+  'dependency-risk-review-method': '/oct22-heroes/dependency-risk-review-method.webp',
+
   'deployment-rollback-verification-delay-study': '/october-13/deployment-rollback-verification-delay-study.svg',
   'code-review-rework-survivorship-study': '/october-13/code-review-rework-survivorship-study.svg',
   'distributed-tracing-sampling-bias-study': '/october-13/distributed-tracing-sampling-bias-study.svg',
@@ -34,6 +40,19 @@ const RESEARCH_HEROES: Record<string, string> = {
 };
 
 const BLOG_HEROES: Record<string, string> = {
+  'offshore-code-review-sla': '/oct22-heroes/offshore-code-review-sla.webp',
+  'database-migration-review-handoff': '/oct22-heroes/database-migration-review-handoff.webp',
+  'feature-flag-retirement-review': '/oct22-heroes/feature-flag-retirement-review.webp',
+  'alert-noise-baseline-review': '/oct22-heroes/alert-noise-baseline-review.webp',
+  'api-contract-versioning-review': '/oct22-heroes/api-contract-versioning-review.webp',
+  'incident-runbook-handoff': '/oct22-heroes/incident-runbook-handoff.webp',
+  'ci-cache-integrity-review': '/oct22-heroes/ci-cache-integrity-review.webp',
+  'secret-rotation-runbook-review': '/oct22-heroes/secret-rotation-runbook-review.webp',
+  'accessibility-review-handoff': '/oct22-heroes/accessibility-review-handoff.webp',
+  'performance-budget-review': '/oct22-heroes/performance-budget-review.webp',
+  'release-notes-evidence': '/oct22-heroes/release-notes-evidence.webp',
+  'dependency-risk-review': '/oct22-heroes/dependency-risk-review.webp',
+
   'postgres-logical-replication-slot-lag-drill': '/october-13/postgres-logical-replication-slot-lag-drill.svg',
   'http-103-early-hints-cache-validation': '/october-13/http-103-early-hints-cache-validation.svg',
   'webauthn-conditional-ui-fallback-test': '/october-13/webauthn-conditional-ui-fallback-test.svg',
@@ -140,8 +159,8 @@ function stableHash(value: string) {
 
 function thumbnailAlt(title: string) { return title.length <= 88 ? title : `${title.slice(0, 85).trimEnd()}…`; }
 export function articleThumbnail(kind: ArticleKind, slug: string, title: string) {
-  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: RESEARCH_HEROES[slug].startsWith('/october-13/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1536 : 1672, height: RESEARCH_HEROES[slug].startsWith('/october-13/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1024 : 941, backgroundIndex: -1 } as const;
-  if (kind === 'blog' && BLOG_HEROES[slug]) return { src: BLOG_HEROES[slug], alt: thumbnailAlt(title), width: BLOG_HEROES[slug].startsWith('/october-13/') ? 1200 : 1536, height: BLOG_HEROES[slug].startsWith('/october-13/') ? 630 : 1024, backgroundIndex: -1 } as const;
+  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1536 : 1672, height: RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1024 : 941, backgroundIndex: -1 } as const;
+  if (kind === 'blog' && BLOG_HEROES[slug]) return { src: BLOG_HEROES[slug], alt: thumbnailAlt(title), width: BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : BLOG_HEROES[slug].startsWith('/october-13/') ? 1200 : 1536, height: BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : BLOG_HEROES[slug].startsWith('/october-13/') ? 630 : 1024, backgroundIndex: -1 } as const;
   const backgroundIndex = stableHash(`${kind}:${slug}`) % BACKGROUNDS.length;
   return {
     src: BACKGROUNDS[backgroundIndex],

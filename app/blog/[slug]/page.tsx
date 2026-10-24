@@ -5,6 +5,7 @@ import { blogPosts, site, type BlogPost } from '../../data';
 import { articleThumbnail } from '../../article-thumbnails';
 import { compactSeoDescription, compactSeoTitle } from '../../seo-metadata';
 import { ArticleToc } from '../../article-toc';
+import Oct22MobileToc from '../../oct22-mobile-toc';
 
 const baseUrl = 'https://developeroffshore.com';
 const headingId = (heading: string) => heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -269,7 +270,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
   return (
     <>
       <Header />
-      <main id="main-content" className="article-page">
+      <main id="main-content" className="article-page"><Oct22MobileToc />
         <article className="container article-shell" data-article-revision={post.revision || 'legacy-article'}>
           <JsonLd data={articleSchema} />
           <JsonLd data={breadcrumbSchema} />
@@ -284,7 +285,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
           <div className="article-layout">
             <aside className="article-sidebar" aria-label="Article navigation and next action">
               <ArticleToc items={toc} titleId="blog-toc-title" />
-              <div className="article-sidebar-action"><h2>Plan your developer role</h2><p>Bring the workflow, first outcome, and review owner to a focused staffing conversation.</p><a href="/contact-us">Contact Us</a></div>
+              <div className="article-sidebar-action"><h3>Plan your developer role</h3><p>Bring the workflow, first outcome, and review owner to a focused staffing conversation.</p><a href="/contact-us">Contact Us</a></div>
             </aside>
             <div className="article-content">
           {fullArticle ? (

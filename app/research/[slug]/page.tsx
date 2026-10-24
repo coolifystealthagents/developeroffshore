@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ArticleToc } from '../../article-toc';
+import Oct22MobileToc from '../../oct22-mobile-toc';
 import { articleThumbnail } from '../../article-thumbnails';
 import { Footer, Header, JsonLd } from '../../components';
 import { researchPosts, type ResearchPost } from '../../fleet-data';
@@ -52,18 +53,18 @@ export default async function ResearchArticle({ params }: { params: Promise<{ sl
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Research', item: `https://${site.domain}/research` }, { '@type': 'ListItem', position: 2, name: post.title, item: canonical }] },
   ];
 
-  return <><Header /><main id="main-content" className="article-page"><article className="container article-shell">
+  return <><Header /><main id="main-content" className="article-page"><Oct22MobileToc /><article className="container article-shell">
     <JsonLd data={structuredData} />
     <header className="article-header">
       <p className="eyebrow">{site.brand} research</p><h1>{post.title}</h1>
-      <p className="article-date"><time dateTime={post.published}>{formatPublicationDate(post.published)}</time>{post.updated ? <> · Updated <time dateTime={post.updated}>{formatPublicationDate(post.updated)}</time></> : null} · Research report</p>
+      <p className="article-date">Published <time dateTime={post.published}>{formatPublicationDate(post.published)}</time>{post.updated ? <> · Updated <time dateTime={post.updated}>{formatPublicationDate(post.updated)}</time></> : null} · Research report</p>
       <p className="lead">{post.excerpt}</p><p>Use this report with the <a href="/research">Research library</a> and related <a href="/blog">developer guides</a> to turn evidence into a bounded work brief.</p>
       <img className="article-featured-image" src={thumbnail.src} alt={thumbnail.alt} width={thumbnail.width} height={thumbnail.height} />
     </header>
     <div className="article-layout">
       <aside className="article-sidebar" aria-label="Research navigation and next action">
         <ArticleToc items={toc} titleId="research-toc-title" />
-        <div className="article-sidebar-action"><h2>Apply the findings</h2><p>Turn this research into a bounded role, review owner, and first-week routine.</p><a href="/contact-us">Contact Us</a><a href="/blog">Related guides</a></div>
+        <div className="article-sidebar-action"><h3>Apply the findings</h3><p>Turn this research into a bounded role, review owner, and first-week routine.</p><a href="/contact-us">Contact Us</a><a href="/blog">Related guides</a></div>
       </aside>
       <div className="article-content">
         <section className="article-panel" id="key-stats"><h2>Key stats</h2><ul>{post.keyStats.map((stat) => <li key={stat}>{stat}</li>)}</ul></section>
