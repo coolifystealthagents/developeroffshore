@@ -231,7 +231,14 @@ export const octoberTwentyTwoResearchBatch: readonly ResearchPost[] = [
         "title": "Measuring Alert Noise Against a Baseline",
         "href": "/research/alert-noise-baseline-method"
       }
-    ]
+    ],
+    "nextAction": {
+      "heading": "Prepare a review-evidence brief",
+      "body": "Bring one review-ready change, its checks, the reviewer record, and any unresolved risk to the discussion. A Philippines-based QA engineer can help organize repeatable checks and failure evidence; your engineering owner decides review standards, merge approval, and exceptions.",
+      "label": "Plan QA automation engineering",
+      "href": "/services/qa-automation-engineering",
+      "anchorId": "review-evidence-brief"
+    }
   },
   {
     "slug": "migration-rollback-verification-method",
