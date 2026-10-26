@@ -30,6 +30,7 @@ import { october08BlogBatch } from './oct08-batch';
 import { october12BlogBatch } from './oct12-blog-batch';
 import { october13BlogBatch } from './oct13-blog-batch';
 import { octoberTwentyTwoBlogBatch } from './oct22-blog-batch';
+import { octoberTwentyFiveBlogBatch } from './oct25-blog-batch';
 
 export const site = {
   "domain": "DeveloperOffshore.com",
@@ -472,7 +473,7 @@ const dailyBlogBatch20260810Additional: BlogPost[] = additionalDailyTopics202608
 }));
 
 export const blogPosts: BlogPost[] = [
-  ...octoberTwentyTwoBlogBatch,
+  ...octoberTwentyFiveBlogBatch, ...octoberTwentyTwoBlogBatch,
   ...october13BlogBatch,
   ...october12BlogBatch,
   ...october08BlogBatch,

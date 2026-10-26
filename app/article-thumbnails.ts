@@ -1,6 +1,11 @@
 export type ArticleKind = 'blog' | 'research' | 'alternatives';
 
 const RESEARCH_HEROES: Record<string, string> = {
+  'dvo-access-removal': '/oct25-heroes/dvo-access-removal.webp',
+  'dvo-handoff-completeness': '/oct25-heroes/dvo-handoff-completeness.webp',
+  'dvo-intake-reliability': '/oct25-heroes/dvo-intake-reliability.webp',
+  'dvo-queue-aging': '/oct25-heroes/dvo-queue-aging.webp',
+  'dvo-reviewer-agreement': '/oct25-heroes/dvo-reviewer-agreement.webp',
   'code-review-latency-method': '/oct22-heroes/code-review-latency-method.webp',
   'migration-rollback-verification-method': '/oct22-heroes/migration-rollback-verification-method.webp',
   'feature-flag-retirement-method': '/oct22-heroes/feature-flag-retirement-method.webp',
@@ -40,6 +45,18 @@ const RESEARCH_HEROES: Record<string, string> = {
 };
 
 const BLOG_HEROES: Record<string, string> = {
+  'dvo-access-boundary': '/oct25-heroes/dvo-access-boundary.webp',
+  'dvo-audit-pack': '/oct25-heroes/dvo-audit-pack.webp',
+  'dvo-escalation-log': '/oct25-heroes/dvo-escalation-log.webp',
+  'dvo-exception-path': '/oct25-heroes/dvo-exception-path.webp',
+  'dvo-handoff-record': '/oct25-heroes/dvo-handoff-record.webp',
+  'dvo-intake-evidence-control': '/oct25-heroes/dvo-intake-evidence-control.webp',
+  'dvo-metric-definition': '/oct25-heroes/dvo-metric-definition.webp',
+  'dvo-onboarding-plan': '/oct25-heroes/dvo-onboarding-plan.webp',
+  'dvo-quality-sample': '/oct25-heroes/dvo-quality-sample.webp',
+  'dvo-queue-ownership': '/oct25-heroes/dvo-queue-ownership.webp',
+  'dvo-source-map': '/oct25-heroes/dvo-source-map.webp',
+  'dvo-weekly-brief': '/oct25-heroes/dvo-weekly-brief.webp',
   'offshore-code-review-sla': '/oct22-heroes/offshore-code-review-sla.webp',
   'database-migration-review-handoff': '/oct22-heroes/database-migration-review-handoff.webp',
   'feature-flag-retirement-review': '/oct22-heroes/feature-flag-retirement-review.webp',
