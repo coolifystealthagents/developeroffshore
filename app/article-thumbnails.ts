@@ -1,6 +1,11 @@
 export type ArticleKind = 'blog' | 'research' | 'alternatives';
 
 const RESEARCH_HEROES: Record<string, string> = {
+  'dvo-aged-backlog-evidence': '/daily26/developeroffshore/dvo-aged-backlog-evidence.png',
+  'dvo-duplicate-request-rate': '/daily26/developeroffshore/dvo-duplicate-request-rate.png',
+  'dvo-role-change-continuity': '/daily26/developeroffshore/dvo-role-change-continuity.png',
+  'dvo-document-expiry-risk': '/daily26/developeroffshore/dvo-document-expiry-risk.png',
+  'dvo-shared-inbox-coverage': '/daily26/developeroffshore/dvo-shared-inbox-coverage.png',
   'dvo-access-removal': '/oct25-heroes/dvo-access-removal.webp',
   'dvo-handoff-completeness': '/oct25-heroes/dvo-handoff-completeness.webp',
   'dvo-intake-reliability': '/oct25-heroes/dvo-intake-reliability.webp',
@@ -45,6 +50,18 @@ const RESEARCH_HEROES: Record<string, string> = {
 };
 
 const BLOG_HEROES: Record<string, string> = {
+  'dvo-evidence-aged-backlog': '/daily26/developeroffshore/dvo-evidence-aged-backlog.png',
+  'dvo-duplicate-request-screen': '/daily26/developeroffshore/dvo-duplicate-request-screen.png',
+  'dvo-role-change-handover': '/daily26/developeroffshore/dvo-role-change-handover.png',
+  'dvo-decision-log': '/daily26/developeroffshore/dvo-decision-log.png',
+  'dvo-document-expiry-watch': '/daily26/developeroffshore/dvo-document-expiry-watch.png',
+  'dvo-shared-inbox-map': '/daily26/developeroffshore/dvo-shared-inbox-map.png',
+  'dvo-onboarding-packet': '/daily26/developeroffshore/dvo-onboarding-packet.png',
+  'dvo-recurring-report-reconciliation': '/daily26/developeroffshore/dvo-recurring-report-reconciliation.png',
+  'dvo-calendar-conflict-rules': '/daily26/developeroffshore/dvo-calendar-conflict-rules.png',
+  'dvo-sampling-ai-assisted': '/daily26/developeroffshore/dvo-sampling-ai-assisted.png',
+  'dvo-tool-consolidation-access': '/daily26/developeroffshore/dvo-tool-consolidation-access.png',
+  'dvo-exception-trend-brief': '/daily26/developeroffshore/dvo-exception-trend-brief.png',
   'dvo-access-boundary': '/oct25-heroes/dvo-access-boundary.webp',
   'dvo-audit-pack': '/oct25-heroes/dvo-audit-pack.webp',
   'dvo-escalation-log': '/oct25-heroes/dvo-escalation-log.webp',
@@ -176,8 +193,8 @@ function stableHash(value: string) {
 
 function thumbnailAlt(title: string) { return title.length <= 88 ? title : `${title.slice(0, 85).trimEnd()}…`; }
 export function articleThumbnail(kind: ArticleKind, slug: string, title: string) {
-  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1536 : 1672, height: RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1024 : 941, backgroundIndex: -1 } as const;
-  if (kind === 'blog' && BLOG_HEROES[slug]) return { src: BLOG_HEROES[slug], alt: thumbnailAlt(title), width: BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : BLOG_HEROES[slug].startsWith('/october-13/') ? 1200 : 1536, height: BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : BLOG_HEROES[slug].startsWith('/october-13/') ? 630 : 1024, backgroundIndex: -1 } as const;
+  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: RESEARCH_HEROES[slug].startsWith('/daily26/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1536 : 1672, height: RESEARCH_HEROES[slug].startsWith('/daily26/') ? 630 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1024 : 941, backgroundIndex: -1 } as const;
+  if (kind === 'blog' && BLOG_HEROES[slug]) return { src: BLOG_HEROES[slug], alt: thumbnailAlt(title), width: BLOG_HEROES[slug].startsWith('/daily26/') ? 1200 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : BLOG_HEROES[slug].startsWith('/october-13/') ? 1200 : 1536, height: BLOG_HEROES[slug].startsWith('/daily26/') ? 630 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : BLOG_HEROES[slug].startsWith('/october-13/') ? 630 : 1024, backgroundIndex: -1 } as const;
   const backgroundIndex = stableHash(`${kind}:${slug}`) % BACKGROUNDS.length;
   return {
     src: BACKGROUNDS[backgroundIndex],
