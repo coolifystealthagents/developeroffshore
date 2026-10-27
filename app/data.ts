@@ -32,6 +32,7 @@ import { october13BlogBatch } from './oct13-blog-batch';
 import { octoberTwentyTwoBlogBatch } from './oct22-blog-batch';
 import { octoberTwentyFiveBlogBatch } from './oct25-blog-batch';
 import { octoberTwentySixBlogBatch } from './oct26-blog-batch';
+import { octoberTwentySevenBlogBatch } from './oct27-blog-batch';
 
 export const site = {
   "domain": "DeveloperOffshore.com",
@@ -474,7 +475,7 @@ const dailyBlogBatch20260810Additional: BlogPost[] = additionalDailyTopics202608
 }));
 
 export const blogPosts: BlogPost[] = [
-  ...octoberTwentySixBlogBatch, ...octoberTwentyFiveBlogBatch, ...octoberTwentyTwoBlogBatch,
+  ...octoberTwentySevenBlogBatch, ...octoberTwentySixBlogBatch, ...octoberTwentyFiveBlogBatch, ...octoberTwentyTwoBlogBatch,
   ...october13BlogBatch,
   ...october12BlogBatch,
   ...october08BlogBatch,

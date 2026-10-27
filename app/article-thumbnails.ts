@@ -1,6 +1,11 @@
 export type ArticleKind = 'blog' | 'research' | 'alternatives';
 
 const RESEARCH_HEROES: Record<string, string> = {
+  'dvo-escalation-wait': '/daily27/developeroffshore/dvo-escalation-wait.png',
+  'dvo-vendor-cycle': '/daily27/developeroffshore/dvo-vendor-cycle.png',
+  'dvo-capacity-error': '/daily27/developeroffshore/dvo-capacity-error.png',
+  'dvo-cross-training-coverage': '/daily27/developeroffshore/dvo-cross-training-coverage.png',
+  'dvo-retention-compliance': '/daily27/developeroffshore/dvo-retention-compliance.png',
   'dvo-aged-backlog-evidence': '/daily26/developeroffshore/dvo-aged-backlog-evidence.png',
   'dvo-duplicate-request-rate': '/daily26/developeroffshore/dvo-duplicate-request-rate.png',
   'dvo-role-change-continuity': '/daily26/developeroffshore/dvo-role-change-continuity.png',
@@ -50,6 +55,18 @@ const RESEARCH_HEROES: Record<string, string> = {
 };
 
 const BLOG_HEROES: Record<string, string> = {
+  'dvo-cross-team-escalation': '/daily27/developeroffshore/dvo-cross-team-escalation.png',
+  'dvo-vendor-onboarding-packet': '/daily27/developeroffshore/dvo-vendor-onboarding-packet.png',
+  'dvo-capacity-plan': '/daily27/developeroffshore/dvo-capacity-plan.png',
+  'dvo-cross-training-map': '/daily27/developeroffshore/dvo-cross-training-map.png',
+  'dvo-retention-disposal': '/daily27/developeroffshore/dvo-retention-disposal.png',
+  'dvo-meeting-followup': '/daily27/developeroffshore/dvo-meeting-followup.png',
+  'dvo-customer-rep-handoff': '/daily27/developeroffshore/dvo-customer-rep-handoff.png',
+  'dvo-sla-review': '/daily27/developeroffshore/dvo-sla-review.png',
+  'dvo-duplicate-payment-prevention': '/daily27/developeroffshore/dvo-duplicate-payment-prevention.png',
+  'dvo-access-recertification': '/daily27/developeroffshore/dvo-access-recertification.png',
+  'dvo-documentation-drift': '/daily27/developeroffshore/dvo-documentation-drift.png',
+  'dvo-risk-register': '/daily27/developeroffshore/dvo-risk-register.png',
   'dvo-evidence-aged-backlog': '/daily26/developeroffshore/dvo-evidence-aged-backlog.png',
   'dvo-duplicate-request-screen': '/daily26/developeroffshore/dvo-duplicate-request-screen.png',
   'dvo-role-change-handover': '/daily26/developeroffshore/dvo-role-change-handover.png',
@@ -193,8 +210,8 @@ function stableHash(value: string) {
 
 function thumbnailAlt(title: string) { return title.length <= 88 ? title : `${title.slice(0, 85).trimEnd()}…`; }
 export function articleThumbnail(kind: ArticleKind, slug: string, title: string) {
-  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: RESEARCH_HEROES[slug].startsWith('/daily26/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1536 : 1672, height: RESEARCH_HEROES[slug].startsWith('/daily26/') ? 630 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1024 : 941, backgroundIndex: -1 } as const;
-  if (kind === 'blog' && BLOG_HEROES[slug]) return { src: BLOG_HEROES[slug], alt: thumbnailAlt(title), width: BLOG_HEROES[slug].startsWith('/daily26/') ? 1200 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : BLOG_HEROES[slug].startsWith('/october-13/') ? 1200 : 1536, height: BLOG_HEROES[slug].startsWith('/daily26/') ? 630 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : BLOG_HEROES[slug].startsWith('/october-13/') ? 630 : 1024, backgroundIndex: -1 } as const;
+  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: RESEARCH_HEROES[slug].startsWith('/daily27/') || RESEARCH_HEROES[slug].startsWith('/daily26/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1536 : 1672, height: RESEARCH_HEROES[slug].startsWith('/daily27/') || RESEARCH_HEROES[slug].startsWith('/daily26/') ? 630 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1024 : 941, backgroundIndex: -1 } as const;
+  if (kind === 'blog' && BLOG_HEROES[slug]) return { src: BLOG_HEROES[slug], alt: thumbnailAlt(title), width: BLOG_HEROES[slug].startsWith('/daily27/') || BLOG_HEROES[slug].startsWith('/daily26/') ? 1200 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : BLOG_HEROES[slug].startsWith('/october-13/') ? 1200 : 1536, height: BLOG_HEROES[slug].startsWith('/daily27/') || BLOG_HEROES[slug].startsWith('/daily26/') ? 630 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : BLOG_HEROES[slug].startsWith('/october-13/') ? 630 : 1024, backgroundIndex: -1 } as const;
   const backgroundIndex = stableHash(`${kind}:${slug}`) % BACKGROUNDS.length;
   return {
     src: BACKGROUNDS[backgroundIndex],
