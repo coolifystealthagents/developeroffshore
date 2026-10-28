@@ -1,6 +1,11 @@
 export type ArticleKind = 'blog' | 'research' | 'alternatives';
 
 const RESEARCH_HEROES: Record<string, string> = {
+  'dvo28-pull-request-reopen-rate': '/daily28/developeroffshore/dvo28-pull-request-reopen-rate.png',
+  'dvo28-review-wait-time': '/daily28/developeroffshore/dvo28-review-wait-time.png',
+  'dvo28-rollback-evidence': '/daily28/developeroffshore/dvo28-rollback-evidence.png',
+  'dvo28-dependency-compatibility-evidence': '/daily28/developeroffshore/dvo28-dependency-compatibility-evidence.png',
+  'dvo28-incident-next-owner': '/daily28/developeroffshore/dvo28-incident-next-owner.png',
   'dvo-escalation-wait': '/daily27/developeroffshore/dvo-escalation-wait.png',
   'dvo-vendor-cycle': '/daily27/developeroffshore/dvo-vendor-cycle.png',
   'dvo-capacity-error': '/daily27/developeroffshore/dvo-capacity-error.png',
@@ -55,6 +60,18 @@ const RESEARCH_HEROES: Record<string, string> = {
 };
 
 const BLOG_HEROES: Record<string, string> = {
+  'dvo28-spike-delivery-date': '/daily28/developeroffshore/dvo28-spike-delivery-date.png',
+  'dvo28-pull-request-evidence': '/daily28/developeroffshore/dvo28-pull-request-evidence.png',
+  'dvo28-secret-free-handoff': '/daily28/developeroffshore/dvo28-secret-free-handoff.png',
+  'dvo28-small-deployment-rollback': '/daily28/developeroffshore/dvo28-small-deployment-rollback.png',
+  'dvo28-ci-failure-triage': '/daily28/developeroffshore/dvo28-ci-failure-triage.png',
+  'dvo28-dependency-upgrade-audit': '/daily28/developeroffshore/dvo28-dependency-upgrade-audit.png',
+  'dvo28-cross-time-zone-review': '/daily28/developeroffshore/dvo28-cross-time-zone-review.png',
+  'dvo28-incident-shift-handoff': '/daily28/developeroffshore/dvo28-incident-shift-handoff.png',
+  'dvo28-test-data-separation': '/daily28/developeroffshore/dvo28-test-data-separation.png',
+  'dvo28-feature-flag-retirement': '/daily28/developeroffshore/dvo28-feature-flag-retirement.png',
+  'dvo28-repository-onboarding': '/daily28/developeroffshore/dvo28-repository-onboarding.png',
+  'dvo28-migration-approval-boundary': '/daily28/developeroffshore/dvo28-migration-approval-boundary.png',
   'dvo-cross-team-escalation': '/daily27/developeroffshore/dvo-cross-team-escalation.png',
   'dvo-vendor-onboarding-packet': '/daily27/developeroffshore/dvo-vendor-onboarding-packet.png',
   'dvo-capacity-plan': '/daily27/developeroffshore/dvo-capacity-plan.png',
@@ -210,8 +227,8 @@ function stableHash(value: string) {
 
 function thumbnailAlt(title: string) { return title.length <= 88 ? title : `${title.slice(0, 85).trimEnd()}…`; }
 export function articleThumbnail(kind: ArticleKind, slug: string, title: string) {
-  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: RESEARCH_HEROES[slug].startsWith('/daily27/') || RESEARCH_HEROES[slug].startsWith('/daily26/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1536 : 1672, height: RESEARCH_HEROES[slug].startsWith('/daily27/') || RESEARCH_HEROES[slug].startsWith('/daily26/') ? 630 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1024 : 941, backgroundIndex: -1 } as const;
-  if (kind === 'blog' && BLOG_HEROES[slug]) return { src: BLOG_HEROES[slug], alt: thumbnailAlt(title), width: BLOG_HEROES[slug].startsWith('/daily27/') || BLOG_HEROES[slug].startsWith('/daily26/') ? 1200 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : BLOG_HEROES[slug].startsWith('/october-13/') ? 1200 : 1536, height: BLOG_HEROES[slug].startsWith('/daily27/') || BLOG_HEROES[slug].startsWith('/daily26/') ? 630 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : BLOG_HEROES[slug].startsWith('/october-13/') ? 630 : 1024, backgroundIndex: -1 } as const;
+  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: RESEARCH_HEROES[slug].startsWith('/daily28/') || RESEARCH_HEROES[slug].startsWith('/daily27/') || RESEARCH_HEROES[slug].startsWith('/daily26/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1536 : 1672, height: RESEARCH_HEROES[slug].startsWith('/daily28/') || RESEARCH_HEROES[slug].startsWith('/daily27/') || RESEARCH_HEROES[slug].startsWith('/daily26/') ? 630 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1024 : 941, backgroundIndex: -1 } as const;
+  if (kind === 'blog' && BLOG_HEROES[slug]) return { src: BLOG_HEROES[slug], alt: thumbnailAlt(title), width: BLOG_HEROES[slug].startsWith('/daily28/') || BLOG_HEROES[slug].startsWith('/daily27/') || BLOG_HEROES[slug].startsWith('/daily26/') ? 1200 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : BLOG_HEROES[slug].startsWith('/october-13/') ? 1200 : 1536, height: BLOG_HEROES[slug].startsWith('/daily28/') || BLOG_HEROES[slug].startsWith('/daily27/') || BLOG_HEROES[slug].startsWith('/daily26/') ? 630 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : BLOG_HEROES[slug].startsWith('/october-13/') ? 630 : 1024, backgroundIndex: -1 } as const;
   const backgroundIndex = stableHash(`${kind}:${slug}`) % BACKGROUNDS.length;
   return {
     src: BACKGROUNDS[backgroundIndex],
