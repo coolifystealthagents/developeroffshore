@@ -81,12 +81,12 @@ export const octoberTwentyEightBlogBatch: readonly BlogPost[] = [
     ],
     "faqs": [
       {
-        "q": "What should the team check in the delivery spike workflow?",
-        "a": "Open the delivery spike at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
+        "question": "What should the team check in the delivery spike workflow?",
+        "answer": "Open the delivery spike at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
       },
       {
-        "q": "Who approves the change?",
-        "a": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
+        "question": "Who approves the change?",
+        "answer": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
       }
     ],
     "sources": [
@@ -192,12 +192,12 @@ export const octoberTwentyEightBlogBatch: readonly BlogPost[] = [
     ],
     "faqs": [
       {
-        "q": "What should the team check in the pull request evidence workflow?",
-        "a": "Open the pull request evidence at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
+        "question": "What should the team check in the pull request evidence workflow?",
+        "answer": "Open the pull request evidence at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
       },
       {
-        "q": "Who approves the change?",
-        "a": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
+        "question": "Who approves the change?",
+        "answer": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
       }
     ],
     "sources": [
@@ -303,12 +303,12 @@ export const octoberTwentyEightBlogBatch: readonly BlogPost[] = [
     ],
     "faqs": [
       {
-        "q": "What should the team check in the secret-free handoff workflow?",
-        "a": "Open the secret-free handoff at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
+        "question": "What should the team check in the secret-free handoff workflow?",
+        "answer": "Open the secret-free handoff at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
       },
       {
-        "q": "Who approves the change?",
-        "a": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
+        "question": "Who approves the change?",
+        "answer": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
       }
     ],
     "sources": [
@@ -414,12 +414,12 @@ export const octoberTwentyEightBlogBatch: readonly BlogPost[] = [
     ],
     "faqs": [
       {
-        "q": "What should the team check in the rollback note workflow?",
-        "a": "Open the rollback note at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
+        "question": "What should the team check in the rollback note workflow?",
+        "answer": "Open the rollback note at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
       },
       {
-        "q": "Who approves the change?",
-        "a": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
+        "question": "Who approves the change?",
+        "answer": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
       }
     ],
     "sources": [
@@ -525,12 +525,12 @@ export const octoberTwentyEightBlogBatch: readonly BlogPost[] = [
     ],
     "faqs": [
       {
-        "q": "What should the team check in the failing CI pipeline workflow?",
-        "a": "Open the failing CI pipeline at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
+        "question": "What should the team check in the failing CI pipeline workflow?",
+        "answer": "Open the failing CI pipeline at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
       },
       {
-        "q": "Who approves the change?",
-        "a": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
+        "question": "Who approves the change?",
+        "answer": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
       }
     ],
     "sources": [
@@ -636,12 +636,12 @@ export const octoberTwentyEightBlogBatch: readonly BlogPost[] = [
     ],
     "faqs": [
       {
-        "q": "What should the team check in the dependency upgrade audit workflow?",
-        "a": "Open the dependency upgrade audit at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
+        "question": "What should the team check in the dependency upgrade audit workflow?",
+        "answer": "Open the dependency upgrade audit at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
       },
       {
-        "q": "Who approves the change?",
-        "a": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
+        "question": "Who approves the change?",
+        "answer": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
       }
     ],
     "sources": [
@@ -747,12 +747,12 @@ export const octoberTwentyEightBlogBatch: readonly BlogPost[] = [
     ],
     "faqs": [
       {
-        "q": "What should the team check in the cross-time-zone review window workflow?",
-        "a": "Open the cross-time-zone review window at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
+        "question": "What should the team check in the cross-time-zone review window workflow?",
+        "answer": "Open the cross-time-zone review window at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
       },
       {
-        "q": "Who approves the change?",
-        "a": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
+        "question": "Who approves the change?",
+        "answer": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
       }
     ],
     "sources": [
@@ -858,12 +858,12 @@ export const octoberTwentyEightBlogBatch: readonly BlogPost[] = [
     ],
     "faqs": [
       {
-        "q": "What should the team check in the incident shift handoff workflow?",
-        "a": "Open the incident shift handoff at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
+        "question": "What should the team check in the incident shift handoff workflow?",
+        "answer": "Open the incident shift handoff at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
       },
       {
-        "q": "Who approves the change?",
-        "a": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
+        "question": "Who approves the change?",
+        "answer": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
       }
     ],
     "sources": [
@@ -969,12 +969,12 @@ export const octoberTwentyEightBlogBatch: readonly BlogPost[] = [
     ],
     "faqs": [
       {
-        "q": "What should the team check in the test data boundary workflow?",
-        "a": "Open the test data boundary at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
+        "question": "What should the team check in the test data boundary workflow?",
+        "answer": "Open the test data boundary at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
       },
       {
-        "q": "Who approves the change?",
-        "a": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
+        "question": "Who approves the change?",
+        "answer": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
       }
     ],
     "sources": [
@@ -1080,12 +1080,12 @@ export const octoberTwentyEightBlogBatch: readonly BlogPost[] = [
     ],
     "faqs": [
       {
-        "q": "What should the team check in the feature flag retirement workflow?",
-        "a": "Open the feature flag retirement at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
+        "question": "What should the team check in the feature flag retirement workflow?",
+        "answer": "Open the feature flag retirement at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
       },
       {
-        "q": "Who approves the change?",
-        "a": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
+        "question": "Who approves the change?",
+        "answer": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
       }
     ],
     "sources": [
@@ -1191,12 +1191,12 @@ export const octoberTwentyEightBlogBatch: readonly BlogPost[] = [
     ],
     "faqs": [
       {
-        "q": "What should the team check in the repository onboarding workflow?",
-        "a": "Open the repository onboarding at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
+        "question": "What should the team check in the repository onboarding workflow?",
+        "answer": "Open the repository onboarding at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
       },
       {
-        "q": "Who approves the change?",
-        "a": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
+        "question": "Who approves the change?",
+        "answer": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
       }
     ],
     "sources": [
@@ -1302,12 +1302,12 @@ export const octoberTwentyEightBlogBatch: readonly BlogPost[] = [
     ],
     "faqs": [
       {
-        "q": "What should the team check in the migration approval boundary workflow?",
-        "a": "Open the migration approval boundary at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
+        "question": "What should the team check in the migration approval boundary workflow?",
+        "answer": "Open the migration approval boundary at the repository or delivery system that owns the fact. Record the branch, commit, environment, test command, observed time, reviewer, and the ticket or decision the change supports. A chat summary may point to the record but cannot replace it."
       },
       {
-        "q": "Who approves the change?",
-        "a": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
+        "question": "Who approves the change?",
+        "answer": "The named engineering owner approves changes to shared code, production data, access, or a release promise."
       }
     ],
     "sources": [
