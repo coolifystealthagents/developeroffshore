@@ -6,7 +6,7 @@ export const octoberTwentyEightResearchBatch: readonly ResearchPost[] = [
     "title": "How Often Do Pull Requests Reopen After Approval?",
     "excerpt": "A measurement protocol for pull request reopen rate in offshore software delivery, testing whether approved work later returns for correction with a frozen population, an evidence sample, and a dated review.",
     "published": "2026-10-28",
-    "updated": "2026-10-28",
+    "updated": "2026-11-01",
     "sections": [
       {
         "heading": "Decision the study supports",
@@ -146,7 +146,14 @@ export const octoberTwentyEightResearchBatch: readonly ResearchPost[] = [
         "title": "Engineering blog",
         "href": "/blog"
       }
-    ]
+    ],
+    "nextAction": {
+      "heading": "Plan QA evidence review",
+      "body": "If reopened pull requests show missing test proof or unclear review notes, set up a small QA evidence review for that change path. Your engineering owner chooses the risk level and release response; the QA team prepares the checks and records what they found.",
+      "label": "Explore QA Automation Engineering",
+      "href": "/services/qa-automation-engineering",
+      "anchorId": "qa-evidence-review"
+    }
   },
   {
     "slug": "dvo28-review-wait-time",
