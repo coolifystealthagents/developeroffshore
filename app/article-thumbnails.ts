@@ -1,6 +1,11 @@
 export type ArticleKind = 'blog' | 'research' | 'alternatives';
 
 const RESEARCH_HEROES: Record<string, string> = {
+  'dvo01-research-pull-request-01': '/daily01/developeroffshore/dvo01-research-pull-request-01.webp',
+  'dvo01-research-release-checklist-02': '/daily01/developeroffshore/dvo01-research-release-checklist-02.webp',
+  'dvo01-research-incident-handoff-03': '/daily01/developeroffshore/dvo01-research-incident-handoff-03.webp',
+  'dvo01-research-dependency-update-04': '/daily01/developeroffshore/dvo01-research-dependency-update-04.webp',
+  'dvo01-research-access-review-05': '/daily01/developeroffshore/dvo01-research-access-review-05.webp',
   'dvo28-pull-request-reopen-rate': '/daily28/developeroffshore/dvo28-pull-request-reopen-rate.png',
   'dvo28-review-wait-time': '/daily28/developeroffshore/dvo28-review-wait-time.png',
   'dvo28-rollback-evidence': '/daily28/developeroffshore/dvo28-rollback-evidence.png',
@@ -60,6 +65,18 @@ const RESEARCH_HEROES: Record<string, string> = {
 };
 
 const BLOG_HEROES: Record<string, string> = {
+  'dvo01-pull-request-01': '/daily01/developeroffshore/dvo01-pull-request-01.webp',
+  'dvo01-release-checklist-02': '/daily01/developeroffshore/dvo01-release-checklist-02.webp',
+  'dvo01-incident-handoff-03': '/daily01/developeroffshore/dvo01-incident-handoff-03.webp',
+  'dvo01-dependency-update-04': '/daily01/developeroffshore/dvo01-dependency-update-04.webp',
+  'dvo01-access-review-05': '/daily01/developeroffshore/dvo01-access-review-05.webp',
+  'dvo01-test-evidence-06': '/daily01/developeroffshore/dvo01-test-evidence-06.webp',
+  'dvo01-pull-request-queue-07': '/daily01/developeroffshore/dvo01-pull-request-queue-07.webp',
+  'dvo01-release-checklist-queue-08': '/daily01/developeroffshore/dvo01-release-checklist-queue-08.webp',
+  'dvo01-incident-handoff-queue-09': '/daily01/developeroffshore/dvo01-incident-handoff-queue-09.webp',
+  'dvo01-dependency-update-queue-10': '/daily01/developeroffshore/dvo01-dependency-update-queue-10.webp',
+  'dvo01-access-review-queue-11': '/daily01/developeroffshore/dvo01-access-review-queue-11.webp',
+  'dvo01-test-evidence-queue-12': '/daily01/developeroffshore/dvo01-test-evidence-queue-12.webp',
   'dvo28-spike-delivery-date': '/daily28/developeroffshore/dvo28-spike-delivery-date.png',
   'dvo28-pull-request-evidence': '/daily28/developeroffshore/dvo28-pull-request-evidence.png',
   'dvo28-secret-free-handoff': '/daily28/developeroffshore/dvo28-secret-free-handoff.png',
@@ -227,8 +244,8 @@ function stableHash(value: string) {
 
 function thumbnailAlt(title: string) { return title.length <= 88 ? title : `${title.slice(0, 85).trimEnd()}…`; }
 export function articleThumbnail(kind: ArticleKind, slug: string, title: string) {
-  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: RESEARCH_HEROES[slug].startsWith('/daily28/') || RESEARCH_HEROES[slug].startsWith('/daily27/') || RESEARCH_HEROES[slug].startsWith('/daily26/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1536 : 1672, height: RESEARCH_HEROES[slug].startsWith('/daily28/') || RESEARCH_HEROES[slug].startsWith('/daily27/') || RESEARCH_HEROES[slug].startsWith('/daily26/') ? 630 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1024 : 941, backgroundIndex: -1 } as const;
-  if (kind === 'blog' && BLOG_HEROES[slug]) return { src: BLOG_HEROES[slug], alt: thumbnailAlt(title), width: BLOG_HEROES[slug].startsWith('/daily28/') || BLOG_HEROES[slug].startsWith('/daily27/') || BLOG_HEROES[slug].startsWith('/daily26/') ? 1200 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : BLOG_HEROES[slug].startsWith('/october-13/') ? 1200 : 1536, height: BLOG_HEROES[slug].startsWith('/daily28/') || BLOG_HEROES[slug].startsWith('/daily27/') || BLOG_HEROES[slug].startsWith('/daily26/') ? 630 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : BLOG_HEROES[slug].startsWith('/october-13/') ? 630 : 1024, backgroundIndex: -1 } as const;
+  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: RESEARCH_HEROES[slug].startsWith('/daily01/') || RESEARCH_HEROES[slug].startsWith('/daily28/') || RESEARCH_HEROES[slug].startsWith('/daily27/') || RESEARCH_HEROES[slug].startsWith('/daily26/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1536 : 1672, height: RESEARCH_HEROES[slug].startsWith('/daily01/') || RESEARCH_HEROES[slug].startsWith('/daily28/') || RESEARCH_HEROES[slug].startsWith('/daily27/') || RESEARCH_HEROES[slug].startsWith('/daily26/') ? 630 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1024 : 941, backgroundIndex: -1 } as const;
+  if (kind === 'blog' && BLOG_HEROES[slug]) return { src: BLOG_HEROES[slug], alt: thumbnailAlt(title), width: BLOG_HEROES[slug].startsWith('/daily01/') || BLOG_HEROES[slug].startsWith('/daily28/') || BLOG_HEROES[slug].startsWith('/daily27/') || BLOG_HEROES[slug].startsWith('/daily26/') ? 1200 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : BLOG_HEROES[slug].startsWith('/october-13/') ? 1200 : 1536, height: BLOG_HEROES[slug].startsWith('/daily01/') || BLOG_HEROES[slug].startsWith('/daily28/') || BLOG_HEROES[slug].startsWith('/daily27/') || BLOG_HEROES[slug].startsWith('/daily26/') ? 630 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : BLOG_HEROES[slug].startsWith('/october-13/') ? 630 : 1024, backgroundIndex: -1 } as const;
   const backgroundIndex = stableHash(`${kind}:${slug}`) % BACKGROUNDS.length;
   return {
     src: BACKGROUNDS[backgroundIndex],

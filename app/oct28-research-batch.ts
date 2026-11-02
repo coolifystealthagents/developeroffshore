@@ -6,7 +6,6 @@ export const octoberTwentyEightResearchBatch: readonly ResearchPost[] = [
     "title": "How Often Do Pull Requests Reopen After Approval?",
     "excerpt": "A measurement protocol for pull request reopen rate in offshore software delivery, testing whether approved work later returns for correction with a frozen population, an evidence sample, and a dated review.",
     "published": "2026-10-28",
-    "updated": "2026-11-01",
     "sections": [
       {
         "heading": "Decision the study supports",
@@ -154,6 +153,7 @@ export const octoberTwentyEightResearchBatch: readonly ResearchPost[] = [
       "href": "/services/qa-automation-engineering",
       "anchorId": "qa-evidence-review"
     }
+    "updated": "2026-11-01",
   },
   {
     "slug": "dvo28-review-wait-time",
