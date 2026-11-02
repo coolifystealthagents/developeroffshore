@@ -111,11 +111,13 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     "relatedLinks": [
       {
         "label": "Services",
-        "href": "/services"
+        "href": "/services",
+        "note": "Related page"
       },
       {
         "label": "Research",
-        "href": "/research"
+        "href": "/research",
+        "note": "Related page"
       }
     ]
   },
@@ -229,11 +231,13 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     "relatedLinks": [
       {
         "label": "Services",
-        "href": "/services"
+        "href": "/services",
+        "note": "Related page"
       },
       {
         "label": "Research",
-        "href": "/research"
+        "href": "/research",
+        "note": "Related page"
       }
     ]
   },
@@ -347,11 +351,13 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     "relatedLinks": [
       {
         "label": "Services",
-        "href": "/services"
+        "href": "/services",
+        "note": "Related page"
       },
       {
         "label": "Research",
-        "href": "/research"
+        "href": "/research",
+        "note": "Related page"
       }
     ]
   },
@@ -465,11 +471,13 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     "relatedLinks": [
       {
         "label": "Services",
-        "href": "/services"
+        "href": "/services",
+        "note": "Related page"
       },
       {
         "label": "Research",
-        "href": "/research"
+        "href": "/research",
+        "note": "Related page"
       }
     ]
   },
@@ -583,11 +591,13 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     "relatedLinks": [
       {
         "label": "Services",
-        "href": "/services"
+        "href": "/services",
+        "note": "Related page"
       },
       {
         "label": "Research",
-        "href": "/research"
+        "href": "/research",
+        "note": "Related page"
       }
     ]
   },
@@ -701,11 +711,13 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     "relatedLinks": [
       {
         "label": "Services",
-        "href": "/services"
+        "href": "/services",
+        "note": "Related page"
       },
       {
         "label": "Research",
-        "href": "/research"
+        "href": "/research",
+        "note": "Related page"
       }
     ]
   },
@@ -819,11 +831,13 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     "relatedLinks": [
       {
         "label": "Services",
-        "href": "/services"
+        "href": "/services",
+        "note": "Related page"
       },
       {
         "label": "Research",
-        "href": "/research"
+        "href": "/research",
+        "note": "Related page"
       }
     ]
   },
@@ -937,11 +951,13 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     "relatedLinks": [
       {
         "label": "Services",
-        "href": "/services"
+        "href": "/services",
+        "note": "Related page"
       },
       {
         "label": "Research",
-        "href": "/research"
+        "href": "/research",
+        "note": "Related page"
       }
     ]
   },
@@ -1055,11 +1071,13 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     "relatedLinks": [
       {
         "label": "Services",
-        "href": "/services"
+        "href": "/services",
+        "note": "Related page"
       },
       {
         "label": "Research",
-        "href": "/research"
+        "href": "/research",
+        "note": "Related page"
       }
     ]
   },
@@ -1173,11 +1191,13 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     "relatedLinks": [
       {
         "label": "Services",
-        "href": "/services"
+        "href": "/services",
+        "note": "Related page"
       },
       {
         "label": "Research",
-        "href": "/research"
+        "href": "/research",
+        "note": "Related page"
       }
     ]
   },
@@ -1291,11 +1311,13 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     "relatedLinks": [
       {
         "label": "Services",
-        "href": "/services"
+        "href": "/services",
+        "note": "Related page"
       },
       {
         "label": "Research",
-        "href": "/research"
+        "href": "/research",
+        "note": "Related page"
       }
     ]
   },
@@ -1409,11 +1431,13 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     "relatedLinks": [
       {
         "label": "Services",
-        "href": "/services"
+        "href": "/services",
+        "note": "Related page"
       },
       {
         "label": "Research",
-        "href": "/research"
+        "href": "/research",
+        "note": "Related page"
       }
     ]
   }
