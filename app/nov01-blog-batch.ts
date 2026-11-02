@@ -110,11 +110,11 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     ],
     "relatedLinks": [
       {
-        "title": "Services",
+        "label": "Services",
         "href": "/services"
       },
       {
-        "title": "Research",
+        "label": "Research",
         "href": "/research"
       }
     ]
@@ -228,11 +228,11 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     ],
     "relatedLinks": [
       {
-        "title": "Services",
+        "label": "Services",
         "href": "/services"
       },
       {
-        "title": "Research",
+        "label": "Research",
         "href": "/research"
       }
     ]
@@ -346,11 +346,11 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     ],
     "relatedLinks": [
       {
-        "title": "Services",
+        "label": "Services",
         "href": "/services"
       },
       {
-        "title": "Research",
+        "label": "Research",
         "href": "/research"
       }
     ]
@@ -464,11 +464,11 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     ],
     "relatedLinks": [
       {
-        "title": "Services",
+        "label": "Services",
         "href": "/services"
       },
       {
-        "title": "Research",
+        "label": "Research",
         "href": "/research"
       }
     ]
@@ -582,11 +582,11 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     ],
     "relatedLinks": [
       {
-        "title": "Services",
+        "label": "Services",
         "href": "/services"
       },
       {
-        "title": "Research",
+        "label": "Research",
         "href": "/research"
       }
     ]
@@ -700,11 +700,11 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     ],
     "relatedLinks": [
       {
-        "title": "Services",
+        "label": "Services",
         "href": "/services"
       },
       {
-        "title": "Research",
+        "label": "Research",
         "href": "/research"
       }
     ]
@@ -818,11 +818,11 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     ],
     "relatedLinks": [
       {
-        "title": "Services",
+        "label": "Services",
         "href": "/services"
       },
       {
-        "title": "Research",
+        "label": "Research",
         "href": "/research"
       }
     ]
@@ -936,11 +936,11 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     ],
     "relatedLinks": [
       {
-        "title": "Services",
+        "label": "Services",
         "href": "/services"
       },
       {
-        "title": "Research",
+        "label": "Research",
         "href": "/research"
       }
     ]
@@ -1054,11 +1054,11 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     ],
     "relatedLinks": [
       {
-        "title": "Services",
+        "label": "Services",
         "href": "/services"
       },
       {
-        "title": "Research",
+        "label": "Research",
         "href": "/research"
       }
     ]
@@ -1172,11 +1172,11 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     ],
     "relatedLinks": [
       {
-        "title": "Services",
+        "label": "Services",
         "href": "/services"
       },
       {
-        "title": "Research",
+        "label": "Research",
         "href": "/research"
       }
     ]
@@ -1290,11 +1290,11 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     ],
     "relatedLinks": [
       {
-        "title": "Services",
+        "label": "Services",
         "href": "/services"
       },
       {
-        "title": "Research",
+        "label": "Research",
         "href": "/research"
       }
     ]
@@ -1408,11 +1408,11 @@ export const novemberOneBlogBatch: readonly BlogPost[] = [
     ],
     "relatedLinks": [
       {
-        "title": "Services",
+        "label": "Services",
         "href": "/services"
       },
       {
-        "title": "Research",
+        "label": "Research",
         "href": "/research"
       }
     ]
