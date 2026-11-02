@@ -152,8 +152,8 @@ export const octoberTwentyEightResearchBatch: readonly ResearchPost[] = [
       "label": "Explore QA Automation Engineering",
       "href": "/services/qa-automation-engineering",
       "anchorId": "qa-evidence-review"
-    }
-    "updated": "2026-11-01",
+    },
+    "updated": "2026-11-01"
   },
   {
     "slug": "dvo28-review-wait-time",
