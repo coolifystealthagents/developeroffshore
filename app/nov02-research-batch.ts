@@ -126,10 +126,8 @@ export const novemberTwoResearchBatch: readonly ResearchPost[] = [
         "answer": "The engineering owner owns the decision; the specialist documents and routes the issue."
       }
     ],
-    "related": [
-      "dvo02-pull-request-01",
-      "dvo02-release-checklist-02"
-    ],
+    "related": [{"title": "Map the pull request decision to one accountable owner", "href": "/blog/dvo02-pull-request-01"},
+      {"title": "Write the release checklist intake note that survives a later review", "href": "/blog/dvo02-release-checklist-02"}],
     "nextAction": {
       "heading": "Prepare a release-support brief",
       "body": "Use the queue evidence to define the checks, health signals, and rollback notes that need a handoff.",
@@ -263,10 +261,8 @@ export const novemberTwoResearchBatch: readonly ResearchPost[] = [
         "answer": "The engineering owner owns the decision; the specialist documents and routes the issue."
       }
     ],
-    "related": [
-      "dvo02-pull-request-01",
-      "dvo02-release-checklist-02"
-    ],
+    "related": [{"title": "Map the pull request decision to one accountable owner", "href": "/blog/dvo02-pull-request-01"},
+      {"title": "Write the release checklist intake note that survives a later review", "href": "/blog/dvo02-release-checklist-02"}],
     "nextAction": {
       "heading": "Prepare a release-support brief",
       "body": "Use the queue evidence to define the checks, health signals, and rollback notes that need a handoff.",
@@ -400,10 +396,8 @@ export const novemberTwoResearchBatch: readonly ResearchPost[] = [
         "answer": "The engineering owner owns the decision; the specialist documents and routes the issue."
       }
     ],
-    "related": [
-      "dvo02-pull-request-01",
-      "dvo02-release-checklist-02"
-    ],
+    "related": [{"title": "Map the pull request decision to one accountable owner", "href": "/blog/dvo02-pull-request-01"},
+      {"title": "Write the release checklist intake note that survives a later review", "href": "/blog/dvo02-release-checklist-02"}],
     "nextAction": {
       "heading": "Prepare a release-support brief",
       "body": "Use the queue evidence to define the checks, health signals, and rollback notes that need a handoff.",
@@ -537,10 +531,8 @@ export const novemberTwoResearchBatch: readonly ResearchPost[] = [
         "answer": "The engineering owner owns the decision; the specialist documents and routes the issue."
       }
     ],
-    "related": [
-      "dvo02-pull-request-01",
-      "dvo02-release-checklist-02"
-    ],
+    "related": [{"title": "Map the pull request decision to one accountable owner", "href": "/blog/dvo02-pull-request-01"},
+      {"title": "Write the release checklist intake note that survives a later review", "href": "/blog/dvo02-release-checklist-02"}],
     "nextAction": {
       "heading": "Prepare a release-support brief",
       "body": "Use the queue evidence to define the checks, health signals, and rollback notes that need a handoff.",
@@ -674,10 +666,8 @@ export const novemberTwoResearchBatch: readonly ResearchPost[] = [
         "answer": "The engineering owner owns the decision; the specialist documents and routes the issue."
       }
     ],
-    "related": [
-      "dvo02-pull-request-01",
-      "dvo02-release-checklist-02"
-    ],
+    "related": [{"title": "Map the pull request decision to one accountable owner", "href": "/blog/dvo02-pull-request-01"},
+      {"title": "Write the release checklist intake note that survives a later review", "href": "/blog/dvo02-release-checklist-02"}],
     "nextAction": {
       "heading": "Prepare a release-support brief",
       "body": "Use the queue evidence to define the checks, health signals, and rollback notes that need a handoff.",
