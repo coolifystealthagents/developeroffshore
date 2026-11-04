@@ -1,6 +1,11 @@
 export type ArticleKind = 'blog' | 'research' | 'alternatives';
 
 const RESEARCH_HEROES: Record<string, string> = {
+  'developeroffshore-how-complete-is-the-frontend-accessibility-fix-evidence': '/daily04/developeroffshore/developeroffshore-how-complete-is-the-frontend-accessibility-fix-evidence.webp',
+  'developeroffshore-how-complete-is-the-api-contract-review-evidence': '/daily04/developeroffshore/developeroffshore-how-complete-is-the-api-contract-review-evidence.webp',
+  'developeroffshore-how-complete-is-the-incident-handoff-evidence': '/daily04/developeroffshore/developeroffshore-how-complete-is-the-incident-handoff-evidence.webp',
+  'developeroffshore-how-complete-is-the-release-checklist-evidence': '/daily04/developeroffshore/developeroffshore-how-complete-is-the-release-checklist-evidence.webp',
+  'developeroffshore-how-complete-is-the-pull-request-review-evidence': '/daily04/developeroffshore/developeroffshore-how-complete-is-the-pull-request-review-evidence.webp',
   'dvo01-research-pull-request-01': '/daily01/developeroffshore/dvo01-research-pull-request-01.webp',
   'dvo01-research-release-checklist-02': '/daily01/developeroffshore/dvo01-research-release-checklist-02.webp',
   'dvo01-research-incident-handoff-03': '/daily01/developeroffshore/dvo01-research-incident-handoff-03.webp',
@@ -65,6 +70,11 @@ const RESEARCH_HEROES: Record<string, string> = {
 };
 
 const BLOG_HEROES: Record<string, string> = {
+  'developeroffshore-build-a-frontend-accessibility-fix-record-that-survives-review': '/daily04/developeroffshore/developeroffshore-build-a-frontend-accessibility-fix-record-that-survives-review.webp',
+  'developeroffshore-build-an-api-contract-review-record-that-survives-review': '/daily04/developeroffshore/developeroffshore-build-an-api-contract-review-record-that-survives-review.webp',
+  'developeroffshore-build-an-incident-handoff-record-that-survives-review': '/daily04/developeroffshore/developeroffshore-build-an-incident-handoff-record-that-survives-review.webp',
+  'developeroffshore-build-a-release-checklist-record-that-survives-review': '/daily04/developeroffshore/developeroffshore-build-a-release-checklist-record-that-survives-review.webp',
+  'developeroffshore-build-a-pull-request-review-record-that-survives-review': '/daily04/developeroffshore/developeroffshore-build-a-pull-request-review-record-that-survives-review.webp',
   'dvo01-pull-request-01': '/daily01/developeroffshore/dvo01-pull-request-01.webp',
   'dvo01-release-checklist-02': '/daily01/developeroffshore/dvo01-release-checklist-02.webp',
   'dvo01-incident-handoff-03': '/daily01/developeroffshore/dvo01-incident-handoff-03.webp',
@@ -244,8 +254,8 @@ function stableHash(value: string) {
 
 function thumbnailAlt(title: string) { return title.length <= 88 ? title : `${title.slice(0, 85).trimEnd()}…`; }
 export function articleThumbnail(kind: ArticleKind, slug: string, title: string) {
-  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: RESEARCH_HEROES[slug].startsWith('/daily01/') || RESEARCH_HEROES[slug].startsWith('/daily28/') || RESEARCH_HEROES[slug].startsWith('/daily27/') || RESEARCH_HEROES[slug].startsWith('/daily26/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1536 : 1672, height: RESEARCH_HEROES[slug].startsWith('/daily01/') || RESEARCH_HEROES[slug].startsWith('/daily28/') || RESEARCH_HEROES[slug].startsWith('/daily27/') || RESEARCH_HEROES[slug].startsWith('/daily26/') ? 630 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1024 : 941, backgroundIndex: -1 } as const;
-  if (kind === 'blog' && BLOG_HEROES[slug]) return { src: BLOG_HEROES[slug], alt: thumbnailAlt(title), width: BLOG_HEROES[slug].startsWith('/daily01/') || BLOG_HEROES[slug].startsWith('/daily28/') || BLOG_HEROES[slug].startsWith('/daily27/') || BLOG_HEROES[slug].startsWith('/daily26/') ? 1200 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : BLOG_HEROES[slug].startsWith('/october-13/') ? 1200 : 1536, height: BLOG_HEROES[slug].startsWith('/daily01/') || BLOG_HEROES[slug].startsWith('/daily28/') || BLOG_HEROES[slug].startsWith('/daily27/') || BLOG_HEROES[slug].startsWith('/daily26/') ? 630 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : BLOG_HEROES[slug].startsWith('/october-13/') ? 630 : 1024, backgroundIndex: -1 } as const;
+  if (kind === 'research' && RESEARCH_HEROES[slug]) return { src: RESEARCH_HEROES[slug], alt: thumbnailAlt(title), width: RESEARCH_HEROES[slug].startsWith('/daily04/') || RESEARCH_HEROES[slug].startsWith('/daily01/') || RESEARCH_HEROES[slug].startsWith('/daily28/') || RESEARCH_HEROES[slug].startsWith('/daily27/') || RESEARCH_HEROES[slug].startsWith('/daily26/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 1200 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1536 : 1672, height: RESEARCH_HEROES[slug].startsWith('/daily04/') || RESEARCH_HEROES[slug].startsWith('/daily01/') || RESEARCH_HEROES[slug].startsWith('/daily28/') || RESEARCH_HEROES[slug].startsWith('/daily27/') || RESEARCH_HEROES[slug].startsWith('/daily26/') ? 630 : RESEARCH_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-13/') ? 630 : RESEARCH_HEROES[slug].startsWith('/october-12/') ? 1024 : 941, backgroundIndex: -1 } as const;
+  if (kind === 'blog' && BLOG_HEROES[slug]) return { src: BLOG_HEROES[slug], alt: thumbnailAlt(title), width: BLOG_HEROES[slug].startsWith('/daily04/') || BLOG_HEROES[slug].startsWith('/daily01/') || BLOG_HEROES[slug].startsWith('/daily28/') || BLOG_HEROES[slug].startsWith('/daily27/') || BLOG_HEROES[slug].startsWith('/daily26/') ? 1200 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 1200 : BLOG_HEROES[slug].startsWith('/october-13/') ? 1200 : 1536, height: BLOG_HEROES[slug].startsWith('/daily04/') || BLOG_HEROES[slug].startsWith('/daily01/') || BLOG_HEROES[slug].startsWith('/daily28/') || BLOG_HEROES[slug].startsWith('/daily27/') || BLOG_HEROES[slug].startsWith('/daily26/') ? 630 : BLOG_HEROES[slug].startsWith('/oct22-heroes/') ? 630 : BLOG_HEROES[slug].startsWith('/october-13/') ? 630 : 1024, backgroundIndex: -1 } as const;
   const backgroundIndex = stableHash(`${kind}:${slug}`) % BACKGROUNDS.length;
   return {
     src: BACKGROUNDS[backgroundIndex],
