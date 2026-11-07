@@ -8,12 +8,13 @@ export function ArticleToc({ items, titleId }: { items: readonly TocItem[]; titl
   const [activeId, setActiveId] = useState(items[0]?.id ?? '');
 
   useEffect(() => {
-    const headings = items
-      .map((item) => document.getElementById(item.id))
-      .filter((heading): heading is HTMLElement => Boolean(heading));
-    if (!headings.length) return;
-
+    // Streamed article content may mount after this sidebar. Re-query the
+    // headings on each update instead of capturing an empty node list.
     const updateActiveHeading = () => {
+      const headings = items
+        .map((item) => document.getElementById(item.id))
+        .filter((heading): heading is HTMLElement => Boolean(heading));
+      if (!headings.length) return;
       const headerOffset = 128;
       const current = headings.reduce((active, heading) => {
         return heading.getBoundingClientRect().top <= headerOffset ? heading : active;
@@ -21,10 +22,11 @@ export function ArticleToc({ items, titleId }: { items: readonly TocItem[]; titl
       setActiveId(current.id);
     };
 
-    updateActiveHeading();
+    const frame = requestAnimationFrame(updateActiveHeading);
     window.addEventListener('scroll', updateActiveHeading, { passive: true });
     window.addEventListener('resize', updateActiveHeading);
     return () => {
+      cancelAnimationFrame(frame);
       window.removeEventListener('scroll', updateActiveHeading);
       window.removeEventListener('resize', updateActiveHeading);
     };
