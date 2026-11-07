@@ -1,11 +1,11 @@
 export type ArticleKind = 'blog' | 'research' | 'alternatives';
 
 const RESEARCH_HEROES: Record<string, string> = {
-  'developeroffshore-what-a-two-week-offshore-pilot-can-prove': '/daily07/developeroffshore/developeroffshore-what-a-two-week-offshore-pilot-can-prove.webp',
-  'developeroffshore-ticket-readiness-delivery-signal': '/daily07/developeroffshore/developeroffshore-ticket-readiness-delivery-signal.webp',
-  'developeroffshore-estimating-throughput-without-activity-metrics': '/daily07/developeroffshore/developeroffshore-estimating-throughput-without-activity-metrics.webp',
-  'developeroffshore-decision-latency-in-offshore-delivery': '/daily07/developeroffshore/developeroffshore-decision-latency-in-offshore-delivery.webp',
-  'developeroffshore-knowledge-transfer-risk-developer-departure': '/daily07/developeroffshore/developeroffshore-knowledge-transfer-risk-developer-departure.webp',
+  'developeroffshore-what-a-two-week-offshore-developer-pilot-can-and-cannot-prove': '/daily07/developeroffshore/developeroffshore-what-a-two-week-offshore-developer-pilot-can-and-cannot-prove.webp',
+  'developeroffshore-ticket-readiness-as-an-early-delivery-signal': '/daily07/developeroffshore/developeroffshore-ticket-readiness-as-an-early-delivery-signal.webp',
+  'developeroffshore-estimating-delivery-throughput-without-activity-metrics': '/daily07/developeroffshore/developeroffshore-estimating-delivery-throughput-without-activity-metrics.webp',
+  'developeroffshore-decision-latency-in-offshore-software-delivery': '/daily07/developeroffshore/developeroffshore-decision-latency-in-offshore-software-delivery.webp',
+  'developeroffshore-knowledge-transfer-risk-when-a-developer-leaves-a-distributed-team': '/daily07/developeroffshore/developeroffshore-knowledge-transfer-risk-when-a-developer-leaves-a-distributed-team.webp',
   'developeroffshore-accessibility-fix-closure-evidence': '/daily05/developeroffshore/developeroffshore-accessibility-fix-closure-evidence.webp',
   'developeroffshore-api-contract-review-evidence-quality': '/daily05/developeroffshore/developeroffshore-api-contract-review-evidence-quality.webp',
   'developeroffshore-incident-handoff-evidence-after-owner-change': '/daily05/developeroffshore/developeroffshore-incident-handoff-evidence-after-owner-change.webp',
@@ -80,7 +80,7 @@ const RESEARCH_HEROES: Record<string, string> = {
 };
 
 const BLOG_HEROES: Record<string, string> = {
-  'developeroffshore-run-a-two-week-offshore-developer-pilot-with-exit-criteria': '/daily07/developeroffshore/developeroffshore-run-a-two-week-offshore-developer-pilot-with-exit-criteria.webp',
+  'developeroffshore-run-a-two-week-offshore-developer-pilot-with-written-exit-criteria': '/daily07/developeroffshore/developeroffshore-run-a-two-week-offshore-developer-pilot-with-written-exit-criteria.webp',
   'developeroffshore-turn-a-vague-ticket-into-an-offshore-ready-work-brief': '/daily07/developeroffshore/developeroffshore-turn-a-vague-ticket-into-an-offshore-ready-work-brief.webp',
   'developeroffshore-run-a-weekly-delivery-review-for-a-distributed-pod': '/daily07/developeroffshore/developeroffshore-run-a-weekly-delivery-review-for-a-distributed-pod.webp',
   'developeroffshore-set-a-work-in-progress-limit-for-a-shared-offshore-backlog': '/daily07/developeroffshore/developeroffshore-set-a-work-in-progress-limit-for-a-shared-offshore-backlog.webp',
