@@ -1,11 +1,11 @@
 export type ArticleKind = 'blog' | 'research' | 'alternatives';
 
 const RESEARCH_HEROES: Record<string, string> = {
-  'developeroffshore-meeting-load-as-a-delivery-cost': '/daily08/developeroffshore/developeroffshore-meeting-load-as-a-delivery-cost.webp',
-  'developeroffshore-how-staffing-contracts-allocate-ip-and-security-duty': '/daily08/developeroffshore/developeroffshore-how-staffing-contracts-allocate-ip-and-security-duty.webp',
+  'developeroffshore-meeting-load-as-a-delivery-cost-in-offshore-engineering': '/daily08/developeroffshore/developeroffshore-meeting-load-as-a-delivery-cost-in-offshore-engineering.webp',
+  'developeroffshore-how-staffing-contracts-allocate-intellectual-property-and-security-duty': '/daily08/developeroffshore/developeroffshore-how-staffing-contracts-allocate-intellectual-property-and-security-duty.webp',
   'developeroffshore-retention-risk-signals-in-offshore-developer-staffing': '/daily08/developeroffshore/developeroffshore-retention-risk-signals-in-offshore-developer-staffing.webp',
-  'developeroffshore-bench-time-and-utilization-risk-in-offshore-staffing': '/daily08/developeroffshore/developeroffshore-bench-time-and-utilization-risk-in-offshore-staffing.webp',
-  'developeroffshore-cost-of-a-vacant-developer-seat': '/daily08/developeroffshore/developeroffshore-cost-of-a-vacant-developer-seat.webp',
+  'developeroffshore-bench-time-and-utilization-risk-in-offshore-staffing-arrangements': '/daily08/developeroffshore/developeroffshore-bench-time-and-utilization-risk-in-offshore-staffing-arrangements.webp',
+  'developeroffshore-the-cost-of-a-vacant-developer-seat-in-an-offshore-pod': '/daily08/developeroffshore/developeroffshore-the-cost-of-a-vacant-developer-seat-in-an-offshore-pod.webp',
   'developeroffshore-what-a-two-week-offshore-developer-pilot-can-and-cannot-prove': '/daily07/developeroffshore/developeroffshore-what-a-two-week-offshore-developer-pilot-can-and-cannot-prove.webp',
   'developeroffshore-ticket-readiness-as-an-early-delivery-signal': '/daily07/developeroffshore/developeroffshore-ticket-readiness-as-an-early-delivery-signal.webp',
   'developeroffshore-estimating-delivery-throughput-without-activity-metrics': '/daily07/developeroffshore/developeroffshore-estimating-delivery-throughput-without-activity-metrics.webp',
@@ -86,10 +86,10 @@ const RESEARCH_HEROES: Record<string, string> = {
 
 const BLOG_HEROES: Record<string, string> = {
   'developeroffshore-price-an-offshore-developer-seat-beyond-the-hourly-rate': '/daily08/developeroffshore/developeroffshore-price-an-offshore-developer-seat-beyond-the-hourly-rate.webp',
-  'developeroffshore-check-a-staffing-invoice-against-delivered-work': '/daily08/developeroffshore/developeroffshore-check-a-staffing-invoice-against-delivered-work.webp',
-  'developeroffshore-set-a-leave-and-holiday-calendar-for-a-distributed-pod': '/daily08/developeroffshore/developeroffshore-set-a-leave-and-holiday-calendar-for-a-distributed-pod.webp',
+  'developeroffshore-check-a-staffing-invoice-against-the-work-that-was-actually-delivered': '/daily08/developeroffshore/developeroffshore-check-a-staffing-invoice-against-the-work-that-was-actually-delivered.webp',
+  'developeroffshore-set-a-leave-and-holiday-calendar-for-a-distributed-development-pod': '/daily08/developeroffshore/developeroffshore-set-a-leave-and-holiday-calendar-for-a-distributed-development-pod.webp',
   'developeroffshore-decide-what-stays-in-house-when-you-hire-offshore-developers': '/daily08/developeroffshore/developeroffshore-decide-what-stays-in-house-when-you-hire-offshore-developers.webp',
-  'developeroffshore-review-your-offshore-staffing-partner-with-a-quarterly-scorecard': '/daily08/developeroffshore/developeroffshore-review-your-offshore-staffing-partner-with-a-quarterly-scorecard.webp',
+  'developeroffshore-review-your-offshore-staffing-partner-with-a-quarterly-vendor-scorecard': '/daily08/developeroffshore/developeroffshore-review-your-offshore-staffing-partner-with-a-quarterly-vendor-scorecard.webp',
   'developeroffshore-run-a-two-week-offshore-developer-pilot-with-written-exit-criteria': '/daily07/developeroffshore/developeroffshore-run-a-two-week-offshore-developer-pilot-with-written-exit-criteria.webp',
   'developeroffshore-turn-a-vague-ticket-into-an-offshore-ready-work-brief': '/daily07/developeroffshore/developeroffshore-turn-a-vague-ticket-into-an-offshore-ready-work-brief.webp',
   'developeroffshore-run-a-weekly-delivery-review-for-a-distributed-pod': '/daily07/developeroffshore/developeroffshore-run-a-weekly-delivery-review-for-a-distributed-pod.webp',
