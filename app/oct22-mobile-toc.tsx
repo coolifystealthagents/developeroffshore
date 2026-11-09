@@ -15,7 +15,7 @@ export default function Oct22MobileToc() {
     // Some templates put the H1 in a hero outside the article body. Mount the
     // control against the container that actually holds the title.
     const article = candidate && candidate.querySelector('h1') ? candidate : main;
-    const headings = Array.from(article.querySelectorAll<HTMLElement>('h2')).filter((h) => h.offsetParent !== null);
+    const headings = Array.from(article.querySelectorAll<HTMLElement>('h2')).filter((h) => h.offsetParent !== null && !h.closest('nav, aside, .article-sidebar, .article-toc, .o22-mobile') && !/^Table of contents$/i.test((h.textContent || '').trim()));
     if (headings.length < 2) return;
     headings.forEach((h, i) => {
       if (!h.id) h.id = `o22-${i + 1}`;
@@ -31,7 +31,7 @@ export default function Oct22MobileToc() {
     const header = document.querySelector<HTMLElement>('header, .site-header');
     const headerHeight = header ? header.getBoundingClientRect().height : 0;
     details.style.top = `${Math.round(headerHeight + 8)}px`;
-    details.innerHTML = `<summary>Contents</summary><nav aria-label="Table of contents mobile"></nav>`;
+    details.innerHTML = `<summary>Table of contents</summary><nav aria-label="Table of contents mobile"></nav>`;
     const nav = details.querySelector('nav')!;
     headings.forEach((h) => {
       const a = document.createElement('a');
