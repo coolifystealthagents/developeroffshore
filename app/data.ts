@@ -37,6 +37,7 @@ import { novemberOneBlogBatch } from './nov01-blog-batch';
 import { novemberTwoBlogBatch } from './nov02-blog-batch';
 import { novemberSixBlogBatch } from './nov06-blog-batch';
 import { novemberSevenBlogBatch } from './nov07-blog-batch';
+import { novemberNineBlogBatch } from './nov09-blog-batch';
 import { novemberEightBlogBatch } from './nov08-blog-batch';
 import { novemberFiveBlogBatch } from './nov05-blog-batch';
 import { novemberFourBlogBatch } from './nov04-blog-batch';
@@ -484,7 +485,7 @@ const dailyBlogBatch20260810Additional: BlogPost[] = additionalDailyTopics202608
 }));
 
 export const blogPosts: BlogPost[] = [
-  ...novemberEightBlogBatch, ...novemberSevenBlogBatch, ...novemberSixBlogBatch, ...novemberFiveBlogBatch, ...novemberFourBlogBatch, ...novemberThreeBlogBatch, ...novemberTwoBlogBatch, ...novemberOneBlogBatch, ...octoberTwentyEightBlogBatch, ...octoberTwentySevenBlogBatch, ...octoberTwentySixBlogBatch, ...octoberTwentyFiveBlogBatch, ...octoberTwentyTwoBlogBatch,
+  ...novemberNineBlogBatch, ...novemberEightBlogBatch, ...novemberSevenBlogBatch, ...novemberSixBlogBatch, ...novemberFiveBlogBatch, ...novemberFourBlogBatch, ...novemberThreeBlogBatch, ...novemberTwoBlogBatch, ...novemberOneBlogBatch, ...octoberTwentyEightBlogBatch, ...octoberTwentySevenBlogBatch, ...octoberTwentySixBlogBatch, ...octoberTwentyFiveBlogBatch, ...octoberTwentyTwoBlogBatch,
   ...october13BlogBatch,
   ...october12BlogBatch,
   ...october08BlogBatch,
