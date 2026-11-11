@@ -58,7 +58,7 @@ export default function StandardContactForm({ endpoint = "/api/contact", encodin
       const response = await fetch(endpoint, request);
       const result = await response.json().catch(() => null) as { accepted?: boolean; error?: string } | null;
       if (!response.ok || result?.accepted !== true) throw new Error(result?.error || "Lead endpoint rejected the request");
-      try { (window as TrackerWindow).acrTracker?.trackLead?.(payload); } catch {}
+      try { /* ACR captures the native submit event once. */ } catch {}
       window.location.assign("/thank-you");
     } catch {
       setError("We could not deliver your request. Your information was not marked as sent. Please review the fields and try again.");
