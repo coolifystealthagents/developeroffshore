@@ -270,8 +270,9 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
   return (
     <>
       <Header />
-      <main id="main-content" className="article-page"><Oct22MobileToc />
+      <main id="main-content" className="article-page">
         <article className="container article-shell" data-article-revision={post.revision || 'legacy-article'}>
+          <Oct22MobileToc items={toc} />
           <JsonLd data={articleSchema} />
           <JsonLd data={breadcrumbSchema} />
           {faqSchema ? <JsonLd data={faqSchema} /> : null}

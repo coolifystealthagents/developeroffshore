@@ -53,7 +53,8 @@ export default async function ResearchArticle({ params }: { params: Promise<{ sl
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Research', item: `https://${site.domain}/research` }, { '@type': 'ListItem', position: 2, name: post.title, item: canonical }] },
   ];
 
-  return <><Header /><main id="main-content" className="article-page"><Oct22MobileToc /><article className="container article-shell">
+  return <><Header /><main id="main-content" className="article-page"><article className="container article-shell">
+    <Oct22MobileToc items={toc} />
     <JsonLd data={structuredData} />
     <header className="article-header">
       <p className="eyebrow">{site.brand} research</p><h1>{post.title}</h1>
