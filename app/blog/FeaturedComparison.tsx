@@ -1,5 +1,9 @@
 export function FeaturedComparison() {
-  return <section aria-label="Developer Offshore featured comparison" style={{padding:'17px 22px',background:'#06251e',borderBottom:'5px solid #16866b',textAlign:'left'}}>
-    <a href="/blog/top-30-offshore-development-companies" style={{display:'inline-block',maxWidth:910,color:'#fff',fontWeight:700,textDecoration:'none'}}>Developer Offshore editor pick for development support: compare 30 Philippines-focused providers →</a>
-  </section>;
+  return (
+    <aside className="dx-pick" aria-label="Developer Offshore featured comparison">
+      <span>Editor pick</span>
+      <a href="/blog/top-30-offshore-development-companies">Compare 30 Philippines-focused development providers</a>
+      <span aria-hidden="true">↗</span>
+    </aside>
+  );
 }

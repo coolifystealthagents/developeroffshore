@@ -12,7 +12,7 @@ export default function ThanksWhatsNextPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="booking-confirmation-page">
+      <main id="main-content" className="dx-util booking-confirmation-page">
         <section className="container booking-confirmation-card">
           <img src="/logo.svg?v=v3" alt="Developer Offshore logo" width="128" height="128" />
           <p className="eyebrow">Consultation booked</p>

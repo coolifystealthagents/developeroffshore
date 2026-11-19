@@ -68,7 +68,7 @@ export default function StandardContactForm({ endpoint = "/api/contact", encodin
 
   return (
     <div className="sa-form-card">
-      <h2>Find Growth In Your Business By Hiring Industry Experienced Virtual Assistants</h2>
+      <h2>Tell us what your team needs to ship.</h2>
       <form action={endpoint} method="post" onSubmit={submit} id="contactPageForm">
         <input className="sa-hp" name="website_url" tabIndex={-1} autoComplete="off" aria-hidden="true" />
         <div className="sa-grid">
@@ -91,21 +91,8 @@ export default function StandardContactForm({ endpoint = "/api/contact", encodin
         {referral === "Other" ? <label htmlFor="contact-referral-other">Please Specify *<input id="contact-referral-other" name="referralSpecify" required /></label> : null}
         <label htmlFor="contact-message">Message *<textarea id="contact-message" name="message" rows={4} required /></label>
         <p className={error ? "sa-error" : "sa-sr-only"} role={error ? "alert" : "status"} aria-live="polite">{error || (submitting ? "Sending your request" : "Form ready")}</p>
-        <button type="submit" disabled={submitting}>{submitting ? "Submitting..." : "Book a Free Consultation"}</button>
+        <button type="submit" disabled={submitting}>{submitting ? "Submitting..." : "Request a staffing plan"}</button>
       </form>
-      <style jsx>{`
-        .sa-form-card{width:100%;max-width:876px;margin:0 auto;background:#fff;border:1px solid #e3e8ef;border-radius:18px;padding:16px 22px 18px;box-shadow:0 18px 48px rgba(15,34,58,.16);color:#34415a;text-align:left}
-        h2{margin:0 0 10px;color:#111827;font-size:20px;line-height:1.2;font-weight:800;letter-spacing:-.02em;max-width:700px}
-        form{display:flex;flex-direction:column;gap:8px}.sa-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-        label{display:flex;flex-direction:column;gap:3px;font-size:13px;line-height:1.2;font-weight:650;color:#34415a}
-        input,select,textarea{box-sizing:border-box;width:100%;border:1px solid #cfd7e3;border-radius:9px;background:#fff;color:#1f2937;font:inherit;font-size:14px;padding:8px 10px;outline:none;min-height:38px}
-        input:focus,select:focus,textarea:focus{border-color:#00adf4;box-shadow:0 0 0 3px rgba(0,173,244,.14)}
-        small{color:#667085;font-size:11px;font-weight:400}.sa-phone{display:grid;grid-template-columns:105px 1fr;border:1px solid #cfd7e3;border-radius:9px;overflow:hidden}.sa-phone:focus-within{border-color:#00adf4;box-shadow:0 0 0 3px rgba(0,173,244,.14)}
-        .sa-phone select,.sa-phone input{border:0;border-radius:0;box-shadow:none!important}.sa-phone select{border-right:1px solid #dbe1ea;padding-right:8px}.sa-phone input{min-width:0}
-        textarea{resize:vertical;min-height:54px;max-height:90px}button{width:100%;border:0;border-radius:10px;background:linear-gradient(100deg,#057fae,#117da9);color:#fff;padding:11px 18px;font-size:16px;font-weight:750;cursor:pointer;box-shadow:0 7px 16px rgba(0,105,153,.22)}
-        button:hover{filter:brightness(.98)}button:disabled{cursor:wait;opacity:.65}.sa-error{margin:0;color:#b42318;font-size:14px}.sa-hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
-        @media(max-width:700px){.sa-form-card{padding:24px 18px 26px;border-radius:18px}h2{font-size:23px;margin-bottom:18px}form{gap:16px}.sa-grid{grid-template-columns:1fr;gap:16px}label{font-size:16px;gap:6px}input,select,textarea{font-size:16px;padding:12px;min-height:50px}.sa-phone{grid-template-columns:122px 1fr}textarea{min-height:110px;max-height:none}button{font-size:18px;padding:16px}}
-      `}</style>
     </div>
   );
 }

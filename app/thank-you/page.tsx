@@ -13,7 +13,7 @@ export default function ThankYouPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="sa-booking-page">
+      <main id="main-content" className="dx-util sa-booking-page">
         <div className="container booking-v3">
           <header className="booking-v3-intro">
             <p className="eyebrow">Request delivered</p>

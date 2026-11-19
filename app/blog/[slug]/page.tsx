@@ -280,7 +280,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
             <p className="eyebrow">{site.brand} guide</p>
             <h1>{post.title}</h1>
             {post.datePublished ? <p className="article-date">Published <time dateTime={post.datePublished}>{formatPublicationDate(post.datePublished)}</time></p> : null}
-            <p className="lead">{post.excerpt}</p><div className='blog-standards-strip' aria-label='Article standards'><span>Source-backed guidance</span><span>Contextual internal links</span><span>Top, middle, and bottom CTAs</span></div>
+            <p className="lead">{post.excerpt}</p>
             <img className="article-featured-image" src={thumbnail.src} alt={thumbnail.alt} width={thumbnail.width} height={thumbnail.height}/>
           </header>
           <div className="article-layout">
