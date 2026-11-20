@@ -20,6 +20,19 @@ const serviceImages: Record<string, { src: string; alt: string }> = {
   'legacy-application-maintenance': { src: '/illustrations/getillustrations/inkdex-saas-illustrations-svg/offshore-developer.svg', alt: 'Developer maintaining an established software application' },
 };
 
+const laneTags: Record<string, readonly string[]> = {
+  'next-js-application-development': ['Next.js', 'App Router', 'TypeScript'],
+  'react-frontend-development': ['React', 'Design system', 'Accessibility'],
+  'node-js-api-development': ['Node.js', 'API contracts', 'SQL'],
+  'shopify-theme-development': ['Liquid', 'Theme preview', 'Commerce'],
+  'wordpress-engineering': ['WordPress', 'Blocks', 'PHP'],
+  'qa-automation-engineering': ['Playwright', 'CI', 'Test evidence'],
+  'devops-release-support': ['CI/CD', 'Docker', 'Release'],
+  'data-pipeline-development': ['Python', 'ETL', 'Validation'],
+  'mobile-app-development': ['React Native', 'iOS', 'Android'],
+  'legacy-application-maintenance': ['Tests', 'Upgrades', 'Docs'],
+};
+
 export function generateStaticParams() {
   return fleetServices.map((service) => ({ slug: service.slug }));
 }
@@ -38,9 +51,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-function ListSection({ title, items, className = '' }: { title: string; items: readonly string[]; className?: string }) {
-  return <section className={`service-v3-section ${className}`}><h2>{title}</h2><ul>{items.map((item) => <li key={item}>{item}</li>)}</ul></section>;
-}
+const rhythm = [
+  ['Brief', 'Write the boundary', 'One representative ticket and the finish condition are written down.'],
+  ['Build', 'Ship one slice', 'The developer works inside the approved repository and access boundary.'],
+  ['Review', 'Inspect the evidence', 'Your tech lead inspects the diff, tests, and known limitations.'],
+  ['Handoff', 'Record the decision', 'The change, decisions, and open questions are recorded for the team.'],
+] as const;
 
 export default async function Service({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -61,8 +77,9 @@ export default async function Service({ params }: { params: Promise<{ slug: stri
   return (
     <>
       <Header />
-      <main id="main-content" className="dx-page">
+      <main id="main-content" className="dx-page dx-service-page">
         <JsonLd data={graph} />
+
         <section className="dx-detail-hero">
           <div className="dx-pagehero-bg" aria-hidden="true" />
           <div className="dx-container dx-detail-grid">
@@ -72,8 +89,11 @@ export default async function Service({ params }: { params: Promise<{ slug: stri
               <h1>{service.title}</h1>
               <p className="dx-hero-lead">{service.desc}</p>
               <div className="dx-actions">
-                <a className="dx-btn" href="/contact-us">Scope this lane ↗</a>
+                <a className="dx-btn" href="/contact-us">Scope this lane <span aria-hidden="true">↗</span></a>
                 <a className="dx-btn dx-btn--ghost" href="/services">Compare all services</a>
+              </div>
+              <div className="sp-hero-tags">
+                {laneTags[service.slug]?.map((tag) => <span key={tag}>{tag}</span>)}
               </div>
             </div>
             <figure className="dx-detail-visual" data-tilt data-tilt-strength="4">
@@ -83,68 +103,149 @@ export default async function Service({ params }: { params: Promise<{ slug: stri
           </div>
         </section>
 
-        <div className="dx-detail-body">
-          <div className="dx-container">
-            <section className="service-v3-intro">
-              <p className="dx-eyebrow">Who this lane is for</p>
-              <h2>A bounded change with a named reviewer.</h2>
-              <p>{service.audience}</p>
-              <h3>The problem it addresses</h3>
-              <p>
-                Backlogs become difficult to move when ownership, inputs, review time, and approval
-                boundaries remain implicit. This lane makes those parts visible before capacity is added.
-              </p>
-            </section>
+        <section className="sp-snapshot" aria-label="Lane snapshot">
+          <div className="dx-container sp-snapshot-grid">
+            <article><span>Best fit</span><strong>{service.audience}</strong></article>
+            <article><span>First outcome</span><strong>{service.outcomes[0]}</strong></article>
+            <article><span>Review owner</span><strong>Your tech lead keeps merge approval</strong></article>
+            <article><span>Access</span><strong>Named accounts, scoped permissions</strong></article>
+          </div>
+        </section>
 
-            <div className="service-v3-pair">
-              <ListSection title="Inputs needed to begin" items={service.inputs} />
-              <ListSection title="Outcomes and deliverables" items={service.outcomes} />
+        <section className="dx-container sp-intro">
+          <div data-reveal>
+            <p className="dx-eyebrow">The operating lane</p>
+            <h2>A bounded change with a named reviewer.</h2>
+          </div>
+          <div className="sp-intro-copy" data-reveal>
+            <p>
+              Backlogs become difficult to move when ownership, inputs, review time, and approval
+              boundaries remain implicit. This lane makes those parts visible before capacity is added.
+            </p>
+            <p>
+              The developer works inside your tools, records assumptions, and returns a reviewable
+              change. Your team keeps product priority, architecture, sensitive access, and production
+              approval.
+            </p>
+            <div className="sp-keep">
+              <span>Product priority</span>
+              <span>Architecture</span>
+              <span>Sensitive access</span>
+              <span>Production approval</span>
             </div>
+          </div>
+        </section>
 
-            <ListSection title="Responsibilities and tasks" items={service.tasks} className="service-v3-wide" />
+        <section className="sp-lane">
+          <div className="dx-container">
+            <div className="dx-head" data-reveal>
+              <div><p className="dx-eyebrow">Inside the lane</p><h2>What the work actually includes.</h2></div>
+              <p>Each part is written down before the first ticket so the review boundary is not left to interpretation.</p>
+            </div>
+            <div className="sp-lane-grid">
+              <article className="sp-card" data-reveal>
+                <span>Inputs</span>
+                <h3>What we need to begin</h3>
+                <ul>{service.inputs.map((item) => <li key={item}>{item}</li>)}</ul>
+              </article>
+              <article className="sp-card sp-card--dark" data-reveal>
+                <span>Outcomes</span>
+                <h3>What the first slice returns</h3>
+                <ul>{service.outcomes.map((item) => <li key={item}>{item}</li>)}</ul>
+              </article>
+              <article className="sp-card" data-reveal>
+                <span>Responsibilities</span>
+                <h3>What the developer owns</h3>
+                <ul>{service.tasks.map((item) => <li key={item}>{item}</li>)}</ul>
+              </article>
+            </div>
+          </div>
+        </section>
 
-            <section className="service-v3-workflow">
-              <p className="dx-eyebrow">A practical workflow</p>
+        <section className="sp-rhythm">
+          <div className="dx-container sp-rhythm-grid">
+            <div data-reveal>
+              <p className="dx-eyebrow dx-eyebrow--light">A practical workflow</p>
               <h2>One lane. One reviewer. Reviewable evidence.</h2>
               <p>
                 The engagement begins with a bounded result and a representative task. The developer
                 works in your approved tools, records assumptions, and prepares a reviewable change.
-                Your team keeps architecture, product priority, and production approval.
               </p>
-            </section>
-
-            <div className="service-v3-pair">
-              <ListSection title="Quality controls" items={service.controls} />
-              <ListSection title="Your first week" items={service.firstWeek} />
+              <ul className="dx-review-checks">
+                {service.controls.map((item) => <li key={item}>{item}</li>)}
+              </ul>
             </div>
+            <div className="sp-timeline" data-reveal>
+              {rhythm.map(([label, title, body]) => (
+                <article key={label}>
+                  <span>{label}</span>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
 
-            <ListSection title="Proof boundaries" items={service.boundaries} className="service-v3-proof" />
+        <section className="dx-container sp-controls">
+          <div className="sp-controls-grid">
+            <article className="sp-panel sp-panel--blue" data-reveal>
+              <p className="dx-eyebrow">Quality controls</p>
+              <h2>How the work is checked.</h2>
+              <ul>{service.controls.map((item) => <li key={item}>{item}</li>)}</ul>
+            </article>
+            <article className="sp-panel" data-reveal>
+              <p className="dx-eyebrow">Your first week</p>
+              <h2>A small batch, then a decision.</h2>
+              <ol>{service.firstWeek.map((item, index) => <li key={item}><b>{String(index + 1).padStart(2, '0')}</b><span>{item}</span></li>)}</ol>
+            </article>
+          </div>
+        </section>
 
-            <section className="service-v3-faq">
+        <section className="dx-container sp-boundaries">
+          <div className="sp-boundary-card" data-reveal>
+            <div>
+              <p className="dx-eyebrow dx-eyebrow--light">Proof boundaries</p>
+              <h2>What this lane does not promise.</h2>
+              <p>A focused test or successful review is not a guarantee of reliability, security, or business outcomes.</p>
+            </div>
+            <ul>{service.boundaries.map((item) => <li key={item}>{item}</li>)}</ul>
+          </div>
+        </section>
+
+        <section className="dx-container sp-faq">
+          <div className="sp-faq-grid">
+            <div data-reveal>
               <p className="dx-eyebrow">Questions teams ask</p>
-              <h2>Before you commit to the lane</h2>
+              <h2>Before you commit to the lane.</h2>
+              <p>Bring a representative ticket and the reviewer's name. That is enough to have a useful first conversation.</p>
+              <a className="dx-link" href="/contact-us">Talk through the lane ↗</a>
+            </div>
+            <div className="sp-faq-list">
               {service.faqs.map((faq) => (
                 <details key={faq.question}>
                   <summary>{faq.question}</summary>
                   <p>{faq.answer}</p>
                 </details>
               ))}
-            </section>
-
-            <section className="service-v3-related">
-              <p className="dx-eyebrow">Adjacent capacity</p>
-              <h2>Related services</h2>
-              <div>
-                {related.map((item) => (
-                  <a key={item.slug} href={`/services/${item.slug}`}>
-                    <strong>{item.title}</strong>
-                    <span>{item.desc}</span>
-                  </a>
-                ))}
-              </div>
-            </section>
+            </div>
           </div>
-        </div>
+        </section>
+
+        <section className="dx-container sp-related">
+          <div className="dx-head" data-reveal>
+            <div><p className="dx-eyebrow">Adjacent capacity</p><h2>Related services.</h2></div>
+            <p>Add a neighboring lane only after the first one is dependable.</p>
+          </div>
+          <div className="sp-related-grid">
+            {related.map((item) => (
+              <a className="sp-related-card" href={`/services/${item.slug}`} key={item.slug} data-reveal>
+                <div className="sp-related-thumb"><LaneVisual slug={item.slug} /></div>
+                <div><h3>{item.title}</h3><p>{item.desc}</p><span>Open the lane ↗</span></div>
+              </a>
+            ))}
+          </div>
+        </section>
 
         <CTA />
       </main>
