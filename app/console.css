@@ -1522,12 +1522,20 @@ main {
 }
 
 .lane-terminal--panel .lt-line {
-  font-size: clamp(7px, 2.25cqw, 11px);
-  line-height: 2;
+  font-size: clamp(8px, 2.85cqw, 13px);
+  line-height: 2.05;
 }
 
 .lane-terminal--panel .lt-note {
   display: flex;
+}
+
+.lane-terminal--panel .lt-note span {
+  font-size: 8px;
+}
+
+.lane-terminal--panel .lt-file {
+  font-size: clamp(6px, 2.1cqw, 10px);
 }
 
 .lane-terminal--panel .lt-glyph {
