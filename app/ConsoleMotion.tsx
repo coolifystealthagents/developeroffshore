@@ -1,13 +1,20 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 /**
  * Motion layer for the Developer Offshore console design.
  * CSS handles the continuous 3D cube, code scan, ticker and pipeline pulses.
  * This adds scroll reveals, pointer tilt, scene depth and scroll progress.
+ *
+ * The effect is keyed to the current pathname so client-side navigation gets a
+ * fresh observer for the new page instead of leaving sections at opacity: 0
+ * until a hard refresh.
  */
 export default function ConsoleMotion() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const root = document.documentElement;
     root.classList.add('dx-js');
@@ -35,44 +42,87 @@ export default function ConsoleMotion() {
     onScroll();
     cleanups.push(() => window.removeEventListener('scroll', onScroll));
 
-    const revealItems = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+    /* Scroll reveals, including content mounted after client navigation */
+    const seen = new WeakSet<Element>();
+    let observer: IntersectionObserver | null = null;
+
+    const reveal = (el: HTMLElement) => {
+      el.classList.add('is-in');
+      observer?.unobserve(el);
+    };
+
+    const inView = (el: HTMLElement) => {
+      const rect = el.getBoundingClientRect();
+      return rect.top < window.innerHeight * 0.96 && rect.bottom > -24;
+    };
+
+    const observeScope = (scope: ParentNode) => {
+      const candidates: HTMLElement[] = [];
+      if (scope instanceof HTMLElement && scope.matches('[data-reveal]')) candidates.push(scope);
+      scope.querySelectorAll<HTMLElement>('[data-reveal]').forEach((el) => candidates.push(el));
+
+      candidates.forEach((el) => {
+        if (seen.has(el)) return;
+        seen.add(el);
+        if (!observer || inView(el)) reveal(el);
+        else observer.observe(el);
+      });
+    };
+
     if (reduce || !('IntersectionObserver' in window)) {
-      revealItems.forEach((el) => el.classList.add('is-in'));
+      document.querySelectorAll<HTMLElement>('[data-reveal]').forEach((el) => el.classList.add('is-in'));
     } else {
-      const observer = new IntersectionObserver(
+      observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const el = entry.target as HTMLElement;
-            el.classList.add('is-in');
-            observer.unobserve(el);
+            if (entry.isIntersecting) reveal(entry.target as HTMLElement);
           });
         },
         { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }
       );
-      revealItems.forEach((el) => observer.observe(el));
-      cleanups.push(() => observer.disconnect());
+
+      observeScope(document);
+      const mutation = new MutationObserver((mutations) => {
+        mutations.forEach((mutationRecord) => {
+          mutationRecord.addedNodes.forEach((node) => {
+            if (node instanceof HTMLElement) observeScope(node);
+          });
+        });
+      });
+      mutation.observe(document.body, { childList: true, subtree: true });
+      cleanups.push(() => mutation.disconnect());
+      cleanups.push(() => observer?.disconnect());
     }
+
+    const onPageShow = () => observeScope(document);
+    window.addEventListener('pageshow', onPageShow);
+    cleanups.push(() => window.removeEventListener('pageshow', onPageShow));
+
+    /* Catch anything already on screen after hydration or a route transition */
+    const frame = requestAnimationFrame(() => observeScope(document));
+    const settle = window.setTimeout(() => observeScope(document), 350);
+    cleanups.push(() => cancelAnimationFrame(frame));
+    cleanups.push(() => window.clearTimeout(settle));
 
     if (!reduce && finePointer) {
       const tilts = Array.from(document.querySelectorAll<HTMLElement>('[data-tilt]'));
       const tiltCleanups = tilts.map((el) => {
-        let frame = 0;
+        let frameId = 0;
         const max = Number(el.dataset.tiltStrength || 5);
 
         const move = (event: PointerEvent) => {
           const rect = el.getBoundingClientRect();
           const x = (event.clientX - rect.left) / rect.width;
           const y = (event.clientY - rect.top) / rect.height;
-          cancelAnimationFrame(frame);
-          frame = requestAnimationFrame(() => {
+          cancelAnimationFrame(frameId);
+          frameId = requestAnimationFrame(() => {
             el.style.setProperty('--ry', `${(x - 0.5) * max * 2}deg`);
             el.style.setProperty('--rx', `${(0.5 - y) * max * 1.4}deg`);
           });
         };
 
         const leave = () => {
-          cancelAnimationFrame(frame);
+          cancelAnimationFrame(frameId);
           el.style.removeProperty('--rx');
           el.style.removeProperty('--ry');
         };
@@ -80,7 +130,7 @@ export default function ConsoleMotion() {
         el.addEventListener('pointermove', move);
         el.addEventListener('pointerleave', leave);
         return () => {
-          cancelAnimationFrame(frame);
+          cancelAnimationFrame(frameId);
           el.removeEventListener('pointermove', move);
           el.removeEventListener('pointerleave', leave);
         };
@@ -90,14 +140,14 @@ export default function ConsoleMotion() {
       const scenes = Array.from(document.querySelectorAll<HTMLElement>('.dx-scene'));
       const sceneCleanups = scenes.map((scene) => {
         const layers = Array.from(scene.querySelectorAll<HTMLElement>('[data-depth]'));
-        let frame = 0;
+        let frameId = 0;
 
         const move = (event: PointerEvent) => {
           const rect = scene.getBoundingClientRect();
           const x = (event.clientX - rect.left) / rect.width - 0.5;
           const y = (event.clientY - rect.top) / rect.height - 0.5;
-          cancelAnimationFrame(frame);
-          frame = requestAnimationFrame(() => {
+          cancelAnimationFrame(frameId);
+          frameId = requestAnimationFrame(() => {
             layers.forEach((layer) => {
               const depth = Number(layer.dataset.depth || 8);
               layer.style.setProperty('--mx', String(x * depth));
@@ -107,7 +157,7 @@ export default function ConsoleMotion() {
         };
 
         const leave = () => {
-          cancelAnimationFrame(frame);
+          cancelAnimationFrame(frameId);
           layers.forEach((layer) => {
             layer.style.setProperty('--mx', '0');
             layer.style.setProperty('--my', '0');
@@ -117,7 +167,7 @@ export default function ConsoleMotion() {
         scene.addEventListener('pointermove', move);
         scene.addEventListener('pointerleave', leave);
         return () => {
-          cancelAnimationFrame(frame);
+          cancelAnimationFrame(frameId);
           scene.removeEventListener('pointermove', move);
           scene.removeEventListener('pointerleave', leave);
         };
@@ -127,9 +177,9 @@ export default function ConsoleMotion() {
 
     return () => {
       cleanups.forEach((fn) => fn());
-      root.classList.remove('dx-js');
+      /* Keep dx-js on the document so a route transition cannot flash content. */
     };
-  }, []);
+  }, [pathname]);
 
   return <div className="dx-progress" aria-hidden="true" />;
 }
