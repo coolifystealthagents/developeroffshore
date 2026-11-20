@@ -96,7 +96,7 @@ export default function Services() {
           actions={<><a className="dx-btn" href="#service-catalog">Explore the lanes ↗</a><a className="dx-btn dx-btn--ghost" href="/contact-us">Discuss your backlog</a></>}
           media={
             <figure className="dx-detail-visual" data-tilt data-tilt-strength="3">
-              <div className="dx-lane-thumb"><LaneVisual slug="node-js-api-development" /></div>
+              <div className="dx-lane-thumb"><LaneVisual slug="node-js-api-development" variant="panel" /></div>
               <figcaption>Scope · implement · test · review · hand off</figcaption>
             </figure>
           }

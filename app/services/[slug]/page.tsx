@@ -77,7 +77,7 @@ export default async function Service({ params }: { params: Promise<{ slug: stri
               </div>
             </div>
             <figure className="dx-detail-visual" data-tilt data-tilt-strength="4">
-              <span className="dx-lane-thumb"><LaneVisual slug={service.slug} /></span>
+              <div className="dx-lane-thumb"><LaneVisual slug={service.slug} variant="panel" /></div>
               <figcaption>{service.outcomes[0]} · {service.outcomes[1]}</figcaption>
             </figure>
           </div>
