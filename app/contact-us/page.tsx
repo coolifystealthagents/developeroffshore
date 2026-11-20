@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Footer, Header } from '../components';
 import StandardContactForm from './StandardContactForm';
+import { TestimonialsRail } from '../booking-components';
 
 export const metadata: Metadata = {
   title: { absolute: 'Contact Developer Offshore | Plan Your Engineering Team' },
@@ -76,6 +77,10 @@ export default function ContactUsPage() {
               <a className="dx-link" href="https://stealthagents.com/" target="_blank" rel="noopener noreferrer">Meet StealthAgents ↗</a>
             </div>
           </div>
+        </section>
+
+        <section className="dx-reviews" aria-label="Client reviews">
+          <div className="dx-container"><TestimonialsRail contact /></div>
         </section>
 
         <section className="dx-contact-prep" aria-labelledby="prep-title">

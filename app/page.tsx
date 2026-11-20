@@ -5,6 +5,7 @@ import { fleetServices } from './fleet-data';
 import { blogPosts, site, stats } from './data';
 import { compareNewestBatchFirst } from './fleet-data';
 import { articleThumbnail } from './article-thumbnails';
+import { TestimonialsRail } from './booking-components';
 import { LaneVisual } from './lane-visual';
 
 export const metadata: Metadata = {
@@ -286,31 +287,7 @@ export default function Home() {
 
         <section className="dx-reviews" aria-label="Client reviews">
           <div className="dx-container">
-            <div className="sa-testimonials">
-              <div className="sa-testimonial-heading">
-                <h2>What clients say about the team</h2>
-                <span>Verified source</span>
-              </div>
-              <div className="sa-testimonial-viewport">
-                <div className="sa-testimonial-track">
-                  {[
-                    { q: 'They understood the stack before the first call. Our tech lead could review the pilot without translating the brief.', n: 'Engineering lead, SaaS team' },
-                    { q: 'The pilot produced a real change, not a slide deck. That made the decision much easier.', n: 'CTO, commerce platform' },
-                    { q: 'Weekly notes and clear pull requests kept the work inside our review process.', n: 'Product director, services company' },
-                    { q: 'We kept architecture and release approval. The developer added capacity without changing how we ship.', n: 'Founder, B2B software' },
-                  ].map((review, index) => (
-                    <article className="sa-testimonial-card" key={review.n} style={{ '--review-index': index } as CSSProperties}>
-                      <div className="sa-testimonial-stars" aria-hidden="true">★★★★★</div>
-                      <blockquote>“{review.q}”</blockquote>
-                      <p>{review.n}</p>
-                    </article>
-                  ))}
-                </div>
-              </div>
-              <p className="sa-testimonial-source">
-                Clearly labeled client feedback from the StealthAgents network. Individual results vary by lane, reviewer, and access.
-              </p>
-            </div>
+            <TestimonialsRail />
           </div>
         </section>
 
