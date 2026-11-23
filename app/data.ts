@@ -42,6 +42,7 @@ import { novemberEighteenBlogBatch } from './nov18-blog-batch';
 import { novemberTwentyBlogBatch } from './nov20-blog-batch';
 import { novemberTwentyOneBlogBatch } from './nov21-blog-batch';
 import { novemberTwentyTwoBlogBatch } from './nov22-blog-batch';
+import { novemberTwentyThreeBlogBatch } from './nov23-blog-batch';
 import { novemberNineteenBlogBatch } from './nov19-blog-batch';
 import { novemberSixteenBlogBatch } from './nov16-blog-batch';
 import { novemberTwelveBlogBatch } from './nov12-blog-batch';
@@ -495,7 +496,7 @@ const dailyBlogBatch20260810Additional: BlogPost[] = additionalDailyTopics202608
 }));
 
 export const blogPosts: BlogPost[] = [
-  ...novemberTwentyTwoBlogBatch, ...novemberTwentyOneBlogBatch, ...novemberTwentyBlogBatch, ...novemberNineteenBlogBatch, ...novemberEighteenBlogBatch, ...novemberSeventeenBlogBatch, ...novemberSixteenBlogBatch, ...novemberTwelveBlogBatch, ...novemberElevenBlogBatch, ...novemberTenBlogBatch, ...novemberNineBlogBatch, ...novemberEightBlogBatch, ...novemberSevenBlogBatch, ...novemberSixBlogBatch, ...novemberFiveBlogBatch, ...novemberFourBlogBatch, ...novemberThreeBlogBatch, ...novemberTwoBlogBatch, ...novemberOneBlogBatch, ...octoberTwentyEightBlogBatch, ...octoberTwentySevenBlogBatch, ...octoberTwentySixBlogBatch, ...octoberTwentyFiveBlogBatch, ...octoberTwentyTwoBlogBatch,
+  ...novemberTwentyThreeBlogBatch, ...novemberTwentyTwoBlogBatch, ...novemberTwentyOneBlogBatch, ...novemberTwentyBlogBatch, ...novemberNineteenBlogBatch, ...novemberEighteenBlogBatch, ...novemberSeventeenBlogBatch, ...novemberSixteenBlogBatch, ...novemberTwelveBlogBatch, ...novemberElevenBlogBatch, ...novemberTenBlogBatch, ...novemberNineBlogBatch, ...novemberEightBlogBatch, ...novemberSevenBlogBatch, ...novemberSixBlogBatch, ...novemberFiveBlogBatch, ...novemberFourBlogBatch, ...novemberThreeBlogBatch, ...novemberTwoBlogBatch, ...novemberOneBlogBatch, ...octoberTwentyEightBlogBatch, ...octoberTwentySevenBlogBatch, ...octoberTwentySixBlogBatch, ...octoberTwentyFiveBlogBatch, ...octoberTwentyTwoBlogBatch,
   ...october13BlogBatch,
   ...october12BlogBatch,
   ...october08BlogBatch,
