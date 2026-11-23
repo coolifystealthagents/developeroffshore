@@ -4958,3 +4958,56 @@ main {
     height: 76px;
   }
 }
+
+/* Service dossier rail */
+.dx-service-nav {
+  position: sticky;
+  top: var(--dx-nav-h);
+  z-index: 40;
+  background: rgba(4, 12, 24, 0.97);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.dx-service-nav .dx-container {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-height: 46px;
+  overflow-x: auto;
+}
+
+.dx-service-nav a {
+  padding: 8px 11px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 10.5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.dx-service-nav a:hover {
+  color: #fff;
+}
+
+.dx-service-nav .dx-service-nav-cta {
+  margin-left: auto;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #18afe5;
+  color: #04121e;
+  font-weight: 700;
+}
+
+.dx-service-page [id] {
+  scroll-margin-top: 130px;
+}
+
+@media (max-width: 900px) {
+  .dx-service-nav {
+    top: 68px;
+  }
+
+  .dx-service-nav .dx-service-nav-cta {
+    display: none;
+  }
+}

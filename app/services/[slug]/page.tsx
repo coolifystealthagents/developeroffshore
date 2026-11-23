@@ -112,7 +112,19 @@ export default async function Service({ params }: { params: Promise<{ slug: stri
           </div>
         </section>
 
-        <section className="dx-container sp-intro">
+        <nav className="dx-service-nav" aria-label="On this page">
+          <div className="dx-container">
+            <a href="#overview">Overview</a>
+            <a href="#lane">Inside the lane</a>
+            <a href="#rhythm">Workflow</a>
+            <a href="#controls">Controls</a>
+            <a href="#questions">Questions</a>
+            <a href="#related">Related</a>
+            <a className="dx-service-nav-cta" href="/contact-us">Scope this lane ↗</a>
+          </div>
+        </nav>
+
+        <section className="dx-container sp-intro" id="overview">
           <div data-reveal>
             <p className="dx-eyebrow">The operating lane</p>
             <h2>A bounded change with a named reviewer.</h2>
@@ -136,7 +148,7 @@ export default async function Service({ params }: { params: Promise<{ slug: stri
           </div>
         </section>
 
-        <section className="sp-lane">
+        <section className="sp-lane" id="lane">
           <div className="dx-container">
             <div className="dx-head" data-reveal>
               <div><p className="dx-eyebrow">Inside the lane</p><h2>What the work actually includes.</h2></div>
@@ -162,7 +174,7 @@ export default async function Service({ params }: { params: Promise<{ slug: stri
           </div>
         </section>
 
-        <section className="sp-rhythm">
+        <section className="sp-rhythm" id="rhythm">
           <div className="dx-container sp-rhythm-grid">
             <div data-reveal>
               <p className="dx-eyebrow dx-eyebrow--light">A practical workflow</p>
@@ -187,7 +199,7 @@ export default async function Service({ params }: { params: Promise<{ slug: stri
           </div>
         </section>
 
-        <section className="dx-container sp-controls">
+        <section className="dx-container sp-controls" id="controls">
           <div className="sp-controls-grid">
             <article className="sp-panel sp-panel--blue" data-reveal>
               <p className="dx-eyebrow">Quality controls</p>
@@ -213,7 +225,7 @@ export default async function Service({ params }: { params: Promise<{ slug: stri
           </div>
         </section>
 
-        <section className="dx-container sp-faq">
+        <section className="dx-container sp-faq" id="questions">
           <div className="sp-faq-grid">
             <div data-reveal>
               <p className="dx-eyebrow">Questions teams ask</p>
@@ -232,7 +244,7 @@ export default async function Service({ params }: { params: Promise<{ slug: stri
           </div>
         </section>
 
-        <section className="dx-container sp-related">
+        <section className="dx-container sp-related" id="related">
           <div className="dx-head" data-reveal>
             <div><p className="dx-eyebrow">Adjacent capacity</p><h2>Related services.</h2></div>
             <p>Add a neighboring lane only after the first one is dependable.</p>
