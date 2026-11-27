@@ -23,7 +23,7 @@ export function LogoMark() {
 
 export function Header() {
   return (
-    <header className="dx-header">
+    <header data-site-header="sticky" className="dx-header">
       <div className="dx-nav-inner">
         <a className="dx-brand" href="/" aria-label={`${site.brand} home`}>
           <LogoMark />
@@ -43,7 +43,7 @@ export function Header() {
 
 export function Footer() {
   return (
-    <footer className="dx-footer">
+    <footer data-site-footer="true" className="dx-footer">
       <div className="dx-footer-inner dx-container">
         <div className="dx-footer-top">
           <div className="dx-footer-brand">
@@ -65,7 +65,7 @@ export function Footer() {
           </div>
           <div>
             <h3>Explore</h3>
-            <div className="dx-footer-links">
+            <div data-footer-menu="true" className="dx-footer-links">
               <a href="/services">All services</a>
               <a href="/about">About</a>
               <a href="/blog">Blog</a>

@@ -15,6 +15,8 @@ import './console.css';
 import ConsoleMotion from './ConsoleMotion';
 import type { Metadata, Viewport } from 'next';
 
+import "./site-chrome-fixes.css";
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://developeroffshore.com'),
   title: { default: 'Developer Offshore | Offshore developer staffing', template: '%s | Developer Offshore' },

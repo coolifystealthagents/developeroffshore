@@ -19,13 +19,13 @@ export function TestimonialsRail({ contact = false }: { contact?: boolean }) {
       <div className="sa-testimonial-heading">
         <h2 id={contact ? 'contact-client-reviews' : 'booking-client-reviews'}>StealthAgents reviews</h2>
       </div>
-      <div className="sa-testimonial-viewport" aria-label="Ten verified StealthAgents client reviews. The reviews pause while hovered or focused.">
+      <div className="sa-testimonial-viewport" aria-label="Ten verified StealthAgents client reviews. The reviews pause while focused.">
         <div className="sa-testimonial-track">
-          {reviews.map((review, index) => (
+          {[...reviews, ...reviews].map((review, index) => (
             <article
               className="sa-testimonial-card"
-              key={review.name}
-              tabIndex={0}
+              key={`${review.name}-${index}`} aria-hidden={index >= reviews.length || undefined}
+              tabIndex={index >= reviews.length ? -1 : 0}
               style={{ '--review-index': index, '--review-count': reviews.length } as ReviewStyle}
             >
               <FiveStarRating />
