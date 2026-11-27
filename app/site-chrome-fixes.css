@@ -21,3 +21,5 @@ html, body { overflow-x: clip; }
 @keyframes site-review-loop { to { transform:translateX(calc(-50% - 8px)); } }
 .sa-testimonial-viewport:focus-within .sa-testimonial-track { animation-play-state:paused; }
 @media(prefers-reduced-motion:reduce) { .sa-testimonial-viewport .sa-testimonial-track { animation:none; width:100%; height:auto; flex-wrap:wrap; } .sa-testimonial-viewport .sa-testimonial-card[aria-hidden=true] { display:none; } }
+
+[data-site-footer] > div > .site-parent-company { width:100%; }
